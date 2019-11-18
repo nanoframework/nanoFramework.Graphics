@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>nanoFramework.Graphics.Wpf</id>
+    <version>$version$</version>
+    <title>nanoFramework.Graphics.Wpf</title>
+    <authors>nanoFramework project contributors</authors>
+    <owners>nanoFramework project contributors</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <releaseNotes>
+    </releaseNotes>
+    <developmentDependency>false</developmentDependency>
+    <projectUrl>https://github.com/nanoframework/lib-nanoFramework.Graphics.Wpf</projectUrl>
+    <iconUrl>https://secure.gravatar.com/avatar/97d0e092247f0716db6d4b47b7d1d1ad</iconUrl>
+    <repository type="git" url="https://github.com/nanoframework/lib-nanoFramework.Graphics.Wpf" commit="$commit$" />
+    <copyright>Copyright (c) 2019 The nanoFramework project contributors</copyright>
+    <description>This package includes the nanoFramework.Graphics.Wpf assembly for nanoFramework C# projects.
+This package requires a target with nanoFramework.Graphics.Wpf v$nativeVersion$.</description>
+    <summary>nanoFramework.Graphics.Wpf assembly for nanoFramework C# projects</summary>
+    <tags>nanoFramework C# csharp netnf nanoFramework.Graphics.Wpf</tags>
+    <dependencies>
+      <dependency id="nanoFramework.CoreLibrary" version="1.2.6-preview.16" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.5.1-preview.1" />
+      <dependency id="nanoFramework.ResourceManager" version="1.0.0-preview.4" />
+      <dependency id="nanoFramework.Runtime.Events" version="1.4.1-preview.3" />
+      <dependency id="nanoFramework.Runtime.Native" version="1.2.0-preview.7" />
+      <dependency id="nanoFramework.System.Collections" version="1.0.0-preview.6" />
+	  </dependencies>
+  </metadata>
+  <files>
+    <file src="nanoFramework.Graphics.Wpf\bin\Release\nanoFramework.Graphics.Wpf.dll"  target="lib\nanoFramework.Graphics.Wpf.dll" />
+    <file src="nanoFramework.Graphics.Wpf\bin\Release\nanoFramework.Graphics.Wpf.pdb"  target="lib\nanoFramework.Graphics.Wpf.pdb" />
+    <file src="nanoFramework.Graphics.Wpf\bin\Release\nanoFramework.Graphics.Wpf.pdbx" target="lib\nanoFramework.Graphics.Wpf.pdbx" />
+    <file src="nanoFramework.Graphics.Wpf\bin\Release\nanoFramework.Graphics.Wpf.pe"   target="lib\nanoFramework.Graphics.Wpf.pe" />
+    <file src="nanoFramework.Graphics.Wpf\bin\Release\nanoFramework.Graphics.Wpf.xml"  target="lib\nanoFramework.Graphics.Wpf.xml" />
+    <!-- readme -->
+    <file src="readme.txt" target="readme.txt" />
+  </files>
+</package>
