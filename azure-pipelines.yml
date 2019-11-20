@@ -39,7 +39,7 @@ variables:
   solution: '**/source/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  nugetPackageName: 'nanoFramework.Graphics'
+  nugetPackageName: 'nanoFramework.Graphics.Wpf'
   repoName: 'lib-nanoFramework.Graphics.Wpf'
 
 steps:
