@@ -7,10 +7,9 @@ trigger:
     - refs/tags/*
   paths:
     exclude:
-    - CHANGELOG.md
     - /*.md
     - .gitignore
-    - appveyor.yml
+    - README.md
   # waiting for feature to become available
   # tags:
   #   include:
@@ -32,28 +31,82 @@ resources:
       name: nanoframework/nf-tools
       endpoint: nanoframework
 
-pool:
-  vmImage: 'VS2017-Win2016'
+jobs:
 
-variables:
-  solution: '**/source/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-  nugetPackageName: 'nanoFramework.Graphics.Wpf'
-  repoName: 'lib-nanoFramework.Graphics.Wpf'
+##############################
+- job: Build_Library
+  condition: or( eq(variables['UPDATE_DEPENDENTS'], 'false'), eq(variables['StartReleaseCandidate'], 'true') )
+  pool:
+    vmImage: 'VS2017-Win2016'
 
-steps:
+  variables:
+    solution: '**/source/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+    nugetPackageName: 'nanoFramework.Graphics'
+    repoName: 'lib-nanoFramework.Graphics'
 
-# step from template @ nf-tools repo
-# all build, update and publish steps
-- template: azure-pipelines-templates/class-lib-build.yml@templates
-  parameters:
-    sonarCloudProject: 'nanoframework_lib-nanoFramework.Graphics.Wpf'
+  steps:
 
-# step from template @ nf-tools repo
-# report error
-- template: azure-pipelines-templates/discord-webhook-task.yml@templates  
-  parameters:
-    status: 'failure'
-    webhookUrl: '$(DiscordWebhook)'
-    message: ''
+  # step from template @ nf-tools repo
+  # all build, update and publish steps
+  - template: azure-pipelines-templates/class-lib-build.yml@templates
+    parameters:
+      sonarCloudProject: 'nanoframework_lib-nanoFramework.nanoFramework.Graphics'
+
+##############################
+- job: Update_Dependencies
+  condition: or( and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), eq(variables['StartReleaseCandidate'], 'false') ), and( succeeded(), contains(variables['getCommitMessage.COMMIT_MESSAGE'], '***UPDATE_DEPENDENTS***'), eq(variables['StartReleaseCandidate'], 'false') ), eq(variables['UPDATE_DEPENDENTS'], 'true') )
+
+  dependsOn:
+  - Build_Library
+
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  steps:
+  # need this here in order to persist GitHub credentials 
+  - checkout: self
+    fetchDepth: 1
+
+  - task: NuGetToolInstaller@0
+    inputs:
+      versionSpec: '5.4.0'
+    condition: ne( variables['StartReleaseCandidate'], true )
+    displayName: 'Install specific version of NuGet'
+
+  # update dependencies
+  - task: UpdatenFDependencies@1
+    inputs:
+      gitHubToken: $(GitHubToken)
+      repositoriesToUpdate: |
+        lib-CoreLibrary.CoreLibrary
+        lib-nanoFramework.ResourceManager
+        lib-nanoFramework.Runtime.Events
+        lib-Windows.Devices.Runtime.Native
+        lib-Windows.System.Collections
+    displayName: Update dependent class libs
+
+##################################
+# report build failure to Discord
+- job: Report_Build_Failure
+  
+  dependsOn:
+  - Build_Library
+  - Update_Dependencies
+  condition: or( failed('Build_Library'), failed('Update_Dependencies'))
+
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  steps:
+  
+  - checkout: self
+
+  # step from template @ nf-tools repo
+  # report error
+  - template: azure-pipelines-templates/discord-webhook-task.yml@templates  
+    parameters:
+      status: 'failure'
+      webhookUrl: '$(DiscordWebhook)'
+      message: ''
