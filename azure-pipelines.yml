@@ -83,8 +83,8 @@ jobs:
         lib-CoreLibrary.CoreLibrary
         lib-nanoFramework.ResourceManager
         lib-nanoFramework.Runtime.Events
-        lib-Windows.Devices.Runtime.Native
-        lib-Windows.System.Collections
+        lib-nanoFramework.Runtime.Native
+        nanoFrameworkWindows.System.Collections
     displayName: Update dependent class libs
 
 ##################################
