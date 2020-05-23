@@ -52,7 +52,7 @@ jobs:
   # all build, update and publish steps
   - template: azure-pipelines-templates/class-lib-build.yml@templates
     parameters:
-      sonarCloudProject: 'nanoframework_lib-nanoFramework.nanoFramework.Graphics'
+      sonarCloudProject: 'nanoframework_lib-nanoFramework.Graphics'
 
 
 ##################################
