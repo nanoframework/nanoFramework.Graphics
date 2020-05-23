@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>nanoFramework.Graphics</id>
+    <version>$version$</version>
+    <title>nanoFramework.Graphics</title>
+    <authors>nanoFramework project contributors</authors>
+    <owners>nanoFramework project contributors</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <releaseNotes>
+    </releaseNotes>
+    <developmentDependency>false</developmentDependency>
+    <projectUrl>https://github.com/nanoframework/lib-nanoFramework.nanoFramework.Graphics</projectUrl>
+    <iconUrl>https://secure.gravatar.com/avatar/97d0e092247f0716db6d4b47b7d1d1ad</iconUrl>
+    <repository type="git" url="https://github.com/nanoframework/lib-nanoFramework.nanoFramework.Graphics" commit="$commit$" />
+    <copyright>Copyright (c) 2020 The nanoFramework project contributors</copyright>
+    <description>
+      This package includes the nanoFramework.Graphics assembly for nanoFramework C# projects.
+      This package requires a target with nanoFramework.Graphics $nativeVersion$.
+    </description>
+    <summary>nanoFramework.Graphics assembly for nanoFramework C# projects</summary>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics</tags>
+    <dependencies>
+      <dependency id="nanoFramework.CoreLibrary" version="1.7.2-preview.7" />
+      <dependency id="nanoFramework.ResourceManager" version="1.0.0-preview.14" />
+      <dependency id="nanoFramework.Runtime.Events" version="1.4.2-preview.7"  />
+      <dependency id="nanoFramework.Runtime.Native" version="1.2.1-preview.1" />
+      <dependency id="nanoFramework.System.Collections" version="1.0.1-preview.6"  />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.dll" target="lib\nanoFramework.Graphics.dll" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pdb" target="lib\nanoFramework.Graphics.pdb" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pdbx" target="lib\nanoFramework.Graphics.pdbx" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pe" target="lib\nanoFramework.Graphics.pe" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.xml" target="lib\nanoFramework.Graphics.xml" />
+    <!-- readme -->
+    <file src="readme.txt" target="readme.txt" />
+  </files>
+</package>

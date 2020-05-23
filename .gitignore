@@ -54,7 +54,6 @@ artifacts/
 *.pdb
 *.pgc
 *.pgd
-*.rsp
 *.sbr
 *.tlb
 *.tli
@@ -250,6 +249,9 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+#sonarcloud
+.sonarqube
 
 #SoundCloud
 *.sonarqube/

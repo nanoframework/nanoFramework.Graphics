@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <NanoFrameworkProjectSystemPath>$(MSBuildToolsPath)..\..\..\nanoFramework\v1.0\</NanoFrameworkProjectSystemPath>
+  </PropertyGroup>
+  <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.Default.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{11A8DD76-328B-46DF-9F39-F559912D0360};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>cddfd271-0136-4792-8d89-ee47998d4c5d</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>nanoFramework.Graphics</RootNamespace>
+    <AssemblyName>nanoFramework.Graphics</AssemblyName>
+    <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+    <NF_IsCoreLibrary>True</NF_IsCoreLibrary>
+    <DocumentationFile>bin\$(Configuration)\nanoFramework.Graphics.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup Label="nanoFramework">
+    <NF_GenerateStubsDirectory>bin\$(Configuration)\Stubs</NF_GenerateStubsDirectory>
+    <NF_GenerateSkeletonProjectName>nanoFramework_Graphics</NF_GenerateSkeletonProjectName>
+    <Name>nanoFramework.Graphics</Name>
+  </PropertyGroup>
+  <ItemGroup>
+    <NFMDP_PE_ExcludeClassByName Include="ThisAssembly">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+  </ItemGroup>
+  <ItemGroup>
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.CoreLibrary.1.7.2-preview.7\lib\mscorlib.dll">
+      <InProject>false</InProject>
+    </NFMDP_PE_LoadHints>
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.ResourceManager.1.0.0-preview.14\lib\nanoFramework.ResourceManager.dll">
+      <InProject>false</InProject>
+    </NFMDP_PE_LoadHints>
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Events.1.4.2-preview.7\lib\nanoFramework.Runtime.Events.dll">
+      <InProject>false</InProject>
+    </NFMDP_PE_LoadHints>
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Native.1.2.1-preview.1\lib\nanoFramework.Runtime.Native.dll">
+      <InProject>false</InProject>
+    </NFMDP_PE_LoadHints>
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.System.Collections.1.0.1-preview.6\lib\nanoFramework.System.Collections.dll">
+      <InProject>false</InProject>
+    </NFMDP_PE_LoadHints>
+  </ItemGroup>
+  <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
+  <ItemGroup>
+    <Compile Include="Input\ButtonDevice.cs" />
+    <Compile Include="Input\ButtonEnum.cs" />
+    <Compile Include="Input\ButtonEventArgs.cs" />
+    <Compile Include="Input\ButtonEventHandler.cs" />
+    <Compile Include="Input\Buttons.cs" />
+    <Compile Include="Input\ButtonState.cs" />
+    <Compile Include="Input\FocusChangedEventArgs.cs" />
+    <Compile Include="Input\FocusChangedEventHandler.cs" />
+    <Compile Include="Input\GenericDevice.cs" />
+    <Compile Include="Input\InputDevice.cs" />
+    <Compile Include="Input\InputEventArgs.cs" />
+    <Compile Include="Input\InputEventHandler.cs" />
+    <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Input\InputProviderSite.cs" />
+    <Compile Include="Input\InputReport.cs" />
+    <Compile Include="Input\InputReportEventArgs.cs" />
+    <Compile Include="Input\InputReportEventHandler.cs" />
+    <Compile Include="Input\NotifyInputEventArgs.cs" />
+    <Compile Include="Input\PreProcessInputEventArgs.cs" />
+    <Compile Include="Input\PreProcessInputEventHandler.cs" />
+    <Compile Include="Input\ProcessInputEventArgs.cs" />
+    <Compile Include="Input\ProcessInputEventHandler.cs" />
+    <Compile Include="Input\RawButtonInputReport.cs" />
+    <Compile Include="Input\RawGenericInputReport.cs" />
+    <Compile Include="Input\RawTouchInputReport.cs" />
+    <Compile Include="Input\StagingAreaInputItem.cs" />
+    <Compile Include="Input\Touch.cs" />
+    <Compile Include="Input\TouchDevice.cs" />
+    <Compile Include="Presentation\Controls\Border.cs" />
+    <Compile Include="Presentation\Controls\Canvas.cs" />
+    <Compile Include="Presentation\Controls\ContentControl.cs" />
+    <Compile Include="Presentation\Controls\Control.cs" />
+    <Compile Include="Presentation\Controls\DockPanel.cs" />
+    <Compile Include="Presentation\Controls\Image.cs" />
+    <Compile Include="Presentation\Controls\InkCanvas.cs" />
+    <Compile Include="Presentation\Controls\ListBox.cs" />
+    <Compile Include="Presentation\Controls\ListBoxItem.cs" />
+    <Compile Include="Presentation\Controls\ListBoxItemCollection.cs" />
+    <Compile Include="Presentation\Controls\Orientation.cs" />
+    <Compile Include="Presentation\Controls\Panel.cs" />
+    <Compile Include="Presentation\Controls\ScrollChangedEventArgs.cs" />
+    <Compile Include="Presentation\Controls\ScrollChangedEventHandler.cs" />
+    <Compile Include="Presentation\Controls\ScrollingStyle.cs" />
+    <Compile Include="Presentation\Controls\ScrollViewer.cs" />
+    <Compile Include="Presentation\Controls\SelectionChangedEventArgs.cs" />
+    <Compile Include="Presentation\Controls\SelectionChangedEventHandler.cs" />
+    <Compile Include="Presentation\Controls\StackPanel.cs" />
+    <Compile Include="Presentation\Controls\Text.cs" />
+    <Compile Include="Presentation\Controls\TextFlow.cs" />
+    <Compile Include="Presentation\Controls\TextRun.cs" />
+    <Compile Include="Presentation\Controls\TextRunCollection.cs" />
+    <Compile Include="Presentation\Controls\WrapPanel.cs" />
+    <Compile Include="Presentation\HorizontalAlignment.cs" />
+    <Compile Include="Presentation\LayoutManager.cs" />
+    <Compile Include="Presentation\Media\Brush.cs" />
+    <Compile Include="Presentation\Media\Color.cs" />
+    <Compile Include="Presentation\Media\Constants.cs" />
+    <Compile Include="Presentation\Media\DrawingContext.cs" />
+    <Compile Include="Presentation\Media\ImageBrush.cs" />
+    <Compile Include="Presentation\Media\LinearGradientBrush.cs" />
+    <Compile Include="Presentation\Media\MediaContext.cs" />
+    <Compile Include="Presentation\Media\Pen.cs" />
+    <Compile Include="Presentation\Media\SolidColorBrush.cs" />
+    <Compile Include="Presentation\Media\Stretch.cs" />
+    <Compile Include="Presentation\Media\TextAlignment.cs" />
+    <Compile Include="Presentation\Media\TextTrimming.cs" />
+    <Compile Include="Presentation\PresentationSource.cs" />
+    <Compile Include="Presentation\Shapes\Ellipse.cs" />
+    <Compile Include="Presentation\Shapes\Line.cs" />
+    <Compile Include="Presentation\Shapes\Polygon.cs" />
+    <Compile Include="Presentation\Shapes\Rectangle.cs" />
+    <Compile Include="Presentation\Shapes\Shape.cs" />
+    <Compile Include="Presentation\SizeToContent.cs" />
+    <Compile Include="Presentation\UIElement.cs" />
+    <Compile Include="Presentation\UIElementCollection.cs" />
+    <Compile Include="Presentation\VerticalAlignment.cs" />
+    <Compile Include="Presentation\Visibility.cs" />
+    <Compile Include="Presentation\Window.cs" />
+    <Compile Include="Presentation\WindowManager.cs" />
+    <Compile Include="Primitive\Bitmap.cs" />
+    <Compile Include="Primitive\DisplayControl.cs" />
+    <Compile Include="Primitive\Font.cs" />
+    <Compile Include="Primitive\GenericEventEx.cs" />
+    <Compile Include="Primitive\Ink.cs" />
+    <Compile Include="Primitive\TouchCollector.cs" />
+    <Compile Include="Primitive\TouchEvents.cs" />
+    <Compile Include="Primitive\TouchInterface.cs" />
+    <Compile Include="Primitive\TouchPanel.cs" />
+    <Compile Include="Primitive\TouchScreen.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Application.cs" />
+    <Compile Include="System\EventHandler.cs" />
+    <Compile Include="System\EventRoute.cs" />
+    <Compile Include="System\Mathematics.cs" />
+    <Compile Include="System\PropertyChangedEventArgs.cs" />
+    <Compile Include="System\PropertyChangedEventHandler.cs" />
+    <Compile Include="System\RoutedEvent.cs" />
+    <Compile Include="System\RoutedEventArgs.cs" />
+    <Compile Include="System\RoutedEventHandlerInfo.cs" />
+    <Compile Include="System\RouteItem.cs" />
+    <Compile Include="System\RoutingStrategy.cs" />
+    <Compile Include="System\WindowCollection.cs" />
+    <Compile Include="Threading\Dispatcher.cs" />
+    <Compile Include="Threading\DispatcherFrame.cs" />
+    <Compile Include="Threading\DispatcherObject.cs" />
+    <Compile Include="Threading\DispatcherOperation.cs" />
+    <Compile Include="Threading\DispatcherOperationStatus.cs" />
+    <Compile Include="Threading\DispatcherTimer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib, Version=1.7.2.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.7.2-preview.7\lib\mscorlib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nanoFramework.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.ResourceManager.1.0.0-preview.14\lib\nanoFramework.ResourceManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Events, Version=1.4.2.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.Runtime.Events.1.4.2-preview.7\lib\nanoFramework.Runtime.Events.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Native, Version=1.2.1.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.Runtime.Native.1.2.1-preview.1\lib\nanoFramework.Runtime.Native.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nanoFramework.System.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.System.Collections.1.0.1-preview.6\lib\nanoFramework.System.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
+  <ProjectExtensions>
+    <ProjectCapabilities>
+      <ProjectConfigurationsDeclaredAsItems />
+    </ProjectCapabilities>
+  </ProjectExtensions>
+  <Import Project="..\packages\Nerdbank.GitVersioning.3.1.13-beta\build\Nerdbank.GitVersioning.targets" Condition="Exists('..\packages\Nerdbank.GitVersioning.3.1.13-beta\build\Nerdbank.GitVersioning.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105 .The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Nerdbank.GitVersioning.3.1.13-beta\build\Nerdbank.GitVersioning.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Nerdbank.GitVersioning.3.1.13-beta\build\Nerdbank.GitVersioning.targets'))" />
+  </Target>
+</Project>
