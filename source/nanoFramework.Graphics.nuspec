@@ -23,10 +23,10 @@
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.7.3" />
-      <dependency id="nanoFramework.ResourceManager" version="1.0.0-preview.17" />
+      <dependency id="nanoFramework.ResourceManager" version="1.0.0" />
       <dependency id="nanoFramework.Runtime.Events" version="1.4.2-preview.11" />
-      <dependency id="nanoFramework.Runtime.Native" version="1.4.0-preview.3" />
-      <dependency id="nanoFramework.System.Collections" version="1.0.1-preview.11" />
+      <dependency id="nanoFramework.Runtime.Native" version="1.4.0" />
+      <dependency id="nanoFramework.System.Collections" version="1.0.1" />
     </dependencies>
   </metadata>
   <files>
