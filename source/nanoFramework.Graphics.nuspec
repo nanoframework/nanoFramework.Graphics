@@ -24,7 +24,7 @@
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.7.3" />
       <dependency id="nanoFramework.ResourceManager" version="1.0.0" />
-      <dependency id="nanoFramework.Runtime.Events" version="1.4.2-preview.11" />
+      <dependency id="nanoFramework.Runtime.Events" version="1.4.2" />
       <dependency id="nanoFramework.Runtime.Native" version="1.4.0" />
       <dependency id="nanoFramework.System.Collections" version="1.0.1" />
     </dependencies>
