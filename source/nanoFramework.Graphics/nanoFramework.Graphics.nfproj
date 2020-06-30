@@ -41,16 +41,16 @@
     <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.CoreLibrary.1.7.3\lib\mscorlib.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
-    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.ResourceManager.1.0.0\lib\nanoFramework.ResourceManager.dll">
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.ResourceManager.1.1.1\lib\nanoFramework.ResourceManager.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
     <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Events.1.8.0\lib\nanoFramework.Runtime.Events.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
-    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Native.1.4.0\lib\nanoFramework.Runtime.Native.dll">
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Native.1.5.0\lib\nanoFramework.Runtime.Native.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
-    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.System.Collections.1.0.1\lib\nanoFramework.System.Collections.dll">
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.System.Collections.1.1.0\lib\nanoFramework.System.Collections.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
   </ItemGroup>
@@ -174,20 +174,20 @@
       <HintPath>..\packages\nanoFramework.CoreLibrary.1.7.3\lib\mscorlib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nanoFramework.ResourceManager, Version=1.0.0.3, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.ResourceManager.1.0.0\lib\nanoFramework.ResourceManager.dll</HintPath>
+    <Reference Include="nanoFramework.ResourceManager, Version=1.1.1.2, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.ResourceManager.1.1.1\lib\nanoFramework.ResourceManager.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nanoFramework.Runtime.Events, Version=1.8.0.3, Culture=neutral, PublicKeyToken=c07d481e9758c731">
       <HintPath>..\packages\nanoFramework.Runtime.Events.1.8.0\lib\nanoFramework.Runtime.Events.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nanoFramework.Runtime.Native, Version=1.4.0.3, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.Runtime.Native.1.4.0\lib\nanoFramework.Runtime.Native.dll</HintPath>
+    <Reference Include="nanoFramework.Runtime.Native, Version=1.5.0.3, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.Runtime.Native.1.5.0\lib\nanoFramework.Runtime.Native.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nanoFramework.System.Collections, Version=1.0.1.5, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.System.Collections.1.0.1\lib\nanoFramework.System.Collections.dll</HintPath>
+    <Reference Include="nanoFramework.System.Collections, Version=1.1.0.2, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.System.Collections.1.1.0\lib\nanoFramework.System.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
