@@ -47,7 +47,7 @@
     <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Events.1.8.1-preview.22\lib\nanoFramework.Runtime.Events.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
-    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Native.1.5.0\lib\nanoFramework.Runtime.Native.dll">
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Native.1.5.1-preview.2\lib\nanoFramework.Runtime.Native.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
     <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.System.Collections.1.2.0-preview.3\lib\nanoFramework.System.Collections.dll">
@@ -182,8 +182,8 @@
       <HintPath>..\packages\nanoFramework.Runtime.Events.1.8.1-preview.22\lib\nanoFramework.Runtime.Events.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nanoFramework.Runtime.Native, Version=1.5.0.3, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.Runtime.Native.1.5.0\lib\nanoFramework.Runtime.Native.dll</HintPath>
+    <Reference Include="nanoFramework.Runtime.Native, Version=1.5.1.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.Runtime.Native.1.5.1-preview.2\lib\nanoFramework.Runtime.Native.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nanoFramework.System.Collections, Version=1.2.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
