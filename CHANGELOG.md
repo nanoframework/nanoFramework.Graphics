@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.15...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.17...HEAD)
+
+**Documentation and other chores:**
+
+- Update dependencies [\#12](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/12)
+
+## [v1.0.0-preview.17](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/v1.0.0-preview.17) (2020-07-02)
+
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.15...v1.0.0-preview.17)
 
 **Documentation and other chores:**
 
