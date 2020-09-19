@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.2...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.4...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.Runtime.Native from 1.5.0 to 1.5.1-preview.2 [\#14](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/14)
+
+## [v1.0.0-preview.4](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/v1.0.0-preview.4) (2020-09-19)
+
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.2...v1.0.0-preview.4)
 
 **Documentation and other chores:**
 
