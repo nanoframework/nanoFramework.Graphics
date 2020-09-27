@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.4...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.6...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.Runtime.Events from 1.8.1-preview.22 to 1.8.2-preview.1 [\#15](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/15)
+
+## [v1.0.0-preview.6](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/v1.0.0-preview.6) (2020-09-19)
+
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.4...v1.0.0-preview.6)
 
 **Documentation and other chores:**
 
