@@ -6,6 +6,7 @@
 
 **Documentation and other chores:**
 
+- Update 2 NuGet dependencies [\#17](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/17)
 - Update 3 NuGet dependencies [\#16](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/16)
 - Bumps nanoFramework.Runtime.Events from 1.8.1-preview.22 to 1.8.2-preview.1 [\#15](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/15)
 
