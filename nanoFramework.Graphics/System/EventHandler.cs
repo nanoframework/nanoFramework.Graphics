@@ -11,19 +11,6 @@ using nanoFramework.Runtime.Events;
 
 namespace nanoFramework.UI
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public delegate void EventHandler(object sender, EventArgs e);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public delegate void CancelEventHandler(object sender, CancelEventArgs e);
 
     /// <summary>
     /// 
