@@ -75,7 +75,7 @@ namespace nanoFramework.UI
   /// <summary>
   /// 
   /// </summary>
-    public class TouchScreenEventArgs : nanoFramework.Runtime.Events.EventArgs
+    public class TouchScreenEventArgs : EventArgs
     {
         // Fields
         /// <summary>  </summary>
