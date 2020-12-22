@@ -4,18 +4,17 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using System.Runtime.CompilerServices;
 
 namespace nanoFramework.UI
 {
     /// <summary>
-    /// 
+    /// Display orientation. No all display drivers support every orientation.
     /// </summary>
     public enum DisplayOrientation : int
     {
         /// <summary>
-        ///     Portrain
+        ///     Portrait
         /// </summary>
         PORTRAIT,
         /// <summary>
@@ -33,75 +32,58 @@ namespace nanoFramework.UI
     };
 
     /// <summary>
-    /// 
+    /// Display Control.  
     /// </summary>
-    public sealed class DisplayControl : MarshalByRefObject, IDisposable
+    public static class DisplayControl
     {
-
-        static DisplayControl dc;
-         static DisplayControl()
-        {
-            dc = new DisplayControl();
-        }
+        static Bitmap _fullScreen = null;
 
         /// <summary>
-        /// 
+        /// Returns a bitmap the size of the current display. 
         /// </summary>
-        public static int ScreenWidth
+        public static Bitmap FullScreen
         {
             get
             {
-                //return dc.Width;
-                return 800;
-            }
-        }
-        // Gets the height of the screen
-        /// <summary>
-        /// 
-        /// </summary>
-        public static int ScreenHeight
-        {
-            get
-            {
-                //return dc.Height;
-                return 480;
+                if (_fullScreen == null)
+                {
+                    _fullScreen = new Bitmap(ScreenWidth, ScreenHeight);
+                }
+                return _fullScreen;
             }
         }
 
-
-
-
         /// <summary>
-        /// The screens number of pixel for the longer side.
+        /// The screens number of pixels for the longer side.
         /// </summary>
-        extern public int LongerSide
+        extern static public int LongerSide
         {
             [MethodImplAttribute(MethodImplOptions.InternalCall)]
             get;
         }
 
         /// <summary>
-        /// The screens number of pixel for the shorter side.
+        /// The screens number of pixels for the shorter side.
         /// </summary>
-        extern public int ShorterSide
+        extern static public int ShorterSide
         {
             [MethodImplAttribute(MethodImplOptions.InternalCall)]
             get;
         }
 
         /// <summary>
-        /// The screens number of pixel for the width based on the orientation.
+        /// The displays number of pixel for the width based on the orientation.
         /// </summary>
-        extern public int Width
+        extern static public int ScreenWidth
         {
             [MethodImplAttribute(MethodImplOptions.InternalCall)]
             get;
         }
 
         /// <summary>
-        /// The screens number of pixel for the height based on the orientation.
+        /// The displays number of pixel for the height based on the orientation.
         /// </summary>
-        extern public int Height
+        extern static public int ScreenHeight
         {
             [MethodImplAttribute(MethodImplOptions.InternalCall)]
             get;
@@ -110,45 +92,44 @@ namespace nanoFramework.UI
         /// <summary>
         /// Currently 16 bits in RBG565 format. ( There is some 1 bit code available but untested )
         /// </summary>
-        extern public int BitsPerPixel
+        extern static public int BitsPerPixel
         {
             [MethodImplAttribute(MethodImplOptions.InternalCall)]
             get;
         }
 
         /// <summary>
-        /// The orientation landscape, portrain
+        /// Return the current display orientation landscape, portrait.
         /// </summary>
-        extern public int Orientation
+        extern static public DisplayOrientation Orientation
         {
             [MethodImplAttribute(MethodImplOptions.InternalCall)]
             get;
         }
 
         /// <summary>
-        /// 
+        /// Change the orientation of the display.
         /// </summary>
-        /// <param name="Orientation"></param>
-        /// <returns></returns>
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern public bool ChangeOrientation(ref int Orientation);
-
-        /// <summary>
-        /// Release resources
-        /// </summary>
-        /// <param name="disposing"></param>
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void Dispose(bool disposing);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose()
+        /// <remarks>
+        /// When the orientation is changed the display canvas is disposed and recreated with the new dimensions
+        /// when DisplayControl.FullScreen is next called.
+        /// </remarks>
+        /// <param name="Orientation">New Orientation</param>
+        /// <returns>True if the orientation was supported and changed.</returns>
+        static public bool ChangeOrientation(DisplayOrientation Orientation)
         {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
+            bool result = NativeChangeOrientation(Orientation);
+            // if change happened then destroy bitmap as it needs to be recreated with new dimensions.
+            if (result && _fullScreen != null)
+            {
+                _fullScreen.Dispose();
+                _fullScreen = null;
+            }
+            return result;
         }
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static bool NativeChangeOrientation(DisplayOrientation Orientation);
     }
 }
 
