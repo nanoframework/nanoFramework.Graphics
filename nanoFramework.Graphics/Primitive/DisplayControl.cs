@@ -4,7 +4,6 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using System.Runtime.CompilerServices;
 
 namespace nanoFramework.UI
@@ -35,7 +34,7 @@ namespace nanoFramework.UI
     /// <summary>
     /// Display Control.  
     /// </summary>
-    public sealed class DisplayControl
+    public static class DisplayControl
     {
         static Bitmap _fullScreen = null;
 
@@ -120,14 +119,11 @@ namespace nanoFramework.UI
         static public bool ChangeOrientation(DisplayOrientation Orientation)
         {
             bool result = NativeChangeOrientation(Orientation);
-            if (result == true)
+            // if change happened then destroy bitmap as it needs to be recreated with new dimensions.
+            if (result && _fullScreen != null)
             {
-                // Destroy bitmap as it needs to be recreated with new dimensions.
-                if (_fullScreen != null)
-                {
-                    _fullScreen.Dispose();
-                    _fullScreen = null;
-                }
+                _fullScreen.Dispose();
+                _fullScreen = null;
             }
             return result;
         }
