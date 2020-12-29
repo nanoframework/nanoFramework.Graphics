@@ -2,7 +2,24 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.27...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.34...HEAD)
+
+**Documentation and other chores:**
+
+- Update 5 NuGet dependencies [\#31](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/31)
+- Update 5 NuGet dependencies [\#30](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/30)
+
+## [v1.0.0-preview.34](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/v1.0.0-preview.34) (2020-12-28)
+
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.32...v1.0.0-preview.34)
+
+**Documentation and other chores:**
+
+- Update 5 NuGet dependencies [\#29](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/29)
+
+## [v1.0.0-preview.32](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/v1.0.0-preview.32) (2020-12-22)
+
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.27...v1.0.0-preview.32)
 
 **Implemented enhancements:**
 
@@ -19,6 +36,10 @@
 ## [v1.0.0-preview.25](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/v1.0.0-preview.25) (2020-10-21)
 
 [Full Changelog](https://github.com/nanoframework/lib-nanoFramework.Graphics/compare/v1.0.0-preview.23...v1.0.0-preview.25)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.System.Collections from 1.2.0-preview.12 to 1.2.0-preview.14 [\#23](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/23)
 
 ## [v1.0.0-preview.23](https://github.com/nanoframework/lib-nanoFramework.Graphics/tree/v1.0.0-preview.23) (2020-10-21)
 
@@ -43,7 +64,6 @@
 
 **Documentation and other chores:**
 
-- Bumps nanoFramework.System.Collections from 1.2.0-preview.12 to 1.2.0-preview.14 [\#23](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/23)
 - Update 2 NuGet dependencies [\#18](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/18)
 - Update 2 NuGet dependencies [\#17](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/17)
 - Update 3 NuGet dependencies [\#16](https://github.com/nanoframework/lib-nanoFramework.Graphics/pull/16)
