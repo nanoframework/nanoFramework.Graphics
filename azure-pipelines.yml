@@ -30,7 +30,7 @@ jobs:
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
     nugetPackageName: 'nanoFramework.Graphics'
-    repoName: 'lib-nanoFramework.Graphics'
+    repoName: 'nanoFramework.Graphics'
 
   steps:
 
