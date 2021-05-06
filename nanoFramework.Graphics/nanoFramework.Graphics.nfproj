@@ -50,7 +50,7 @@
     <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.Runtime.Native.1.5.1-preview.32\lib\nanoFramework.Runtime.Native.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
-    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.System.Collections.1.2.0-preview.43\lib\nanoFramework.System.Collections.dll">
+    <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.System.Collections.1.2.0-preview.45\lib\nanoFramework.System.Collections.dll">
       <InProject>false</InProject>
     </NFMDP_PE_LoadHints>
   </ItemGroup>
@@ -187,7 +187,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="nanoFramework.System.Collections, Version=1.2.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.System.Collections.1.2.0-preview.43\lib\nanoFramework.System.Collections.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.Collections.1.2.0-preview.45\lib\nanoFramework.System.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
