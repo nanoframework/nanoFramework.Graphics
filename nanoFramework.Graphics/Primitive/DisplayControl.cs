@@ -38,6 +38,16 @@ namespace nanoFramework.UI
     {
         static Bitmap _fullScreen = null;
 
+        public static void Initialize(SpiConfiguration spi, int width, int height, int bufferSize)
+        {
+            NativeInitSpi(spi, width, height, bufferSize);
+        }
+
+        public static void Initialize(I2cConfiguration i2c, int width, int height, int bufferSize)
+        {
+            NativeInitI2c(i2c, width, height, bufferSize);
+        }
+
         /// <summary>
         /// Returns a bitmap the size of the current display. 
         /// </summary>
@@ -130,6 +140,13 @@ namespace nanoFramework.UI
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static bool NativeChangeOrientation(DisplayOrientation Orientation);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void NativeInitSpi(SpiConfiguration spi, int width, int height, int bufferSize);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void NativeInitI2c(I2cConfiguration i2c, int width, int height, int bufferSize);
+
     }
 }
 
