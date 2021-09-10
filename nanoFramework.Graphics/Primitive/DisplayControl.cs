@@ -4,6 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace nanoFramework.UI
@@ -36,16 +37,46 @@ namespace nanoFramework.UI
     /// </summary>
     public static class DisplayControl
     {
-        static Bitmap _fullScreen = null;
+        static private Bitmap _fullScreen = null;
 
-        public static void Initialize(SpiConfiguration spi, int width, int height, int bufferSize)
+        /// <summary>
+        /// The maximum buffer size for Bitmap in bytes.
+        /// </summary>
+        public static uint MaximumBufferSize { get; internal set; }
+
+        /// <summary>
+        /// Initializes the screen for use with Spi configuration.
+        /// </summary>
+        /// <param name="spi">Spi configuration.</param>
+        /// <param name="x">The x offset the screen start in the driver.</param>
+        /// <param name="y">The y offset the screen start in the driver.</param>
+        /// <param name="width">The width of the screen.</param>
+        /// <param name="height">The height of the screen.</param>
+        /// <param name="bufferSize">The desired buffer size allocation, 0 for default.</param>
+        /// <remarks>You may have to configure the pins properly for the Spi configuration to be valid before initializing your screen.</remarks>
+        /// <returns>The maximum buffer size possible allocation in bytes.</returns>
+        public static uint Initialize(SpiConfiguration spi, ushort x, ushort y, ushort width, ushort height, uint bufferSize = 0)
         {
-            NativeInitSpi(spi, width, height, bufferSize);
+            Debug.WriteLine($"spibus={spi.SpiBus},cs={spi.ChipSelect},dc={spi.DataCommand},rst={spi.Reset},bl={spi.BackLight}");
+            MaximumBufferSize = NativeInitSpi(spi.SpiBus, spi.ChipSelect, spi.DataCommand, spi.Reset, spi.BackLight, x, y, width, height, bufferSize);
+            return MaximumBufferSize;
         }
 
-        public static void Initialize(I2cConfiguration i2c, int width, int height, int bufferSize)
+        /// <summary>
+        /// Initializes the screen to use with I2C configuration.
+        /// </summary>
+        /// <param name="i2c"></param>
+        /// <param name="x">The x offset the screen start in the driver.</param>
+        /// <param name="y">The y offset the screen start in the driver.</param>
+        /// <param name="width">The width of the screen.</param>
+        /// <param name="height">The height of the screen.</param>
+        /// <param name="bufferSize">The desired buffer size allocation, 0 for default.</param>
+        /// <remarks>You may have to configure the pins properly for the I2C configuration to be valid before initializing your screen.</remarks>
+        /// <returns>The maximum buffer size possible allocation in bytes.</returns>
+        public static uint Initialize(I2cConfiguration i2c, ushort x, ushort y, ushort width, ushort height, uint bufferSize = 0)
         {
-            NativeInitI2c(i2c, width, height, bufferSize);
+            MaximumBufferSize = NativeInitI2c(i2c.I2cBus, i2c.Address, i2c.FastMode, x, y, width, height, bufferSize);
+            return MaximumBufferSize;
         }
 
         /// <summary>
@@ -55,6 +86,11 @@ namespace nanoFramework.UI
         {
             get
             {
+                if (!IsFullScreenBufferAvailable)
+                {
+                    throw new System.Exception("Not enough memory");
+                }
+
                 if (_fullScreen == null)
                 {
                     _fullScreen = new Bitmap(ScreenWidth, ScreenHeight);
@@ -62,6 +98,8 @@ namespace nanoFramework.UI
                 return _fullScreen;
             }
         }
+
+        public static bool IsFullScreenBufferAvailable => ScreenWidth * ScreenHeight * BitsPerPixel / 8 < MaximumBufferSize;
 
         /// <summary>
         /// The screens number of pixels for the longer side.
@@ -142,10 +180,10 @@ namespace nanoFramework.UI
         private extern static bool NativeChangeOrientation(DisplayOrientation Orientation);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        private extern static void NativeInitSpi(SpiConfiguration spi, int width, int height, int bufferSize);
+        private extern static uint NativeInitSpi(byte spiBus, int chipSelect, int dataCommand, int reset, int backLight, ushort x, ushort y, ushort width, ushort height, uint bufferSize);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        private extern static void NativeInitI2c(I2cConfiguration i2c, int width, int height, int bufferSize);
+        private extern static uint NativeInitI2c(byte i2cBus, byte address, bool fastMode, ushort x, ushort y, ushort width, ushort height, uint bufferSize);
 
     }
 }
