@@ -66,6 +66,19 @@ namespace nanoFramework.UI
         private bool _fastMode;
 
         /// <summary>
+        /// Creates an I2C configuration.
+        /// </summary>
+        /// <param name="i2cBus">I2C bus.</param>
+        /// <param name="address">Address.</param>
+        /// <param name="fastMode">True for I2C fast mode.</param>
+        public I2cConfiguration(byte i2cBus, byte address, bool fastMode)
+        {
+            _i2cBus = i2cBus;
+            _address = address;
+            _fastMode = fastMode;
+        }
+
+        /// <summary>
         /// I2C bus.
         /// </summary>
         public byte I2cBus { get => _i2cBus; set => _i2cBus = value; }
@@ -79,5 +92,52 @@ namespace nanoFramework.UI
         /// True for I2C fast mode.
         /// </summary>
         public bool FastMode { get => _fastMode; set => _fastMode = value; }
+    }
+
+    /// <summary>
+    /// The screen configuration in the driver.
+    /// </summary>
+    public struct ScreenConfiguration
+    {
+        private ushort _x;
+        private ushort _y;
+        private ushort _width;
+        private ushort _height;
+
+        /// <summary>
+        /// Creates a screen configuration.
+        /// </summary>
+        /// <param name="x">The x position the screen starts in the driver.</param>
+        /// <param name="y">The y position the screen starts in the driver.</param>
+        /// <param name="width">The width of the screen starts in the driver.</param>
+        /// <param name="height">The height of the screen starts in the driver.</param>
+        public ScreenConfiguration(ushort x, ushort y, ushort width, ushort height)
+        {
+            _x = x;
+            _y = y;
+            _width = width;
+            _height = height;
+        }
+
+        /// <summary>
+        /// The x position the screen starts in the driver.
+        /// </summary>
+        public ushort X { get => _x; set => _x = value; }
+
+        /// <summary>
+        /// The y position the screen starts in the driver.
+        /// </summary>
+        public ushort Y { get => _y; set => _y = value; }
+
+        /// <summary>
+        /// The width of the screen starts in the driver.
+        /// </summary>
+        public ushort Width { get => _width; set => _width = value; }
+
+        /// <summary>
+        /// The height of the screen starts in the driver.
+        /// </summary>
+        public ushort Height { get => _height; set => _height = value; }
+
     }
 }

@@ -52,6 +52,17 @@ namespace nanoFramework.Presentation.Media
         {
             return (byte)(((uint)color >> 16) & 0xff);
         }
+
+        /// <summary>
+        /// Converts color into a 16bit representation.
+        /// </summary>
+        /// <param name="color">A color.</param>
+        /// <returns>a 16 bit encoded representation.</returns>
+        public static ushort To16Bpp(Color color)
+        {
+            // 16 bit colour  RRRRRGGGGGGBBBBB mode 565
+            return (ushort)((((uint)color & 0xFF0000) >> 19) | ((((uint)color & 0x00FF00) >> 10) << 5) | (((uint)color & 0xFF) >> 3) << 11);
+        }
     }
 
     /// <summary>

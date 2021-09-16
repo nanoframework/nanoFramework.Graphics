@@ -20,7 +20,7 @@ namespace GraphicTest
             int reset;
             int backLightPin;
 
-            const bool wroover = true;
+            const bool wroover = false;
             if (wroover)
             {
                 backLightPin = 5;
@@ -49,7 +49,8 @@ namespace GraphicTest
             Debug.WriteLine("Hello from nanoFramework!");
 
             //DisplayControl.Initialize(new SpiConfiguration(1, chipSelect, dataCommand, reset, backLightPin), 10, 10, 300, 220, 1024);
-            DisplayControl.Initialize(new SpiConfiguration(1, chipSelect, dataCommand, reset, backLightPin), 0, 0, 320, 240, 1024);
+            DisplayControl.Initialize(new SpiConfiguration(1, chipSelect, dataCommand, reset, backLightPin), new ScreenConfiguration(0, 0, 320, 240), 30 * 1024);
+            Debug.WriteLine($"MaximumBufferSize {DisplayControl.MaximumBufferSize}");
             Debug.WriteLine($"BitsPerPixel {DisplayControl.BitsPerPixel}");
             Debug.WriteLine($"LongerSide {DisplayControl.LongerSide}");
             Debug.WriteLine($"Orientation {DisplayControl.Orientation}");
@@ -59,47 +60,92 @@ namespace GraphicTest
 
 
             Debug.WriteLine("Screen initialized");
-            var desc = PwmController.GetDeviceSelector();
-            Debug.WriteLine(desc);
             PwmController pwm = PwmController.GetDefault();
             pwm.SetDesiredFrequency(44100);
             PwmPin pwmPin = pwm.OpenPin(backLightPin);
             pwmPin.SetActiveDutyCyclePercentage(0.1);
             pwmPin.Start();
 
-            int delayBetween = 1100;
+            int delayBetween = 5000;
 
+            int width = 80;
+            int height = 60;
+            //byte[] img = new byte[20 * 240 * 2];
+            //Bitmap theBitmap = new Bitmap(img, Bitmap.BitmapImageType.NanoCLRBitmap);
+            Bitmap theBitmap = new Bitmap(width, height);
+            ushort[] toSend = new ushort[100];
 
-            //Bitmap theBitmap = new Bitmap(10, 10);
-            ////theBitmap.DrawLine(Color.Blue, 3, 0, 0, 9, 9);
-            //theBitmap.DrawRectangle(Color.Blue, 1, 0, 0, 10, 10, 0, 0, Color.Red, 0, 100, Color.Yellow, 50, 0, 0xFF);
-            //for (int i = 0; i < 32; i++)
-            //{
-            //    for (int j = 0; j < 24; j++)
-            //    {
-            //        theBitmap.Flush(i * 10, j * 10, theBitmap.Width, theBitmap.Height);
-            //    }
-            //}
+        start:
+
+            var blue = ColorUtility.To16Bpp(Color.Blue);
+            var red = ColorUtility.To16Bpp(Color.Red);
+            var green = ColorUtility.To16Bpp(Color.Green);
+            
+            for (int i = 0; i < toSend.Length; i++)
+            {
+                toSend[i] = blue;
+            }
+
+            DisplayControl.Write(100, 100, 10, 10, toSend);
+            for (int i = 0; i < toSend.Length; i++)
+            {
+                toSend[i] = red;
+            }
+
+            DisplayControl.Write(120, 120, 10, 10, toSend);
+            for (int i = 0; i < toSend.Length; i++)
+            {
+                toSend[i] = green;
+            }
+
+            DisplayControl.Write(140, 140, 10, 10, toSend);
+
+            Random random = new Random();
+            ushort[] point = new ushort[1];
+            ushort x;
+            ushort y;
+            for (int i = 0; i < 3000; i++)
+            {
+                point[0] = ColorUtility.To16Bpp((Color)random.Next(0xFFFFFF));
+                x = (ushort)random.Next(319);
+                y = (ushort)random.Next(239);
+                DisplayControl.Write(x, y, 1, 1, point);
+            }
+
+            Thread.Sleep(delayBetween);
+
+            //theBitmap.DrawLine(Color.Blue, 3, 0, 0, 9, 9);
+            theBitmap.DrawRectangle(Color.Blue, 1, 0, 0, width, height, 0, 0, Color.Red, 0, 100, Color.Yellow, 50, 0, 0xFF);
+            for (int i = 0; i < 320 / width; i++)
+            {
+                for (int j = 0; j < 240 / height; j++)
+                {
+                    theBitmap.Flush(i * width, j * height, theBitmap.Width, theBitmap.Height);
+                }
+            }
 
             Thread.Sleep(delayBetween);
 
             //var fullScreenBitmap = DisplayControl.FullScreen;
-            var fullScreenBitmap = new Bitmap(100, 100);
-            //fullScreenBitmap.Clear();
+            //var theBitmap = new Bitmap(80, 100);
+            theBitmap.Clear();
 
             Font DisplayFont = Resource.GetFont(Resource.FontResources.segoeuiregular12);
 
-            while (true)
+            //while (true)
             {
-                RandomDrawLine rdlt = new RandomDrawLine(fullScreenBitmap, DisplayFont);
+                RandomDrawLine rdlt = new RandomDrawLine(theBitmap, DisplayFont);
                 Thread.Sleep(delayBetween);
 
-                fullScreenBitmap.Clear();
+                theBitmap.Clear();
 
-                PagedText pt = new PagedText(fullScreenBitmap, DisplayFont);
+                PagedText pt = new PagedText(theBitmap, DisplayFont);
                 Thread.Sleep(delayBetween);
             }
 
+            DisplayControl.Clear();
+
+            goto start;
 
             Thread.Sleep(Timeout.Infinite);
 
