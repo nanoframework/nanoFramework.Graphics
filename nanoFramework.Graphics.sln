@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "GraphicTest", "GraphicTest\GraphicTest.nfproj", "{415EAE1A-10BE-44E8-A39E-1E2BA4C5372E}"
 EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "M5StickTestApp", "M5StickTestApp\M5StickTestApp.nfproj", "{C1725631-E2B1-49BD-8FAB-15A6BACE85FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{415EAE1A-10BE-44E8-A39E-1E2BA4C5372E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{415EAE1A-10BE-44E8-A39E-1E2BA4C5372E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{415EAE1A-10BE-44E8-A39E-1E2BA4C5372E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C1725631-E2B1-49BD-8FAB-15A6BACE85FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1725631-E2B1-49BD-8FAB-15A6BACE85FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1725631-E2B1-49BD-8FAB-15A6BACE85FC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C1725631-E2B1-49BD-8FAB-15A6BACE85FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1725631-E2B1-49BD-8FAB-15A6BACE85FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1725631-E2B1-49BD-8FAB-15A6BACE85FC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

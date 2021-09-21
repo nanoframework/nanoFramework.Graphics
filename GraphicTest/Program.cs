@@ -74,13 +74,15 @@ namespace GraphicTest
             //Bitmap theBitmap = new Bitmap(img, Bitmap.BitmapImageType.NanoCLRBitmap);
             Bitmap theBitmap = new Bitmap(width, height);
             ushort[] toSend = new ushort[100];
-
+            Font DisplayFont = Resource.GetFont(Resource.FontResources.segoeuiregular12);
+            Debug.WriteLine($"Font height: {DisplayFont.Height}, width: {DisplayFont.MaxWidth} external leading: {DisplayFont.ExternalLeading}, internal: {DisplayFont.InternalLeading}, descent: {DisplayFont.Descent}, ascent: {DisplayFont.Ascent}");
+            Bitmap charBitmap = new Bitmap(DisplayFont.MaxWidth + 1, DisplayFont.Height);
         start:
 
             var blue = ColorUtility.To16Bpp(Color.Blue);
             var red = ColorUtility.To16Bpp(Color.Red);
             var green = ColorUtility.To16Bpp(Color.Green);
-            
+
             for (int i = 0; i < toSend.Length; i++)
             {
                 toSend[i] = blue;
@@ -130,8 +132,6 @@ namespace GraphicTest
             //var theBitmap = new Bitmap(80, 100);
             theBitmap.Clear();
 
-            Font DisplayFont = Resource.GetFont(Resource.FontResources.segoeuiregular12);
-
             //while (true)
             {
                 RandomDrawLine rdlt = new RandomDrawLine(theBitmap, DisplayFont);
@@ -145,11 +145,34 @@ namespace GraphicTest
 
             DisplayControl.Clear();
 
+            theBitmap.Clear();
+            theBitmap.DrawText("Some text", DisplayFont, Color.White, 0, 0);
+            theBitmap.Flush();
+
+            Thread.Sleep(delayBetween);
+            DisplayControl.Clear();
+
+            DisplayText(charBitmap, DisplayFont, 0, 0, "This is with unitary buffer, needs improvement", true);
+
+            Thread.Sleep(delayBetween);
+
             goto start;
 
             Thread.Sleep(Timeout.Infinite);
+        }
 
-
+        public static void DisplayText(Bitmap charBitmap, Font font, ushort x, ushort y, string text, bool newLine)
+        {
+            int posX = x;
+            int charWidth;
+            for (int i = 0; i < text.Length; i++)
+            {
+                charBitmap.Clear();
+                charBitmap.DrawText(text.Substring(i, 1), font, Color.White, 0, 0);
+                charWidth = font.CharWidth(text[i]);
+                posX += charWidth;
+                charBitmap.Flush(posX, y, charBitmap.Width, charBitmap.Height);
+            }
         }
     }
 }

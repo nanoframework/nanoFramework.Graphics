@@ -103,7 +103,7 @@ namespace nanoFramework.UI
         /// <summary>
         /// True if a full size buffer is available
         /// </summary>
-        public static bool IsFullScreenBufferAvailable => ScreenWidth * ScreenHeight * BitsPerPixel / 8 < MaximumBufferSize;
+        public static bool IsFullScreenBufferAvailable => ScreenWidth * ScreenHeight * BitsPerPixel / 8 <= MaximumBufferSize;
 
         /// <summary>
         /// The screens number of pixels for the longer side.
