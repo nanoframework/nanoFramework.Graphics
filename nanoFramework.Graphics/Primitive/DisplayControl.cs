@@ -4,6 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
+using nanoFramework.Presentation.Media;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
@@ -38,7 +39,7 @@ namespace nanoFramework.UI
     public static class DisplayControl
     {
         static private Bitmap _fullScreen = null;
-        static private ushort[] point = new ushort[1];
+        static private ushort[] _point = new ushort[1];
 
         /// <summary>
         /// The maximum buffer size for Bitmap in bytes.
@@ -188,8 +189,8 @@ namespace nanoFramework.UI
         /// <param name="color">The 16 bits color.</param>
         public static void WritePoint(ushort x, ushort y, ushort color)
         {
-            point[0] = color;
-            Write(x, y, 1, 1, point);
+            _point[0] = color;
+            Write(x, y, 1, 1, _point);
         }
 
         /// <summary>
@@ -208,6 +209,9 @@ namespace nanoFramework.UI
         /// <param name="colors">A 16 bits color</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void Write(ushort x, ushort y, ushort width, ushort height, ushort[] colors);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, Color foreground, Color background);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static bool NativeChangeOrientation(DisplayOrientation Orientation);

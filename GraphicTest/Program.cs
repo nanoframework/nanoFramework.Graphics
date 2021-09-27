@@ -58,7 +58,6 @@ namespace GraphicTest
             Debug.WriteLine($"ScreenWidth {DisplayControl.ScreenWidth}");
             Debug.WriteLine($"ShorterSide {DisplayControl.ShorterSide}");
 
-
             Debug.WriteLine("Screen initialized");
             PwmController pwm = PwmController.GetDefault();
             pwm.SetDesiredFrequency(44100);
@@ -75,6 +74,9 @@ namespace GraphicTest
             Bitmap theBitmap = new Bitmap(width, height);
             ushort[] toSend = new ushort[100];
             Font DisplayFont = Resource.GetFont(Resource.FontResources.segoeuiregular12);
+
+            DisplayControl.Write("test", 20, 42, 200, 200, DisplayFont, Color.White, Color.Black);
+
             Debug.WriteLine($"Font height: {DisplayFont.Height}, width: {DisplayFont.MaxWidth} external leading: {DisplayFont.ExternalLeading}, internal: {DisplayFont.InternalLeading}, descent: {DisplayFont.Descent}, ascent: {DisplayFont.Ascent}");
             Bitmap charBitmap = new Bitmap(DisplayFont.MaxWidth + 1, DisplayFont.Height);
         start:
@@ -164,14 +166,29 @@ namespace GraphicTest
         public static void DisplayText(Bitmap charBitmap, Font font, ushort x, ushort y, string text, bool newLine)
         {
             int posX = x;
-            int charWidth;
+            int posY = y;
+            int prevCharWidth;
+            int nextCharLength;
+            int lineBreakPixels = 300;
             for (int i = 0; i < text.Length; i++)
             {
                 charBitmap.Clear();
-                charBitmap.DrawText(text.Substring(i, 1), font, Color.White, 0, 0);
-                charWidth = font.CharWidth(text[i]);
-                posX += charWidth;
-                charBitmap.Flush(posX, y, charBitmap.Width, charBitmap.Height);
+                charBitmap.DrawText(text.Substring(i, 1), font, Color.Green, 0, 0);
+                if (i > 0)
+                {
+                    prevCharWidth = font.CharWidth(text[i - 1]);
+                    posX += prevCharWidth;
+                }
+                charBitmap.Flush(posX, posY, charBitmap.Width, charBitmap.Height);
+                if (i + 1 < text.Length)
+                {
+                    nextCharLength = font.CharWidth(text[i + 1]);
+                    if ((posX + nextCharLength) >= lineBreakPixels)
+                    {
+                        posX = 0;
+                        posY += charBitmap.Height;
+                    }
+                }
             }
         }
     }

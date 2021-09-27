@@ -18,7 +18,8 @@ namespace M5StickTestApp
         {
             Debug.WriteLine("Hello from nanoFramework!");
             InitiM5Stick();
-            //power!.SetLDO2Output(6);
+            // For M5Stick, values from 8 to 12 are working fine
+            power!.SetLDO2Output(8);
 
             int backLightPin = -1; // Not managed thru ESP32 but thru AXP192
             int chipSelect = 5;
