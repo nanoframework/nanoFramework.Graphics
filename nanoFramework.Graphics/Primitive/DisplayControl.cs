@@ -16,19 +16,19 @@ namespace nanoFramework.UI
     public enum DisplayOrientation : int
     {
         /// <summary>
-        ///     Portrait
+        /// Portrait
         /// </summary>
         PORTRAIT,
         /// <summary>
-        ///     Portrait 180
+        /// Portrait 180
         /// </summary>
         PORTRAIT180,
         /// <summary>
-        ///     Landscape
+        /// Landscape
         /// </summary>
         LANDSCAPE,
         /// <summary>
-        ///     Landscape 180
+        /// Landscape 180
         /// </summary>
         LANDSCAPE180
     };
@@ -50,16 +50,12 @@ namespace nanoFramework.UI
         /// Initializes the screen for use with Spi configuration.
         /// </summary>
         /// <param name="spi">Spi configuration.</param>
-        /// <param name="x">The x offset the screen start in the driver.</param>
-        /// <param name="y">The y offset the screen start in the driver.</param>
-        /// <param name="width">The width of the screen.</param>
-        /// <param name="height">The height of the screen.</param>
+        /// <param name="screen">A screen configuration.</param>
         /// <param name="bufferSize">The desired buffer size allocation, 0 for default.</param>
         /// <remarks>You may have to configure the pins properly for the Spi configuration to be valid before initializing your screen.</remarks>
         /// <returns>The maximum buffer size possible allocation in bytes.</returns>
         public static uint Initialize(SpiConfiguration spi, ScreenConfiguration screen, uint bufferSize = 20 * 1024)
         {
-            Debug.WriteLine($"spibus={spi.SpiBus},cs={spi.ChipSelect},dc={spi.DataCommand},rst={spi.Reset},bl={spi.BackLight}");
             MaximumBufferSize = NativeInitSpi(spi, screen, bufferSize);
             return MaximumBufferSize;
         }
@@ -68,10 +64,7 @@ namespace nanoFramework.UI
         /// Initializes the screen to use with I2C configuration.
         /// </summary>
         /// <param name="i2c"></param>
-        /// <param name="x">The x offset the screen start in the driver.</param>
-        /// <param name="y">The y offset the screen start in the driver.</param>
-        /// <param name="width">The width of the screen.</param>
-        /// <param name="height">The height of the screen.</param>
+        /// <param name="screen">A screen configuration.</param>
         /// <param name="bufferSize">The desired buffer size allocation, 0 for default.</param>
         /// <remarks>You may have to configure the pins properly for the I2C configuration to be valid before initializing your screen.</remarks>
         /// <returns>The maximum buffer size possible allocation in bytes.</returns>
@@ -97,6 +90,7 @@ namespace nanoFramework.UI
                 {
                     _fullScreen = new Bitmap(ScreenWidth, ScreenHeight);
                 }
+
                 return _fullScreen;
             }
         }
@@ -104,7 +98,7 @@ namespace nanoFramework.UI
         /// <summary>
         /// True if a full size buffer is available
         /// </summary>
-        public static bool IsFullScreenBufferAvailable => ScreenWidth * ScreenHeight * BitsPerPixel / 8 <= MaximumBufferSize;
+        public static bool IsFullScreenBufferAvailable => ScreenWidth * ScreenHeight * 3 / 8 <= MaximumBufferSize; // Internal bit per pixel is 3 bytes
 
         /// <summary>
         /// The screens number of pixels for the longer side.
@@ -178,6 +172,7 @@ namespace nanoFramework.UI
                 _fullScreen.Dispose();
                 _fullScreen = null;
             }
+
             return result;
         }
 
@@ -210,6 +205,17 @@ namespace nanoFramework.UI
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void Write(ushort x, ushort y, ushort width, ushort height, ushort[] colors);
 
+        /// <summary>
+        /// Directly write on the screen a text at coordinate x,y a width,height with a background and foreground color.
+        /// </summary>
+        /// <param name="text">The text to write.</param>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="width">The width of the area to display.</param>
+        /// <param name="height">The height of the area to display.</param>
+        /// <param name="font">The font to use.</param>
+        /// <param name="foreground">Foreground color.</param>
+        /// <param name="background">Background color.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, Color foreground, Color background);
 
