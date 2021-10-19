@@ -18,7 +18,7 @@
 
 **Important**:
 
-- This library is still work in progress. There may be braking changes happening while working on this library.
+- This library is still work in progress. There may be breaking changes happening while work on this library progresses.
 - So far only SPI interface has been implemented.
 
 Check the [samples](https://github.com/nanoframework/Samples#graphics-for-screens) for more detailed usage.
