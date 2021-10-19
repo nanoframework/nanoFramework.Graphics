@@ -25,11 +25,11 @@ Check the [samples](https://github.com/nanoframework/Samples#graphics-for-screen
 
 ### Initializing the screen
 
-It is important to understand that the driver will be loaded when the screen routing will be initialized from the managed code. Also keep in mind that most screens are actually smaller than the driver and can start at a position that is not the origin.
+It is important to understand that the driver will be loaded when the screen routing will be initialized from the managed code. Also keep in mind that most screens are actually smaller than the size the driver is capable of handling, also that the real screen can start at a position that is not the typical origin (0,0).
 
 You **must** initialize the screen before being able to create a bitmap or display anything.
 
-This is the example of the pins for the ESP32 Wroover kit, in this case, the screen size is the equivalent of the driver size:
+This code snippet works with the ESP32 WROVER KIT pinout, in this case, the screen size matches the driver size:
 
 ```csharp
 
@@ -42,7 +42,7 @@ const int screenHeight = 240;
 DisplayControl.Initialize(new SpiConfiguration(1, chipSelect, dataCommand, reset, backLightPin), new ScreenConfiguration(0, 0, screenWidth, screenHeight), screenBufferSize);
 ```
 
-This is the example for a M5 Stick where the screen size is smaller than the driver size and also is starting at X=26 and Y=1 coordinate:
+This code snippet is for a M5 Stick where the screen size is smaller than the driver size and starts an offset position of X=26 and Y=1 coordinate:
 
 ```csharp
 int backLightPin = -1; // Not managed thru ESP32 but thru AXP192
