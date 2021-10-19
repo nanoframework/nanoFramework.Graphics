@@ -77,13 +77,15 @@ namespace nanoFramework.UI
         /// <summary>
         /// Returns a bitmap the size of the current display. 
         /// </summary>
+        /// <remarks>Please make sure you check if you have enough memory with IsFullScreenBufferAvailable.
+        /// If you don't have enough, the BitMap won't get initialized and will be null.</remarks>
         public static Bitmap FullScreen
         {
             get
             {
                 if (!IsFullScreenBufferAvailable)
                 {
-                    throw new System.Exception("Not enough memory");
+                    return null;
                 }
 
                 if (_fullScreen == null)
