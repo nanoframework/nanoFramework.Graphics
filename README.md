@@ -1,7 +1,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nanoframework_lib-nanoFramework.Graphics&metric=alert_status)](https://sonarcloud.io/dashboard?id=nanoframework_lib-nanoFramework.Graphics) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=nanoframework_lib-nanoFramework.Graphics&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=nanoframework_lib-nanoFramework.Graphics) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![NuGet](https://img.shields.io/nuget/dt/nanoFramework.nanoFramework.Graphics.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.Graphics/) [![#yourfirstpr](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://github.com/nanoframework/Home/blob/master/CONTRIBUTING.md)
 [![Discord](https://img.shields.io/discord/478725473862549535.svg?logo=discord&logoColor=white&label=Discord&color=7289DA)](https://discord.gg/gCyBu8T)
 
-![nanoFramework logo](https://github.com/nanoframework/Home/blob/master/resources/logo/nanoFramework-repo-logo.png)
+![nanoFramework logo](https://github.com/nanoframework/Home/blob/main/resources/logo/nanoFramework-repo-logo.png)
 
 -----
 
@@ -18,18 +18,18 @@
 
 **Important**:
 
-- This library is still work in progress. There may be braking changes happening while working on this library.
+- This library is still work in progress. There may be breaking changes happening while work on this library progresses.
 - So far only SPI interface has been implemented.
 
 Check the [samples](https://github.com/nanoframework/Samples#graphics-for-screens) for more detailed usage.
 
 ### Initializing the screen
 
-It is important to understand that the driver will be loaded when the screen routing will be initialized from the managed code. Also keep in mind that most screens are actually smaller than the driver and can start at a position that is not the origin.
+It is important to understand that the driver will be loaded when the screen routing will be initialized from the managed code. Also keep in mind that most screens are actually smaller than the size the driver is capable of handling, also that the real screen can start at a position that is not the typical origin (0,0).
 
 You **must** initialize the screen before being able to create a bitmap or display anything.
 
-This is the example of the pins for the ESP32 Wroover kit, in this case, the screen size is the equivalent of the driver size:
+This code snippet works with the ESP32 WROVER KIT pinout, in this case, the screen size matches the driver size:
 
 ```csharp
 
@@ -42,7 +42,7 @@ const int screenHeight = 240;
 DisplayControl.Initialize(new SpiConfiguration(1, chipSelect, dataCommand, reset, backLightPin), new ScreenConfiguration(0, 0, screenWidth, screenHeight), screenBufferSize);
 ```
 
-This is the example for a M5 Stick where the screen size is smaller than the driver size and also is starting at X=26 and Y=1 coordinate:
+This code snippet is for a M5 Stick where the screen size is smaller than the driver size and starts an offset position of X=26 and Y=1 coordinate:
 
 ```csharp
 int backLightPin = -1; // Not managed thru ESP32 but thru AXP192
