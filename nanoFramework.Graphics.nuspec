@@ -17,7 +17,7 @@
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
     <description>
       This package includes the nanoFramework.Graphics assembly for nanoFramework C# projects.
-      This package requires a target with nanoFramework.Networking.Sntp v$nativeVersion$ (checksum $checksum$).</description>
+    </description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.10.5" />
