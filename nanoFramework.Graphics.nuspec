@@ -13,7 +13,7 @@
     <developmentDependency>false</developmentDependency>
     <readme>docs\README.md</readme>
     <projectUrl>https://github.com/nanoframework/nanoFramework.Graphics</projectUrl>
-    <icon>nf-logo.png</icon>
+    <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/nanoFramework.Graphics" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
     <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects..
