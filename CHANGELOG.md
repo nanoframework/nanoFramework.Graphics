@@ -2,7 +2,24 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.12...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.16...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.Runtime.Events from 1.9.2-preview.14 to 1.9.2 [\#79](https://github.com/nanoframework/nanoFramework.Graphics/pull/79)
+- Update 5 NuGet dependencies [\#78](https://github.com/nanoframework/nanoFramework.Graphics/pull/78)
+
+## [v1.0.1-preview.16](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.1-preview.16) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.14...v1.0.1-preview.16)
+
+**Documentation and other chores:**
+
+- Update 5 NuGet dependencies [\#77](https://github.com/nanoframework/nanoFramework.Graphics/pull/77)
+
+## [v1.0.1-preview.14](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.1-preview.14) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.12...v1.0.1-preview.14)
 
 **Documentation and other chores:**
 
