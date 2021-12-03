@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.16...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.18...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.System.Collections from 1.3.0-preview.14 to 1.3.0 [\#80](https://github.com/nanoframework/nanoFramework.Graphics/pull/80)
+
+## [v1.0.1-preview.18](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.1-preview.18) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.16...v1.0.1-preview.18)
 
 **Documentation and other chores:**
 
