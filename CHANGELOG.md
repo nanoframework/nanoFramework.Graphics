@@ -1,8 +1,8 @@
 # Changelog
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
+## [v1.0.1-preview.24](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.1-preview.24) (2021-12-04)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.22...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.22...v1.0.1-preview.24)
 
 **Documentation and other chores:**
 
