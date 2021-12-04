@@ -4,6 +4,8 @@
 // See LICENSE file in the project root for full license information.
 //
 
+using nanoFramework.Presentation.Media;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace nanoFramework.UI
@@ -14,19 +16,19 @@ namespace nanoFramework.UI
     public enum DisplayOrientation : int
     {
         /// <summary>
-        ///     Portrait
+        /// Portrait
         /// </summary>
         PORTRAIT,
         /// <summary>
-        ///     Portrait 180
+        /// Portrait 180
         /// </summary>
         PORTRAIT180,
         /// <summary>
-        ///     Landscape
+        /// Landscape
         /// </summary>
         LANDSCAPE,
         /// <summary>
-        ///     Landscape 180
+        /// Landscape 180
         /// </summary>
         LANDSCAPE180
     };
@@ -36,22 +38,69 @@ namespace nanoFramework.UI
     /// </summary>
     public static class DisplayControl
     {
-        static Bitmap _fullScreen = null;
+        static private Bitmap _fullScreen = null;
+        static private ushort[] _point = new ushort[1];
+
+        /// <summary>
+        /// The maximum buffer size for Bitmap in bytes.
+        /// </summary>
+        public static uint MaximumBufferSize { get; internal set; }
+
+        /// <summary>
+        /// Initializes the screen for use with Spi configuration.
+        /// </summary>
+        /// <param name="spi">Spi configuration.</param>
+        /// <param name="screen">A screen configuration.</param>
+        /// <param name="bufferSize">The desired buffer size allocation, 0 for default.</param>
+        /// <remarks>You may have to configure the pins properly for the Spi configuration to be valid before initializing your screen.</remarks>
+        /// <returns>The maximum buffer size possible allocation in bytes.</returns>
+        public static uint Initialize(SpiConfiguration spi, ScreenConfiguration screen, uint bufferSize = 20 * 1024)
+        {
+            MaximumBufferSize = NativeInitSpi(spi, screen, bufferSize);
+            return MaximumBufferSize;
+        }
+
+        /// <summary>
+        /// Initializes the screen to use with I2C configuration.
+        /// </summary>
+        /// <param name="i2c"></param>
+        /// <param name="screen">A screen configuration.</param>
+        /// <param name="bufferSize">The desired buffer size allocation, 0 for default.</param>
+        /// <remarks>You may have to configure the pins properly for the I2C configuration to be valid before initializing your screen.</remarks>
+        /// <returns>The maximum buffer size possible allocation in bytes.</returns>
+        public static uint Initialize(I2cConfiguration i2c, ScreenConfiguration screen, uint bufferSize = 20 * 1024)
+        {
+            MaximumBufferSize = NativeInitI2c(i2c, screen, bufferSize);
+            return MaximumBufferSize;
+        }
 
         /// <summary>
         /// Returns a bitmap the size of the current display. 
         /// </summary>
+        /// <remarks>Please make sure you check if you have enough memory with IsFullScreenBufferAvailable.
+        /// If you don't have enough, the BitMap won't get initialized and will be null.</remarks>
         public static Bitmap FullScreen
         {
             get
             {
+                if (!IsFullScreenBufferAvailable)
+                {
+                    return null;
+                }
+
                 if (_fullScreen == null)
                 {
                     _fullScreen = new Bitmap(ScreenWidth, ScreenHeight);
                 }
+
                 return _fullScreen;
             }
         }
+
+        /// <summary>
+        /// True if a full size buffer is available
+        /// </summary>
+        public static bool IsFullScreenBufferAvailable => ScreenWidth * ScreenHeight * 3 / 8 <= MaximumBufferSize; // Internal bit per pixel is 3 bytes
 
         /// <summary>
         /// The screens number of pixels for the longer side.
@@ -125,11 +174,62 @@ namespace nanoFramework.UI
                 _fullScreen.Dispose();
                 _fullScreen = null;
             }
+
             return result;
         }
 
+        /// <summary>
+        /// Write a point directly on the screen.
+        /// </summary>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="color">The 16 bits color.</param>
+        public static void WritePoint(ushort x, ushort y, ushort color)
+        {
+            _point[0] = color;
+            Write(x, y, 1, 1, _point);
+        }
+
+        /// <summary>
+        /// Clears the screen.
+        /// </summary>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void Clear();
+
+        /// <summary>
+        /// Directly write in the screen at coordinate x,y a width,height buffer of 16 bits colors.
+        /// </summary>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="width">The width of the area to display.</param>
+        /// <param name="height">The height of the area to display.</param>
+        /// <param name="colors">A 16 bits color</param>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void Write(ushort x, ushort y, ushort width, ushort height, ushort[] colors);
+
+        /// <summary>
+        /// Directly write on the screen a text at coordinate x,y a width,height with a background and foreground color.
+        /// </summary>
+        /// <param name="text">The text to write.</param>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="width">The width of the area to display.</param>
+        /// <param name="height">The height of the area to display.</param>
+        /// <param name="font">The font to use.</param>
+        /// <param name="foreground">Foreground color.</param>
+        /// <param name="background">Background color.</param>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, Color foreground, Color background);
+
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static bool NativeChangeOrientation(DisplayOrientation Orientation);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static uint NativeInitSpi(SpiConfiguration spi, ScreenConfiguration screen, uint bufferSize);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static uint NativeInitI2c(I2cConfiguration i2c, ScreenConfiguration screen, uint bufferSize);
+
     }
 }
 

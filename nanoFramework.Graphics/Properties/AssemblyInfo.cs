@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 
 ////////////////////////////////////////////////////////////////
 // update this whenever the native assembly signature changes //
-[assembly: AssemblyNativeVersion("100.0.0.2")]
+[assembly: AssemblyNativeVersion("100.0.0.3")]
 ////////////////////////////////////////////////////////////////
 
 // Setting ComVisible to false makes the types in this assembly not visible 
