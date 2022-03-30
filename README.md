@@ -11,8 +11,7 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| nanoFramework.Graphics | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.Graphics/_apis/build/status/nanoframework.lib-nanoFramework.Graphics?branchName=master)](https://dev.azure.com/nanoframework/nanoFramework.Graphics/_build/latest?definitionId=57&branchName=master) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.Graphics.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.Graphics/)  |
-| nanoFramework.Graphics (preview) | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.Graphics/_apis/build/status/nanoframework.lib-nanoFramework.Graphics?branchName=develop)](https://dev.azure.com/nanoframework/nanoFramework.Graphics/_build/latest?definitionId=57&branchName=develop) | [![NuGet](https://img.shields.io/nuget/vpre/nanoFramework.Graphics.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.Graphics/) |
+| nanoFramework.Graphics | [![Build Status](https://dev.azure.com/nanoframework/nanoframework.Graphics/_apis/build/status/nanoFramework.Graphics?repoName=nanoframework%2FnanoFramework.Graphics&branchName=main)](https://dev.azure.com/nanoframework/nanoframework.Graphics/_build/latest?definitionId=58&repoName=nanoframework%2FnanoFramework.Graphics&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.Graphics.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.Graphics/)  |
 
 ## Usage
 
