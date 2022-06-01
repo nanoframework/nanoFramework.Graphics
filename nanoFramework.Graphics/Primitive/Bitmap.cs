@@ -197,20 +197,32 @@ namespace nanoFramework.UI
 
         /// <summary>
         /// Flushes the current bitmap to the display device.
-        /// The bitmap must have the same dimensions as the display device.The.NET Micro Framework provides the
+        /// Bitmap will be written to the upper-left corner of the screen (full-screen, for full-screen bitmaps).
         /// </summary>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         extern public void Flush();
 
         /// <summary>
-        /// Flushes the current bitmap to the display device.
+        /// Flushes a sub-rectangle of the current bitmap to the display device.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the bitmap's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the bitmap's upper-left corner.</param>
-        /// <param name = "width" > The width of the bitmap.</param>
-        /// <param name = "height" > The height of the bitmap.</param>
+        /// <param name = "x" > The x-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name = "y" > The y-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name = "width" > The width of the sub-rectangle.</param>
+        /// <param name = "height" > The height of the sub-rectangle.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         extern public void Flush(int x, int y, int width, int height);
+
+        /// <summary>
+        /// Flushes a sub-rectangle of the current bitmap to the display device at a specified screen position.
+        /// </summary>
+        /// <param name = "srcX" > The x-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name = "srcY" > The y-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name = "width" > The width of the sub-rectangle.</param>
+        /// <param name = "height" > The height of the sub-rectangle.</param>
+        /// <param name = "screenX" > The x-coordinate of the screen to write to.</param>
+        /// <param name = "screenY" > The y-coordinate of the screen to write to</param>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        extern public void Flush(int srcX, int srcY, int width, int height, int screenX, int screenY);
 
         /// <summary>
         /// Clears the entire drawing surface.
