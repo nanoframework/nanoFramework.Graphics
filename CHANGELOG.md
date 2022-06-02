@@ -1,11 +1,20 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.2...HEAD)
+
+**Implemented enhancements:**
+
+- Add overload to Bitmap.Flush\(\) accepting bitmap and screen coordinates [\#106](https://github.com/nanoframework/nanoFramework.Graphics/pull/106)
+
 ## [v1.0.2](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.2) (2022-03-28)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.2-preview.20...v1.0.2)
 
 **Documentation and other chores:**
 
+- release-v1.0.2 [\#105](https://github.com/nanoframework/nanoFramework.Graphics/pull/105)
 - Update 4 NuGet dependencies [\#104](https://github.com/nanoframework/nanoFramework.Graphics/pull/104)
 - Update 4 NuGet dependencies [\#103](https://github.com/nanoframework/nanoFramework.Graphics/pull/103)
 - Update 5 NuGet dependencies [\#102](https://github.com/nanoframework/nanoFramework.Graphics/pull/102)
@@ -113,6 +122,10 @@
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.24...v1.0.1)
 
+**Documentation and other chores:**
+
+- release-v1.0.1 [\#83](https://github.com/nanoframework/nanoFramework.Graphics/pull/83)
+
 ## [v1.0.1-preview.24](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.1-preview.24) (2021-12-04)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.1-preview.22...v1.0.1-preview.24)
@@ -206,6 +219,10 @@
 ## [v1.0.0](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.0) (2021-07-16)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.0-preview.71...v1.0.0)
+
+**Documentation and other chores:**
+
+- release-v1.0.0 [\#67](https://github.com/nanoframework/nanoFramework.Graphics/pull/67)
 
 ## [v1.0.0-preview.71](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.0-preview.71) (2021-07-16)
 
