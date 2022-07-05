@@ -268,7 +268,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// Draws a single character to the screen
+        /// Draws a single character to the screen.
         /// </summary>
         /// <param name="c"> The character to draw.</param>
         /// <param name="x"> The x-coordinate of the upper-left corner to draw to.</param>
