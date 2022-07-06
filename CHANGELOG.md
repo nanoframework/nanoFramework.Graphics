@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.2...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.3.2...HEAD)
+
+**Implemented enhancements:**
+
+- Added DrawChar to Bitmap [\#107](https://github.com/nanoframework/nanoFramework.Graphics/pull/107)
+
+## [v1.0.3.2](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.3.2) (2022-06-02)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.2...v1.0.3.2)
 
 **Implemented enhancements:**
 
