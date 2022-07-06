@@ -268,6 +268,17 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
+        /// Draws a single character to the screen.
+        /// </summary>
+        /// <param name="c"> The character to draw.</param>
+        /// <param name="x"> The x-coordinate of the upper-left corner to draw to.</param>
+        /// <param name="y"> The y-coordinate of the upper-left corner to draw to.</param>
+        /// <param name="color"> The color to be used for the character.</param>
+        /// <param name="font"> The font to be used for the character.</param>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        extern public void DrawChar(ushort c, int x, int y, Color color, Font font);
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name = "x" > The x-coordinate of the upper-left corner of the clipping rectangle.</param>
