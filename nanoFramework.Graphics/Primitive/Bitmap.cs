@@ -431,6 +431,33 @@ namespace nanoFramework.UI
         extern public void DrawRectangle(int x, int y, int width, int height, int thickness, Color color);
 
         /// <summary>
+        /// Draws a rectangle on the display device.
+        /// </summary>
+        /// <param name = "colorOutline" > The color of the rectangle's outline.</param>
+        /// <param name = "thicknessOutline" > The thickness of the rectangle's outline, in pixels.</param>
+        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name = "width" > The width of the rectangle, in pixels.</param>
+        /// <param name = "height" > The height of the rectangle, in pixels.</param>
+        /// <param name = "xCornerRadius" > The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name = "yCornerRadius" > The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name = "colorGradientStart" > The starting color for a color gradient.</param>
+        /// <param name = "xGradientStart" > Holds the x coordinate of the starting location of the color gradient.</param>
+        /// <param name = "yGradientStart" > Holds the y coordinate of the starting location of the color gradient.</param>
+        /// <param name = "colorGradientEnd" > Specifies the ending color of the color gradient.</param>
+        /// <param name = "xGradientEnd" > Holds the x coordinate of the ending location of the color gradient.</param>
+        /// <param name = "yGradientEnd" > Holds the y coordinate of the ending location of the color gradient.</param>
+        /// <param name = "opacity" > Specifies the opacity of the fill color. Set to 0x00 for completely transparent. Set to 0xFF for completely opague.</param>
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        extern public void DrawRectangle(
+            Color colorOutline, int thicknessOutline,
+            int x, int y, int width, int height, int xCornerRadius, int yCornerRadius,
+            Color colorGradientStart, int xGradientStart, int yGradientStart,
+            Color colorGradientEnd, int xGradientEnd, int yGradientEnd,
+            ushort opacity
+            );
+
+        /// <summary>
         /// Draw a rounded rectangle outline on the display device.
         /// </summary>
         /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
@@ -488,33 +515,6 @@ namespace nanoFramework.UI
         extern public void FillGradientRectangle(int x, int y, int width, int height,
             Color colorGradientStart, int xGradientStart, int yGradientStart,
             Color colorGradientEnd, int xGradientEnd, int yGradientEnd, ushort opacity);
-
-        /// <summary>
-        /// Draws a rectangle on the display device.
-        /// </summary>
-        /// <param name = "colorOutline" > The color of the rectangle's outline.</param>
-        /// <param name = "thicknessOutline" > The thickness of the rectangle's outline, in pixels.</param>
-        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the rectangle, in pixels.</param>
-        /// <param name = "height" > The height of the rectangle, in pixels.</param>
-        /// <param name = "xCornerRadius" > The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "yCornerRadius" > The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "colorGradientStart" > The starting color for a color gradient.</param>
-        /// <param name = "xGradientStart" > Holds the x coordinate of the starting location of the color gradient.</param>
-        /// <param name = "yGradientStart" > Holds the y coordinate of the starting location of the color gradient.</param>
-        /// <param name = "colorGradientEnd" > Specifies the ending color of the color gradient.</param>
-        /// <param name = "xGradientEnd" > Holds the x coordinate of the ending location of the color gradient.</param>
-        /// <param name = "yGradientEnd" > Holds the y coordinate of the ending location of the color gradient.</param>
-        /// <param name = "opacity" > Specifies the opacity of the fill color. Set to 0x00 for completely transparent. Set to 0xFF for completely opague.</param>
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern public void DrawRectangle(
-            Color colorOutline, int thicknessOutline,
-            int x, int y, int width, int height, int xCornerRadius, int yCornerRadius,
-            Color colorGradientStart, int xGradientStart, int yGradientStart,
-            Color colorGradientEnd, int xGradientEnd, int yGradientEnd,
-            ushort opacity
-            );
 
         /// <summary>
         /// Draws text on the display device, using a specified font and color.
