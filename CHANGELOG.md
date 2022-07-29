@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.3.2...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.3.4...HEAD)
+
+**Implemented enhancements:**
+
+- Added simple bitmap rectangle drawing methods for more common operations [\#108](https://github.com/nanoframework/nanoFramework.Graphics/pull/108)
+
+## [v1.0.3.4](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.0.3.4) (2022-07-06)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.0.3.2...v1.0.3.4)
 
 **Implemented enhancements:**
 
