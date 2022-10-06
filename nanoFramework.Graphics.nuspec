@@ -20,7 +20,7 @@ This package requires a target with System.Math v$nativeVersion$ (checksum $chec
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.12.0" />
-      <dependency id="nanoFramework.ResourceManager" version="1.1.4" />
+      <dependency id="nanoFramework.ResourceManager" version="1.2.5" />
       <dependency id="nanoFramework.Runtime.Events" version="1.10.0" />
       <dependency id="nanoFramework.Runtime.Native" version="1.5.4" />
       <dependency id="nanoFramework.System.Collections" version="1.4.0" />
