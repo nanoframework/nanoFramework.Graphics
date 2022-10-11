@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.8...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.10...HEAD)
+
+**Implemented enhancements:**
+
+- Various code fixes [\#115](https://github.com/nanoframework/nanoFramework.Graphics/pull/115)
+
+## [v1.1.10](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.10) (2022-10-11)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.8...v1.1.10)
 
 **Documentation and other chores:**
 
