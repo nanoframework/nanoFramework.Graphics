@@ -38,13 +38,15 @@ namespace nanoFramework.UI
     /// </summary>
     public static class DisplayControl
     {
+        private static uint _maximumBufferSize;
+
         static private Bitmap _fullScreen = null;
-        static private ushort[] _point = new ushort[1];
+        private static readonly ushort[] _point = new ushort[1];
 
         /// <summary>
         /// The maximum buffer size for Bitmap in bytes.
         /// </summary>
-        public static uint MaximumBufferSize { get; internal set; }
+        public static uint MaximumBufferSize { get => _maximumBufferSize; internal set => _maximumBufferSize = value; }
 
         /// <summary>
         /// Initializes the screen for use with Spi configuration.
@@ -88,10 +90,7 @@ namespace nanoFramework.UI
                     return null;
                 }
 
-                if (_fullScreen == null)
-                {
-                    _fullScreen = new Bitmap(ScreenWidth, ScreenHeight);
-                }
+                _fullScreen ??= new Bitmap(ScreenWidth, ScreenHeight);
 
                 return _fullScreen;
             }
