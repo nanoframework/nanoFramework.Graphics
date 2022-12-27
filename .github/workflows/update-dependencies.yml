@@ -8,7 +8,7 @@ name: Daily update dependencies
 on:
   schedule:
   # At 00:30 UTC.
-  - cron:  '00 30 * * Mon,Thu'
+  - cron:  '30 00 * * Mon,Thu'
   repository_dispatch:
     types: update-dependencies
 
