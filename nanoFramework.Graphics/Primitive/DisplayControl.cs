@@ -11,29 +11,6 @@ using System.Runtime.CompilerServices;
 namespace nanoFramework.UI
 {
     /// <summary>
-    /// Display orientation. No all display drivers support every orientation.
-    /// </summary>
-    public enum DisplayOrientation : int
-    {
-        /// <summary>
-        /// Portrait
-        /// </summary>
-        PORTRAIT,
-        /// <summary>
-        /// Portrait 180
-        /// </summary>
-        PORTRAIT180,
-        /// <summary>
-        /// Landscape
-        /// </summary>
-        LANDSCAPE,
-        /// <summary>
-        /// Landscape 180
-        /// </summary>
-        LANDSCAPE180
-    };
-
-    /// <summary>
     /// Display Control.  
     /// </summary>
     public static class DisplayControl
