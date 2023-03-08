@@ -208,7 +208,7 @@ Note that the initialization commands are mandatory. The rest of the commands ar
 All commands are following the same rule:
 
 - (byte)GraphicDriverCommandType.Command, N, n0, n1, nN-1
-- (byte)GraphicDriverCommandType.Sleep, T,
+- (byte)GraphicDriverCommandType.Sleep, T
 
 Where N is the number of bytes to send as a command, meaning the first element n0 is always a command and then the bytes from n1 to nN-1.
 
