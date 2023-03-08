@@ -11,7 +11,7 @@ namespace nanoFramework.UI
     /// </summary>
     public struct I2cConfiguration
     {
-#pragma warning disable IDE0032 // nanoFramework doesn't support auto-properties
+#pragma warning disable S4487 // nanoFramework doesn't support auto-properties
         private byte _i2cBus;
         private byte _address;
         private bool _fastMode;
@@ -43,6 +43,6 @@ namespace nanoFramework.UI
         /// True for I2C fast mode.
         /// </summary>
         public bool FastMode { get => _fastMode; set => _fastMode = value; }
-#pragma warning restore IDE0032
+#pragma warning restore S4487
     }
 }

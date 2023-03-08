@@ -6,7 +6,7 @@ namespace nanoFramework.UI
     /// </summary>
     public class GraphicDriver
     {
-#pragma warning disable IDE0032 // nanoFramework doesn't support auto-properties
+#pragma warning disable S4487 // nanoFramework doesn't support auto-properties
         private uint _width;
         private uint _height;
         private byte _bitsPerPixel;
@@ -151,6 +151,6 @@ namespace nanoFramework.UI
         /// Gets or sets the default orientation.
         /// </summary>
         public DisplayOrientation DefaultOrientation { get => _defaultOrientation; set => _defaultOrientation = value; }
-#pragma warning restore IDE0032
+#pragma warning restore S4487
     }
 }

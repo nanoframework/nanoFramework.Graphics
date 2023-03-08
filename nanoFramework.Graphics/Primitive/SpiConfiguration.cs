@@ -11,7 +11,7 @@ namespace nanoFramework.UI
     /// </summary>
     public struct SpiConfiguration
     {
-#pragma warning disable IDE0032 // nanoFramework doesn't support auto-properties
+#pragma warning disable S4487 // nanoFramework doesn't support auto-properties
         private byte _spiBus;
         private int _chipSelect;
         private int _dataCommand;
@@ -59,6 +59,6 @@ namespace nanoFramework.UI
         /// Back light
         /// </summary>
         public int BackLight { get => _backLight; set => _backLight = value; }
-#pragma warning restore IDE0032
+#pragma warning restore S4487
     }
 }
