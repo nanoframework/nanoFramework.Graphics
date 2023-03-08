@@ -11,6 +11,7 @@ namespace nanoFramework.UI
     /// </summary>
     public struct I2cConfiguration
     {
+#pragma warning disable IDE0032 // nanoFramework doesn't support auto-properties
         private byte _i2cBus;
         private byte _address;
         private bool _fastMode;

@@ -15,6 +15,7 @@ namespace nanoFramework.UI
     /// </summary>
     public static class DisplayControl
     {
+#pragma warning disable IDE0032 // nanoFramework doesn't support auto-properties
         private static uint _maximumBufferSize;
 
         static private Bitmap _fullScreen = null;

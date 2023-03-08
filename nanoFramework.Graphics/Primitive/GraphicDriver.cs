@@ -6,6 +6,7 @@ namespace nanoFramework.UI
     /// </summary>
     public class GraphicDriver
     {
+#pragma warning disable IDE0032 // nanoFramework doesn't support auto-properties
         private uint _width;
         private uint _height;
         private byte _bitsPerPixel;

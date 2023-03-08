@@ -6,9 +6,19 @@
 
 namespace nanoFramework.UI
 {
+    /// <summary>
+    /// Graphic driver command types.
+    /// </summary>
     public enum GraphicDriverCommandType
     {
+        /// <summary>
+        /// Sleep command by chunk of 10 milliseconds.
+        /// </summary>
         Sleep = 0,
+
+        /// <summary>
+        /// Normal command followed by data.
+        /// </summary>
         Command = 1,
     }
 }

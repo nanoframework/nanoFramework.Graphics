@@ -11,6 +11,7 @@ namespace nanoFramework.UI
     /// </summary>
     public struct SpiConfiguration
     {
+#pragma warning disable IDE0032 // nanoFramework doesn't support auto-properties
         private byte _spiBus;
         private int _chipSelect;
         private int _dataCommand;

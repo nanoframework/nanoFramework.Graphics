@@ -9,7 +9,7 @@ namespace nanoFramework.UI
     /// <summary>
     /// Display orientation. No all display drivers support every orientation.
     /// </summary>
-    public enum DisplayOrientation : int
+    public enum DisplayOrientation
     {
         /// <summary>
         /// Portrait.
