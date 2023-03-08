@@ -59,5 +59,6 @@ namespace nanoFramework.UI
         /// Back light
         /// </summary>
         public int BackLight { get => _backLight; set => _backLight = value; }
+#pragma warning restore IDE0032
     }
 }

@@ -151,5 +151,6 @@ namespace nanoFramework.UI
         /// Gets or sets the default orientation.
         /// </summary>
         public DisplayOrientation DefaultOrientation { get => _defaultOrientation; set => _defaultOrientation = value; }
+#pragma warning restore IDE0032
     }
 }

@@ -43,5 +43,6 @@ namespace nanoFramework.UI
         /// True for I2C fast mode.
         /// </summary>
         public bool FastMode { get => _fastMode; set => _fastMode = value; }
+#pragma warning restore IDE0032
     }
 }
