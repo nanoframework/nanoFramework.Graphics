@@ -39,6 +39,36 @@
     <NFMDP_PE_ExcludeClassByName Include="ThisAssembly">
       <InProject>false</InProject>
     </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="Dock">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="Orientation">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="ScrollingStyle">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="HorizontalAlignment">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="BrushMappingMode">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="Color">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="Stretch">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="TextAlignment">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="TextTrimming">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="Direction">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
@@ -123,10 +153,15 @@
     <Compile Include="Presentation\WindowManager.cs" />
     <Compile Include="Primitive\Bitmap.cs" />
     <Compile Include="Primitive\DisplayControl.cs" />
-    <Compile Include="Primitive\DisplayInterfaceConfig.cs" />
+    <Compile Include="Primitive\DisplayOrientation.cs" />
+    <Compile Include="Primitive\GraphicDriver.cs" />
+    <Compile Include="Primitive\GraphicDriverCommandType.cs" />
+    <Compile Include="Primitive\ScreenConfiguration.cs" />
     <Compile Include="Primitive\Font.cs" />
     <Compile Include="Primitive\GenericEventEx.cs" />
+    <Compile Include="Primitive\I2cConfiguration.cs" />
     <Compile Include="Primitive\Ink.cs" />
+    <Compile Include="Primitive\SpiConfiguration.cs" />
     <Compile Include="Primitive\TouchCollector.cs" />
     <Compile Include="Primitive\TouchEvents.cs" />
     <Compile Include="Primitive\TouchInterface.cs" />
@@ -177,6 +212,9 @@
       <HintPath>..\packages\nanoFramework.System.Collections.1.5.18\lib\nanoFramework.System.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.lock.json" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>
