@@ -216,7 +216,26 @@ It is as well possible to insert sleep time where T represent a set of 10 millis
 
 ### Availability of drivers
 
-Different drivers for different screens are available as nuget.
+Different drivers for different screens are available as nuget. Each nuget is named `nanoFramework.Graphics.DriverName` where `DriverName` is the name of the driver. For example `St7735`. Those nugets contains the driver(s) and also all the `nanoFramework.Graphics` library.
+
+UIsage is quite straight forward:
+
+```csharp
+var displaySpiConfig = new SpiConfiguration(1, ChipSelect, DataCommand, Reset, -1);
+
+// Get the predefined driver
+GraphicDriver graphicDriver = St7735.GraphicDriver;
+
+// You can adjust anything here for example:
+graphicDriver.OrientationLandscape180 = new byte[]
+{
+    ((byte)GraphicDriverCommandType.Command, 2, (byte)St7735Reg.Memory_Access_Control, (byte)(St7735Orientation.MADCTL_MX | St7735Orientation.MADCTL_BGR),
+};
+
+var screenConfig = new ScreenConfiguration(26, 1, 80, 160, graphicDriver);
+
+var init = DisplayControl.Initialize(displaySpiConfig, screenConfig, 1024);
+```
 
 Prefer the native implementation when it's available. Use the generic one when you don't have the competencies to rebuild your own image or you want to adjust the native driver.
 

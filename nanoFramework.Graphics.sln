@@ -7,11 +7,38 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3D7BF816-BAE7-4A8D-8849-5AF0BBF8973B}"
 	ProjectSection(SolutionItems) = preProject
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
+		key.snk = key.snk
+		nanoFramework.Graphics.Gc9A01.nuspec = nanoFramework.Graphics.Gc9A01.nuspec
+		nanoFramework.Graphics.Ili9341.nuspec = nanoFramework.Graphics.Ili9341.nuspec
+		nanoFramework.Graphics.Ili9342.nuspec = nanoFramework.Graphics.Ili9342.nuspec
 		nanoFramework.Graphics.nuspec = nanoFramework.Graphics.nuspec
+		nanoFramework.Graphics.Otm8009A.nuspec = nanoFramework.Graphics.Otm8009A.nuspec
+		nanoFramework.Graphics.Ssd1306.nuspec = nanoFramework.Graphics.Ssd1306.nuspec
+		nanoFramework.Graphics.Ssd1331.nuspec = nanoFramework.Graphics.Ssd1331.nuspec
+		nanoFramework.Graphics.St7735.nuspec = nanoFramework.Graphics.St7735.nuspec
+		nanoFramework.Graphics.St7789.nuspec = nanoFramework.Graphics.St7789.nuspec
 		NuGet.Config = NuGet.Config
 		readme.txt = readme.txt
 		version.json = version.json
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagedDrivers", "ManagedDrivers", "{B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.Gc9A01", "ManagedDrivers\Gc9A01\nanoFramework.Graphics.Gc9A01.nfproj", "{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.St7735", "ManagedDrivers\St7735\nanoFramework.Graphics.St7735.nfproj", "{E8DACCD0-2EED-4455-ADFD-CF015F598E9F}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.Ili9341", "ManagedDrivers\Ili9341\nanoFramework.Graphics.Ili9341.nfproj", "{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.Ili9342", "ManagedDrivers\Ili9342\nanoFramework.Graphics.Ili9342.nfproj", "{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.Otm8009A", "ManagedDrivers\Otm8009A\nanoFramework.Graphics.Otm8009A.nfproj", "{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.Ssd1306", "ManagedDrivers\Ssd1306\nanoFramework.Graphics.Ssd1306.nfproj", "{61918B13-7E23-4567-8A4B-FE1F0248D0ED}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.Ssd1331", "ManagedDrivers\Ssd1331\nanoFramework.Graphics.Ssd1331.nfproj", "{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.St7789", "ManagedDrivers\St7789\nanoFramework.Graphics.St7789.nfproj", "{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,9 +52,67 @@ Global
 		{CDDFD271-0136-4792-8D89-EE47998D4C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDDFD271-0136-4792-8D89-EE47998D4C5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDDFD271-0136-4792-8D89-EE47998D4C5D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E8DACCD0-2EED-4455-ADFD-CF015F598E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8DACCD0-2EED-4455-ADFD-CF015F598E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8DACCD0-2EED-4455-ADFD-CF015F598E9F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E8DACCD0-2EED-4455-ADFD-CF015F598E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8DACCD0-2EED-4455-ADFD-CF015F598E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8DACCD0-2EED-4455-ADFD-CF015F598E9F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{61918B13-7E23-4567-8A4B-FE1F0248D0ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61918B13-7E23-4567-8A4B-FE1F0248D0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61918B13-7E23-4567-8A4B-FE1F0248D0ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{61918B13-7E23-4567-8A4B-FE1F0248D0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61918B13-7E23-4567-8A4B-FE1F0248D0ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61918B13-7E23-4567-8A4B-FE1F0248D0ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE73F7AC-81CD-49F9-B6CF-E43747C49A6D} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
+		{E8DACCD0-2EED-4455-ADFD-CF015F598E9F} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
+		{A6CFF866-FD75-400E-BF20-9D2FBC3DCC3E} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
+		{C7F4B4DB-EFB0-4073-96A7-E9AE94AD4700} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
+		{4D12DF89-2227-4A78-97B1-FDBB17CDBB1E} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
+		{61918B13-7E23-4567-8A4B-FE1F0248D0ED} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
+		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
+		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6ACFEF29-ADEB-4434-84DA-571510D5B119}
