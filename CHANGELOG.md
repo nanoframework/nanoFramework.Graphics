@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.17...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.21...HEAD)
+
+**Implemented enhancements:**
+
+- Adding managed drivers [\#119](https://github.com/nanoframework/nanoFramework.Graphics/pull/119)
+
+## [v1.1.21](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.21) (2023-03-10)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.17...v1.1.21)
 
 **Implemented enhancements:**
 
