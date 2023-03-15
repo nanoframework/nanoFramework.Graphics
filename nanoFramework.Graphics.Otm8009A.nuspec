@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>nanoFramework.Graphics.Otm8009A</id>
+    <version>$version$</version>
+    <title>nanoFramework.Graphics.Otm8009A</title>
+    <authors>nanoframework</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.md</license>
+    <releaseNotes>
+    </releaseNotes>
+    <developmentDependency>false</developmentDependency>
+    <readme>docs\README.md</readme>
+    <projectUrl>https://github.com/nanoframework/nanoFramework.Graphics</projectUrl>
+    <icon>images\nf-logo.png</icon>
+    <repository type="git" url="https://github.com/nanoframework/nanoFramework.Graphics" commit="$commit$" />
+    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+        <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects.
+It does embed a managed driver Otm8009A. It is aimed to be used for images built with Generic Graphics driver.
+This package requires a target with nanoFramework.Graphics v$nativeVersion$ (checksum $checksum$).</description>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics Otm8009A</tags>
+    <dependencies>
+      <dependency id="nanoFramework.CoreLibrary" version="1.14.2" />
+      <dependency id="nanoFramework.ResourceManager" version="1.2.13" />
+      <dependency id="nanoFramework.Runtime.Events" version="1.11.6" />
+      <dependency id="nanoFramework.Runtime.Native" version="1.6.6" />
+      <dependency id="nanoFramework.System.Collections" version="1.5.18" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.dll" target="lib\nanoFramework.Graphics.dll" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pdb" target="lib\nanoFramework.Graphics.pdb" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pdbx" target="lib\nanoFramework.Graphics.pdbx" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pe" target="lib\nanoFramework.Graphics.pe" />
+    <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.xml" target="lib\nanoFramework.Graphics.xml" />
+    <file src="ManagedDrivers\Otm8009A\bin\Release\nanoFramework.Graphics.Otm8009A.dll" target="lib\nanoFramework.Graphics.Otm8009A.dll" />
+    <file src="ManagedDrivers\Otm8009A\bin\Release\nanoFramework.Graphics.Otm8009A.pdb" target="lib\nanoFramework.Graphics.Otm8009A.pdb" />
+    <file src="ManagedDrivers\Otm8009A\bin\Release\nanoFramework.Graphics.Otm8009A.pdbx" target="lib\nanoFramework.Graphics.Otm8009A.pdbx" />
+    <file src="ManagedDrivers\Otm8009A\bin\Release\nanoFramework.Graphics.Otm8009A.pe" target="lib\nanoFramework.Graphics.Otm8009A.pe" />
+    <file src="ManagedDrivers\Otm8009A\bin\Release\nanoFramework.Graphics.Otm8009A.xml" target="lib\nanoFramework.Graphics.Otm8009A.xml" />
+    <file src="assets\readme.txt" target="" />
+    <file src="README.md" target="docs\" />
+    <file src="assets\nf-logo.png" target="images" />
+    <file src="LICENSE.md" target="" />
+  </files>
+</package>

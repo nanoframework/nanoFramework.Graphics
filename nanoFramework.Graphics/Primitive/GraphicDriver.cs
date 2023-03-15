@@ -23,6 +23,7 @@ namespace nanoFramework.UI
         private byte[] _clear;
         private byte _brightness;
         private DisplayOrientation _defaultOrientation;
+        private SetWindowType _setWindowType;
 
         /// <summary>
         /// Gets or sets the width of the driver, it does override the Screen one if specified.
@@ -151,6 +152,11 @@ namespace nanoFramework.UI
         /// Gets or sets the default orientation.
         /// </summary>
         public DisplayOrientation DefaultOrientation { get => _defaultOrientation; set => _defaultOrientation = value; }
+
+        /// <summary>
+        /// Gets or sets the Set Windowing type.
+        /// </summary>
+        public SetWindowType SetWindowType { get => _setWindowType; set => _setWindowType = value; }
 #pragma warning restore S4487
     }
 }

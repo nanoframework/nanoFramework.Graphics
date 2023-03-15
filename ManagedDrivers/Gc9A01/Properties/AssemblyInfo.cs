@@ -1,18 +1,13 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("nanoFramework.Graphics")]
+[assembly: AssemblyTitle("nanoFramework.Graphics.Gc9A01")]
 [assembly: AssemblyCompany("nanoFramework Contributors")]
 [assembly: AssemblyProduct("nanoFramework.System.Text")]
-[assembly: AssemblyCopyright("Copyright © nanoFramework Contributors 2020")]
-
-////////////////////////////////////////////////////////////////
-// update this whenever the native assembly signature changes //
-[assembly: AssemblyNativeVersion("100.0.0.8")]
-////////////////////////////////////////////////////////////////
+[assembly: AssemblyCopyright("Copyright © nanoFramework Contributors 2023")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
