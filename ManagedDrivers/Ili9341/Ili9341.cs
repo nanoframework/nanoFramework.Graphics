@@ -123,6 +123,9 @@ namespace nanoFramework.UI.GraphicDrivers
                             (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.Memory_Write,
                             (byte)GraphicDriverCommandType.Command, 2, (byte)ILI9341_CMD.Entry_Mode_Set, 0x07,
                             (byte)GraphicDriverCommandType.Command, 5, (byte)ILI9341_CMD.Display_Function_Control, 0x0A, 0x82, 0x27, 0x00,
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.Sleep_Out,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
                             (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.Normal_Display_On,
                             // Sleep 10 ms
                             (byte)GraphicDriverCommandType.Sleep, 1,
@@ -136,8 +139,50 @@ namespace nanoFramework.UI.GraphicDrivers
                         },
                         OrientationLandscape = new byte[]
                         {
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.NOP,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                            (byte)GraphicDriverCommandType.Command, 2, (byte)ILI9341_CMD.Memory_Access_Control, (byte)(ILI9341_Orientation.MADCTL_MV | ILI9341_Orientation.MADCTL_BGR),
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.Memory_Write,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                        },
+                        OrientationLandscape180 = new byte[]
+                        {
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.NOP,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
                             (byte)GraphicDriverCommandType.Command, 2, (byte)ILI9341_CMD.Memory_Access_Control, (byte)(ILI9341_Orientation.MADCTL_MY | ILI9341_Orientation.MADCTL_MX | ILI9341_Orientation.MADCTL_MV | ILI9341_Orientation.MADCTL_BGR),
-                        },                        
+                             // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.Memory_Write,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,                       },
+                        OrientationPortrait = new byte[]
+                        {
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.NOP,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                            (byte)GraphicDriverCommandType.Command, 2, (byte)ILI9341_CMD.Memory_Access_Control, (byte)(ILI9341_Orientation.MADCTL_MX | ILI9341_Orientation.MADCTL_BGR),
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.Memory_Write,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,                        },
+                        OrientationPortrait180 = new byte[]
+                        {
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.NOP,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                            (byte)GraphicDriverCommandType.Command, 2, (byte)ILI9341_CMD.Memory_Access_Control, (byte)(ILI9341_Orientation.MADCTL_MY | ILI9341_Orientation.MADCTL_BGR),
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                            (byte)GraphicDriverCommandType.Command, 1, (byte)ILI9341_CMD.Memory_Write,
+                            // Sleep 20 ms
+                            (byte)GraphicDriverCommandType.Sleep, 2,
+                        },
                         PowerModeNormal = new byte[]
                         {
                             (byte)GraphicDriverCommandType.Command, 3, (byte)ILI9341_CMD.POWER_STATE, 0x00, 0x00,
