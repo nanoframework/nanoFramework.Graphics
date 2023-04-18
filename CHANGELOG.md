@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.21...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.23...HEAD)
+
+**Implemented enhancements:**
+
+- Fix ILI9341 initialization and add orientation in generic driver [\#120](https://github.com/nanoframework/nanoFramework.Graphics/pull/120)
+
+## [v1.1.23](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.23) (2023-03-15)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.21...v1.1.23)
 
 **Implemented enhancements:**
 
