@@ -7,6 +7,7 @@
 using nanoFramework.Presentation.Media;
 using System;
 using nanoFramework.UI;
+using System.Drawing;
 
 namespace nanoFramework.Presentation.Controls
 {

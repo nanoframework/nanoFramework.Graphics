@@ -4,6 +4,8 @@
 // See LICENSE file in the project root for full license information.
 //
 
+using System.Drawing;
+
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>

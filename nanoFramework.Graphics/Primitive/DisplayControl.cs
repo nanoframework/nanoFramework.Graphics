@@ -6,6 +6,7 @@
 
 using nanoFramework.Presentation.Media;
 using System.Diagnostics;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 
 namespace nanoFramework.UI

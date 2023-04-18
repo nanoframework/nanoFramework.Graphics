@@ -5,6 +5,7 @@
 //
 
 using System;
+using System.Drawing;
 using nanoFramework.UI;
 
 namespace nanoFramework.Presentation.Media
@@ -39,7 +40,7 @@ namespace nanoFramework.Presentation.Media
         /// <param name="height"></param>
         protected internal override void RenderRectangle(Bitmap bmp, Pen pen, int x, int y, int width, int height)
         {
-            Color outlineColor = (pen != null) ? pen.Color : (Color)0x0;
+            Color outlineColor = (pen != null) ? pen.Color : Color.Black;
             ushort outlineThickness = (pen != null) ? pen.Thickness : (ushort)0;
 
             bmp.DrawRectangle(outlineColor, outlineThickness, x, y, width, height, 0, 0,
@@ -57,7 +58,7 @@ namespace nanoFramework.Presentation.Media
         /// <param name="yRadius"></param>
         protected internal override void RenderEllipse(Bitmap bmp, Pen pen, int x, int y, int xRadius, int yRadius)
         {
-            Color outlineColor = (pen != null) ? pen.Color : (Color)0x0;
+            Color outlineColor = (pen != null) ? pen.Color : Color.Black;
             ushort outlineThickness = (pen != null) ? pen.Thickness : (ushort)0;
 
             bmp.DrawEllipse(outlineColor, outlineThickness, x, y, xRadius, yRadius,

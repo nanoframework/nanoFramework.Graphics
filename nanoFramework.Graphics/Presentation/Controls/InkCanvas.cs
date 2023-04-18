@@ -8,6 +8,7 @@ using nanoFramework.UI.Input;
 using nanoFramework.Presentation.Media;
 using System;
 using nanoFramework.UI;
+using System.Drawing;
 
 namespace nanoFramework.Presentation.Controls
 {
@@ -78,7 +79,7 @@ namespace nanoFramework.Presentation.Controls
             y += _top;
 
             TouchCapture.Capture(this);
-            Ink.SetInkRegion(0, x, y, x + w, y + h, _borderWidth, (int)_defaultDrawingAttributes.Color, 1, _bitmap);
+            Ink.SetInkRegion(0, x, y, x + w, y + h, _borderWidth, _defaultDrawingAttributes.Color.ToArgb(), 1, _bitmap);
         }
 
         /// <summary>

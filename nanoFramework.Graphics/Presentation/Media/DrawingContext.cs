@@ -8,6 +8,7 @@ using nanoFramework.UI;
 using System;
 using System.Collections;
 using nanoFramework.UI.Threading;
+using System.Drawing;
 
 namespace nanoFramework.Presentation.Media
 {
@@ -169,7 +170,7 @@ namespace nanoFramework.Presentation.Media
             else if (pen != null && pen.Thickness > 0)
             {
                 _bitmap.DrawEllipse(pen.Color, pen.Thickness, _x + x, _y + y, xRadius, yRadius,
-                    (Color)0x0, 0, 0, (Color)0x0, 0, 0, 0);
+                    Color.Black, 0, 0, Color.Black, 0, 0, 0);
             }
 
         }
@@ -485,7 +486,7 @@ namespace nanoFramework.Presentation.Media
             else if (pen != null && pen.Thickness > 0)
             {
                 _bitmap.DrawRectangle(pen.Color, pen.Thickness, _x + x, _y + y, width, height, 0, 0,
-                                      (Color)0, 0, 0, (Color)0, 0, 0, 0);
+                                      Color.Black, 0, 0, Color.Black, 0, 0, 0);
             }
         }
 
