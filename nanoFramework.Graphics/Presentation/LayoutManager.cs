@@ -18,6 +18,7 @@ namespace nanoFramework.Presentation
     internal class LayoutManager : DispatcherObject
     {
         TimeSpan ts = new TimeSpan(new DateTime().Ticks);
+
         public class LayoutQueue
         {
             public LayoutQueue(LayoutManager layoutManager)

@@ -5,35 +5,36 @@
 //
 
 using nanoFramework.UI;
+using System.Drawing;
 
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// 
+    /// Image Brush class.
     /// </summary>
     public sealed class ImageBrush : Brush
     {
         /// <summary>
-        /// 
+        /// The source bitmap.
         /// </summary>
         public Bitmap BitmapSource;
 
         /// <summary>
-        /// 
+        /// The stretch mode.
         /// </summary>
         public Stretch Stretch = Stretch.Fill;
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the ImageBrush class from a bitmap.
         /// </summary>
-        /// <param name="bmp"></param>
+        /// <param name="bmp">The bitmap.</param>
         public ImageBrush(Bitmap bmp)
         {
             BitmapSource = bmp;
         }
 
         /// <summary>
-        /// 
+        /// Render a rectangle.
         /// </summary>
         /// <param name="bmp"></param>
         /// <param name="pen"></param>
@@ -59,7 +60,7 @@ namespace nanoFramework.Presentation.Media
             if (pen != null && pen.Thickness > 0)
             {
                 bmp.DrawRectangle(pen.Color, pen.Thickness, x, y, width, height, 0, 0,
-                                      (Color)0, 0, 0, (Color)0, 0, 0, 0);
+                                      Color.Black, 0, 0, Color.Black, 0, 0, 0);
             }
         }
     }

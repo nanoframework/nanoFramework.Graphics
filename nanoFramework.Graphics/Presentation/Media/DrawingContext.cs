@@ -15,25 +15,25 @@ namespace nanoFramework.Presentation.Media
     /// <summary>
     /// Drawing Context.
     /// </summary>
-    public class DrawingContext : DispatcherObject,IDisposable 
+    public class DrawingContext : DispatcherObject, IDisposable
     {
         /// <summary>
-        /// 
+        /// Creates a drawing context for the specified bitmap.
         /// </summary>
-        /// <param name="bmp"></param>
+        /// <param name="bmp">The bitmap.</param>
         public DrawingContext(Bitmap bmp)
         {
-            this._bitmap = bmp;
+            _bitmap = bmp;
         }
 
         /// <summary>
-        /// 
+        /// Creates a drawing context for an empty bitmap of a specific width and height.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="width">The target width of the bitmap.</param>
+        /// <param name="height">The target height of the bitmap.</param>
         public DrawingContext(int width, int height)
         {
-            this._bitmap = new Bitmap(width, height);
+            _bitmap = new Bitmap(width, height);
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace nanoFramework.Presentation.Media
             VerifyAccess();
 
             _x += dx;
-            _y += dy;            
-        }        
- 
+            _y += dy;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -59,8 +59,8 @@ namespace nanoFramework.Presentation.Media
             VerifyAccess();
 
             x = _x;
-            y = _y;            
-        }        
+            y = _y;
+        }
 
         /// <summary>
         /// 
@@ -87,7 +87,7 @@ namespace nanoFramework.Presentation.Media
 
         internal void Close()
         {
-            _bitmap = null;                   
+            _bitmap = null;
         }
 
         /// <summary>
@@ -220,9 +220,9 @@ namespace nanoFramework.Presentation.Media
         {
             VerifyAccess();
 
-            _bitmap.DrawImage( _x + destinationX, _y + destinationY, source, sourceX, sourceY, sourceWidth, sourceHeight, opacity );
-        }                
-        
+            _bitmap.DrawImage(_x + destinationX, _y + destinationY, source, sourceX, sourceY, sourceWidth, sourceHeight, opacity);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -235,12 +235,12 @@ namespace nanoFramework.Presentation.Media
         /// <param name="sourceWidth"></param>
         /// <param name="sourceHeight"></param>
         /// <param name="opacity"></param>
-        public void RotateImage( int angle, int destinationX, int destinationY, Bitmap bitmap, int sourceX, int sourceY, int sourceWidth, int sourceHeight, ushort opacity )
+        public void RotateImage(int angle, int destinationX, int destinationY, Bitmap bitmap, int sourceX, int sourceY, int sourceWidth, int sourceHeight, ushort opacity)
         {
             VerifyAccess();
 
-            _bitmap.RotateImage( angle,  _x + destinationX, _y +  destinationY, bitmap, sourceX, sourceY, sourceWidth, sourceHeight, opacity );
-        }                
+            _bitmap.RotateImage(angle, _x + destinationX, _y + destinationY, bitmap, sourceX, sourceY, sourceWidth, sourceHeight, opacity);
+        }
 
         /// <summary>
         /// 
@@ -259,7 +259,7 @@ namespace nanoFramework.Presentation.Media
         {
             VerifyAccess();
 
-            _bitmap.StretchImage( _x + xDst, _y + yDst, widthDst, heightDst, bitmap, xSrc, ySrc, widthSrc, heightSrc, opacity );
+            _bitmap.StretchImage(_x + xDst, _y + yDst, widthDst, heightDst, bitmap, xSrc, ySrc, widthSrc, heightSrc, opacity);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace nanoFramework.Presentation.Media
         {
             VerifyAccess();
 
-            _bitmap.TileImage( _x + xDst, _y + yDst, bitmap, width, height, opacity );
+            _bitmap.TileImage(_x + xDst, _y + yDst, bitmap, width, height, opacity);
         }
 
         /// <summary>
@@ -295,7 +295,7 @@ namespace nanoFramework.Presentation.Media
         {
             VerifyAccess();
 
-            _bitmap.Scale9Image( _x + xDst, _y + yDst, widthDst, heightDst, bitmap, leftBorder, topBorder, rightBorder, bottomBorder, opacity );
+            _bitmap.Scale9Image(_x + xDst, _y + yDst, widthDst, heightDst, bitmap, leftBorder, topBorder, rightBorder, bottomBorder, opacity);
         }
 
         /// <summary>
@@ -403,12 +403,12 @@ namespace nanoFramework.Presentation.Media
         {
             VerifyAccess();
 
-            if(width < 0 || height < 0)
+            if (width < 0 || height < 0)
             {
                 throw new ArgumentException();
             }
 
-            ClipRectangle rect = new ClipRectangle( _x + x, _y + y, width, height );
+            ClipRectangle rect = new ClipRectangle(_x + x, _y + y, width, height);
 
             if (_clippingRectangles.Count > 0)
             {
@@ -440,13 +440,13 @@ namespace nanoFramework.Presentation.Media
             VerifyAccess();
 
             int n = _clippingRectangles.Count;
-            
+
             if (n > 0)
             {
                 _clippingRectangles.Pop();
 
                 ClipRectangle rect;
-                
+
                 if (n == 1) // in this case, at this point the stack is empty
                 {
                     rect = new ClipRectangle(0, 0, _bitmap.Width, _bitmap.Height);
@@ -457,7 +457,7 @@ namespace nanoFramework.Presentation.Media
                 }
 
                 _bitmap.SetClippingRectangle(rect.X, rect.Y, rect.Width, rect.Height);
-                
+
                 EmptyClipRect = (rect.Width == 0 && rect.Height == 0);
             }
         }
@@ -550,7 +550,7 @@ namespace nanoFramework.Presentation.Media
         /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
-            _bitmap = null; 
+            _bitmap = null;
         }
 
     }

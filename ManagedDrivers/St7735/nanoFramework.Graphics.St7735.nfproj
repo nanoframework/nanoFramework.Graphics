@@ -41,6 +41,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\nanoFramework.Graphics.Core\nanoFramework.Graphics.Core.nfproj" />
     <ProjectReference Include="..\..\nanoFramework.Graphics\nanoFramework.Graphics.nfproj" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />

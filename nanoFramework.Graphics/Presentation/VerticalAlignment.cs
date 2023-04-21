@@ -7,29 +7,27 @@
 namespace nanoFramework.Presentation
 {
     /// <summary>
-    /// 
+    /// Vertical Alignment
     /// </summary>
     public enum VerticalAlignment
-    {
-        
+    {        
         /// <summary>
-        /// 
+        /// Top.
         /// </summary>
         Top,
 
-
         /// <summary>
-        /// 
+        /// Center.
         /// </summary>
         Center,
 
         /// <summary>
-        /// 
+        /// Bottom.
         /// </summary>
         Bottom,
 
         /// <summary>
-        /// 
+        /// Stretch.
         /// </summary>
         Stretch
     }

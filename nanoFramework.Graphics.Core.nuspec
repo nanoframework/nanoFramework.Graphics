@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>nanoFramework.Graphics.Core</id>
+    <version>$version$</version>
+    <title>nanoFramework.Graphics.Core</title>
+    <authors>nanoframework</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.md</license>
+    <releaseNotes>
+    </releaseNotes>
+    <developmentDependency>false</developmentDependency>
+    <readme>docs\README.md</readme>
+    <projectUrl>https://github.com/nanoframework/nanoFramework.Graphics.Core</projectUrl>
+    <icon>images\nf-logo.png</icon>
+    <repository type="git" url="https://github.com/nanoframework/nanoFramework.Graphics.Core" commit="$commit$" />
+    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+    <description>This package includes the nanoFramework.Graphics.Core assembly for .NET nanoFramework C# projects.</description>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics.Core</tags>
+    <dependencies>
+      <dependency id="nanoFramework.CoreLibrary" version="1.14.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.dll" target="lib\nanoFramework.Graphics.Core.dll" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.pdb" target="lib\nanoFramework.Graphics.Core.pdb" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.pdbx" target="lib\nanoFramework.Graphics.Core.pdbx" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.pe" target="lib\nanoFramework.Graphics.Core.pe" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.xml" target="lib\nanoFramework.Graphics.Core.xml" />
+    <file src="assets\readme.txt" target="" />
+    <file src="README.md" target="docs\" />
+    <file src="assets\nf-logo.png" target="images" />
+    <file src="LICENSE.md" target="" />
+  </files>
+</package>

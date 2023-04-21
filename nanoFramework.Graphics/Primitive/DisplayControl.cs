@@ -194,9 +194,12 @@ namespace nanoFramework.UI
         /// <param name="height">The height of the area to display.</param>
         /// <param name="font">The font to use.</param>
         /// <param name="foreground">Foreground color.</param>
-        /// <param name="background">Background color.</param>
+        /// <param name="background">Background color.</param>        
+        public static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, Color foreground, Color background)
+            => Write(text, x, y, width, height, font, (uint)foreground.ToArgb(), (uint)background.ToArgb());
+
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, Color foreground, Color background);
+        private extern static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, uint foreground, uint background);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static bool NativeChangeOrientation(DisplayOrientation Orientation);

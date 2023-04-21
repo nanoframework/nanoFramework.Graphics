@@ -9,6 +9,7 @@ using nanoFramework.Presentation.Media;
 using nanoFramework.UI;
 using System.Runtime.CompilerServices;
 using nanoFramework.UI.Threading;
+using System.Drawing;
 
 namespace nanoFramework.Presentation
 {

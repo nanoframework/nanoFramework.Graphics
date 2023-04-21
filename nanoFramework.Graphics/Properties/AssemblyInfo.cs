@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("nanoFramework.Graphics")]
 [assembly: AssemblyCompany("nanoFramework Contributors")]
-[assembly: AssemblyProduct("nanoFramework.System.Text")]
+[assembly: AssemblyProduct("nanoFramework.Graphics")]
 [assembly: AssemblyCopyright("Copyright © nanoFramework Contributors 2020")]
 
 ////////////////////////////////////////////////////////////////
 // update this whenever the native assembly signature changes //
-[assembly: AssemblyNativeVersion("100.0.0.8")]
+[assembly: AssemblyNativeVersion("100.0.0.9")]
 ////////////////////////////////////////////////////////////////
 
 // Setting ComVisible to false makes the types in this assembly not visible 

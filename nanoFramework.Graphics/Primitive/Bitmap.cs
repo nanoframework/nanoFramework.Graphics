@@ -6,8 +6,6 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using nanoFramework.UI;
-using nanoFramework.Presentation.Media;
 using System.Drawing;
 
 namespace nanoFramework.UI
@@ -47,109 +45,133 @@ namespace nanoFramework.UI
             CenterY = (MaxHeight - 1) / 2;
         }
 
-        /// These have to be kept in sync with the CLR_GFX_Bitmap::c_DrawText_ flags.
+        // These have to be kept in sync with the CLR_GFX_Bitmap::c_DrawText_ flags.
         /// <summary>
         /// Specifies that the current bitmap is opaque.
         /// </summary>
         public const ushort OpacityOpaque = 256;
+
         /// <summary>
         /// Specifies that the current bitmap is transparent.
         /// </summary>
         public const ushort OpacityTransparent = 0;
+
         /// <summary>
         /// Copies the source rectangle directly to the destination rectangle.
         /// </summary>
         public const int SRCCOPY = 0x00000001;
+
         /// <summary>
         /// Inverts the source rectangle.
         /// </summary>
         public const int PATINVERT = 0x00000002;
+
         /// <summary>
         /// Inverts the destination rectangle.
         /// </summary>
         public const int DSTINVERT = 0x00000003;
+
         /// <summary>
         /// Fills the destination rectangle with the color associated with index number 0 in the physical palette.
         /// </summary>
         public const int BLACKNESS = 0x00000004;
+
         /// <summary>
         /// Fills the destination rectangle with the color associated with index number 1 in the physical palette.
         /// </summary>
         public const int WHITENESS = 0x00000005;
+
         /// <summary>
         /// Fills the destination rectangle with a gray color.
         /// </summary>
         public const int DSTGRAY = 0x00000006;
+
         /// <summary>
         /// Fills the destination rectangle with a light gray color.
         /// </summary>
         public const int DSTLTGRAY = 0x00000007;
+
         /// <summary>
         /// Fills the destination rectangle with a dark gray color.
         /// </summary>
         public const int DSTDKGRAY = 0x00000008;
+
         /// <summary>
         /// Specifies that a circle should have only a single-pixel border and no fill pattern or color.
         /// </summary>
         public const int SINGLEPIXEL = 0x00000009;
+
         /// <summary>
         /// Fills the destination rectangle or circle with a randomly generated pattern.
         /// </summary>
         public const int RANDOM = 0x0000000a;
+
         /// <summary>
         /// Specifies that there are no format rules.
         /// </summary>
         public const uint DT_None = 0x00000000;
+
         /// <summary>
         /// Specifies whether a line of bitmap text automatically wraps words to the beginning of the next line when the line reaches its maximum width.
         /// </summary>
         public const uint DT_WordWrap = 0x00000001;
+
         /// <summary>
         /// Specifies that if the bitmap text is larger than the space provided, the text is truncated at the bottom.
         /// </summary>
         public const uint DT_TruncateAtBottom = 0x00000004;
-        // [Obsolete("Use DT_TrimmingWordEllipsis or DT_TrimmingCharacterEllipsis to specify the type of trimming needed.", false)]
 
+        // [Obsolete("Use DT_TrimmingWordEllipsis or DT_TrimmingCharacterEllipsis to specify the type of trimming needed.", false)]
         /// <summary>
         /// Specifies that the bitmap text is trimmed to the nearest character, and an ellipsis is inserted at the end of each trimmed line.
         /// </summary>
         public const uint DT_Ellipsis = 0x00000008;
+
         /// <summary>
         /// Specifies that if the bitmap text is larger than the space provided, the text is drawn in its full size, rather than being scaled down to fit the value in the Height property.
         /// </summary>
         public const uint DT_IgnoreHeight = 0x00000010;
+
         /// <summary>
         /// Specifies that text is left-aligned as it flows around a bitmap.
         /// </summary>
         public const uint DT_AlignmentLeft = 0x00000000;
+
         /// <summary>
         /// Specifies that text is center-aligned as it flows around a bitmap.
         /// </summary>
         public const uint DT_AlignmentCenter = 0x00000002;
+
         /// <summary>
         /// Specifies that text is right-aligned as it flows around a bitmap.
         /// </summary>
         public const uint DT_AlignmentRight = 0x00000020;
+
         /// <summary>
         /// Specifies that you can use a mask to get or set text alignment around a bitmap.
         /// </summary>
         public const uint DT_AlignmentMask = 0x00000022;
+
         /// <summary>
         /// Not yet documented.
         /// </summary>
         public const uint DT_TrimmingNone = 0x00000000;
+
         /// <summary>
         /// Not yet documented.
         /// </summary>
         public const uint DT_TrimmingWordEllipsis = 0x00000008;
+
         /// <summary>
         /// Not yet documented.
         /// </summary>
         public const uint DT_TrimmingCharacterEllipsis = 0x00000040;
+
         /// <summary>
         /// Not yet documented.
         /// </summary>
         public const uint DT_TrimmingMask = 0x00000048;
+
         /// <summary>
         ///  Note that these values have to match the c_Type* consts in CLR_GFX_BitmapDescription 
         /// </summary>
@@ -175,7 +197,6 @@ namespace nanoFramework.UI
             /// </summary>
             Bmp = 3 // The windows .bmp format
         }
-
 
 #pragma warning disable 169
         private object m_bitmap;    // Do not delete m_bitmap, this is linked to the underlying C/C++ code via magic   (MDP)
@@ -247,10 +268,10 @@ namespace nanoFramework.UI
         /// <param name = "font" > The font to be used for the text.</param>
         /// <returns></returns>
         public bool DrawTextInRect(ref string text, ref int xRelStart, ref int yRelStart, int x, int y, int width, int height, uint dtFlags, Color color, Font font) =>
-            DrawTextInRect(ref text, ref xRelStart, ref yRelStart, x, y, width, height, dtFlags, color.ToArgb(), font);
+            DrawTextInRect(ref text, ref xRelStart, ref yRelStart, x, y, width, height, dtFlags, (uint)color.ToArgb(), font);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private bool DrawTextInRect(ref string text, ref int xRelStart, ref int yRelStart, int x, int y, int width, int height, uint dtFlags, int color, Font font);
+        extern private bool DrawTextInRect(ref string text, ref int xRelStart, ref int yRelStart, int x, int y, int width, int height, uint dtFlags, uint color, Font font);
 
         /// <summary>
         /// <param name = "text" > The text to be drawn. This parameter contains the remaining text, or an empty string, if the complete text string did not fit in the specified rectangle.</param>
@@ -279,10 +300,10 @@ namespace nanoFramework.UI
         /// <param name="color"> The color to be used for the character.</param>
         /// <param name="font"> The font to be used for the character.</param>
 
-        public void DrawChar(ushort c, int x, int y, Color color, Font font) => DrawChar(c, x, y, color.ToArgb(), font);
+        public void DrawChar(ushort c, int x, int y, Color color, Font font) => DrawChar(c, x, y, (uint)color.ToArgb(), font);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void DrawChar(ushort c, int x, int y, int color, Font font);
+        extern private void DrawChar(ushort c, int x, int y, uint color, Font font);
 
         /// <summary>
         /// 
@@ -333,18 +354,18 @@ namespace nanoFramework.UI
             int x, int y, int xRadius, int yRadius,
             Color colorGradientStart, int xGradientStart, int yGradientStart,
             Color colorGradientEnd, int xGradientEnd, int yGradientEnd,
-            ushort opacity) => DrawEllipse(colorOutline.ToArgb(), thicknessOutline,
+            ushort opacity) => DrawEllipse((uint)colorOutline.ToArgb(), thicknessOutline,
                 x, y, xRadius, yRadius,
-                colorGradientStart.ToArgb(), xGradientStart, yGradientStart,
-                colorGradientEnd.ToArgb(), xGradientEnd, yGradientEnd,
+                (uint)colorGradientStart.ToArgb(), xGradientStart, yGradientStart,
+                (uint)colorGradientEnd.ToArgb(), xGradientEnd, yGradientEnd,
                 opacity);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         extern private void DrawEllipse(
-            int colorOutline, int thicknessOutline,
+            uint colorOutline, int thicknessOutline,
             int x, int y, int xRadius, int yRadius,
-            int colorGradientStart, int xGradientStart, int yGradientStart,
-            int colorGradientEnd, int xGradientEnd, int yGradientEnd,
+            uint colorGradientStart, int xGradientStart, int yGradientStart,
+            uint colorGradientEnd, int xGradientEnd, int yGradientEnd,
             ushort opacity);
 
         /// <summary>
@@ -409,10 +430,10 @@ namespace nanoFramework.UI
         /// </summary>
         /// <param name = "color" > The color to be used as the bitmap's transparent color.</param>
 
-        public void MakeTransparent(Color color) => MakeTransparent(color.ToArgb());
+        public void MakeTransparent(Color color) => MakeTransparent((uint)color.ToArgb());
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void MakeTransparent(int color);
+        extern private void MakeTransparent(uint color);
 
         /// <summary>
         /// Draws a rectangular block of pixels on the display device, stretching or shrinking the rectangular area as necessary.
@@ -435,10 +456,10 @@ namespace nanoFramework.UI
         /// <param name = "y0" > The y-coordinate location of the line's starting point.</param>
         /// <param name = "x1" > The x-coordinate location of the line's ending point.</param>
         /// <param name = "y1" > The y-coordinate location of the line's ending point.</param>
-        public void DrawLine(Color color, int thickness, int x0, int y0, int x1, int y1) => DrawLine(color.ToArgb(), thickness, x0, y0, x1, y1);
+        public void DrawLine(Color color, int thickness, int x0, int y0, int x1, int y1) => DrawLine((uint)color.ToArgb(), thickness, x0, y0, x1, y1);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void DrawLine(int color, int thickness, int x0, int y0, int x1, int y1);
+        extern private void DrawLine(uint color, int thickness, int x0, int y0, int x1, int y1);
 
         /// <summary>
         /// Draw a rectangle outline on the display device.
@@ -449,10 +470,10 @@ namespace nanoFramework.UI
         /// <param name = "height" > The height of the rectangle, in pixels.</param>
         /// <param name = "thickness" > The thickness of the rectangle's outline, in pixels.</param>
         /// <param name = "color" > The color of the rectangle's outline.</param>
-        public void DrawRectangle(int x, int y, int width, int height, int thickness, Color color) => DrawRectangle(x, y, width, height, thickness, color.ToArgb());
+        public void DrawRectangle(int x, int y, int width, int height, int thickness, Color color) => DrawRectangle(x, y, width, height, thickness, (uint)color.ToArgb());
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void DrawRectangle(int x, int y, int width, int height, int thickness, int color);
+        extern private void DrawRectangle(int x, int y, int width, int height, int thickness, uint color);
 
         /// <summary>
         /// Draws a rectangle on the display device.
@@ -479,18 +500,18 @@ namespace nanoFramework.UI
             Color colorGradientEnd, int xGradientEnd, int yGradientEnd,
             ushort opacity
             ) => DrawRectangle(
-                colorOutline.ToArgb(), thicknessOutline,
+                (uint)colorOutline.ToArgb(), thicknessOutline,
                 x, y, width, height, xCornerRadius, yCornerRadius,
-                colorGradientStart.ToArgb(), xGradientStart, yGradientStart,
-                colorGradientEnd.ToArgb(), xGradientEnd, yGradientEnd,
+                (uint)colorGradientStart.ToArgb(), xGradientStart, yGradientStart,
+                (uint)colorGradientEnd.ToArgb(), xGradientEnd, yGradientEnd,
                 opacity);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         extern private void DrawRectangle(
-            int colorOutline, int thicknessOutline,
+            uint colorOutline, int thicknessOutline,
             int x, int y, int width, int height, int xCornerRadius, int yCornerRadius,
-            int colorGradientStart, int xGradientStart, int yGradientStart,
-            int colorGradientEnd, int xGradientEnd, int yGradientEnd,
+            uint colorGradientStart, int xGradientStart, int yGradientStart,
+            uint colorGradientEnd, int xGradientEnd, int yGradientEnd,
             ushort opacity
             );
 
@@ -505,10 +526,10 @@ namespace nanoFramework.UI
         /// <param name = "xCornerRadius" > The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
         /// <param name = "yCornerRadius" > The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
         /// <param name = "color" > The color of the rectangle's outline.</param>        
-        public void DrawRoundRectangle(int x, int y, int width, int height, int thickness, int xCornerRadius, int yCornerRadius, Color color) => DrawRoundRectangle(x, y, width, height, thickness, xCornerRadius, yCornerRadius, color.ToArgb());
+        public void DrawRoundRectangle(int x, int y, int width, int height, int thickness, int xCornerRadius, int yCornerRadius, Color color) => DrawRoundRectangle(x, y, width, height, thickness, xCornerRadius, yCornerRadius, (uint)color.ToArgb());
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void DrawRoundRectangle(int x, int y, int width, int height, int thickness, int xCornerRadius, int yCornerRadius, int color);
+        extern private void DrawRoundRectangle(int x, int y, int width, int height, int thickness, int xCornerRadius, int yCornerRadius, uint color);
 
         /// <summary>
         /// Draw a filled rectangle on the display device.
@@ -519,10 +540,10 @@ namespace nanoFramework.UI
         /// <param name = "height" > The height of the rectangle, in pixels.</param>
         /// <param name = "color" > The color of the rectangle's outline.</param>
         /// <param name = "opacity" > Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opague.</param>        
-        public void FillRectangle(int x, int y, int width, int height, Color color, ushort opacity) => FillRectangle(x, y, width, height, color.ToArgb(), opacity);
+        public void FillRectangle(int x, int y, int width, int height, Color color, ushort opacity) => FillRectangle(x, y, width, height, (uint)color.ToArgb(), opacity);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void FillRectangle(int x, int y, int width, int height, int color, ushort opacity);
+        extern private void FillRectangle(int x, int y, int width, int height, uint color, ushort opacity);
 
         /// <summary>
         /// Draw a filled rounded rectangle on the display device.
@@ -535,10 +556,10 @@ namespace nanoFramework.UI
         /// <param name = "yCornerRadius" > The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
         /// <param name = "color" > The color of the rectangle's outline.</param>
         /// <param name = "opacity" > Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opague.</param>        
-        public void FillRoundRectangle(int x, int y, int width, int height, int xCornerRadius, int yCornerRadius, Color color, ushort opacity) => FillRoundRectangle(x, y, width, height, xCornerRadius, yCornerRadius, color.ToArgb(), opacity);
+        public void FillRoundRectangle(int x, int y, int width, int height, int xCornerRadius, int yCornerRadius, Color color, ushort opacity) => FillRoundRectangle(x, y, width, height, xCornerRadius, yCornerRadius, (uint)color.ToArgb(), opacity);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void FillRoundRectangle(int x, int y, int width, int height, int xCornerRadius, int yCornerRadius, int color, ushort opacity);
+        extern private void FillRoundRectangle(int x, int y, int width, int height, int xCornerRadius, int yCornerRadius, uint color, ushort opacity);
 
         /// <summary>
         /// Draw a filled gradient rectangle on the display device.
@@ -556,12 +577,12 @@ namespace nanoFramework.UI
         /// <param name = "opacity" > Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opague.</param>
         public void FillGradientRectangle(int x, int y, int width, int height,
             Color colorGradientStart, int xGradientStart, int yGradientStart,
-            Color colorGradientEnd, int xGradientEnd, int yGradientEnd, ushort opacity) => FillGradientRectangle(x, y, width, height, colorGradientStart.ToArgb(), xGradientStart, yGradientStart, colorGradientEnd.ToArgb(), xGradientEnd, yGradientEnd, opacity);
+            Color colorGradientEnd, int xGradientEnd, int yGradientEnd, ushort opacity) => FillGradientRectangle(x, y, width, height, (uint)colorGradientStart.ToArgb(), xGradientStart, yGradientStart, (uint)colorGradientEnd.ToArgb(), xGradientEnd, yGradientEnd, opacity);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         extern private void FillGradientRectangle(int x, int y, int width, int height,
-            int colorGradientStart, int xGradientStart, int yGradientStart,
-            int colorGradientEnd, int xGradientEnd, int yGradientEnd, ushort opacity);
+            uint colorGradientStart, int xGradientStart, int yGradientStart,
+            uint colorGradientEnd, int xGradientEnd, int yGradientEnd, ushort opacity);
 
         /// <summary>
         /// Draws text on the display device, using a specified font and color.
@@ -571,10 +592,10 @@ namespace nanoFramework.UI
         /// <param name = "color" > The color to be used for the text.</param>
         /// <param name = "x" > The x-coordinate of the location where text drawing is to begin.</param>
         /// <param name = "y" > The y-coordinate of the location where text drawing is to begin.</param>
-        public void DrawText(string text, Font font, Color color, int x, int y) => DrawText(text, font, color.ToArgb(), x, y);
+        public void DrawText(string text, Font font, Color color, int x, int y) => DrawText(text, font, (uint)color.ToArgb(), x, y);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void DrawText(string text, Font font, int color, int x, int y);
+        extern private void DrawText(string text, Font font, uint color, int x, int y);
 
         /// <summary>
         /// Sets the color for a specified pixel.
@@ -582,10 +603,10 @@ namespace nanoFramework.UI
         /// <param name = "xPos" > The x-coordinate of the pixel whose color you want to set.</param>
         /// <param name = "yPos" > The y-coordinate of the pixel whose color you want to set.</param>
         /// <param name = "color" > The color you want to set for the specified pixel.</param>
-        public void SetPixel(int xPos, int yPos, Color color) => SetPixel(xPos, yPos, color.ToArgb());
+        public void SetPixel(int xPos, int yPos, Color color) => SetPixel(xPos, yPos, (uint)color.ToArgb());
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        extern private void SetPixel(int xPos, int yPos, int color);
+        extern private void SetPixel(int xPos, int yPos, uint color);
 
         /// <summary>
         /// Retrieves the pixel color at a specified location on the display device.

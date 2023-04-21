@@ -11,7 +11,6 @@ namespace nanoFramework.Presentation
 {
     /// <summary>
     /// Presentation source is our connection to the rest of the managed system.
-    ///
     /// </summary>
     public class PresentationSource : DispatcherObject
     {

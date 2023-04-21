@@ -649,6 +649,7 @@ namespace nanoFramework.Presentation
         /// For UIElements also re-inserts the UIElement into Measure and / or Arrange update queues
         /// if necessary.
         /// </summary>
+        /// <param name="e">The UI Element.</param>
         internal static void PropagateResumeLayout(UIElement e)
         {
             if ((e._flags & Flags.IsLayoutSuspended) != 0)
@@ -769,7 +770,6 @@ namespace nanoFramework.Presentation
 #endif
 
             // Bypass if possible
-            //
             if (((flags & Flags.InvalidMeasure) == 0) &&
                 ((flags & Flags.NeverMeasured) == 0) &&
                 availableWidth == _previousAvailableWidth &&
