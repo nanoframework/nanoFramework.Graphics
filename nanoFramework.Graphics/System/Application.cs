@@ -1054,5 +1054,3 @@ namespace nanoFramework.UI
 
     #endregion enum ReasonSessionEnding
 }
-
-

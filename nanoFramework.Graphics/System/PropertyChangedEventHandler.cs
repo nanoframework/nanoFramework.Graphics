@@ -12,5 +12,3 @@ namespace nanoFramework.UI
     /// </summary>
     public delegate void PropertyChangedEventHandler(object sender, PropertyChangedEventArgs e);
 }
-
-

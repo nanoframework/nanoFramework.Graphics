@@ -122,5 +122,3 @@ namespace nanoFramework.UI.Input
         }
     }
 }
-
-

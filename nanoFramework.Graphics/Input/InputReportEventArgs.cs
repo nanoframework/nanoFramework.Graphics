@@ -39,5 +39,3 @@ namespace nanoFramework.UI.Input
         public readonly InputReport Report;
     }
 }
-
-

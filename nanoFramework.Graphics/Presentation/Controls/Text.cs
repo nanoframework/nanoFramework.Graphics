@@ -185,18 +185,18 @@ namespace nanoFramework.Presentation.Controls
         {
             if (_font != null && _text != null && _text.Length > 0)
             {
-                uint flags = Bitmap.DT_IgnoreHeight | Bitmap.DT_WordWrap;
+                DrawTextOptions flags = DrawTextOptions.IgnoreHeight | DrawTextOptions.WordWrap;
 
                 switch (_alignment)
                 {
                     case TextAlignment.Left:
-                        flags |= Bitmap.DT_AlignmentLeft;
+                        flags |= DrawTextOptions.AlignmentLeft;
                         break;
                     case TextAlignment.Right:
-                        flags |= Bitmap.DT_AlignmentRight;
+                        flags |= DrawTextOptions.AlignmentRight;
                         break;
                     case TextAlignment.Center:
-                        flags |= Bitmap.DT_AlignmentCenter;
+                        flags |= DrawTextOptions.AlignmentCenter;
                         break;
                     default:
                         throw new NotSupportedException();
@@ -205,14 +205,14 @@ namespace nanoFramework.Presentation.Controls
                 switch (_trimming)
                 {
                     case TextTrimming.CharacterEllipsis:
-                        flags |= Bitmap.DT_TrimmingCharacterEllipsis;
+                        flags |= DrawTextOptions.TrimmingCharacterEllipsis;
                         break;
                     case TextTrimming.WordEllipsis:
-                        flags |= Bitmap.DT_TrimmingWordEllipsis;
+                        flags |= DrawTextOptions.TrimmingWordEllipsis;
                         break;
                 }
 
-                _font.ComputeTextInRect(_text, out desiredWidth, out desiredHeight, 0, 0, availableWidth, 0, flags);
+                _font.ComputeTextInRect(_text, out desiredWidth, out desiredHeight, 0, 0, availableWidth, 0, (uint)flags);
 
                 if (_textWrap == false) desiredHeight = _font.Height;
             }

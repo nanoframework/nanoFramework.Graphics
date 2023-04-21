@@ -7,35 +7,37 @@
 namespace nanoFramework.UI
 {
     /// <summary>
-    /// Simple Min/Max for the wpf measures
+    /// Simple Min/Max for the wpf measures.
     /// </summary>
     public static class Mathematics
     {
         /// <summary>
-        /// 
+        /// Finds the maximum between 2 ints.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">First int.</param>
+        /// <param name="b">Second int.</param>
+        /// <returns>The maximum value between a and b.</returns>
         static public int Max(int a, int b)
         {
             return a > b ? a : b;
         }
+
         /// <summary>
-        /// 
+        /// Finds the minimum between 2 ints.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
+        /// <param name="a">First int.</param>
+        /// <param name="b">Second int.</param>
+        /// <returns>The minimum value between a and b.</returns>
         static public int Min(int a, int b)
         {
             return a < b ? a : b;
         }
+
         /// <summary>
-        /// 
+        /// Returns the absolute value of an int.
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        /// <param name="a">The int.</param>
+        /// <returns>The absolute value.</returns>
         static public int Abs(int a)
         {
             return a < 0 ? a*-1 : a;

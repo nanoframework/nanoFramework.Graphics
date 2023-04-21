@@ -1,34 +1,34 @@
-//
+﻿//
 // Copyright (c) .NET Foundation and Contributors
 // Portions Copyright (c) Microsoft Corporation.  All rights reserved.
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
-
 namespace nanoFramework.UI.Input
 {
-
     /// <summary>
-    ///     The ButtonState enumeration describes the state that buttons
-    ///     can be in.
+    /// Raw buttton actions.
     /// </summary>
-    [Flags]
-    public enum ButtonState : byte
+    public enum RawButtonActions
     {
         /// <summary>
-        ///     No state (same as up).
+        /// Button Down
         /// </summary>
-        None = 0,
+        ButtonDown = 1,
 
         /// <summary>
-        ///    The button is down.
+        /// Button Up
         /// </summary>
-        Down = 1,
+        ButtonUp = 2,
 
         /// <summary>
-        ///    The button is held
+        /// Activate
         /// </summary>
-        Held = 2
+        Activate = 4,
+
+        /// <summary>
+        /// Deactivate
+        /// </summary>
+        Deactivate = 8,
     }
 }

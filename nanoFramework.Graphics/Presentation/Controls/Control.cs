@@ -11,12 +11,12 @@ using System.Drawing;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a base class for all WPF controls.
     /// </summary>
     public class Control : UIElement
     {
         /// <summary>
-        /// 
+        /// Gets or sets the Brush that fills the background of the control.
         /// </summary>
         public Brush Background
         {
@@ -37,7 +37,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the Font of the control.
         /// </summary>
         public Font Font
         {
@@ -56,7 +56,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the Brush that is used to paint the foreground of the control.
         /// </summary>
         public Brush Foreground
         {
@@ -77,9 +77,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Called when the control is redrawn.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The DrawingContext used to render the control.</param>
         public override void OnRender(DrawingContext dc)
         {
             if (_background != null)
@@ -89,20 +89,18 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// The Brush used to fill the background of the control.
         /// </summary>
         protected internal Brush _background = null;
 
         /// <summary>
-        /// 
+        /// The Brush used to paint the foreground of the control.
         /// </summary>
         protected internal Brush _foreground = new SolidColorBrush(Color.Black);
 
         /// <summary>
-        /// 
+        /// The Font used to render the control.
         /// </summary>
         protected internal Font _font;
     }
 }
-
-

@@ -136,7 +136,7 @@ namespace nanoFramework.UI
         /// <param name = "renderHeight" > The height, in pixels, of the rectangular area needed to render the text.</param>
         public void ComputeTextInRect(string text, out int renderWidth, out int renderHeight)
         {
-            ComputeTextInRect(text, out renderWidth, out renderHeight, 0, 0, 65536, 0, Bitmap.DT_IgnoreHeight | Bitmap.DT_WordWrap);
+            ComputeTextInRect(text, out renderWidth, out renderHeight, 0, 0, 65536, 0, (uint)(DrawTextOptions.IgnoreHeight | DrawTextOptions.WordWrap));
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace nanoFramework.UI
         /// <param name = "availableWidth" > The maximum width of text that will fit in the defined rectangular area.</param>
         public void ComputeTextInRect(string text, out int renderWidth, out int renderHeight, int availableWidth)
         {
-            ComputeTextInRect(text, out renderWidth, out renderHeight, 0, 0, availableWidth, 0, Bitmap.DT_IgnoreHeight | Bitmap.DT_WordWrap);
+            ComputeTextInRect(text, out renderWidth, out renderHeight, 0, 0, availableWidth, 0, (uint)(DrawTextOptions.IgnoreHeight | DrawTextOptions.WordWrap));
         }
 
         /// <summary>

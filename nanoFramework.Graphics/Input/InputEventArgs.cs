@@ -51,5 +51,3 @@ namespace nanoFramework.UI.Input
         internal InputDevice _inputDevice;
     }
 }
-
-

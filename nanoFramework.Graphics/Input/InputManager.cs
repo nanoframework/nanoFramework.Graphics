@@ -495,5 +495,3 @@ namespace nanoFramework.UI.Input
         private class GlobalLock { };
     }
 }
-
-

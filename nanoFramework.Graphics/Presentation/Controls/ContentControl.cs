@@ -7,12 +7,12 @@
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a base class for a control that can contain a single child element.
     /// </summary>
     public abstract class ContentControl : Control
     {
         /// <summary>
-        /// 
+        /// Gets or sets the child element of the ContentControl.
         /// </summary>
         public UIElement Child
         {
@@ -38,12 +38,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the size required for the child element of the ContentControl.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width that a parent element can allocate to a child element.</param>
+        /// <param name="availableHeight">The available height that a parent element can allocate to a child element.</param>
+        /// <param name="desiredWidth">The width required for the child element based on the available space.</param>
+        /// <param name="desiredHeight">The height required for the child element based on the available space.</param>
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             UIElement child = this.Child;
@@ -59,5 +59,3 @@ namespace nanoFramework.Presentation.Controls
         }
     }
 }
-
-

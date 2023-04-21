@@ -10,13 +10,13 @@ using System.Drawing;
 
 namespace nanoFramework.Presentation.Controls
 {
-/// <summary>
-/// 
-/// </summary>
+    /// <summary>
+    /// Represents a WPF-like Border control that provides a border and background for its content.
+    /// </summary>
     public class Border : ContentControl
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="Border"/> class.
         /// </summary>
         public Border()
         {
@@ -26,7 +26,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the Brush used to draw the border of the <see cref="Border"/> control.
         /// </summary>
         public Brush BorderBrush
         {
@@ -47,12 +47,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets the thickness of the border of the <see cref="Border"/> control.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="right"></param>
-        /// <param name="bottom"></param>
+        /// <param name="left">Receives the thickness of the left border.</param>
+        /// <param name="top">Receives the thickness of the top border.</param>
+        /// <param name="right">Receives the thickness of the right border.</param>
+        /// <param name="bottom">Receives the thickness of the bottom border.</param>
         public void GetBorderThickness(out int left, out int top, out int right, out int bottom)
         {
             left = _borderLeft;
@@ -62,9 +62,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Sets the thickness of the border of the <see cref="Border"/> control.
         /// </summary>
-        /// <param name="length"></param>
+        /// <param name="length">The thickness of all four borders.</param>
         public void SetBorderThickness(int length)
         {
             // no need to verify access here as the next call will do it
@@ -72,12 +72,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Sets the thickness of the border of the <see cref="Border"/> control.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="right"></param>
-        /// <param name="bottom"></param>
+        /// <param name="left">The thickness of the left border.</param>
+        /// <param name="top">The thickness of the top border.</param>
+        /// <param name="right">The thickness of the right border.</param>
+        /// <param name="bottom">The thickness of the bottom border.</param>
         public void SetBorderThickness(int left, int top, int right, int bottom)
         {
             VerifyAccess();
@@ -98,10 +98,10 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Arranges the content of the <see cref="Border"/> control.
         /// </summary>
-        /// <param name="arrangeWidth"></param>
-        /// <param name="arrangeHeight"></param>
+        /// <param name="arrangeWidth">The width of the layout slot for the control.</param>
+        /// <param name="arrangeHeight">The height of the layout slot for the control.</param>
         protected override void ArrangeOverride(int arrangeWidth, int arrangeHeight)
         {
             UIElement child = Child;
@@ -142,9 +142,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Draws the content of the Border control.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The DrawingContext.</param>
         public override void OnRender(DrawingContext dc)
         {
             int width = _renderWidth;

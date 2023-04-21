@@ -80,5 +80,3 @@ namespace nanoFramework.UI.Input
         Hashtable _table;
     }
 }
-
-

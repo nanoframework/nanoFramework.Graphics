@@ -113,5 +113,3 @@ namespace nanoFramework.UI.Input
         private object _inputProvider;
     }
 }
-
-

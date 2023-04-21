@@ -13,12 +13,12 @@ namespace nanoFramework.UI
 {
 
     /// <summary>
-    /// 
+    /// Cancel event arguments.
     /// </summary>
     public class CancelEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        /// Ture is cancelled.
         /// </summary>
         public bool Cancel;
     }

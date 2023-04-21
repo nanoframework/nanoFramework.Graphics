@@ -12,5 +12,3 @@ namespace nanoFramework.UI.Input
     /// </summary>
     public delegate void PreProcessInputEventHandler(object sender, PreProcessInputEventArgs e);
 }
-
-

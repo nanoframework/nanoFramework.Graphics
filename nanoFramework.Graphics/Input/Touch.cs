@@ -10,32 +10,11 @@ using System;
 namespace nanoFramework.UI.Input
 {
     /// <summary>
-    /// 
+    /// Touch event handler.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">The touch event arguments.</param>
     public delegate void TouchEventHandler(object sender, TouchEventArgs e);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public enum CaptureMode
-    {
-        /// <summary>
-        ///  None
-        /// </summary>
-        None,
-
-        /// <summary>
-        ///  Element
-        /// </summary>
-        Element,
-
-        /// <summary>
-        ///  SubTree
-        /// </summary>
-        SubTree,
-    }
 
     /// <summary>
     /// 
@@ -49,7 +28,7 @@ namespace nanoFramework.UI.Input
         /// <returns></returns>
         public static bool Capture(UIElement element)
         {
-            return Capture(element, CaptureMode.Element);
+            return Capture(element, TouchCaptureMode.Element);
         }
 
         /// <summary>
@@ -58,9 +37,9 @@ namespace nanoFramework.UI.Input
         /// <param name="element"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public static bool Capture(UIElement element, CaptureMode mode)
+        public static bool Capture(UIElement element, TouchCaptureMode mode)
         {
-            if (mode != CaptureMode.None)
+            if (mode != TouchCaptureMode.None)
             {
                 if (element == null)
                 {
@@ -74,12 +53,12 @@ namespace nanoFramework.UI.Input
                     throw new ArgumentException();
                 }
 
-                if (mode == CaptureMode.SubTree)
+                if (mode == TouchCaptureMode.SubTree)
                 {
                     throw new NotImplementedException();
                 }
 
-                if (mode == CaptureMode.Element)
+                if (mode == TouchCaptureMode.Element)
                 {
                     _captureElement = element;
                 }
@@ -172,5 +151,3 @@ namespace nanoFramework.UI.Input
         }
     }
 }
-
-

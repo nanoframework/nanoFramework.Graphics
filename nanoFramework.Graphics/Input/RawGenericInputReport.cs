@@ -61,5 +61,3 @@ namespace nanoFramework.UI.Input
         public readonly GenericEventEx InternalEvent;
     }
 }
-
-

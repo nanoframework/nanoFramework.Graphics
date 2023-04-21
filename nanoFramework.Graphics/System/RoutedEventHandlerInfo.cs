@@ -125,5 +125,3 @@ namespace nanoFramework.UI
         #endregion Data
     }
 }
-
-

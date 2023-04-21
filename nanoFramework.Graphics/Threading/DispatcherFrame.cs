@@ -78,5 +78,3 @@ namespace nanoFramework.UI.Threading
         private Dispatcher _dispatcher;
     }
 }
-
-

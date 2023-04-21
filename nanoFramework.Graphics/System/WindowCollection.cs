@@ -202,5 +202,3 @@ namespace nanoFramework.UI
 
     #endregion WindowCollection class
 }
-
-

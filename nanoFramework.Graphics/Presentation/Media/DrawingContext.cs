@@ -331,7 +331,7 @@ namespace nanoFramework.Presentation.Media
         {
             VerifyAccess();
 
-            uint flags = Bitmap.DT_WordWrap;
+            DrawTextOptions flags = DrawTextOptions.WordWrap;
 
             // Text alignment
             switch (alignment)
@@ -340,10 +340,10 @@ namespace nanoFramework.Presentation.Media
                     //flags |= Bitmap.DT_AlignmentLeft;
                     break;
                 case TextAlignment.Center:
-                    flags |= Bitmap.DT_AlignmentCenter;
+                    flags |= DrawTextOptions.AlignmentCenter;
                     break;
                 case TextAlignment.Right:
-                    flags |= Bitmap.DT_AlignmentRight;
+                    flags |= DrawTextOptions.AlignmentRight;
                     break;
                 default:
                     throw new NotSupportedException();
@@ -353,17 +353,17 @@ namespace nanoFramework.Presentation.Media
             switch (trimming)
             {
                 case TextTrimming.CharacterEllipsis:
-                    flags |= Bitmap.DT_TrimmingCharacterEllipsis;
+                    flags |= DrawTextOptions.TrimmingCharacterEllipsis;
                     break;
                 case TextTrimming.WordEllipsis:
-                    flags |= Bitmap.DT_TrimmingWordEllipsis;
+                    flags |= DrawTextOptions.TrimmingWordEllipsis;
                     break;
             }
 
             int xRelStart = 0;
             int yRelStart = 0;
             return _bitmap.DrawTextInRect(ref text, ref xRelStart, ref yRelStart, _x + x, _y + y,
-                                           width, height, flags, color, font);
+                                           width, height, (uint)flags, color, font);
         }
 
         /// <summary>

@@ -40,5 +40,3 @@ namespace nanoFramework.UI
         Direct
     }
 }
-
-

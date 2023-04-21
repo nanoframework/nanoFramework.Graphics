@@ -144,6 +144,7 @@
     <Compile Include="Input\ButtonEventHandler.cs" />
     <Compile Include="Input\Buttons.cs" />
     <Compile Include="Input\ButtonState.cs" />
+    <Compile Include="Input\CaptureMode.cs" />
     <Compile Include="Input\FocusChangedEventArgs.cs" />
     <Compile Include="Input\FocusChangedEventHandler.cs" />
     <Compile Include="Input\GenericDevice.cs" />
@@ -160,8 +161,10 @@
     <Compile Include="Input\PreProcessInputEventHandler.cs" />
     <Compile Include="Input\ProcessInputEventArgs.cs" />
     <Compile Include="Input\ProcessInputEventHandler.cs" />
+    <Compile Include="Input\RawButtonActions.cs" />
     <Compile Include="Input\RawButtonInputReport.cs" />
     <Compile Include="Input\RawGenericInputReport.cs" />
+    <Compile Include="Input\RawTouchActions.cs" />
     <Compile Include="Input\RawTouchInputReport.cs" />
     <Compile Include="Input\StagingAreaInputItem.cs" />
     <Compile Include="Input\Touch.cs" />
@@ -219,7 +222,7 @@
     <Compile Include="Presentation\WindowManager.cs" />
     <Compile Include="Primitive\Bitmap.cs" />
     <Compile Include="Primitive\DisplayControl.cs" />
-    <Compile Include="Primitive\DisplayOrientation.cs" />
+    <Compile Include="Primitive\DrawTextOptions.cs" />
     <Compile Include="Primitive\GraphicDriver.cs" />
     <Compile Include="Primitive\GraphicDriverCommandType.cs" />
     <Compile Include="Primitive\ScreenConfiguration.cs" />
