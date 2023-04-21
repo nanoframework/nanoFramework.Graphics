@@ -11,12 +11,12 @@ using nanoFramework.UI;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a control that displays a list of items, where an item in the list can be selected.
     /// </summary>
     public class ListBox : ContentControl
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the ListBox class.
         /// </summary>
         public ListBox()
         {
@@ -27,7 +27,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets the collection of items in the ListBox.
         /// </summary>
         public ListBoxItemCollection Items
         {
@@ -45,7 +45,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Occurs when the selection of a ListBox item changes.
         /// </summary>
         public event SelectionChangedEventHandler SelectionChanged
         {
@@ -63,7 +63,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the index of the currently selected item in a ListBox.
         /// </summary>
         public int SelectedIndex
         {
@@ -113,7 +113,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the currently selected item in a ListBox.
         /// </summary>
         public ListBoxItem SelectedItem
         {
@@ -140,9 +140,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the ListBox to bring the specified ListBoxItem into view.
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">The ListBoxItem to bring into view.</param>
         public void ScrollIntoView(ListBoxItem item)
         {
             VerifyAccess();
@@ -174,9 +174,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the ListBox to bring the specified ListBoxItem into view.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="item">The ListBoxItem to bring into view.</param>
         protected override void OnButtonDown(ButtonEventArgs e)
         {
             if (e.Button == Button.VK_DOWN && _selectedIndex < Items.Count - 1)
@@ -210,7 +210,7 @@ namespace nanoFramework.Presentation.Controls
         //
 
         /// <summary>
-        /// Event handler if the scroll changes.
+        /// Occurs when the scroll position changes.
         /// </summary>
         public event ScrollChangedEventHandler ScrollChanged
         {
@@ -219,7 +219,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// Horizontal offset of the scroll.
+        /// Gets or sets the horizontal scroll offset.
         /// </summary>
         public int HorizontalOffset
         {
@@ -235,7 +235,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// Vertical offset of the scroll.
+        /// Gets or sets the vertical scroll offset.
         /// </summary>
         public int VerticalOffset
         {
@@ -251,7 +251,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// Extent height of the scroll area.
+        /// Gets the extent height of the scrollable content.
         /// </summary>
         public int ExtentHeight
         {
@@ -262,7 +262,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// Extent width of the scroll area.
+        /// Gets the extent width of the scrollable content.
         /// </summary>
         public int ExtentWidth
         {
@@ -273,7 +273,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// The scrolling style.
+        /// Gets or sets the scrolling behavior.
         /// </summary>
         public ScrollingStyle ScrollingStyle
         {

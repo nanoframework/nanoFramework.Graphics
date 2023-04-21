@@ -11,18 +11,7 @@ using nanoFramework.UI;
 using System.Drawing;
 
 namespace nanoFramework.Presentation.Controls
-{
-    /// <summary>
-    /// 
-    /// </summary>
-    public class DrawingAttributes
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public Color Color = Color.Black;
-    }
-
+{    
     /// <summary>
     /// Note: InkCanvas control is not movable at runtime. This requires complex logic, with
     /// no customer scenario at this moment.
@@ -30,24 +19,25 @@ namespace nanoFramework.Presentation.Controls
     public class InkCanvas : UIElement
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the InkCanvas class with the specified left, top, width, and height dimensions.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="left">The left coordinate of the InkCanvas.</param>
+        /// <param name="top">The top coordinate of the InkCanvas.</param>
+        /// <param name="width">The width of the InkCanvas.</param>
+        /// <param name="height">The height of the InkCanvas.</param>
         public InkCanvas(int left, int top, int width, int height)
             : this(left, top, width, height, 1)
         {
         }
+
         /// <summary>
-        /// 
+        /// Initializes a new instance of the InkCanvas class with the specified left, top, width, height, and border width dimensions.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <param name="borderWidth"></param>
+        /// <param name="left">The left coordinate of the InkCanvas.</param>
+        /// <param name="top">The top coordinate of the InkCanvas.</param>
+        /// <param name="width">The width of the InkCanvas.</param>
+        /// <param name="height">The height of the InkCanvas.</param>
+        /// <param name="borderWidth">The width of the border around the InkCanvas.</param>
         public InkCanvas(int left, int top, int width, int height, int borderWidth)
         {
             Init(left, top, width, height, borderWidth);
@@ -58,16 +48,16 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Finalizes an instance of the InkCanvas class.
         /// </summary>
         ~InkCanvas()
         {
         }
 
         /// <summary>
-        /// 
+        /// Handles the touch down event for the InkCanvas.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The touch event arguments.</param>
         protected override void OnTouchDown(TouchEventArgs e)
         {
             int x, y, w, h;
@@ -83,18 +73,19 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Handles the touch up event for the InkCanvas.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The touch event arguments.</param>
         protected override void OnTouchUp(TouchEventArgs e)
         {
             Ink.ResetInkRegion();
             Invalidate();
         }
+
         /// <summary>
-        /// 
+        /// Renders the InkCanvas control.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The drawing context to use for rendering.</param>
         public override void OnRender(nanoFramework.Presentation.Media.DrawingContext dc)
         {
             if (_bitmap != null)
@@ -104,7 +95,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Clears the InkCanvas.
         /// </summary>
         public void Clear()
         {
@@ -113,13 +104,13 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Initializes the InkCanvas with the specified dimensions and border width.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <param name="borderWidth"></param>
+        /// <param name="left">The left position of the InkCanvas on the screen.</param>
+        /// <param name="top">The top position of the InkCanvas on the screen.</param>
+        /// <param name="width">The width of the InkCanvas.</param>
+        /// <param name="height">The height of the InkCanvas.</param>
+        /// <param name="borderWidth">The width of the border around the InkCanvas.</param>
         protected virtual void Init(int left, int top, int width, int height, int borderWidth)
         {
             _width = width;
@@ -140,8 +131,9 @@ namespace nanoFramework.Presentation.Controls
                 throw new ArgumentException("screenlimit");
             }
         }
+
         /// <summary>
-        /// 
+        /// Gets or sets the default drawing attributes for the InkCanvas.
         /// </summary>
         public DrawingAttributes DefaultDrawingAttributes
         {
@@ -157,12 +149,13 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the available space for the InkCanvas and sets the desired width and height accordingly.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width for the InkCanvas.</param>
+        /// <param name="availableHeight">The available height for the InkCanvas.</param>
+        /// <param name="desiredWidth">The desired width for the InkCanvas.</param>
+        /// <param name="desiredHeight">The desired height for the InkCanvas.</param>
+
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             desiredWidth = (availableWidth > _width) ? _width : availableWidth;
@@ -170,15 +163,14 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// The default drawing attributes for the InkCanvas.
         /// </summary>
         protected DrawingAttributes _defaultDrawingAttributes = new DrawingAttributes();
 
         /// <summary>
-        /// 
+        /// The Bitmap used for rendering the InkCanvas.
         /// </summary>
         protected Bitmap _bitmap = null;
-
 
         private int _borderWidth;
         private int _width;
@@ -187,5 +179,3 @@ namespace nanoFramework.Presentation.Controls
         private int _left;
     }
 }
-
-

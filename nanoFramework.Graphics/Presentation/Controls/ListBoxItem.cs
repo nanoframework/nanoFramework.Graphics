@@ -7,12 +7,12 @@
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents an item in a ListBox control.
     /// </summary>
     public class ListBoxItem : ContentControl
     {
         /// <summary>
-        /// 
+        /// Gets a value indicating whether this item is currently selected in the parent ListBox control.
         /// </summary>
         public bool IsSelected
         {
@@ -23,7 +23,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether this item can be selected by the user.
         /// </summary>
         public bool IsSelectable
         {
@@ -48,13 +48,17 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Called when the IsSelected property of this item changes.
         /// </summary>
-        /// <param name="isSelected"></param>
+        /// <param name="isSelected">The new value of the IsSelected property.</param>
         protected internal virtual void OnIsSelectedChanged(bool isSelected)
         {
         }
 
+        /// <summary>
+        /// Sets the parent ListBox control of this item.
+        /// </summary>
+        /// <param name="listbox">The ListBox control to set as the parent.</param>
         internal void SetListBox(ListBox listbox)
         {
             this._listBox = listbox;
@@ -68,5 +72,3 @@ namespace nanoFramework.Presentation.Controls
         private ListBox _listBox;
     }
 }
-
-

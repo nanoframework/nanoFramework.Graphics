@@ -173,7 +173,9 @@
     <Compile Include="Presentation\Controls\Canvas.cs" />
     <Compile Include="Presentation\Controls\ContentControl.cs" />
     <Compile Include="Presentation\Controls\Control.cs" />
+    <Compile Include="Presentation\Controls\Dock.cs" />
     <Compile Include="Presentation\Controls\DockPanel.cs" />
+    <Compile Include="Presentation\Controls\DrawingAttributes.cs" />
     <Compile Include="Presentation\Controls\Image.cs" />
     <Compile Include="Presentation\Controls\InkCanvas.cs" />
     <Compile Include="Presentation\Controls\ListBox.cs" />

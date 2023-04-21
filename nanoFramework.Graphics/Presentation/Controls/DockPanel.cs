@@ -10,33 +10,6 @@ using nanoFramework.UI;
 
 namespace nanoFramework.Presentation.Controls
 {
-    /// <summary>
-    /// Dock - Enum which describes how to position and stretch the child of a DockPanel.
-    /// </summary> 
-    /// <seealso cref="DockPanel" />
-    public enum Dock
-    {
-        /// <summary>
-        /// Position this child at the left of the remaining space. 
-        /// </summary>
-        Left,
-
-        /// <summary> 
-        /// Position this child at the top of the remaining space.
-        /// </summary> 
-        Top,
-
-        /// <summary> 
-        /// Position this child at the right of the remaining space.
-        /// </summary>
-        Right,
-
-        /// <summary>
-        /// Position this child at the bottom of the remaining space. 
-        /// </summary>
-        Bottom
-    }
-
     /// <summary> 
     /// DockPanel is used to size and position children inward from the edges of available space.
     /// 
@@ -210,8 +183,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         private bool _lastChildFill = true;
+
         /// <summary>
-        /// 
+        /// Gets or sets a value that indicates whether the last child element within a panel stretches to fill the remaining available space.
         /// </summary>
         public bool LastChildFill
         {
