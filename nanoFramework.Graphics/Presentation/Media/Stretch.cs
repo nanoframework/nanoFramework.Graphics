@@ -7,20 +7,18 @@
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// 
+    /// Specifies how a content should be resized to fill its allocated space.
     /// </summary>
     public enum Stretch
     {
         /// <summary>
-        /// 
+        /// The content is not resized.
         /// </summary>
         None,
 
         /// <summary>
-        /// 
+        /// The content is resized to fill its allocated space.
         /// </summary>
-        Fill
+        Fill,
     }
 }
-
-

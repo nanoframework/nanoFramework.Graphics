@@ -10,38 +10,38 @@ using System.Drawing;
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// Image Brush class.
+    /// Represents a brush that paints an area with an image.
     /// </summary>
     public sealed class ImageBrush : Brush
     {
         /// <summary>
-        /// The source bitmap.
+        /// Gets or sets the source bitmap for the brush.
         /// </summary>
         public Bitmap BitmapSource;
 
         /// <summary>
-        /// The stretch mode.
+        /// Gets or sets the stretch mode for the brush.
         /// </summary>
         public Stretch Stretch = Stretch.Fill;
 
         /// <summary>
-        /// Creates a new instance of the ImageBrush class from a bitmap.
+        /// Initializes a new instance of the ImageBrush class with the specified bitmap.
         /// </summary>
-        /// <param name="bmp">The bitmap.</param>
+        /// <param name="bmp">The source bitmap for the brush.</param>
         public ImageBrush(Bitmap bmp)
         {
             BitmapSource = bmp;
         }
 
         /// <summary>
-        /// Render a rectangle.
+        /// Renders a rectangle using the brush.
         /// </summary>
-        /// <param name="bmp"></param>
-        /// <param name="pen"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="bmp">The bitmap to render the rectangle on.</param>
+        /// <param name="pen">The pen used to outline the rectangle.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
         protected internal override void RenderRectangle(Bitmap bmp, Pen pen, int x, int y, int width, int height)
         {
             if (Stretch == Stretch.None)
@@ -65,5 +65,3 @@ namespace nanoFramework.Presentation.Media
         }
     }
 }
-
-

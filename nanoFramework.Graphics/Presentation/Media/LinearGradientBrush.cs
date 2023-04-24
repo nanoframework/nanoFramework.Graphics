@@ -10,57 +10,71 @@ using System.Drawing;
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// 
+    /// Represents a linear gradient brush, which fills a shape with a gradient color
+    /// that varies in a linear fashion between a start color and an end color.
     /// </summary>
     public sealed class LinearGradientBrush : Brush
     {
         /// <summary>
-        /// 
+        /// Gets or sets the start color of the gradient brush.
         /// </summary>
         public Color StartColor;
+
         /// <summary>
-        /// 
+        /// Gets or sets the end color of the gradient brush.
         /// </summary>
         public Color EndColor;
 
         /// <summary>
-        /// 
+        /// Gets or sets the mapping mode of the gradient brush.
         /// </summary>
         public BrushMappingMode MappingMode = BrushMappingMode.RelativeToBoundingBox;
 
         /// <summary>
-        /// 
+        /// Gets or sets the X-coordinate of the starting point of the gradient brush.
         /// </summary>
-        public int StartX, StartY;
+        public int StartX;
 
         /// <summary>
-        /// 
+        /// Gets or sets the Y-coordinate of the starting point of the gradient brush.
         /// </summary>
-        public int EndX, EndY;
+        public int StartY;
 
         /// <summary>
-        /// 
+        /// Gets or sets the X-coordinate of the ending point of the gradient brush.
+        /// </summary>
+        public int EndX;
+
+        /// <summary>
+        /// Gets or sets the Y-coordinate of the ending point of the gradient brush.
+        /// </summary>
+        public int EndY;
+
+        /// <summary>
+        /// The size of the bounding box used in the relative mapping mode.
         /// </summary>
         public const int RelativeBoundingBoxSize = 1000;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the LinearGradientBrush class
+        /// with the specified start and end colors.
         /// </summary>
-        /// <param name="startColor"></param>
-        /// <param name="endColor"></param>
+        /// <param name="startColor">The start color of the gradient brush.</param>
+        /// <param name="endColor">The end color of the gradient brush.</param>
         public LinearGradientBrush(Color startColor, Color endColor)
             : this(startColor, endColor, 0, 0, RelativeBoundingBoxSize, RelativeBoundingBoxSize)
         { }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the LinearGradientBrush class
+        /// with the specified start and end colors and starting and ending points.
         /// </summary>
-        /// <param name="startColor"></param>
-        /// <param name="endColor"></param>
-        /// <param name="startX"></param>
-        /// <param name="startY"></param>
-        /// <param name="endX"></param>
-        /// <param name="endY"></param>
+        /// <param name="startColor">The start color of the gradient brush.</param>
+        /// <param name="endColor">The end color of the gradient brush.</param>
+        /// <param name="startX">The X-coordinate of the starting point of the gradient brush.</param>
+        /// <param name="startY">The Y-coordinate of the starting point of the gradient brush.</param>
+        /// <param name="endX">The X-coordinate of the ending point of the gradient brush.</param>
+        /// <param name="endY">The Y-coordinate of the ending point of the gradient brush.</param>
         public LinearGradientBrush(Color startColor, Color endColor, int startX, int startY, int endX, int endY)
         {
             StartColor = startColor;
@@ -72,14 +86,14 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Renders a rectangle using the current brush and pen.
         /// </summary>
-        /// <param name="bmp"></param>
-        /// <param name="pen"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="bmp">The bitmap on which to draw the rectangle.</param>
+        /// <param name="pen">The pen to use for the rectangle's outline, or null for no outline.</param>
+        /// <param name="x">The x-coordinate of the top-left corner of the rectangle.</param>
+        /// <param name="y">The y-coordinate of the top-left corner of the rectangle.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
         protected internal override void RenderRectangle(Bitmap bmp, Pen pen, int x, int y, int width, int height)
         {
             Color outlineColor = (pen != null) ? pen.Color : Color.Black;
@@ -109,5 +123,3 @@ namespace nanoFramework.Presentation.Media
         }
     }
 }
-
-

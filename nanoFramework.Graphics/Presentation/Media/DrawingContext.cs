@@ -37,10 +37,10 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Translates the drawing context by a specified amount.
         /// </summary>
-        /// <param name="dx"></param>
-        /// <param name="dy"></param>
+        /// <param name="dx">The amount to translate in the x direction.</param>
+        /// <param name="dy">The amount to translate in the y direction.</param>
         public void Translate(int dx, int dy)
         {
             VerifyAccess();
@@ -50,10 +50,10 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Retrieves the current translation of the drawing context.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="x">Receives the x component of the translation.</param>
+        /// <param name="y">Receives the y component of the translation.</param>
         public void GetTranslation(out int x, out int y)
         {
             VerifyAccess();
@@ -63,7 +63,7 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Gets the bitmap associated with this drawing context.
         /// </summary>
         public Bitmap Bitmap
         {
@@ -76,7 +76,7 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Clears the bitmap associated with this drawing context.
         /// </summary>
         public void Clear()
         {
@@ -91,11 +91,11 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws a polygon with the specified brush and pen.
         /// </summary>
-        /// <param name="brush"></param>
-        /// <param name="pen"></param>
-        /// <param name="pts"></param>
+        /// <param name="brush">The brush to use to fill the polygon.</param>
+        /// <param name="pen">The pen to use to draw the polygon edges.</param>
+        /// <param name="pts">The points that define the vertices of the polygon.</param>
         public void DrawPolygon(Brush brush, Pen pen, int[] pts)
         {
             VerifyAccess();
@@ -116,11 +116,11 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Sets the pixel at the specified coordinates to the specified color.
         /// </summary>
-        /// <param name="color"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="color">The color to set the pixel to.</param>
+        /// <param name="x">The x-coordinate of the pixel.</param>
+        /// <param name="y">The y-coordinate of the pixel.</param>
         public void SetPixel(Color color, int x, int y)
         {
             VerifyAccess();
@@ -129,13 +129,13 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws a line with the specified pen between the specified points.
         /// </summary>
-        /// <param name="pen"></param>
-        /// <param name="x0"></param>
-        /// <param name="y0"></param>
-        /// <param name="x1"></param>
-        /// <param name="y1"></param>
+        /// <param name="pen">The pen to use to draw the line.</param>
+        /// <param name="x0">The x-coordinate of the start point of the line.</param>
+        /// <param name="y0">The y-coordinate of the start point of the line.</param>
+        /// <param name="x1">The x-coordinate of the end point of the line.</param>
+        /// <param name="y1">The y-coordinate of the end point of the line.</param>
         public void DrawLine(Pen pen, int x0, int y0, int x1, int y1)
         {
             VerifyAccess();
@@ -147,20 +147,19 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws an ellipse on the bitmap with the specified brush, pen, location, and radii.
         /// </summary>
-        /// <param name="brush"></param>
-        /// <param name="pen"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="xRadius"></param>
-        /// <param name="yRadius"></param>
+        /// <param name="brush">The brush to fill the ellipse with.</param>
+        /// <param name="pen">The pen used to draw the outline of the ellipse.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the ellipse.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the ellipse.</param>
+        /// <param name="xRadius">The x-radius of the ellipse.</param>
+        /// <param name="yRadius">The y-radius of the ellipse.</param>
         public void DrawEllipse(Brush brush, Pen pen, int x, int y, int xRadius, int yRadius)
         {
             VerifyAccess();
 
             // Fill
-            //
             if (brush != null)
             {
                 brush.RenderEllipse(_bitmap, pen, _x + x, _y + y, xRadius, yRadius);
@@ -176,11 +175,11 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws an image on the bitmap at the specified location.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="source">The bitmap to draw.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the image.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the image.</param>
         public void DrawImage(Bitmap source, int x, int y)
         {
             VerifyAccess();
@@ -189,15 +188,15 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws a portion of the specified image on the bitmap at the specified location and with the specified size.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="destinationX"></param>
-        /// <param name="destinationY"></param>
-        /// <param name="sourceX"></param>
-        /// <param name="sourceY"></param>
-        /// <param name="sourceWidth"></param>
-        /// <param name="sourceHeight"></param>
+        /// <param name="source">The bitmap to draw a portion of.</param>
+        /// <param name="destinationX">The x-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="destinationY">The y-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="sourceX">The x-coordinate of the upper-left corner of the source rectangle.</param>
+        /// <param name="sourceY">The y-coordinate of the upper-left corner of the source rectangle.</param>
+        /// <param name="sourceWidth">The width of the source rectangle.</param>
+        /// <param name="sourceHeight">The height of the source rectangle.</param>
         public void DrawImage(Bitmap source, int destinationX, int destinationY, int sourceX, int sourceY, int sourceWidth, int sourceHeight)
         {
             VerifyAccess();
@@ -206,16 +205,16 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Blends the specified source image onto the current bitmap at the specified location.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="destinationX"></param>
-        /// <param name="destinationY"></param>
-        /// <param name="sourceX"></param>
-        /// <param name="sourceY"></param>
-        /// <param name="sourceWidth"></param>
-        /// <param name="sourceHeight"></param>
-        /// <param name="opacity"></param>
+        /// <param name="source">The source image to blend onto the current bitmap.</param>
+        /// <param name="destinationX">The x-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="destinationY">The y-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="sourceX">The x-coordinate of the upper-left corner of the source rectangle.</param>
+        /// <param name="sourceY">The y-coordinate of the upper-left corner of the source rectangle.</param>
+        /// <param name="sourceWidth">The width of the source rectangle.</param>
+        /// <param name="sourceHeight">The height of the source rectangle.</param>
+        /// <param name="opacity">The opacity of the blended image, where 0 is completely transparent and 256 is completely opaque.</param>
         public void BlendImage(Bitmap source, int destinationX, int destinationY, int sourceX, int sourceY, int sourceWidth, int sourceHeight, ushort opacity)
         {
             VerifyAccess();
@@ -224,17 +223,17 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Rotates the specified source image by the specified angle and blends it onto the current bitmap at the specified location.
         /// </summary>
-        /// <param name="angle"></param>
-        /// <param name="destinationX"></param>
-        /// <param name="destinationY"></param>
-        /// <param name="bitmap"></param>
-        /// <param name="sourceX"></param>
-        /// <param name="sourceY"></param>
-        /// <param name="sourceWidth"></param>
-        /// <param name="sourceHeight"></param>
-        /// <param name="opacity"></param>
+        /// <param name="angle">The angle to rotate the source image, in degrees.</param>
+        /// <param name="destinationX">The x-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="destinationY">The y-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="bitmap">The source image to rotate and blend onto the current bitmap.</param>
+        /// <param name="sourceX">The x-coordinate of the upper-left corner of the source rectangle.</param>
+        /// <param name="sourceY">The y-coordinate of the upper-left corner of the source rectangle.</param>
+        /// <param name="sourceWidth">The width of the source rectangle.</param>
+        /// <param name="sourceHeight">The height of the source rectangle.</param>
+        /// <param name="opacity">The opacity of the blended image, where 0 is completely transparent and 256 is completely opaque.</param>
         public void RotateImage(int angle, int destinationX, int destinationY, Bitmap bitmap, int sourceX, int sourceY, int sourceWidth, int sourceHeight, ushort opacity)
         {
             VerifyAccess();
@@ -243,18 +242,18 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws an image on the display, stretching it to fit the specified destination rectangle.
         /// </summary>
-        /// <param name="xDst"></param>
-        /// <param name="yDst"></param>
-        /// <param name="widthDst"></param>
-        /// <param name="heightDst"></param>
-        /// <param name="bitmap"></param>
-        /// <param name="xSrc"></param>
-        /// <param name="ySrc"></param>
-        /// <param name="widthSrc"></param>
-        /// <param name="heightSrc"></param>
-        /// <param name="opacity"></param>
+        /// <param name="xDst">The x-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="yDst">The y-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="widthDst">The width of the destination rectangle.</param>
+        /// <param name="heightDst">The height of the destination rectangle.</param>
+        /// <param name="bitmap">The source bitmap to draw.</param>
+        /// <param name="xSrc">The x-coordinate of the upper-left corner of the portion of the source bitmap to draw.</param>
+        /// <param name="ySrc">The y-coordinate of the upper-left corner of the portion of the source bitmap to draw.</param>
+        /// <param name="widthSrc">The width of the portion of the source bitmap to draw.</param>
+        /// <param name="heightSrc">The height of the portion of the source bitmap to draw.</param>
+        /// <param name="opacity">The opacity of the image to draw, where 0 is fully transparent and 256 is fully opaque.</param>
         public void StretchImage(int xDst, int yDst, int widthDst, int heightDst, Bitmap bitmap, int xSrc, int ySrc, int widthSrc, int heightSrc, ushort opacity)
         {
             VerifyAccess();
@@ -263,14 +262,14 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws an image repeatedly on the display, tiling it to fill the specified rectangle.
         /// </summary>
-        /// <param name="xDst"></param>
-        /// <param name="yDst"></param>
-        /// <param name="bitmap"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <param name="opacity"></param>
+        /// <param name="xDst">The x-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="yDst">The y-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="bitmap">The source bitmap to tile.</param>
+        /// <param name="width">The width of the destination rectangle.</param>
+        /// <param name="height">The height of the destination rectangle.</param>
+        /// <param name="opacity">The opacity of the image to draw, where 0 is fully transparent and 256 is fully opaque.</param>
         public void TileImage(int xDst, int yDst, Bitmap bitmap, int width, int height, ushort opacity)
         {
             VerifyAccess();
@@ -279,18 +278,18 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws a scalable nine-patch image on the display, scaling the middle section to fit the specified rectangle.
         /// </summary>
-        /// <param name="xDst"></param>
-        /// <param name="yDst"></param>
-        /// <param name="widthDst"></param>
-        /// <param name="heightDst"></param>
-        /// <param name="bitmap"></param>
-        /// <param name="leftBorder"></param>
-        /// <param name="topBorder"></param>
-        /// <param name="rightBorder"></param>
-        /// <param name="bottomBorder"></param>
-        /// <param name="opacity"></param>
+        /// <param name="xDst">The x-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="yDst">The y-coordinate of the upper-left corner of the destination rectangle.</param>
+        /// <param name="widthDst">The width of the destination rectangle.</param>
+        /// <param name="heightDst">The height of the destination rectangle.</param>
+        /// <param name="bitmap">The source bitmap to draw.</param>
+        /// <param name="leftBorder">The width of the left border.</param>
+        /// <param name="topBorder">The height of the top border.</param>
+        /// <param name="rightBorder">The width of the right border.</param>
+        /// <param name="bottomBorder">The height of the bottom border.</param>
+        /// <param name="opacity">The opacity of the image to draw, where 0 is fully transparent and 256 is fully opaque.</param>
         public void Scale9Image(int xDst, int yDst, int widthDst, int heightDst, Bitmap bitmap, int leftBorder, int topBorder, int rightBorder, int bottomBorder, ushort opacity)
         {
             VerifyAccess();
@@ -299,13 +298,13 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws a text string with the specified font and color at the specified position.
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="font"></param>
-        /// <param name="color"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="text">The text string to draw.</param>
+        /// <param name="font">The font used to draw the text.</param>
+        /// <param name="color">The color used to draw the text.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the text string.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the text string.</param>
         public void DrawText(string text, Font font, Color color, int x, int y)
         {
             VerifyAccess();
@@ -314,18 +313,18 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws a text string with the specified font, color, width, and height at the specified position.
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="font"></param>
-        /// <param name="color"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <param name="alignment"></param>
-        /// <param name="trimming"></param>
-        /// <returns></returns>
+        /// <param name="text">The text string to draw.</param>
+        /// <param name="font">The font used to draw the text.</param>
+        /// <param name="color">The color used to draw the text.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the text string.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the text string.</param>
+        /// <param name="width">The width of the text string.</param>
+        /// <param name="height">The height of the text string.</param>
+        /// <param name="alignment">The horizontal alignment of the text within the bounding rectangle.</param>
+        /// <param name="trimming">The text trimming style to be applied to the text string.</param>
+        /// <returns>True if the text string was drawn successfully; otherwise, false.</returns>
         public bool DrawText(ref string text, Font font, Color color, int x, int y, int width, int height,
                              TextAlignment alignment, TextTrimming trimming)
         {
@@ -367,12 +366,12 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Gets the clipping rectangle for the current context.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="x">The x-coordinate of the clipping rectangle.</param>
+        /// <param name="y">The y-coordinate of the clipping rectangle.</param>
+        /// <param name="width">The width of the clipping rectangle.</param>
+        /// <param name="height">The height of the clipping rectangle.</param>
         public void GetClippingRectangle(out int x, out int y, out int width, out int height)
         {
             if (_clippingRectangles.Count == 0)
@@ -393,12 +392,12 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Pushes a new clipping rectangle onto the stack.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="x">The x-coordinate of the clipping rectangle.</param>
+        /// <param name="y">The y-coordinate of the clipping rectangle.</param>
+        /// <param name="width">The width of the clipping rectangle.</param>
+        /// <param name="height">The height of the clipping rectangle.</param>
         public void PushClippingRectangle(int x, int y, int width, int height)
         {
             VerifyAccess();
@@ -433,7 +432,7 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Pops the top clipping rectangle from the stack.
         /// </summary>
         public void PopClippingRectangle()
         {
@@ -463,14 +462,14 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Draws a rectangle onto the bitmap using the specified brush and pen.
         /// </summary>
-        /// <param name="brush"></param>
-        /// <param name="pen"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="brush">The brush to use for filling the rectangle.</param>
+        /// <param name="pen">The pen to use for outlining the rectangle.</param>
+        /// <param name="x">The x-coordinate of the top-left corner of the rectangle.</param>
+        /// <param name="y">The y-coordinate of the top-left corner of the rectangle.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
         public void DrawRectangle(Brush brush, Pen pen, int x, int y, int width, int height)
         {
             VerifyAccess();
@@ -491,7 +490,7 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Gets the width of the bitmap.
         /// </summary>
         public int Width
         {
@@ -502,7 +501,7 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Gets the height of the bitmap.
         /// </summary>
         public int Height
         {
@@ -536,7 +535,7 @@ namespace nanoFramework.Presentation.Media
         private Stack _clippingRectangles = new Stack();
 
         /// <summary>
-        /// 
+        /// Disposes of the bitmap and frees up any resources used by the object.
         /// </summary>
         public void Dispose()
         {
@@ -545,15 +544,12 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Disposes of the bitmap and frees up any resources used by the object.
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing">True for disposing.</param>
         protected virtual void Dispose(bool disposing)
         {
             _bitmap = null;
         }
-
     }
 }
-
-

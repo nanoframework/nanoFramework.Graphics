@@ -11,33 +11,33 @@ using nanoFramework.UI;
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// 
+    /// A brush of a single, solid color.
     /// </summary>
     public sealed class SolidColorBrush : Brush
     {
         /// <summary>
-        /// 
+        /// Gets or sets the color of this brush.
         /// </summary>
         public Color Color;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="SolidColorBrush"/> class with the specified color.
         /// </summary>
-        /// <param name="color"></param>
+        /// <param name="color">The color of the brush.</param>
         public SolidColorBrush(Color color)
         {
             Color = color;
         }
 
         /// <summary>
-        /// 
+        /// Renders a rectangle with the specified dimensions and color.
         /// </summary>
-        /// <param name="bmp"></param>
-        /// <param name="pen"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="bmp">The bitmap on which to render the rectangle.</param>
+        /// <param name="pen">The pen used to outline the rectangle.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
         protected internal override void RenderRectangle(Bitmap bmp, Pen pen, int x, int y, int width, int height)
         {
             Color outlineColor = (pen != null) ? pen.Color : Color.Black;
@@ -48,14 +48,14 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// 
+        /// Renders an ellipse with the specified dimensions and color.
         /// </summary>
-        /// <param name="bmp"></param>
-        /// <param name="pen"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="xRadius"></param>
-        /// <param name="yRadius"></param>
+        /// <param name="bmp">The bitmap on which to render the ellipse.</param>
+        /// <param name="pen">The pen used to outline the ellipse.</param>
+        /// <param name="x">The x-coordinate of the center of the ellipse.</param>
+        /// <param name="y">The y-coordinate of the center of the ellipse.</param>
+        /// <param name="xRadius">The horizontal radius of the ellipse.</param>
+        /// <param name="yRadius">The vertical radius of the ellipse.</param>
         protected internal override void RenderEllipse(Bitmap bmp, Pen pen, int x, int y, int xRadius, int yRadius)
         {
             Color outlineColor = (pen != null) ? pen.Color : Color.Black;
@@ -65,7 +65,7 @@ namespace nanoFramework.Presentation.Media
                                       Color, 0, 0, Color, 0, 0, Opacity);
         }
 
-        class LineSegment
+        private class LineSegment
         {
             public int x1;
             public int y1;
@@ -102,12 +102,13 @@ namespace nanoFramework.Presentation.Media
         const int c_XValueMask = 0x3FFFFFFF;
 
         /// <summary>
+        /// Renders a polygon with the specified points and color.
         /// Basic algorithm uses scan lines to fill the polygon.
         /// No multiplication or division is needed, neither is floating point calculation.
         /// </summary>
-        /// <param name="bmp"></param>
-        /// <param name="outline"></param>
-        /// <param name="pts"></param>
+        /// <param name="bmp">The bitmap on which to render the polygon.</param>
+        /// <param name="outline">The pen used to outline the polygon.</param>
+        /// <param name="pts">The array of points that make up the polygon.</param>
         protected internal override void RenderPolygon(Bitmap bmp, Pen outline, int[] pts)
         {
             int n = pts.Length / 2; // This is number of points and number of lines (closed polygon).

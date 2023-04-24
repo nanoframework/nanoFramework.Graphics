@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) .NET Foundation and Contributors
 // Portions Copyright (c) Microsoft Corporation.  All rights reserved.
 // See LICENSE file in the project root for full license information.
@@ -7,23 +7,18 @@
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// Specifies the horizontal alignment of text.
+    /// Specifies how a brush is mapped to a shape or region.
     /// </summary>
-    public enum TextAlignment
+    public enum BrushMappingMode
     {
         /// <summary>
-        /// Text is aligned to the left.
+        /// The brush is mapped in absolute coordinates.
         /// </summary>
-        Left,
+        Absolute,
 
         /// <summary>
-        /// Text is centered.
+        /// The brush is mapped relative to the bounding box of the shape or region.
         /// </summary>
-        Center,
-
-        /// <summary>
-        /// Text is aligned to the right.
-        /// </summary>
-        Right,
+        RelativeToBoundingBox
     }
 }
