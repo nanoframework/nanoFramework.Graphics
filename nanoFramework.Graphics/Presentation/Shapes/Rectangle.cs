@@ -9,12 +9,12 @@ using System;
 namespace nanoFramework.Presentation.Shapes
 {
     /// <summary>
-    /// 
+    /// Represents a rectangle shape.
     /// </summary>
     public class Rectangle : Shape
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Rectangle class.
         /// </summary>
         public Rectangle()
         {
@@ -23,29 +23,29 @@ namespace nanoFramework.Presentation.Shapes
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Rectangle class with the specified width and height.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
         public Rectangle(int width, int height)
         {
-            if( width < 0 || height < 0)                
+            if (width < 0 || height < 0)
             {
                 throw new ArgumentException();
             }
-            
+
             Width = width;
             Height = height;
         }
 
         /// <summary>
-        /// 
+        /// Renders the Rectangle shape.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The drawing context to use for rendering.</param>
         public override void OnRender(Media.DrawingContext dc)
         {
             int offset = Stroke != null ? Stroke.Thickness / 2 : 0;
-            
+
             dc.DrawRectangle(Fill, Stroke, offset, offset, _renderWidth - 2 * offset, _renderHeight - 2 * offset);
         }
     }

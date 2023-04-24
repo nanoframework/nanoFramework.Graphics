@@ -15,6 +15,9 @@ namespace nanoFramework.Presentation.Media
     /// </summary>
     public sealed class SolidColorBrush : Brush
     {
+        const int c_YMinBit = 0x40000000;
+        const int c_XValueMask = 0x3FFFFFFF;
+
         /// <summary>
         /// Gets or sets the color of this brush.
         /// </summary>
@@ -97,9 +100,6 @@ namespace nanoFramework.Presentation.Media
 
             return a;
         }
-
-        const int c_YMinBit    = 0x40000000;
-        const int c_XValueMask = 0x3FFFFFFF;
 
         /// <summary>
         /// Renders a polygon with the specified points and color.

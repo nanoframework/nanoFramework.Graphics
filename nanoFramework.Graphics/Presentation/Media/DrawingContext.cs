@@ -17,6 +17,13 @@ namespace nanoFramework.Presentation.Media
     /// </summary>
     public class DrawingContext : DispatcherObject, IDisposable
     {
+        private Bitmap _bitmap;
+        private Stack _clippingRectangles = new Stack();
+
+        internal bool EmptyClipRect = false;     
+        internal int _x;
+        internal int _y;        
+
         /// <summary>
         /// Creates a drawing context for the specified bitmap.
         /// </summary>
@@ -526,13 +533,6 @@ namespace nanoFramework.Presentation.Media
             public int Width;
             public int Height;
         }
-
-        internal bool EmptyClipRect = false;
-
-        private Bitmap _bitmap;
-        internal int _x;
-        internal int _y;
-        private Stack _clippingRectangles = new Stack();
 
         /// <summary>
         /// Disposes of the bitmap and frees up any resources used by the object.

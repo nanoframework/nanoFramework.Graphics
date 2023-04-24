@@ -9,28 +9,30 @@ using System;
 namespace nanoFramework.Presentation.Shapes
 {
     /// <summary>
-    /// 
+    /// Represents a polygon shape.
     /// </summary>
     public class Polygon : Shape
     {
+        private int[] _pts;
+
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="Polygon"/> class.
         /// </summary>
         public Polygon()
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="Polygon"/> class with the specified points.
         /// </summary>
-        /// <param name="pts"></param>
+        /// <param name="pts">The points of the polygon.</param>
         public Polygon(int[] pts)
         {
             Points = pts;
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the points of the polygon.
         /// </summary>
         public int[] Points
         {
@@ -53,19 +55,15 @@ namespace nanoFramework.Presentation.Shapes
         }
 
         /// <summary>
-        /// 
+        /// Renders the polygon on the specified drawing context.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The drawing context.</param>
         public override void OnRender(Media.DrawingContext dc)
         {
             if (_pts != null)
             {
                 dc.DrawPolygon(Fill, Stroke, _pts);
             }
-        }
-
-        private int[] _pts;
+        }        
     }
 }
-
-
