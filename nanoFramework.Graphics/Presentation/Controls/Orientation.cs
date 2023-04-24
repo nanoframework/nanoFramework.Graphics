@@ -8,20 +8,18 @@ namespace nanoFramework.Presentation.Controls
 
 {
     /// <summary>
-    /// 
+    /// Enumerates the possible orientations for a user interface element.
     /// </summary>
     public enum Orientation
     {
         /// <summary>
-        /// 
+        /// Specifies a horizontal orientation for a user interface element.
         /// </summary>
         Horizontal,
 
         /// <summary>
-        /// 
+        /// Specifies a vertical orientation for a user interface element.
         /// </summary>
         Vertical
     }
 }
-
-

@@ -5,22 +5,21 @@
 //
 
 using nanoFramework.Presentation.Media;
-using nanoFramework;
+using nanoFramework.UI;
+using nanoFramework.UI.Input;
 using System;
 using System.Collections;
-using System.Diagnostics;
-using nanoFramework.UI.Input;
-using nanoFramework.UI;
 
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a flow of text, composed of one or more TextRuns, that can be displayed
+    /// in a UIElement container. Provides properties to control scrolling, alignment, and layout.
     /// </summary>
     public class TextFlow : UIElement
     {
         /// <summary>
-        /// 
+        /// Gets or sets the collection of TextRuns that make up this TextFlow.
         /// </summary>
         public TextRunCollection TextRuns;
 
@@ -76,7 +75,7 @@ namespace nanoFramework.Presentation.Controls
         internal ScrollingStyle _scrollingStyle = ScrollingStyle.LineByLine;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the TextFlow class.
         /// </summary>
         public TextFlow()
         {
@@ -84,7 +83,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the scrolling style of this TextFlow.
         /// </summary>
         public ScrollingStyle ScrollingStyle
         {
@@ -105,9 +104,8 @@ namespace nanoFramework.Presentation.Controls
                 _scrollingStyle = value;
             }
         }
-
         /// <summary>
-        /// 
+        /// Gets or sets the text alignment of this TextFlow.
         /// </summary>
         public TextAlignment TextAlignment
         {
@@ -126,12 +124,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the desired size of the TextFlow given available width and height.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width for the TextFlow.</param>
+        /// <param name="availableHeight">The available height for the TextFlow.</param>
+        /// <param name="desiredWidth">The desired width of the TextFlow.</param>
+        /// <param name="desiredHeight">The desired height of the TextFlow.</param>
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             desiredWidth = availableWidth;
@@ -231,7 +229,6 @@ namespace nanoFramework.Presentation.Controls
 
         // Given an available width, takes the TextRuns and arranges them into
         // separate lines, breaking where possible at whitespace.
-        //
         internal ArrayList SplitLines(int availableWidth)
         {
             //Debug.Assert(availableWidth > 0);
@@ -261,14 +258,12 @@ namespace nanoFramework.Presentation.Controls
                 else
                 {
                     // Add run to end of current line
-                    //
                     int runWidth, runHeight;
                     run.GetSize(out runWidth, out runHeight);
                     lineWidth += runWidth;
                     runsOnCurrentLine.Add(run);
 
                     // If the line length now extends beyond the available width, attempt to break the line
-                    //
                     if (lineWidth > availableWidth)
                     {
                         bool onlyRunOnCurrentLine = (runsOnCurrentLine.Count == 1);
@@ -281,7 +276,6 @@ namespace nanoFramework.Presentation.Controls
                             if (run.Break(runWidth - (lineWidth - availableWidth), out run1, out run2, onlyRunOnCurrentLine))
                             {
                                 // Break and put overflow on next line
-                                //
                                 if (run1 != null)
                                 {
                                     runsOnCurrentLine.Add(run1);
@@ -295,7 +289,6 @@ namespace nanoFramework.Presentation.Controls
                             else if (!onlyRunOnCurrentLine)
                             {
                                 // No break found - put it on its own line
-                                //
                                 remainingRuns.Insert(0, run);
                             }
                         }
@@ -318,7 +311,6 @@ namespace nanoFramework.Presentation.Controls
                 }
 
                 // If we're done with this line, add it to the list
-                //
                 if (newLine)
                 {
                     int lineHeight = 0;
@@ -361,9 +353,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Overrides the base class OnButtonDown method to handle button events.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The button event arguments.</param>
         protected override void OnButtonDown(ButtonEventArgs e)
         {
             if (e.Button == Button.VK_UP || e.Button == Button.VK_DOWN)
@@ -385,9 +377,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Overrides the base class OnRender method to render the text.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The drawing context.</param>
         public override void OnRender(Media.DrawingContext dc)
         {
             if (_lineCache == null || _lineCache.Count == 0)
@@ -402,7 +394,6 @@ namespace nanoFramework.Presentation.Controls
             GetRenderSize(out width, out height);
 
             // Draw each line of Text
-            //
             int lineNumber = _currentLine;
             while (lineNumber < nLines)
             {
@@ -449,7 +440,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the top line to display.
         /// </summary>
         public int TopLine
         {
@@ -470,7 +461,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets the number of lines in the text editor.
         /// </summary>
         public int LineCount
         {
@@ -481,5 +472,3 @@ namespace nanoFramework.Presentation.Controls
         }
     }
 }
-
-

@@ -7,11 +7,9 @@
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents the method that will handle the SelectionChanged event of a control.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="args">A SelectionChangedEventArgs that contains the event data.</param>
     public delegate void SelectionChangedEventHandler(object sender, SelectionChangedEventArgs args);
 }
-
-

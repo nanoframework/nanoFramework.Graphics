@@ -13,20 +13,21 @@ using nanoFramework.UI;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a control that provides a scrollable view of content in a container.
     /// </summary>
     public class ScrollViewer : ContentControl
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the ScrollViewer class.
         /// </summary>
         public ScrollViewer()
         {
             this.HorizontalAlignment = HorizontalAlignment.Left;
             this.VerticalAlignment = VerticalAlignment.Stretch;
         }
+
         /// <summary>
-        /// 
+        /// Occurs when the ScrollViewer's scrolling state has changed.
         /// </summary>
         public event ScrollChangedEventHandler ScrollChanged
         {
@@ -46,7 +47,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the horizontal offset of the ScrollViewer's content.
         /// </summary>
         public int HorizontalOffset
         {
@@ -77,7 +78,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the vertical offset of the ScrollViewer's content.
         /// </summary>
         public int VerticalOffset
         {
@@ -108,7 +109,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets the extent height of the ScrollViewer's content.
         /// </summary>
         public int ExtentHeight
         {
@@ -119,7 +120,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets the extent width of the ScrollViewer's content.
         /// </summary>
         public int ExtentWidth
         {
@@ -130,7 +131,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the width of each line in the ScrollViewer's content.
         /// </summary>
         public int LineWidth
         {
@@ -153,7 +154,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the height of each line in the ScrollViewer's content.
         /// </summary>
         public int LineHeight
         {
@@ -176,7 +177,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the style used for scrolling in the ScrollViewer.
         /// </summary>
         public ScrollingStyle ScrollingStyle
         {
@@ -199,12 +200,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the size required for the ScrollViewer and its content.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width for the ScrollViewer.</param>
+        /// <param name="availableHeight">The available height for the ScrollViewer.</param>
+        /// <param name="desiredWidth">The desired width of the ScrollViewer.</param>
+        /// <param name="desiredHeight">The desired height of the ScrollViewer.</param>
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             UIElement child = this.Child;
@@ -223,10 +224,10 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Arranges the ScrollViewer and its content.
         /// </summary>
-        /// <param name="arrangeWidth"></param>
-        /// <param name="arrangeHeight"></param>
+        /// <param name="arrangeWidth">The arranged width of the ScrollViewer.</param>
+        /// <param name="arrangeHeight">The arranged height of the ScrollViewer.</param>
         protected override void ArrangeOverride(int arrangeWidth, int arrangeHeight)
         {
             UIElement child = this.Child;
@@ -256,7 +257,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls down by one line in the ScrollViewer.
         /// </summary>
         public void LineDown()
         {
@@ -264,7 +265,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the content to the left by a single line width.
         /// </summary>
         public void LineLeft()
         {
@@ -272,7 +273,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the content to the right by a single line width.
         /// </summary>
         public void LineRight()
         {
@@ -280,7 +281,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the content to the right by a single line width.
         /// </summary>
         public void LineUp()
         {
@@ -288,7 +289,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the content down by the height of the viewport.
         /// </summary>
         public void PageDown()
         {
@@ -296,7 +297,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the content to the left by the width of the viewport.
         /// </summary>
         public void PageLeft()
         {
@@ -304,7 +305,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the content to the right by the width of the viewport.
         /// </summary>
         public void PageRight()
         {
@@ -312,7 +313,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Scrolls the content up by the height of the viewport.
         /// </summary>
         public void PageUp()
         {
@@ -333,9 +334,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Handles button down events and scrolls the content accordingly.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The button event arguments.</param>
         protected override void OnButtonDown(ButtonEventArgs e)
         {
             switch (e.Button)
@@ -379,5 +380,3 @@ namespace nanoFramework.Presentation.Controls
         private ScrollChangedEventHandler _scrollChanged;
     }
 }
-
-

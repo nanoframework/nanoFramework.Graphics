@@ -12,12 +12,12 @@ using System.Drawing;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a text element that can be displayed on a user interface.
     /// </summary>
     public class Text : UIElement
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="Text"/> class.
         /// </summary>
         public Text()
             : this(null, null)
@@ -25,19 +25,19 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="Text"/> class with the specified content.
         /// </summary>
-        /// <param name="content"></param>
+        /// <param name="content">The text content to display.</param>
         public Text(string content)
             : this(null, content)
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="Text"/> class with the specified font and content.
         /// </summary>
-        /// <param name="font"></param>
-        /// <param name="content"></param>
+        /// <param name="font">The font to use when rendering the text.</param>
+        /// <param name="content">The text content to display.</param>
         public Text(Font font, string content)
         {
             _text = content;
@@ -46,7 +46,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the font used to render the text.
         /// </summary>
         public Font Font
         {
@@ -65,7 +65,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the font used to render the text.
         /// </summary>
         public Color ForeColor
         {
@@ -84,7 +84,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the text content to display.
         /// </summary>
         public string TextContent
         {
@@ -106,7 +106,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the text trimming behavior when the text does not fit within the available space.
         /// </summary>
         public TextTrimming Trimming
         {
@@ -125,7 +125,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the horizontal alignment of the text.
         /// </summary>
         public TextAlignment TextAlignment
         {
@@ -144,7 +144,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets the height of each line of text, including any additional spacing.
         /// </summary>
         public int LineHeight
         {
@@ -156,7 +156,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value indicating whether the text should be wrapped to the next line when it does not fit within the available space.
         /// </summary>
         public bool TextWrap
         {
@@ -175,12 +175,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the desired size of the control based on the available size and the text to display.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width for the control.</param>
+        /// <param name="availableHeight">The available height for the control.</param>
+        /// <param name="desiredWidth">The desired width of the control.</param>
+        /// <param name="desiredHeight">The desired height of the control.</param>
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             if (_font != null && _text != null && _text.Length > 0)
@@ -224,9 +224,10 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Renders the control on the specified drawing context.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The drawing context to use for rendering.</param>
+
         public override void OnRender(DrawingContext dc)
         {
             if (_font != null && _text != null)
@@ -247,13 +248,13 @@ namespace nanoFramework.Presentation.Controls
 #endif
 
         /// <summary>
-        /// 
+        /// The font.
         /// </summary>
         protected Font _font;
         private Color _foreColor;
 
         /// <summary>
-        /// 
+        /// The text.
         /// </summary>
         protected string _text;
         private bool _textWrap;
@@ -261,5 +262,3 @@ namespace nanoFramework.Presentation.Controls
         private TextAlignment _alignment = TextAlignment.Left;
     }
 }
-
-

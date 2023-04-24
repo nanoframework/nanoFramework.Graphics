@@ -10,25 +10,25 @@ using nanoFramework.Runtime.Events;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Provides data for the SelectionChanged event of a control.
     /// </summary>
     public class SelectionChangedEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        /// Provides data for the SelectionChanged event of a control.
         /// </summary>
         public readonly int PreviousSelectedIndex;
 
         /// <summary>
-        /// 
+        /// Gets the index of the newly selected item.
         /// </summary>
         public readonly int SelectedIndex;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the SelectionChangedEventArgs class with the specified previous and new selected indexes.
         /// </summary>
-        /// <param name="previousIndex"></param>
-        /// <param name="newIndex"></param>
+        /// <param name="previousIndex">The previous selected index.</param>
+        /// <param name="newIndex">The new selected index.</param>
         public SelectionChangedEventArgs(int previousIndex, int newIndex)
         {
             PreviousSelectedIndex = previousIndex;
@@ -36,5 +36,3 @@ namespace nanoFramework.Presentation.Controls
         }
     }
 }
-
-

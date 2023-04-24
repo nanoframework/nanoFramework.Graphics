@@ -9,12 +9,12 @@ using nanoFramework.UI;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Implements a layout panel that arranges child elements into a single line that can be oriented horizontally or vertically.
     /// </summary>
     public class StackPanel : Panel
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the StackPanel class with vertical orientation.
         /// </summary>
         public StackPanel()
             : this(Orientation.Vertical)
@@ -22,16 +22,16 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the StackPanel class with the specified orientation.
         /// </summary>
-        /// <param name="orientation"></param>
+        /// <param name="orientation">The orientation to arrange content in.</param>
         public StackPanel(Orientation orientation)
         {
             this.Orientation = orientation;
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets a value that indicates the dimension by which child elements are stacked.
         /// </summary>
         public Orientation Orientation
         {
@@ -50,12 +50,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the child elements of a StackPanel in anticipation of arranging them during the ArrangeOverride pass.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width that a parent element can allocate a child element.</param>
+        /// <param name="availableHeight">The available height that a parent element can allocate a child element.</param>
+        /// <param name="desiredWidth">The desired width of the StackPanel.</param>
+        /// <param name="desiredHeight">The desired height of the StackPanel.</param>
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             desiredWidth = 0;
@@ -64,7 +64,6 @@ namespace nanoFramework.Presentation.Controls
             bool fHorizontal = (Orientation == Orientation.Horizontal);
 
             //  Iterate through children.
-            //
             int nChildren = Children.Count;
             for (int i = 0; i < nChildren; i++)
             {
@@ -75,7 +74,6 @@ namespace nanoFramework.Presentation.Controls
                     // Measure the child.
                     // - according to Avalon specs, the stack panel should not constrain
                     //   a child's measure in the direction of the stack
-                    //
                     if (fHorizontal)
                     {
                         child.Measure(Media.Constants.MaxExtent, availableHeight);
@@ -86,7 +84,6 @@ namespace nanoFramework.Presentation.Controls
                     }
 
                     // Accumulate child size.
-                    //
                     int childDesiredWidth, childDesiredHeight;
                     child.GetDesiredSize(out childDesiredWidth, out childDesiredHeight);
 
@@ -105,10 +102,10 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Positions child elements and determines a size for a StackPanel.
         /// </summary>
-        /// <param name="arrangeWidth"></param>
-        /// <param name="arrangeHeight"></param>
+        /// <param name="arrangeWidth">The final width of the StackPanel.</param>
+        /// <param name="arrangeHeight">The final height of the StackPanel.</param>
         protected override void ArrangeOverride(int arrangeWidth, int arrangeHeight)
         {
             bool fHorizontal = (Orientation == Orientation.Horizontal);
@@ -144,5 +141,3 @@ namespace nanoFramework.Presentation.Controls
         private Orientation _orientation;
     }
 }
-
-

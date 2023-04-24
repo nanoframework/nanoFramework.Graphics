@@ -13,31 +13,37 @@ using System.Drawing;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a text run with a specific font and color.
     /// </summary>
     public class TextRun
     {
         /// <summary>
-        /// 
+        /// Gets the text of the current text run.
         /// </summary>
         public readonly string Text;
+
         /// <summary>
-        /// 
+        /// Gets the font of the current text run.
         /// </summary>
         public readonly Font Font;
+
         /// <summary>
-        /// 
+        /// Gets the foreground color of the current text run.
         /// </summary>
         public readonly Color ForeColor;
 
+        /// <summary>
+        /// Gets a value indicating whether the text run is at the end of a line.
+        /// </summary>
         internal bool IsEndOfLine;
 
         /// <summary>
-        /// 
+        /// Gets or sets the width.
         /// </summary>
         protected int _width;
+
         /// <summary>
-        /// 
+        /// Gets or sets the height.
         /// </summary>
         protected int _height;
 
@@ -46,11 +52,11 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the TextRun class with the specified text, font, and foreground color.
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="font"></param>
-        /// <param name="foreColor"></param>
+        /// <param name="text">The text of the text run.</param>
+        /// <param name="font">The font of the text run.</param>
+        /// <param name="foreColor">The foreground color of the text run.</param>
         public TextRun(string text, Font font, Color foreColor)
         {
             if (text == null || text.Length == 0)
@@ -69,7 +75,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets a text run that represents the end of a line.
         /// </summary>
         public static TextRun EndOfLine
         {
@@ -95,6 +101,14 @@ namespace nanoFramework.Presentation.Controls
             return index;
         }
 
+        /// <summary>
+        /// Splits the current text run at the specified available width and returns the resulting text runs.
+        /// </summary>
+        /// <param name="availableWidth">The available width at which to split the text run.</param>
+        /// <param name="run1">When this method returns, contains the first part of the split text run if the split was successful; otherwise, null.</param>
+        /// <param name="run2">When this method returns, contains the second part of the split text run if the split was successful; otherwise, null.</param>
+        /// <param name="emergencyBreak">A value indicating whether an emergency break should be performed if a regular break cannot be found.</param>
+        /// <returns>true if the text run was successfully split; otherwise, false.</returns>
         internal bool Break(int availableWidth, out TextRun run1, out TextRun run2, bool emergencyBreak)
         {
             //Debug.Assert(availableWidth > 0);
@@ -175,10 +189,10 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets the size of the current text run.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="width">When this method returns, contains the width of the text run.</param>
+        /// <param name="height">When this method returns, contains the height of the text run.</param>
         public void GetSize(out int width, out int height)
         {
             if (_width == 0)
@@ -191,5 +205,3 @@ namespace nanoFramework.Presentation.Controls
         }
     }
 }
-
-

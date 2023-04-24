@@ -6,12 +6,10 @@
 
 namespace nanoFramework.Presentation.Controls
 {
-/// <summary>
-/// 
-/// </summary>
-/// <param name="sender"></param>
-/// <param name="args"></param>
+    /// <summary>
+    /// Represents the method that will handle the ScrollChanged event of a ScrollViewer.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="args">A ScrollChangedEventArgs object containing the event data.</param>
     public delegate void ScrollChangedEventHandler(object sender, ScrollChangedEventArgs args);
 }
-
-
