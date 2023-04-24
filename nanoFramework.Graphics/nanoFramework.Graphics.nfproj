@@ -198,7 +198,7 @@
     <Compile Include="Presentation\HorizontalAlignment.cs" />
     <Compile Include="Presentation\LayoutManager.cs" />
     <Compile Include="Presentation\Media\Brush.cs" />
-    <Compile Include="Presentation\Media\Color.cs" />
+    <Compile Include="Presentation\Media\BrushMappingMode.cs" />
     <Compile Include="Presentation\Media\Constants.cs" />
     <Compile Include="Presentation\Media\DrawingContext.cs" />
     <Compile Include="Presentation\Media\ImageBrush.cs" />
@@ -210,6 +210,7 @@
     <Compile Include="Presentation\Media\TextAlignment.cs" />
     <Compile Include="Presentation\Media\TextTrimming.cs" />
     <Compile Include="Presentation\PresentationSource.cs" />
+    <Compile Include="Presentation\Shapes\Direction.cs" />
     <Compile Include="Presentation\Shapes\Ellipse.cs" />
     <Compile Include="Presentation\Shapes\Line.cs" />
     <Compile Include="Presentation\Shapes\Polygon.cs" />

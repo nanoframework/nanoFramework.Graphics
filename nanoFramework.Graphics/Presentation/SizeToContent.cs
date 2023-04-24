@@ -34,5 +34,3 @@ namespace nanoFramework.Presentation
         // Please update IsValidSizeToContent if there are name changes.
     }
 }
-
-

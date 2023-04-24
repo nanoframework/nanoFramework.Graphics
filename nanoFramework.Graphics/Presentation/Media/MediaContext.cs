@@ -17,6 +17,24 @@ namespace nanoFramework.Presentation.Media
     /// </summary>
     internal class MediaContext : DispatcherObject, IDisposable
     {
+        /// <summary>
+        /// Message delegate.
+        /// </summary>
+        private DispatcherOperation _currentRenderOp;
+        private DispatcherOperationCallback _renderMessage;
+
+        /// <summary>
+        /// Indicates that we are in the middle of processing a render message.
+        /// </summary>
+        private bool _isRendering;
+
+        private ArrayList _invokeOnRenderCallbacks;
+
+        private UIElement _target;
+        private Bitmap _screen;
+
+        private class GlobalLock { }
+
         // <summary>
         /// Initializes a new instance of the MediaContext class.
         /// </summary>
@@ -252,24 +270,6 @@ namespace nanoFramework.Presentation.Media
 
             return null;
         }
-
-        /// <summary>
-        /// Message delegate.
-        /// </summary>
-        private DispatcherOperation _currentRenderOp;
-        private DispatcherOperationCallback _renderMessage;
-
-        /// <summary>
-        /// Indicates that we are in the middle of processing a render message.
-        /// </summary>
-        private bool _isRendering;
-
-        private ArrayList _invokeOnRenderCallbacks;
-
-        private UIElement _target;
-        private Bitmap _screen;
-
-        private class GlobalLock { }
 
         /// <summary>
         /// Disposes of the resources used by the MediaContext object.

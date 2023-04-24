@@ -17,12 +17,67 @@ using static nanoFramework.UI.Temporary;
 namespace nanoFramework.Presentation
 {
     /// <summary>
-    /// 
+    /// Represents a base class for all UI elements.
     /// </summary>
     public abstract class UIElement : DispatcherObject
     {
+        internal const int MAX_ELEMENTS_IN_ROUTE = 256;
+
+        private int _marginLeft;
+        private int _marginTop;
+        private int _marginRight;
+        private int _marginBottom;
+        private Visibility _visibility;
+
+        // Routed Event Handling
+        private static Hashtable _classEventHandlersStore;
+        private Hashtable _instanceEventHandlersStore;
+
+        // Regular Events
+        private PropertyChangedEventHandler _isEnabledChanged;
+        private PropertyChangedEventHandler _isVisibleChanged;
+
         /// <summary>
-        /// 
+        /// Gets or sets the horizontal alignment of the element.
+        /// </summary>
+        protected HorizontalAlignment _horizontalAlignment;
+
+        /// <summary>
+        /// Gets or sets the vertical alignment of the element.
+        /// </summary>
+        protected VerticalAlignment _verticalAlignment;
+
+        internal Pair _requestedSize;            // Used when Width/Height properties are set
+        internal Pair _anchorInfo;               // Used if the parent is a Canvas
+
+        // Cached layout information
+        //
+        internal int _finalX;
+        internal int _finalY;
+        internal int _finalWidth;
+        internal int _finalHeight;
+
+        internal int _offsetX;
+        internal int _offsetY;
+        internal int _renderWidth;
+        internal int _renderHeight;
+
+        internal int _previousAvailableWidth;
+        internal int _previousAvailableHeight;
+
+        private int _desiredWidth;
+        private int _desiredHeight;
+
+        internal int _unclippedWidth;
+        internal int _unclippedHeight;
+
+        internal UIElement _parent;
+        internal UIElementCollection _logicalChildren;
+
+        internal Flags _flags;
+
+        /// <summary>
+        /// Initializes a new instance of the UIElement class.
         /// </summary>
         protected UIElement()
         {
@@ -77,19 +132,19 @@ namespace nanoFramework.Presentation
 
                 // buttons
                 AddRoutedEventHandler(_classEventHandlersStore, Buttons.PreviewButtonDownEvent, new RoutedEventHandler(UIElement.OnPreviewButtonDownThunk), false);
-                AddRoutedEventHandler(_classEventHandlersStore, Buttons.ButtonDownEvent       , new RoutedEventHandler(UIElement.OnButtonDownThunk)       , false);
-                AddRoutedEventHandler(_classEventHandlersStore, Buttons.PreviewButtonUpEvent  , new RoutedEventHandler(UIElement.OnPreviewButtonUpThunk)  , false);
-                AddRoutedEventHandler(_classEventHandlersStore, Buttons.ButtonUpEvent         , new RoutedEventHandler(UIElement.OnButtonUpThunk)         , false);
+                AddRoutedEventHandler(_classEventHandlersStore, Buttons.ButtonDownEvent, new RoutedEventHandler(UIElement.OnButtonDownThunk), false);
+                AddRoutedEventHandler(_classEventHandlersStore, Buttons.PreviewButtonUpEvent, new RoutedEventHandler(UIElement.OnPreviewButtonUpThunk), false);
+                AddRoutedEventHandler(_classEventHandlersStore, Buttons.ButtonUpEvent, new RoutedEventHandler(UIElement.OnButtonUpThunk), false);
 
                 // focus
-                AddRoutedEventHandler(_classEventHandlersStore, Buttons.GotFocusEvent         , new RoutedEventHandler(UIElement.OnGotFocusThunk)          , true);
-                AddRoutedEventHandler(_classEventHandlersStore, Buttons.LostFocusEvent        , new RoutedEventHandler(UIElement.OnLostFocusThunk)         , true);
+                AddRoutedEventHandler(_classEventHandlersStore, Buttons.GotFocusEvent, new RoutedEventHandler(UIElement.OnGotFocusThunk), true);
+                AddRoutedEventHandler(_classEventHandlersStore, Buttons.LostFocusEvent, new RoutedEventHandler(UIElement.OnLostFocusThunk), true);
 
-                AddRoutedEventHandler(_classEventHandlersStore, TouchEvents.TouchDownEvent    , new RoutedEventHandler(UIElement.OnTouchDownThunk)         , false);
-                AddRoutedEventHandler(_classEventHandlersStore, TouchEvents.TouchUpEvent      , new RoutedEventHandler(UIElement.OnTouchUpThunk)           , false);
-                AddRoutedEventHandler(_classEventHandlersStore, TouchEvents.TouchMoveEvent    , new RoutedEventHandler(UIElement.OnTouchMoveThunk)         , false);
+                AddRoutedEventHandler(_classEventHandlersStore, TouchEvents.TouchDownEvent, new RoutedEventHandler(UIElement.OnTouchDownThunk), false);
+                AddRoutedEventHandler(_classEventHandlersStore, TouchEvents.TouchUpEvent, new RoutedEventHandler(UIElement.OnTouchUpThunk), false);
+                AddRoutedEventHandler(_classEventHandlersStore, TouchEvents.TouchMoveEvent, new RoutedEventHandler(UIElement.OnTouchMoveThunk), false);
 
-                AddRoutedEventHandler(_classEventHandlersStore, GenericEvents.GenericStandardEvent, new RoutedEventHandler(UIElement.OnGenericEventThunk)  , true);
+                AddRoutedEventHandler(_classEventHandlersStore, GenericEvents.GenericStandardEvent, new RoutedEventHandler(UIElement.OnGenericEventThunk), true);
 
             }
         }
@@ -115,9 +170,9 @@ namespace nanoFramework.Presentation
         private static void OnGenericEventThunk(object sender, RoutedEventArgs e) { ((UIElement)sender).OnGenericEvent((GenericEventArgs)e); }
 
         /// <summary>
-        /// 
+        /// Raises the GenericEvent event.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">Provides data for the GenericEvent event.</param>
         protected virtual void OnGenericEvent(GenericEventArgs e)
         {
             GenericEventEx genericEvent = e.InternalEvent;
@@ -171,9 +226,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Occurs when a touch event is detected on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The TouchEventArgs instance containing the event data.</param>
         protected virtual void OnTouchDown(TouchEventArgs e)
         {
             if (TouchDown != null)
@@ -183,9 +238,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Occurs when a touch event is completed on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The TouchEventArgs instance containing the event data.</param>
         protected virtual void OnTouchUp(TouchEventArgs e)
         {
             if (TouchUp != null)
@@ -194,10 +249,10 @@ namespace nanoFramework.Presentation
             }
         }
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="e"></param>
+        /// <summary>
+        /// Occurs when the position of a touch event changes on the control.
+        /// </summary>
+        /// <param name="e">The TouchEventArgs instance containing the event data.</param>
         protected virtual void OnTouchMove(TouchEventArgs e)
         {
             if (TouchMove != null)
@@ -207,9 +262,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Occurs when a touch gesture is started on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The TouchGestureEventArgs instance containing the event data.
         protected virtual void OnTouchGestureStarted(TouchGestureEventArgs e)
         {
             if (TouchGestureStart != null)
@@ -219,9 +274,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Occurs when a touch gesture is started on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The TouchGestureEventArgs instance containing the event data.
         protected virtual void OnTouchGestureChanged(TouchGestureEventArgs e)
         {
             if (TouchGestureChanged != null)
@@ -231,9 +286,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Occurs when a touch gesture on the control is completed.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The TouchGestureEventArgs instance containing the event data.</param>
         protected virtual void OnTouchGestureEnded(TouchGestureEventArgs e)
         {
             if (TouchGestureEnd != null)
@@ -243,76 +298,78 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Occurs when a button press is previewed on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The ButtonEventArgs instance containing the event data.</param>
         protected virtual void OnPreviewButtonDown(ButtonEventArgs e) { }
 
         /// <summary>
-        /// 
+        /// Occurs when a button is pressed on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The ButtonEventArgs instance containing the event data.</param>
         protected virtual void OnButtonDown(ButtonEventArgs e) { }
 
         /// <summary>
-        /// 
+        /// Occurs when a button press is previewed on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The ButtonEventArgs instance containing the event data.</param>
         protected virtual void OnPreviewButtonUp(ButtonEventArgs e) { }
 
         /// <summary>
-        /// 
+        /// Occurs when a button is released on the control.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The ButtonEventArgs instance containing the event data.</param>
         protected virtual void OnButtonUp(ButtonEventArgs e) { }
 
         /// <summary>
-        /// 
+        /// Occurs when the control receives focus.
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">The FocusChangedEventArgs instance containing the event data.</param>
         protected virtual void OnGotFocus(FocusChangedEventArgs e) { }
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="e"></param>
+        /// <summary>
+        /// Occurs when the control loses focus.
+        /// </summary>
+        /// <param name="e">The FocusChangedEventArgs instance containing the event data.</param>
         protected virtual void OnLostFocus(FocusChangedEventArgs e) { }
 
         #endregion Class Handlers
 
         /// <summary>
-        /// 
+        /// Occurs when a touch-down event occurs on this element.
         /// </summary>
         public event TouchEventHandler TouchDown;
 
         /// <summary>
-        /// 
+        /// Occurs when a touch-up event occurs on this element.
         /// </summary>
         public event TouchEventHandler TouchUp;
 
         /// <summary>
-        /// 
+        /// Occurs when a touch-move event occurs on this element.
         /// </summary>
         public event TouchEventHandler TouchMove;
 
         /// <summary>
-        /// 
+        /// Occurs when a touch gesture-start event occurs on this element.
         /// </summary>
         public event TouchGestureEventHandler TouchGestureStart;
+
         /// <summary>
-        /// 
+        /// Occurs when a touch gesture-changed event occurs on this element.
         /// </summary>
         public event TouchGestureEventHandler TouchGestureChanged;
+
         /// <summary>
-        /// 
+        /// Occurs when a touch gesture-end event occurs on this element.
         /// </summary>
         public event TouchGestureEventHandler TouchGestureEnd;
 
         /// <summary>
-        /// 
+        /// Gets the desired size of this element.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="width">When this method returns, contains the desired width of this element.</param>
+        /// <param name="height">When this method returns, contains the desired height of this element.</param>
         public void GetDesiredSize(out int width, out int height)
         {
             if (this.Visibility == Visibility.Collapsed)
@@ -328,12 +385,12 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the margin thickness of this element.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="right"></param>
-        /// <param name="bottom"></param>
+        /// <param name="left">When this method returns, contains the left margin thickness of this element.</param>
+        /// <param name="top">When this method returns, contains the top margin thickness of this element.</param>
+        /// <param name="right">When this method returns, contains the right margin thickness of this element.</param>
+        /// <param name="bottom">When this method returns, contains the bottom margin thickness of this element.</param>
         public void GetMargin(out int left, out int top, out int right, out int bottom)
         {
             left = _marginLeft;
@@ -343,9 +400,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Sets the margin thickness for all four sides of this element.
         /// </summary>
-        /// <param name="length"></param>
+        /// <param name="length">The thickness to set for all four sides of this element.</param>
         public void SetMargin(int length)
         {
             VerifyAccess();
@@ -354,12 +411,12 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Sets the margin thickness for each side of this element.
         /// </summary>
-        /// <param name="left"></param>
-        /// <param name="top"></param>
-        /// <param name="right"></param>
-        /// <param name="bottom"></param>
+        /// <param name="left">The thickness to set for the left side of this element.</param>
+        /// <param name="top">The thickness to set for the top side of this element.</param>
+        /// <param name="right">The thickness to set for the right side of this element.</param>
+        /// <param name="bottom">The thickness to set for the bottom side of this element.</param>
         public void SetMargin(int left, int top, int right, int bottom)
         {
             VerifyAccess();
@@ -372,7 +429,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the actual width of the UIElement.
         /// </summary>
         public int ActualWidth
         {
@@ -383,7 +440,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the actual height of the UIElement.
         /// </summary>
         public int ActualHeight
         {
@@ -394,7 +451,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the height of the UIElement.
         /// </summary>
         public int Height
         {
@@ -414,8 +471,8 @@ namespace nanoFramework.Presentation
             set
             {
                 VerifyAccess();
-                
-                if(value < 0) throw new ArgumentException();
+
+                if (value < 0) throw new ArgumentException();
 
                 if (_requestedSize == null)
                 {
@@ -429,7 +486,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the width of the UIElement.
         /// </summary>
         public int Width
         {
@@ -450,9 +507,9 @@ namespace nanoFramework.Presentation
             {
                 VerifyAccess();
 
-                if(value < 0) throw new ArgumentException();
+                if (value < 0) throw new ArgumentException();
 
-                if (_requestedSize == null) 
+                if (_requestedSize == null)
                 {
                     _requestedSize = new Pair();
                 }
@@ -490,10 +547,10 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the X and Y offset of the UIElement's layout.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="x">The X offset of the UIElement's layout.</param>
+        /// <param name="y">The Y offset of the UIElement's layout.</param>
         public void GetLayoutOffset(out int x, out int y)
         {
             x = this._offsetX;
@@ -501,10 +558,10 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the width and height of the UIElement's rendered content.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="width">The width of the UIElement's rendered content.</param>
+        /// <param name="height">The height of the UIElement's rendered content.</param>
         public void GetRenderSize(out int width, out int height)
         {
             width = this._renderWidth;
@@ -512,7 +569,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the collection of child elements of the UIElement.
         /// </summary>
         protected UIElementCollection LogicalChildren
         {
@@ -530,8 +587,11 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// OnChildrenChanged is called when the UIElementCollection of the UIElement is edited.
+        /// Called when the UIElementCollection of the UIElement is edited.
         /// </summary>
+        /// <param name="added">The UIElement that was added to the collection.</param>
+        /// <param name="removed">The UIElement that was removed from the collection.</param>
+        /// <param name="indexAffected">The index at which the collection was edited.</param>
         protected internal virtual void OnChildrenChanged(
             UIElement added,
             UIElement removed,
@@ -567,6 +627,16 @@ namespace nanoFramework.Presentation
             }
         }
 
+        /// <summary>
+        /// Computes the alignment offset given the clientWidth, clientHeight,
+        /// arrangeWidth, arrangeHeight, horizontal alignment, and vertical alignment.
+        /// </summary>
+        /// <param name="clientWidth">The client width.</param>
+        /// <param name="clientHeight">The client height.</param>
+        /// <param name="arrangeWidth">The arrange width.</param>
+        /// <param name="arrangeHeight">The arrange height.</param>
+        /// <param name="dx">The horizontal offset.</param>
+        /// <param name="dy">The vertical offset.</param>
         private void ComputeAlignmentOffset(int clientWidth, int clientHeight,
                                             int arrangeWidth, int arrangeHeight,
                                             out int dx, out int dy)
@@ -622,6 +692,7 @@ namespace nanoFramework.Presentation
         /// <summary>
         /// Recursively propagates IsLayoutSuspended flag down to the whole v's sub tree.
         /// </summary>
+        /// <param name="v">The UI element.</param>
         internal static void PropagateSuspendLayout(UIElement v)
         {
             if ((v._flags & Flags.IsLayoutSuspended) == 0)
@@ -1204,7 +1275,6 @@ namespace nanoFramework.Presentation
         /// into the list last wins. This is because we don't have explicit z-ordering
         /// right now.
         /// </summary>
-
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
@@ -1244,10 +1314,10 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Retrieves the unclipped size of the UIElement.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="width">Output parameter for the unclipped width.</param>
+        /// <param name="height">Output parameter for the unclipped height.</param>
         public void GetUnclippedSize(out int width, out int height)
         {
             width = _unclippedWidth;
@@ -1255,22 +1325,22 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Determines whether the point (x, y) is contained within the UIElement.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
+        /// <param name="x">The x-coordinate of the point.</param>
+        /// <param name="y">The y-coordinate of the point.</param>
+        /// <returns>True if the point is contained within the UIElement; otherwise, false.</returns>
         public bool ContainsPoint(int x, int y)
         {
             return (x >= _offsetX && x < (_offsetX + _renderWidth) && y >= _offsetY && y < (_offsetY + _renderHeight));
         }
 
         /// <summary>
-        /// 
+        /// Retrieves the UIElement that is the target of a pointer event at the given point (x, y).
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
+        /// <param name="x">The x-coordinate of the pointer event.</param>
+        /// <param name="y">The y-coordinate of the pointer event.</param>
+        /// <returns>The UIElement that is the target of the pointer event; otherwise, null.</returns>
         public UIElement GetPointerTarget(int x, int y)
         {
             UIElement target = null;
@@ -1321,10 +1391,10 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Translates a point from client coordinates to screen coordinates.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="x">The x-coordinate of the point to be translated.</param>
+        /// <param name="y">The y-coordinate of the point to be translated.</param>
         public void PointToClient(ref int x, ref int y)
         {
             UIElement client = this;
@@ -1339,6 +1409,10 @@ namespace nanoFramework.Presentation
         }
 
         // This is needed to prevent dirty elements from drawing and crashing while doing so.
+        /// <summary>
+        /// Determines whether the UIElement is renderable. A UIElement is renderable if it has been measured and arranged and its visibility is not set to collapsed or hidden.
+        /// </summary>
+        /// <returns>True if the UIElement is renderable; otherwise, false.</returns>
         private bool IsRenderable()
         {
             // VerifyAccess(); - we're only called by Arrange() which already did verification
@@ -1406,7 +1480,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the parent UIElement of this UIElement.
         /// </summary>
         public UIElement Parent
         {
@@ -1417,7 +1491,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets the root UIElement of this UIElement.
         /// </summary>
         public UIElement RootUIElement
         {
@@ -1448,7 +1522,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the horizontal alignment of the element.
         /// </summary>
         public HorizontalAlignment HorizontalAlignment
         {
@@ -1467,7 +1541,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the vertical alignment of the element.
         /// </summary>
         public VerticalAlignment VerticalAlignment
         {
@@ -1504,15 +1578,15 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Renders the element using the specified DrawingContext.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The drawing context.</param>
         public virtual void OnRender(DrawingContext dc)
         {
         }
 
         /// <summary>
-        ///     Visibility accessor
+        /// Gets or sets the visibility of the element.
         /// </summary>
         public Visibility Visibility
         {
@@ -1598,7 +1672,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        ///     A property indicating if this element is Visible or not.
+        /// Gets a value indicating whether the element is currently visible.
         /// </summary>
         public bool IsVisible
         {
@@ -1609,7 +1683,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Occurs when the value of the IsVisible property changes.
         /// </summary>
         public event PropertyChangedEventHandler IsVisibleChanged
         {
@@ -1629,7 +1703,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        ///     Fetches the value of the IsEnabled property
+        /// Gets or sets a value indicating whether the element is enabled.
         /// </summary>
         public bool IsEnabled
         {
@@ -1676,7 +1750,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Event raised when the value of the IsEnabled property changes.
         /// </summary>
         public event PropertyChangedEventHandler IsEnabledChanged
         {
@@ -1696,9 +1770,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Renders the element and its child elements recursively using the specified DrawingContext.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The DrawingContext to use for rendering.</param>
         protected internal virtual void RenderRecursive(DrawingContext dc)
         {
             //Debug.Assert(this.IsMeasureValid && this.IsArrangeValid);
@@ -1707,7 +1781,7 @@ namespace nanoFramework.Presentation
             dc.PushClippingRectangle(0, 0, _renderWidth, _renderHeight);
             try
             {
-               // Debug.Assert(this.Visibility == Visibility.Visible);
+                // Debug.Assert(this.Visibility == Visibility.Visible);
 
                 if (!dc.EmptyClipRect)
                 {
@@ -1739,6 +1813,11 @@ namespace nanoFramework.Presentation
             }
         }
 
+        /// <summary>
+        /// Propagates the specified flags up the visual tree until an element with those flags set is found.
+        /// </summary>
+        /// <param name="e">The UIElement to start the propagation from.</param>
+        /// <param name="flags">The Flags to propagate up the visual tree.</param>
         internal static void PropagateFlags(UIElement e, Flags flags)
         {
             while ((e != null) && ((e._flags & flags) == 0))
@@ -1754,6 +1833,13 @@ namespace nanoFramework.Presentation
             }
         }
 
+        /// <summary>
+        /// Marks a region of the UIElement as dirty and invalidates the layout.
+        /// </summary>
+        /// <param name="x">The x-coordinate of the upper-left corner of the region.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the region.</param>
+        /// <param name="w">The width of the region.</param>
+        /// <param name="h">The height of the region.</param>
         private void MarkDirtyRect(int x, int y, int w, int h)
         {
             PointToScreen(ref x, ref y);
@@ -1765,12 +1851,12 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Marks a region of the UIElement as dirty and invalidates the layout.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="w"></param>
-        /// <param name="h"></param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the region.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the region.</param>
+        /// <param name="w">The width of the region.</param>
+        /// <param name="h">The height of the region.</param>
         public void InvalidateRect(int x, int y, int w, int h)
         {
             VerifyAccess();
@@ -1779,7 +1865,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Invalidates the entire layout of the UIElement.
         /// </summary>
         public void Invalidate()
         {
@@ -1860,8 +1946,8 @@ namespace nanoFramework.Presentation
         /// <summary>
         ///     Add the event handlers for this element to the route.
         /// </summary>
-        /// <param name="route"></param>
-        /// <param name="args"></param>
+        /// <param name="route">The route event.</param>
+        /// <param name="args">The route event arguments.</param>
         // REFACTOR -- do we need this to be public?
         public void AddToEventRoute(EventRoute route, RoutedEventArgs args)
         {
@@ -1991,124 +2077,6 @@ namespace nanoFramework.Presentation
         }
 
 #endif
-
-        internal const int MAX_ELEMENTS_IN_ROUTE = 256;
-
-        [Flags]
-        internal enum Flags : uint
-        {
-            None = 0x00000000,
-            // IsSubtreeDirtyForRender indicates that at least one element in the sub-graph of this element needs to
-            // be re-rendered.
-            IsSubtreeDirtyForRender = 0x00000002,
-            // IsDirtyForRender indicates that the element has changed in a way that all it's children
-            // need to be updated. E.g. more/less children clipped, children themselves
-            // changed, clip changed => more/less children clipped
-            //
-            IsDirtyForRender = 0x00000004,
-
-            Enabled = 0x00000020,
-            InvalidMeasure = 0x00000040,
-            InvalidArrange = 0x00000080,
-            MeasureInProgress = 0x00000100,
-            ArrangeInProgress = 0x00000200,
-            MeasureDuringArrange = 0x00000400,
-            NeverMeasured = 0x00000800,
-            NeverArranged = 0x00001000,
-            // Should post render indicates that this is a root element and therefore we need to indicate that this
-            // element tree needs to be re-rendered. Today we are doing this by posting a render queue item.
-            ShouldPostRender = 0x00002000,
-            IsLayoutSuspended = 0x00004000,
-
-            IsVisibleCache = 0x00008000,
-        }
-
-        //--//
-
-        internal UIElement _parent;
-        internal UIElementCollection _logicalChildren;
-
-        //
-        internal Flags _flags;
-        private Visibility _visibility;
-
-        // Layout
-        //
-        internal class Pair
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            public const int Flags_First = 0x1;  // Can be (optionally) used with _status
-
-            /// <summary>
-            /// 
-            /// </summary>
-            public const int Flags_Second = 0x2;
-
-            /// <summary>
-            /// 
-            /// </summary>
-            public int _first;
-
-            /// <summary>
-            /// 
-            /// </summary>
-            public int _second;
-
-            /// <summary>
-            /// 
-            /// </summary>
-            public int _status;
-        }
-
-        internal Pair _requestedSize;            // Used when Width/Height properties are set
-        internal Pair _anchorInfo;               // Used if the parent is a Canvas
-
-        private int _marginLeft;
-        private int _marginTop;
-        private int _marginRight;
-        private int _marginBottom;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected HorizontalAlignment _horizontalAlignment;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected VerticalAlignment _verticalAlignment;
-
-        // Cached layout information
-        //
-        internal int _finalX;
-        internal int _finalY;
-        internal int _finalWidth;
-        internal int _finalHeight;
-
-        internal int _offsetX;
-        internal int _offsetY;
-        internal int _renderWidth;
-        internal int _renderHeight;
-
-        internal int _previousAvailableWidth;
-        internal int _previousAvailableHeight;
-
-        private int _desiredWidth;
-        private int _desiredHeight;
-
-        internal int _unclippedWidth;
-        internal int _unclippedHeight;
-
-        // Routed Event Handling
-
-        private static Hashtable _classEventHandlersStore;
-        private Hashtable _instanceEventHandlersStore;
-
-        // Regular Events
-        PropertyChangedEventHandler _isEnabledChanged;
-        PropertyChangedEventHandler _isVisibleChanged;
     }
 }
 
