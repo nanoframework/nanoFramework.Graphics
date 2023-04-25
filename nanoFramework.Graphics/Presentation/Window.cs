@@ -14,15 +14,13 @@ using System.Drawing;
 namespace nanoFramework.Presentation
 {
     /// <summary>
-    /// 
+    /// Represents a window control for displaying content on the screen.
     /// </summary>
     public class Window : ContentControl
     {
-        //---------------------------------------------------
-        //
-        // Constructors
-        //
-        //---------------------------------------------------
+        private SizeToContent _sizeToContent;
+        private WindowManager _windowManager;
+
         #region Constructors
 
         /// <summary>
@@ -81,7 +79,7 @@ namespace nanoFramework.Presentation
         #region Public Methods
 
         /// <summary>
-        /// 
+        /// Closes the window.
         /// </summary>
         [MethodImplAttribute( MethodImplOptions.Synchronized )]
         public void Close()
@@ -130,9 +128,8 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        ///     Position for Top of the host window
+        /// Gets or sets the distance between the top of the window and the top of the screen.
         /// </summary>
-        /// <value></value>
         public int Top
         {
             get
@@ -148,7 +145,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the distance between the left edge of the window and the left edge of the screen.
         /// </summary>
         public int Left
         {
@@ -166,7 +163,7 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        ///     Determines if this window is always on the top.
+        /// Gets or sets a value that indicates whether the window always appears on top of other windows.
         /// </summary>
         public bool Topmost
         {
@@ -185,20 +182,6 @@ namespace nanoFramework.Presentation
 
         #endregion Public Properties
 
-        //---------------------------------------------------
-        //
-        // Public Events
-        //
-        //---------------------------------------------------
-        #region Public Events
-
-        #endregion Public Events
-
-        //---------------------------------------------------
-        //
-        // Protected Methods
-        //
-        //---------------------------------------------------
         #region Protected Methods
 
         // REFACTOR -- need to track if our parent changes.
@@ -206,6 +189,10 @@ namespace nanoFramework.Presentation
         /// <summary>
         ///     Measurement override. Implements content sizing logic.
         /// </summary>
+        /// <param name="availableWidth">The available width.</param>
+        /// <param name="availableHeight">The available height.</param>
+        /// <param name="desiredWidth">The desired width.</param>
+        /// <param name="desiredHeight">The desired height.</param>
         /// <remarks>
         ///     Deducts the frame size from the constraint and then passes it on
         ///     to it's child.  Only supports one Visual child (just like control)
@@ -234,6 +221,8 @@ namespace nanoFramework.Presentation
         /// <summary>
         ///     ArrangeOverride allows for the customization of the positioning of children.
         /// </summary>
+        /// <param name="arrangeWidth">The width of the CustomControl.</param>
+        /// <param name="arrangeHeight">The height of the CustomControl.</param>
         /// <remarks>
         ///     Deducts the frame size of the window from the constraint and then
         ///     arranges it's child.  Supports only one child.
@@ -253,62 +242,6 @@ namespace nanoFramework.Presentation
         }
 
         #endregion Protected Methods
-
-        //---------------------------------------------------
-        //
-        // Internal Methods
-        //
-        //---------------------------------------------------
-        #region Internal Methods
-
-        #endregion Internal Methods
-
-        //----------------------------------------------
-        //
-        // Internal Properties
-        //
-        //----------------------------------------------
-        #region Internal Properties
-
-        #endregion Internal Properties
-
-        //----------------------------------------------
-        //
-        // Private Methods
-        //
-        //----------------------------------------------
-        #region Private Methods
-
-        //
-        // These are the callbacks used by the windowSource to notify the window
-        // about what the window manager wants it to do.
-        //
-        #region WindowManager internal methods
-
-        #endregion WindowManager internal methods
-
-        #endregion Private Methods
-
-        //----------------------------------------------
-        //
-        // Private Properties
-        //
-        //----------------------------------------------
-        #region Private Properties
-
-        #endregion Private Properties
-
-        //----------------------------------------------
-        //
-        // Private Fields
-        //
-        //----------------------------------------------
-        #region Private Fields
-
-        private SizeToContent _sizeToContent;
-        private WindowManager _windowManager;
-
-        #endregion Private Fields
     }
 }
 

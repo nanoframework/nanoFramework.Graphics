@@ -209,6 +209,7 @@
     <Compile Include="Presentation\Media\Stretch.cs" />
     <Compile Include="Presentation\Media\TextAlignment.cs" />
     <Compile Include="Presentation\Media\TextTrimming.cs" />
+    <Compile Include="Presentation\Pair.cs" />
     <Compile Include="Presentation\PresentationSource.cs" />
     <Compile Include="Presentation\Shapes\Direction.cs" />
     <Compile Include="Presentation\Shapes\Ellipse.cs" />

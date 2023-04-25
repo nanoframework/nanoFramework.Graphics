@@ -6,7 +6,6 @@
 
 using System;
 using nanoFramework.UI.Input;
-using nanoFramework.UI;
 
 namespace nanoFramework.Presentation.Controls
 {
@@ -15,6 +14,13 @@ namespace nanoFramework.Presentation.Controls
     /// </summary>
     public class ListBox : ContentControl
     {
+        internal ScrollViewer _scrollViewer;
+        internal StackPanel _panel;
+        private int _selectedIndex = -1;
+        private SelectionChangedEventHandler _selectionChanged;
+
+        private ListBoxItemCollection _items;
+
         /// <summary>
         /// Initializes a new instance of the ListBox class.
         /// </summary>
@@ -174,9 +180,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// Scrolls the ListBox to bring the specified ListBoxItem into view.
+        /// Called when a button is pressed down. If the button is VK_DOWN and the currently selected item
+        /// is not the last item, the selection is moved down to the next selectable item. If the button is
+        /// VK_UP and the currently selected item is not the first item, the selection is moved up to the
+        /// previous selectable item.
         /// </summary>
-        /// <param name="item">The ListBoxItem to bring into view.</param>
+        /// <param name="e">The ButtonEventArgs containing information about the button press.</param>
         protected override void OnButtonDown(ButtonEventArgs e)
         {
             if (e.Button == Button.VK_DOWN && _selectedIndex < Items.Count - 1)
@@ -287,14 +296,5 @@ namespace nanoFramework.Presentation.Controls
                 _scrollViewer.ScrollingStyle = value;
             }
         }
-
-        internal ScrollViewer _scrollViewer;
-        internal StackPanel _panel;
-        private int _selectedIndex = -1;
-        private SelectionChangedEventHandler _selectionChanged;
-
-        private ListBoxItemCollection _items;
     }
 }
-
-

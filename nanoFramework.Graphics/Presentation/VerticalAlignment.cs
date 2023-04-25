@@ -7,27 +7,27 @@
 namespace nanoFramework.Presentation
 {
     /// <summary>
-    /// Vertical Alignment
+    /// Specifies the vertical alignment of content within a container.
     /// </summary>
     public enum VerticalAlignment
-    {        
+    {
         /// <summary>
-        /// Top.
+        /// Content is aligned to the top of the container.
         /// </summary>
         Top,
 
         /// <summary>
-        /// Center.
+        /// Content is aligned to the center of the container.
         /// </summary>
         Center,
 
         /// <summary>
-        /// Bottom.
+        /// Content is aligned to the bottom of the container.
         /// </summary>
         Bottom,
 
         /// <summary>
-        /// Stretch.
+        /// Content is streched in the container.
         /// </summary>
         Stretch
     }

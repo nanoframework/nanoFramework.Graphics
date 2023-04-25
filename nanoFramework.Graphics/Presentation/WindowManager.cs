@@ -11,16 +11,22 @@ using nanoFramework.UI;
 namespace nanoFramework.Presentation
 {
     /// <summary>
-    /// 
+    /// Delegate for handling post render events.
     /// </summary>
-    /// <param name="dc"></param>
+    /// <param name="dc">The drawing context.</param>
     public delegate void PostRenderEventHandler(DrawingContext dc);
 
     /// <summary>
-    /// 
+    /// Provides a container for windows and manages rendering and focus.
     /// </summary>
     public class WindowManager : Controls.Canvas
     {
+
+        private PostRenderEventHandler _postRenderHandler;
+
+        /// <summary>
+        /// Initializes a new instance of the WindowManager class.
+        /// </summary>
         private WindowManager()
         {
             //
@@ -42,6 +48,9 @@ namespace nanoFramework.Presentation
             Arrange(0, 0, desiredWidth, desiredHeight);
         }
 
+        /// <summary>
+        /// Ensures that there is an instance of the WindowManager class.
+        /// </summary>
         internal static WindowManager EnsureInstance()
         {
             if (Instance == null)
@@ -55,12 +64,12 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Measures the child elements of the WindowManager.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width.</param>
+        /// <param name="availableHeight">The available height.</param>
+        /// <param name="desiredWidth">The desired width.</param>
+        /// <param name="desiredHeight">The desired height.</param>
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             base.MeasureOverride(availableWidth, availableHeight, out desiredWidth, out desiredHeight);
@@ -68,6 +77,10 @@ namespace nanoFramework.Presentation
             desiredHeight = DisplayControl.ScreenHeight;
         }
 
+        /// <summary>
+        /// Sets the specified window to be the topmost window.
+        /// </summary>
+        /// <param name="window">The window to set as topmost.</param>
         internal void SetTopMost(Window window)
         {
             UIElementCollection children = LogicalChildren;
@@ -79,6 +92,11 @@ namespace nanoFramework.Presentation
             }
         }
 
+        /// <summary>
+        /// Determines if the specified window is the topmost window.
+        /// </summary>
+        /// <param name="window">The window to check.</param>
+        /// <returns>true if the specified window is the topmost window; otherwise, false.</returns>
         internal bool IsTopMost(Window window)
         {
             int index = LogicalChildren.IndexOf(window);
@@ -86,11 +104,11 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Called when a child element is added or removed from the WindowManager.
         /// </summary>
-        /// <param name="added"></param>
-        /// <param name="removed"></param>
-        /// <param name="indexAffected"></param>
+        /// <param name="added">The child element that was added.</param>
+        /// <param name="removed">The child element that was removed.</param>
+        /// <param name="indexAffected">The index of the child element that was affected.</param>
         protected internal override void OnChildrenChanged(UIElement added, UIElement removed, int indexAffected)
         {
             base.OnChildrenChanged(added, removed, indexAffected);
@@ -118,15 +136,12 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the WindowManager instance.
         /// </summary>
         public static WindowManager Instance;
 
-
-        private PostRenderEventHandler _postRenderHandler;
-
         /// <summary>
-        /// 
+        /// Occurs when post-rendering is performed on the WindowManager.
         /// </summary>
         public event PostRenderEventHandler PostRender
         {
@@ -142,9 +157,9 @@ namespace nanoFramework.Presentation
         }
 
         /// <summary>
-        /// 
+        /// Represents the method that handles post-rendering of the WindowManager.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The DrawingContext to use for post-rendering.</param>
         protected internal override void RenderRecursive(DrawingContext dc)
         {
             base.RenderRecursive(dc);
@@ -155,7 +170,4 @@ namespace nanoFramework.Presentation
             }
         }
     }
-
 }
-
-

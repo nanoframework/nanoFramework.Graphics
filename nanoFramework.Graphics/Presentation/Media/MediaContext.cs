@@ -35,7 +35,7 @@ namespace nanoFramework.Presentation.Media
 
         private class GlobalLock { }
 
-        // <summary>
+        /// <summary>
         /// Initializes a new instance of the MediaContext class.
         /// </summary>
         internal MediaContext()
