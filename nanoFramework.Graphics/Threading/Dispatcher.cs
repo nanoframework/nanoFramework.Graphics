@@ -4,24 +4,69 @@
 // See LICENSE file in the project root for full license information.
 //
 
-
-//In what case was EnsureStatics needed?
-//When a program has a static Window type that gets initialized in the static constructor?
-//Does this case still work or not? If not, keep code as it was but inlined.
+// In what case was EnsureStatics needed?
+// When a program has a static Window type that gets initialized in the static constructor?
+// Does this case still work or not? If not, keep code as it was but inlined.
 
 using System;
 using System.Collections;
-using System.Diagnostics;
 using System.Threading;
-using nanoFramework.Runtime.Events;
+using nanoFramework.Presentation.Media;
+using nanoFramework.UI.Input;
+using nanoFramework.Presentation;
 
 namespace nanoFramework.UI.Threading
 {
+    /// <summary>
+    ///   Delegate for processing exceptions that happen during Invoke or BeginInvoke.
+    ///   Return true if the exception was processed.
+    /// </summary>
+    internal delegate bool DispatcherExceptionEventHandler(object sender, Exception e);
+
+    /// <summary>
+    ///   A convenient delegate to use for dispatcher operations.
+    /// </summary>
+    public delegate object DispatcherOperationCallback(object arg);
+
     /// <summary>
     ///     Provides UI services for a thread.
     /// </summary>
     public sealed class Dispatcher
     {
+        private DispatcherFrame _currentFrame;
+        private int _frameDepth;
+        internal bool _hasShutdownStarted;  // used from DispatcherFrame
+        private bool _hasShutdownFinished;
+
+        private Queue _queue;
+        private AutoResetEvent _event;
+        private object _instanceLock;
+
+        static Hashtable _dispatchers = new Hashtable();
+        static Dispatcher _possibleDispatcher;
+
+        // note: avalon uses a weakreference to track the thread.  the advantage i can see to that
+        // is in case some other thread has a reference to the dispatcher object, but the dispatcher thread
+        // has terminated.  In that case the Thread object would remain until the Dispatcher is GC'd.
+        // we dont' have much unmanaged state associated with a dead thread, so it's probably okay to let it
+        // hang around.   if we need to run a finalizer on the thread or something, then we should use a weakreference here.
+
+        private Thread _thread;
+
+        // Raised when a dispatcher exception was caught during an Invoke or BeginInvoke
+        // Hooked in by the application.
+        internal DispatcherExceptionEventHandler _finalExceptionHandler;
+
+        // these are per dispatcher, track them here.
+        internal LayoutManager _layoutManager;
+        internal InputManager _inputManager;
+        internal MediaContext _mediaContext;
+
+        // we use this type of a global static lock.  we can't guarantee
+        // static constructors are run int he right order, but we can guarantee the
+        // lock for the type exists.
+        class GlobalLock { }
+
         /// <summary>
         /// Returns the Dispatcher for the current thread.
         /// </summary>
@@ -32,12 +77,12 @@ namespace nanoFramework.UI.Threading
             {
                 Dispatcher dispatcher = FromThread(Thread.CurrentThread);
 
-                //While FromThread() and Dispatcher() both operate in the GlobalLock,
-                //and this function does not, there is no race condition because threads cannot
-                //create Dispatchers on behalf of other threads. Thus, while other threads may
-                //create a Dispatcher for themselves, they cannot create a Dispatcher for this
-                //thread, therefore only one Dispatcher for each thread can exist in the ArrayList,
-                //and there is no race condition.
+                // While FromThread() and Dispatcher() both operate in the GlobalLock,
+                // and this function does not, there is no race condition because threads cannot
+                // create Dispatchers on behalf of other threads. Thus, while other threads may
+                // create a Dispatcher for themselves, they cannot create a Dispatcher for this
+                // thread, therefore only one Dispatcher for each thread can exist in the ArrayList,
+                // and there is no race condition.
                 if (dispatcher == null)
                 {
                     lock(typeof(GlobalLock))
@@ -349,7 +394,6 @@ namespace nanoFramework.UI.Threading
             get { return _currentFrame; }
         }
 
-        //
         // instance implementation of PushFrame
         private void PushFrameImpl(DispatcherFrame frame)
         {
@@ -364,15 +408,14 @@ namespace nanoFramework.UI.Threading
                     DispatcherOperation op = null;
                     bool aborted = false;
 
-                    //
                     // Dequeue the next operation if appropriate
                     if (_queue.Count > 0)
                     {
                         op = (DispatcherOperation)_queue.Dequeue();
 
-                        //Must check aborted flag inside lock because
-                        //user program could call op.Abort() between
-                        //here and before the call to Invoke()
+                        // Must check aborted flag inside lock because
+                        // user program could call op.Abort() between
+                        // here and before the call to Invoke()
                         aborted = op.Status == DispatcherOperationStatus.Aborted;
                     }
 
@@ -381,7 +424,7 @@ namespace nanoFramework.UI.Threading
                         if (!aborted)
                         {
                             // Invoke the operation:
-                            //Debug.Assert(op._status == DispatcherOperationStatus.Pending);
+                            // Debug.Assert(op._status == DispatcherOperationStatus.Pending);
 
                             // Mark this operation as executing.
                             op._status = DispatcherOperationStatus.Executing;
@@ -535,9 +578,7 @@ namespace nanoFramework.UI.Threading
             return result;
         }
 
-        //
         // Invoke a delegate in a try/catch.
-        //
         internal object WrappedInvoke(DispatcherOperationCallback callback, object arg)
         {
             object result = null;
@@ -573,54 +614,5 @@ namespace nanoFramework.UI.Threading
         {
             _finalExceptionHandler = handler;
         }
-
-        private DispatcherFrame _currentFrame;
-        private int _frameDepth;
-        internal bool _hasShutdownStarted;  // used from DispatcherFrame
-        private bool _hasShutdownFinished;
-
-        private Queue _queue;
-        private AutoResetEvent _event;
-        private object _instanceLock;
-
-        static Hashtable _dispatchers = new Hashtable();
-        static Dispatcher _possibleDispatcher;
-
-        // note: avalon uses a weakreference to track the thread.  the advantage i can see to that
-        // is in case some other thread has a reference to the dispatcher object, but the dispatcher thread
-        // has terminated.  In that case the Thread object would remain until the Dispatcher is GC'd.
-        // we dont' have much unmanaged state associated with a dead thread, so it's probably okay to let it
-        // hang around.   if we need to run a finalizer on the thread or something, then we should use a weakreference here.
-
-        private Thread _thread;
-
-        // Raised when a dispatcher exception was caught during an Invoke or BeginInvoke
-        // Hooked in by the application.
-        internal DispatcherExceptionEventHandler _finalExceptionHandler;
-
-        // these are per dispatcher, track them here.
-        internal nanoFramework.Presentation.LayoutManager _layoutManager;
-        internal nanoFramework.UI.Input.InputManager _inputManager;
-        internal nanoFramework.Presentation.Media.MediaContext _mediaContext;
-
-        //
-        // we use this type of a global static lock.  we can't guarantee
-        // static constructors are run int he right order, but we can guarantee the
-        // lock for the type exists.
-        class GlobalLock { }
     }
-
-    /// <summary>
-    ///   Delegate for processing exceptions that happen during Invoke or BeginInvoke.
-    ///   Return true if the exception was processed.
-    /// </summary>
-    internal delegate bool DispatcherExceptionEventHandler(object sender, Exception e);
-
-    /// <summary>
-    ///   A convenient delegate to use for dispatcher operations.
-    /// </summary>
-    public delegate object DispatcherOperationCallback(object arg);
-
 }
-
-

@@ -6,7 +6,6 @@
 
 using System;
 using System.Threading;
-using nanoFramework.Runtime.Events;
 
 namespace nanoFramework.UI.Threading
 {
@@ -16,6 +15,13 @@ namespace nanoFramework.UI.Threading
     /// </summary>
     public class DispatcherTimer : IDisposable
     {
+        private object _instanceLock = new Object();
+        private Dispatcher _dispatcher;
+        private int _interval;
+        private object _tag;
+        private bool _isEnabled;
+        private Timer _timer;
+
         /// <summary>
         ///     Creates a timer that uses the current thread's Dispatcher to
         ///     process the timer event
@@ -194,13 +200,6 @@ namespace nanoFramework.UI.Threading
             return null;
         }
 
-        private object _instanceLock = new Object();
-        private Dispatcher _dispatcher;
-        private int _interval;
-        private object _tag;
-        private bool _isEnabled;
-        private Timer _timer;
-
         /// <summary>
         /// 
         /// </summary>
@@ -227,5 +226,3 @@ namespace nanoFramework.UI.Threading
         }
     }
 }
-
-

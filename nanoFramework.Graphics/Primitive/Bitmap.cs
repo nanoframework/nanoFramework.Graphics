@@ -12,7 +12,7 @@ namespace nanoFramework.UI
 {
     /// <summary>
     /// Encapsulates a bitmap, which consists of the pixel data for a graphics image and its methods and attributes
-    /// This class cannot be inherited.The.NET Micro Framework provides the
+    /// This class cannot be inherited.NET nanoFramework provides the Bitmap class on the native side.
     /// </summary>
     public sealed class Bitmap : MarshalByRefObject, IDisposable
     {
@@ -44,7 +44,7 @@ namespace nanoFramework.UI
             CenterX = (MaxWidth - 1) / 2;
             CenterY = (MaxHeight - 1) / 2;
         }
-        
+
 
         /// <summary>
         /// Specifies that the current bitmap is opaque.
@@ -143,16 +143,16 @@ namespace nanoFramework.UI
         /// <summary>
         /// Encapsulates a bitmap, which consists of the pixel data for a graphics image and its methods and attributes.
         /// </summary>
-        /// <param name = "width" > The width of the bitmap.</param>
-        /// <param name = "height" > The height of the bitmap.</param>
+        /// <param name="width">The width of the bitmap.</param>
+        /// <param name="height">The height of the bitmap.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern Bitmap(int width, int height);
 
         /// <summary>
-        /// Not docummented yet.
+        /// Encapsulates a bitmap, which consists of the pixel data for a graphics image and its methods and attributes.
         /// </summary>
-        /// <param name = "imageData" > An array of pixel data for the specified image.</param>
-        /// <param name = "type" > The bitmap type for the specified image.</param>
+        /// <param name="imageData">An array of pixel data for the specified image.</param>
+        /// <param name="type">The bitmap type for the specified image.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern Bitmap(byte[] imageData, BitmapImageType type);
 
@@ -166,22 +166,22 @@ namespace nanoFramework.UI
         /// <summary>
         /// Flushes a sub-rectangle of the current bitmap to the display device.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the sub-rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the sub-rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the sub-rectangle.</param>
-        /// <param name = "height" > The height of the sub-rectangle.</param>
+        /// <param name="x">The x-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name="y">The y-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the sub-rectangle.</param>
+        /// <param name="height">The height of the sub-rectangle.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void Flush(int x, int y, int width, int height);
 
         /// <summary>
         /// Flushes a sub-rectangle of the current bitmap to the display device at a specified screen position.
         /// </summary>
-        /// <param name = "srcX" > The x-coordinate of the sub-rectangle's upper-left corner.</param>
-        /// <param name = "srcY" > The y-coordinate of the sub-rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the sub-rectangle.</param>
-        /// <param name = "height" > The height of the sub-rectangle.</param>
-        /// <param name = "screenX" > The x-coordinate of the screen to write to.</param>
-        /// <param name = "screenY" > The y-coordinate of the screen to write to</param>
+        /// <param name="srcX">The x-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name="srcY">The y-coordinate of the sub-rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the sub-rectangle.</param>
+        /// <param name="height">The height of the sub-rectangle.</param>
+        /// <param name="screenX">The x-coordinate of the screen to write to.</param>
+        /// <param name="screenY">The y-coordinate of the screen to write to</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void Flush(int srcX, int srcY, int width, int height, int screenX, int screenY);
 
@@ -192,33 +192,34 @@ namespace nanoFramework.UI
         public extern void Clear();
 
         /// <summary>
-        /// Draws text in a specified rectangle.
-        /// Sets the clipping region (clipping rectangle) of a bitmap with a specified coordinate pair (x, y), width, and height.
+        /// Draws text in a specified rectangle. Sets the clipping region (clipping rectangle) of a bitmap with a specified coordinate pair (x, y), width, and height.
         /// </summary>
-        /// <param name = "text" > The text to be drawn. This parameter contains the remaining text, or an empty string, if the complete text string did not fit in the specified rectangle.</param>
-        /// <param name = "xRelStart" > The x-coordinate, relative to the rectangle, at which text drawing is to begin.</param>
-        /// <param name = "yRelStart" > The y-coordinate, relative to the rectangle, at which text drawing is to begin.</param>
-        /// <param name = "x" > The x-coordinate of the upper-left corner of the rectangle.</param>
-        /// <param name = "y" > The y-coordinate of the upper-left corner of the rectangle.</param>
-        /// <param name = "width" > The width of the rectangle.</param>
-        /// <param name = "height" > The height of the rectangle.</param>
-        /// <param name = "dtFlags" > Flags that specify the format of the text.</param>
-        /// <param name = "color" > The color to be used for the text.</param>
-        /// <param name = "font" > The font to be used for the text.</param>
-        /// <returns></returns>
+        /// <param name="text">The text to be drawn. This parameter contains the remaining text, or an empty string, if the complete text string did not fit in the specified rectangle.</param>
+        /// <param name="xRelStart">The x-coordinate, relative to the rectangle, at which text drawing is to begin.</param>
+        /// <param name="yRelStart">The y-coordinate, relative to the rectangle, at which text drawing is to begin.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
+        /// <param name="dtFlags">Flags that specify the format of the text.</param>
+        /// <param name="color">The color to be used for the text.</param>
+        /// <param name="font">The font to be used for the text.</param>
+        /// <returns>Returns true if the text was completely drawn, false otherwise.</returns>
         public bool DrawTextInRect(ref string text, ref int xRelStart, ref int yRelStart, int x, int y, int width, int height, uint dtFlags, Color color, Font font) =>
             DrawTextInRect(ref text, ref xRelStart, ref yRelStart, x, y, width, height, dtFlags, (uint)color.ToArgb(), font);
 
         /// <summary>
-        /// <param name = "text" > The text to be drawn. This parameter contains the remaining text, or an empty string, if the complete text string did not fit in the specified rectangle.</param>
-        /// <param name = "x" > The x-coordinate of the upper-left corner of the rectangle.</param>
-        /// <param name = "y" > The y-coordinate of the upper-left corner of the rectangle.</param>
-        /// <param name = "width" > The width of the rectangle.</param>
-        /// <param name = "height" > The height of the rectangle.</param>
-        /// <param name = "dtFlags" > Flags that specify the format of the text.</param>
-        /// <param name = "color" > The color to be used for the text.</param>
-        /// <param name = "font" > The font to be used for the text.</param>
+        /// Draws text in a specified rectangle.
+        /// Sets the clipping region (clipping rectangle) of a bitmap with a specified coordinate pair (x, y), width, and height.
         /// </summary>
+        /// <param name="text">The text to be drawn. This parameter contains the remaining text, or an empty string, if the complete text string did not fit in the specified rectangle.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the rectangle.</param>
+        /// <param name="width">The width of the rectangle.</param>
+        /// <param name="height">The height of the rectangle.</param>
+        /// <param name="dtFlags">Flags that specify the format of the text.</param>
+        /// <param name="color">The color to be used for the text.</param>
+        /// <param name="font">The font to be used for the text.</param>
         public void DrawTextInRect(string text, int x, int y, int width, int height, uint dtFlags, Color color, Font font)
         {
             int xRelStart = 0;
@@ -230,24 +231,20 @@ namespace nanoFramework.UI
         /// <summary>
         /// Draws a single character to the screen.
         /// </summary>
-        /// <param name="c"> The character to draw.</param>
-        /// <param name="x"> The x-coordinate of the upper-left corner to draw to.</param>
-        /// <param name="y"> The y-coordinate of the upper-left corner to draw to.</param>
-        /// <param name="color"> The color to be used for the character.</param>
-        /// <param name="font"> The font to be used for the character.</param>
-
+        /// <param name="c">The character to draw.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner to draw to.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner to draw to.</param>
+        /// <param name="color">The color to be used for the character.</param>
+        /// <param name="font">The font to be used for the character.</param>
         public void DrawChar(ushort c, int x, int y, Color color, Font font) => DrawChar(c, x, y, (uint)color.ToArgb(), font);
 
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        private extern void DrawChar(ushort c, int x, int y, uint color, Font font);
-
         /// <summary>
-        /// 
+        /// Sets the clipping rectangle to restrict drawing to a certain area on the screen.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the upper-left corner of the clipping rectangle.</param>
-        /// <param name = "y" > The y-coordinate of the upper-left corner of the clipping rectangle.</param>
-        /// <param name = "width" > The width of the clipping rectangle.</param>
-        /// <param name = "height" > The height of the clipping rectangle.</param>
+        /// <param name="x">The x-coordinate of the upper-left corner of the clipping rectangle.</param>
+        /// <param name="y">The y-coordinate of the upper-left corner of the clipping rectangle.</param>
+        /// <param name="width">The width of the clipping rectangle.</param>
+        /// <param name="height">The height of the clipping rectangle.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void SetClippingRectangle(int x, int y, int width, int height);
 
@@ -272,19 +269,19 @@ namespace nanoFramework.UI
         /// <summary>
         /// Draws an ellipse filled with a specified color gradient.
         /// </summary>
-        /// <param name = "colorOutline" > The outline color.</param>
-        /// <param name = "thicknessOutline" > The thickness of the ellipse's outline, in pixels.</param>
-        /// <param name = "x" > The x-coordinate location of the center of the ellipse.</param>
-        /// <param name = "y" > The y-coordinate location of the center of the ellipse.</param>
-        /// <param name = "xRadius" > The radius of the ellipse in the x-coordinate direction.</param>
-        /// <param name = "yRadius" > The radius of the ellipse in the y-coordinate direction.</param>
-        /// <param name = "colorGradientStart" > The starting color of the color gradient.</param>
-        /// <param name = "xGradientStart" > The x-coordinate location of the starting point of the color gradient.</param>
-        /// <param name = "yGradientStart" > The y-coordinate location of the starting point of the color gradient.</param>
-        /// <param name = "colorGradientEnd" > The ending color of the color gradient.</param>
-        /// <param name = "xGradientEnd" > The x-coordinate location of the ending point of the color gradient.</param>
-        /// <param name = "yGradientEnd" > The y-coordinate location of the ending point of the color gradient.</param>
-        /// <param name = "opacity" > The opacity of the ellipse.</param>
+        /// <param name="colorOutline">The outline color.</param>
+        /// <param name="thicknessOutline">The thickness of the ellipse's outline, in pixels.</param>
+        /// <param name="x">The x-coordinate location of the center of the ellipse.</param>
+        /// <param name="y">The y-coordinate location of the center of the ellipse.</param>
+        /// <param name="xRadius">The radius of the ellipse in the x-coordinate direction.</param>
+        /// <param name="yRadius">The radius of the ellipse in the y-coordinate direction.</param>
+        /// <param name="colorGradientStart">The starting color of the color gradient.</param>
+        /// <param name="xGradientStart">The x-coordinate location of the starting point of the color gradient.</param>
+        /// <param name="yGradientStart">The y-coordinate location of the starting point of the color gradient.</param>
+        /// <param name="colorGradientEnd">The ending color of the color gradient.</param>
+        /// <param name="xGradientEnd">The x-coordinate location of the ending point of the color gradient.</param>
+        /// <param name="yGradientEnd">The y-coordinate location of the ending point of the color gradient.</param>
+        /// <param name="opacity">The opacity of the ellipse.</param>
         public void DrawEllipse(
             Color colorOutline, int thicknessOutline,
             int x, int y, int xRadius, int yRadius,
@@ -299,11 +296,11 @@ namespace nanoFramework.UI
         /// <summary>
         /// Draw and Ellipse
         /// </summary>
-        ///<param name = "colorOutline" > The outline color.</param>
-        ///<param name = "x" > The x-coordinate location of the center of the ellipse.</param>
-        ///<param name = "y" > The y-coordinate location of the center of the ellipse.</param>
-        ///<param name = "xRadius" > The radius of the ellipse in the x-coordinate direction.</param>
-        ///<param name = "yRadius" > The radius of the ellipse in the y-coordinate direction.</param>
+        /// <param name="colorOutline">The outline color.</param>
+        /// <param name="x">The x-coordinate location of the center of the ellipse.</param>
+        /// <param name="y">The y-coordinate location of the center of the ellipse.</param>
+        /// <param name="xRadius">The radius of the ellipse in the x-coordinate direction.</param>
+        /// <param name="yRadius">The radius of the ellipse in the y-coordinate direction.</param>
         public void DrawEllipse(Color colorOutline, int x, int y, int xRadius, int yRadius)
         {
             DrawEllipse(colorOutline, 1, x, y, xRadius, yRadius, Color.Black, 0, 0, Color.Black, 0, 0, OpacityOpaque);
@@ -312,106 +309,105 @@ namespace nanoFramework.UI
         /// <summary>
         /// Draws a rectangular block of pixels with a specified degree of transparency.
         /// </summary>
-        /// <param name = "xDst" > The x-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
-        /// <param name = "yDst" > The y-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
-        /// <param name = "bitmap" > The source bitmap.</param>
-        /// <param name = "xSrc" > The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
-        /// <param name = "ySrc" > The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
-        /// <param name = "width" > The width of the rectangular block of pixels to be copied.</param>
-        /// <param name = "height" > The height of the rectangular block of pixels to be copied.</param>
+        /// <param name="xDst">The x-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
+        /// <param name="yDst">The y-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
+        /// <param name="bitmap">The source bitmap.</param>
+        /// <param name="xSrc">The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
+        /// <param name="ySrc">The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
+        /// <param name="width">The width of the rectangular block of pixels to be copied.</param>
+        /// <param name="height">The height of the rectangular block of pixels to be copied.</param>
         public void DrawImage(int xDst, int yDst, Bitmap bitmap, int xSrc, int ySrc, int width, int height)
         {
             DrawImage(xDst, yDst, bitmap, xSrc, ySrc, width, height, OpacityOpaque);
         }
 
         /// <summary>
-        ///  Draws a rectangular block of pixels with a specified degree of transparency.
+        /// Draws a rectangular block of pixels with a specified degree of transparency.
         /// </summary>
-        /// <param name = "xDst" > The x-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
-        /// <param name = "yDst" > The y-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
-        /// <param name = "bitmap" > The source bitmap.</param>
-        /// <param name = "xSrc" > The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
-        /// <param name = "ySrc" > The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
-        /// <param name = "width" > The width of the rectangular block of pixels to be copied.</param>
-        /// <param name = "height" > The height of the rectangular block of pixels to be copied.</param>
-        /// <param name = "opacity" > The degree of opacity of the bitmap. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
+        /// <param name="xDst">The x-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
+        /// <param name="yDst">The y-coordinate location of the upper-left corner of the rectangular area on the display to which the specified pixels are to be copied.</param>
+        /// <param name="bitmap">The source bitmap.</param>
+        /// <param name="xSrc">The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
+        /// <param name="ySrc">The x-coordinate location of the upper-left corner of the rectangular area in the source bitmap from which the specified pixels are to be copied.</param>
+        /// <param name="width">The width of the rectangular block of pixels to be copied.</param>
+        /// <param name="height">The height of the rectangular block of pixels to be copied.</param>
+        /// <param name="opacity">The degree of opacity of the bitmap. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void DrawImage(int xDst, int yDst, Bitmap bitmap, int xSrc, int ySrc, int width, int height, ushort opacity);
 
         /// <summary>
-        /// 
+        /// Rotates a rectangular block of pixels with a specified degree of transparency.
         /// </summary>
-        /// <param name = "angle" > The degree of rotation.</param>
-        /// <param name = "xDst" > The x-coordinate of the center? of the destination bitmap.</param>
-        /// <param name = "yDst" > The y-coordinate of the center? of the destination bitmap.</param>
-        /// <param name = "bitmap"></param>                        ?
-        /// <param name = "xSrc" > The x-coordinate of the center? of the source bitmap.</param>
-        /// <param name = "ySrc" > The y-coordinate of the center? of the source bitmap.</param>
-        /// <param name = "width"></param>
-        /// <param name = "height"></param>
-        /// <param name = "opacity"></param>
+        /// <param name="angle">The degree of rotation.</param>
+        /// <param name="xDst">The x-coordinate of the center of the destination bitmap.</param>
+        /// <param name="yDst">The y-coordinate of the center of the destination bitmap.</param>
+        /// <param name="bitmap">The source bitmap.</param>
+        /// <param name="xSrc">The x-coordinate of the center of the source bitmap.</param>
+        /// <param name="ySrc">The y-coordinate of the center of the source bitmap.</param>
+        /// <param name="width">The width of the rectangular block of pixels to be copied.</param>
+        /// <param name="height">The height of the rectangular block of pixels to be copied.</param>
+        /// <param name="opacity">The degree of opacity of the bitmap. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void RotateImage(int angle, int xDst, int yDst, Bitmap bitmap, int xSrc, int ySrc, int width, int height, ushort opacity);
 
         /// <summary>
         /// Sets a bitmap's transparent color.
         /// </summary>
-        /// <param name = "color" > The color to be used as the bitmap's transparent color.</param>
-
+        /// <param name="color">The color to be used as the bitmap's transparent color.</param>
         public void MakeTransparent(Color color) => MakeTransparent((uint)color.ToArgb());
 
         /// <summary>
         /// Draws a rectangular block of pixels on the display device, stretching or shrinking the rectangular area as necessary.
         /// </summary>
-        /// <param name = "xDst" > The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name = "yDst" > The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name = "sourceBitmap" > The source bitmap.</param>
-        /// <param name = "width" > The width of the rectangluar area to which the pixels are to be copied.</param>
-        /// <param name = "height" > The height of the rectangluar area to which the pixels are to be copied.</param>
-        /// <param name = "opacity" > The bitmap's degree of opacity. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
+        /// <param name="xDst">The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="yDst">The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="sourceBitmap">The source bitmap.</param>
+        /// <param name="width">The width of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="height">The height of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="opacity">The degree of opacity of the bitmap. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all), and a value of 255 makes the bitmap completely transparent.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void StretchImage(int xDst, int yDst, Bitmap sourceBitmap, int width, int height, ushort opacity);
 
         /// <summary>
-        ///  Draws a line on the display device.
+        /// Draws a line on the display device.
         /// </summary>
-        /// <param name = "color" > The color of the line.</param>
-        /// <param name = "thickness" > The thickness of the line, in pixels.Remark: The thickness parameter is not currently available.For now, all lines are one pixel thick.</param>
-        /// <param name = "x0" > The x-coordinate location of the line's starting point.</param>
-        /// <param name = "y0" > The y-coordinate location of the line's starting point.</param>
-        /// <param name = "x1" > The x-coordinate location of the line's ending point.</param>
-        /// <param name = "y1" > The y-coordinate location of the line's ending point.</param>
+        /// <param name="color">The color of the line.</param>
+        /// <param name="thickness">The thickness of the line, in pixels. (Not currently available; all lines are one pixel thick.)</param>
+        /// <param name="x0">The x-coordinate of the line's starting point.</param>
+        /// <param name="y0">The y-coordinate of the line's starting point.</param>
+        /// <param name="x1">The x-coordinate of the line's ending point.</param>
+        /// <param name="y1">The y-coordinate of the line's ending point.</param>
         public void DrawLine(Color color, int thickness, int x0, int y0, int x1, int y1) => DrawLine((uint)color.ToArgb(), thickness, x0, y0, x1, y1);
 
         /// <summary>
-        /// Draw a rectangle outline on the display device.
+        /// Draws a rectangle outline on the display device.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the rectangle, in pixels.</param>
-        /// <param name = "height" > The height of the rectangle, in pixels.</param>
-        /// <param name = "thickness" > The thickness of the rectangle's outline, in pixels.</param>
-        /// <param name = "color" > The color of the rectangle's outline.</param>
+        /// <param name="x">The x-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="y">The y-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the rectangle, in pixels.</param>
+        /// <param name="height">The height of the rectangle, in pixels.</param>
+        /// <param name="thickness">The thickness of the rectangle's outline, in pixels.</param>
+        /// <param name="color">The color of the rectangle's outline.</param>
         public void DrawRectangle(int x, int y, int width, int height, int thickness, Color color) => DrawRectangle(x, y, width, height, thickness, (uint)color.ToArgb());
 
         /// <summary>
         /// Draws a rectangle on the display device.
         /// </summary>
-        /// <param name = "colorOutline" > The color of the rectangle's outline.</param>
-        /// <param name = "thicknessOutline" > The thickness of the rectangle's outline, in pixels.</param>
-        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the rectangle, in pixels.</param>
-        /// <param name = "height" > The height of the rectangle, in pixels.</param>
-        /// <param name = "xCornerRadius" > The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "yCornerRadius" > The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "colorGradientStart" > The starting color for a color gradient.</param>
-        /// <param name = "xGradientStart" > Holds the x coordinate of the starting location of the color gradient.</param>
-        /// <param name = "yGradientStart" > Holds the y coordinate of the starting location of the color gradient.</param>
-        /// <param name = "colorGradientEnd" > Specifies the ending color of the color gradient.</param>
-        /// <param name = "xGradientEnd" > Holds the x coordinate of the ending location of the color gradient.</param>
-        /// <param name = "yGradientEnd" > Holds the y coordinate of the ending location of the color gradient.</param>
-        /// <param name = "opacity" > Specifies the opacity of the fill color. Set to 0x00 for completely transparent. Set to 0xFF for completely opague.</param>
+        /// <param name="colorOutline">The color of the rectangle's outline.</param>
+        /// <param name="thicknessOutline">The thickness of the rectangle's outline, in pixels.</param>
+        /// <param name="x">The x-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="y">The y-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the rectangle, in pixels.</param>
+        /// <param name="height">The height of the rectangle, in pixels.</param>
+        /// <param name="xCornerRadius">The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name="yCornerRadius">The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name="colorGradientStart">The starting color for a color gradient.</param>
+        /// <param name="xGradientStart">Holds the x coordinate of the starting location of the color gradient.</param>
+        /// <param name="yGradientStart">Holds the y coordinate of the starting location of the color gradient.</param>
+        /// <param name="colorGradientEnd">Specifies the ending color of the color gradient.</param>
+        /// <param name="xGradientEnd">Holds the x coordinate of the ending location of the color gradient.</param>
+        /// <param name="yGradientEnd">Holds the y coordinate of the ending location of the color gradient.</param>
+        /// <param name="opacity">Specifies the opacity of the fill color. Set to 0x00 for completely transparent. Set to 0xFF for completely opague.</param>
         public void DrawRectangle(
             Color colorOutline, int thicknessOutline,
             int x, int y, int width, int height, int xCornerRadius, int yCornerRadius,
@@ -428,137 +424,137 @@ namespace nanoFramework.UI
         /// <summary>
         /// Draw a rounded rectangle outline on the display device.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the rectangle, in pixels.</param>
-        /// <param name = "height" > The height of the rectangle, in pixels.</param>
-        /// <param name = "thickness" > The thickness of the rectangle's outline, in pixels.</param>
-        /// <param name = "xCornerRadius" > The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "yCornerRadius" > The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "color" > The color of the rectangle's outline.</param>        
+        /// <param name="x">The x-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="y">The y-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the rectangle, in pixels.</param>
+        /// <param name="height">The height of the rectangle, in pixels.</param>
+        /// <param name="thickness">The thickness of the rectangle's outline, in pixels.</param>
+        /// <param name="xCornerRadius">The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name="yCornerRadius">The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name="color">The color of the rectangle's outline.</param>
         public void DrawRoundRectangle(int x, int y, int width, int height, int thickness, int xCornerRadius, int yCornerRadius, Color color) => DrawRoundRectangle(x, y, width, height, thickness, xCornerRadius, yCornerRadius, (uint)color.ToArgb());
 
         /// <summary>
         /// Draw a filled rectangle on the display device.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the rectangle, in pixels.</param>
-        /// <param name = "height" > The height of the rectangle, in pixels.</param>
-        /// <param name = "color" > The color of the rectangle's outline.</param>
-        /// <param name = "opacity" > Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opague.</param>        
+        /// <param name="x">The x-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="y">The y-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the rectangle, in pixels.</param>
+        /// <param name="height">The height of the rectangle, in pixels.</param>
+        /// <param name="color">The color of the rectangle's outline.</param>
+        /// <param name="opacity">Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opaque.</param>
         public void FillRectangle(int x, int y, int width, int height, Color color, ushort opacity) => FillRectangle(x, y, width, height, (uint)color.ToArgb(), opacity);
 
         /// <summary>
         /// Draw a filled rounded rectangle on the display device.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the rectangle, in pixels.</param>
-        /// <param name = "height" > The height of the rectangle, in pixels.</param>
-        /// <param name = "xCornerRadius" > The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "yCornerRadius" > The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
-        /// <param name = "color" > The color of the rectangle's outline.</param>
-        /// <param name = "opacity" > Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opague.</param>        
+        /// <param name="x">The x-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="y">The y-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the rectangle, in pixels.</param>
+        /// <param name="height">The height of the rectangle, in pixels.</param>
+        /// <param name="xCornerRadius">The x-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name="yCornerRadius">The y-coordinate value of the corner radius used to produce rounded corners on the rectangle.</param>
+        /// <param name="color">The color of the rectangle's outline.</param>
+        /// <param name="opacity">Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opaque.</param>
         public void FillRoundRectangle(int x, int y, int width, int height, int xCornerRadius, int yCornerRadius, Color color, ushort opacity) => FillRoundRectangle(x, y, width, height, xCornerRadius, yCornerRadius, (uint)color.ToArgb(), opacity);
 
         /// <summary>
-        /// Draw a filled gradient rectangle on the display device.
+        /// Draws a filled rectangle with a color gradient on the display device.
         /// </summary>
-        /// <param name = "x" > The x-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "y" > The y-coordinate of the rectangle's upper-left corner.</param>
-        /// <param name = "width" > The width of the rectangle, in pixels.</param>
-        /// <param name = "height" > The height of the rectangle, in pixels.</param>
-        /// <param name = "colorGradientStart" > The starting color for a color gradient.</param>
-        /// <param name = "xGradientStart" > Holds the x coordinate of the starting location of the color gradient.</param>
-        /// <param name = "yGradientStart" > Holds the y coordinate of the starting location of the color gradient.</param>
-        /// <param name = "colorGradientEnd" > Specifies the ending color of the color gradient.</param>
-        /// <param name = "xGradientEnd" > Holds the x coordinate of the ending location of the color gradient.</param>
-        /// <param name = "yGradientEnd" > Holds the y coordinate of the ending location of the color gradient.</param>
-        /// <param name = "opacity" > Specifies the opacity of the fill color. Set to OpacityTransparent for completely transparent. Set to OpacityOpaque for completely opague.</param>
+        /// <param name="x">The x-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="y">The y-coordinate of the rectangle's upper-left corner.</param>
+        /// <param name="width">The width of the rectangle, in pixels.</param>
+        /// <param name="height">The height of the rectangle, in pixels.</param>
+        /// <param name="colorGradientStart">The starting color for the color gradient.</param>
+        /// <param name="xGradientStart">The x-coordinate of the starting location of the color gradient.</param>
+        /// <param name="yGradientStart">The y-coordinate of the starting location of the color gradient.</param>
+        /// <param name="colorGradientEnd">The ending color of the color gradient.</param>
+        /// <param name="xGradientEnd">The x-coordinate of the ending location of the color gradient.</param>
+        /// <param name="yGradientEnd">The y-coordinate of the ending location of the color gradient.</param>
+        /// <param name="opacity">The opacity of the fill color, ranging from completely transparent to completely opaque.</param>
         public void FillGradientRectangle(int x, int y, int width, int height,
             Color colorGradientStart, int xGradientStart, int yGradientStart,
             Color colorGradientEnd, int xGradientEnd, int yGradientEnd, ushort opacity) => FillGradientRectangle(x, y, width, height, (uint)colorGradientStart.ToArgb(), xGradientStart, yGradientStart, (uint)colorGradientEnd.ToArgb(), xGradientEnd, yGradientEnd, opacity);
 
         /// <summary>
-        /// Draws text on the display device, using a specified font and color.
+        /// Draws text on the display device using a specified font and color.
         /// </summary>
-        /// <param name = "text" > The text to be drawn.</param>
-        /// <param name = "font" > The font to be used for the text.</param>
-        /// <param name = "color" > The color to be used for the text.</param>
-        /// <param name = "x" > The x-coordinate of the location where text drawing is to begin.</param>
-        /// <param name = "y" > The y-coordinate of the location where text drawing is to begin.</param>
+        /// <param name="text">The text to be drawn.</param>
+        /// <param name="font">The font to be used for the text.</param>
+        /// <param name="color">The color to be used for the text.</param>
+        /// <param name="x">The x-coordinate of the location where the text drawing is to begin.</param>
+        /// <param name="y">The y-coordinate of the location where the text drawing is to begin.</param>
         public void DrawText(string text, Font font, Color color, int x, int y) => DrawText(text, font, (uint)color.ToArgb(), x, y);
 
         /// <summary>
-        /// Sets the color for a specified pixel.
+        /// Sets the color of a specified pixel on the display device.
         /// </summary>
-        /// <param name = "xPos" > The x-coordinate of the pixel whose color you want to set.</param>
-        /// <param name = "yPos" > The y-coordinate of the pixel whose color you want to set.</param>
-        /// <param name = "color" > The color you want to set for the specified pixel.</param>
+        /// <param name="xPos">The x-coordinate of the pixel whose color you want to set.</param>
+        /// <param name="yPos">The y-coordinate of the pixel whose color you want to set.</param>
+        /// <param name="color">The color you want to set for the specified pixel.</param>
         public void SetPixel(int xPos, int yPos, Color color) => SetPixel(xPos, yPos, (uint)color.ToArgb());
 
         /// <summary>
         /// Retrieves the pixel color at a specified location on the display device.
         /// </summary>
-        /// <param name = "xPos" > The x-coordinate of the pixel whose color you want to get.</param>
-        /// <param name = "yPos" > The y-coordinate of the pixel whose color you want to get.</param>
-        /// <returns></returns>
-        public Color GetPixel(int xPos, int yPos) => Color.FromArgb((int)GetPixelInt(xPos, yPos));        
+        /// <param name="xPos">The x-coordinate of the pixel whose color you want to get.</param>
+        /// <param name="yPos">The y-coordinate of the pixel whose color you want to get.</param>
+        /// <returns>The color of the specified pixel.</returns>
+        public Color GetPixel(int xPos, int yPos) => Color.FromArgb((int)GetPixelInt(xPos, yPos));
 
         /// <summary>
         /// Gets the bitmap of the display device.
         /// </summary>
-        /// <returns>A byte array.</returns>
+        /// <returns>A byte array representing the bitmap of the display device.</returns>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern byte[] GetBitmap();
 
         /// <summary>
-        /// Streches a bitmap to fill a rectangular area on the display device.
+        /// Stretches a bitmap to fill a rectangular area on the display device.
         /// </summary>
-        /// <param name = "xDst" > The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name = "yDst" > The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name = "widthDst" > The width of the rectangluar area to which the pixels are to be copied.</param>
-        /// <param name = "heightDst" > The height of the rectangluar area to which the pixels are to be copied.</param>
-        /// <param name = "bitmap" > The source bitmap.</param>
-        /// <param name="xSrc">The x source.</param>
-        /// <param name="ySrc">The y source.</param>
-        /// <param name="widthSrc">The width source.</param>
-        /// <param name="heightSrc">The height source.</param>
-        /// <param name = "opacity" > The bitmap's degree of opacity. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
+        /// <param name="xDst">The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="yDst">The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="widthDst">The width of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="heightDst">The height of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="bitmap">The source bitmap to stretch onto the display device.</param>
+        /// <param name="xSrc">The x-coordinate of the upper-left corner of the rectangular area from which the pixels are to be copied.</param>
+        /// <param name="ySrc">The y-coordinate of the upper-left corner of the rectangular area from which the pixels are to be copied.</param>
+        /// <param name="widthSrc">The width of the rectangular area from which the pixels are to be copied.</param>
+        /// <param name="heightSrc">The height of the rectangular area from which the pixels are to be copied.</param>
+        /// <param name="opacity">The bitmap's degree of opacity. A value of 0 makes the bitmap completely opaque; a value of 255 makes the bitmap completely transparent.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void StretchImage(int xDst, int yDst, int widthDst, int heightDst, Bitmap bitmap, int xSrc, int ySrc, int widthSrc, int heightSrc, ushort opacity);
 
         /// <summary>
-        /// Tiles image on the display device.
+        /// Tiles an image on the display device.
         /// </summary>
-        /// <param name = "xDst" > The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name = "yDst" > The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name = "bitmap" > The source bitmap.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="height">The height.</param>
-        /// <param name = "opacity" > The bitmap's degree of opacity. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
+        /// <param name="xDst">The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="yDst">The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="bitmap">The source bitmap to tile onto the display device.</param>
+        /// <param name="width">The width of the tile.</param>
+        /// <param name="height">The height of the tile.</param>
+        /// <param name="opacity">The bitmap's degree of opacity. A value of 0 makes the bitmap completely opaque; a value of 255 makes the bitmap completely transparent.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void TileImage(int xDst, int yDst, Bitmap bitmap, int width, int height, ushort opacity);
 
         /// <summary>
-        /// 
+        /// Scales a bitmap to fill a rectangular area on the display device using the Scale9Grid technique.
         /// </summary>
-        /// <param name = "xDst" > The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name = "yDst" > The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name="widthDst"></param>
-        /// <param name="heightDst"></param>
-        /// <param name="bitmap"></param>
-        /// <param name="leftBorder"></param>
-        /// <param name="topBorder"></param>
-        /// <param name="rightBorder"></param>
-        /// <param name="bottomBorder"></param>
-        /// <param name = "opacity" > The bitmap's degree of opacity. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
+        /// <param name="xDst">The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="yDst">The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="widthDst">The width of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="heightDst">The height of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="bitmap">The source bitmap.</param>
+        /// <param name="leftBorder">The number of pixels to be left unscaled at the left edge of the source bitmap.</param>
+        /// <param name="topBorder">The number of pixels to be left unscaled at the top edge of the source bitmap.</param>
+        /// <param name="rightBorder">The number of pixels to be left unscaled at the right edge of the source bitmap.</param>
+        /// <param name="bottomBorder">The number of pixels to be left unscaled at the bottom edge of the source bitmap.</param>
+        /// <param name="opacity">The bitmap's degree of opacity. A value of 0 (zero) makes the bitmap completely opaque (not transparent at all); a value of 255 makes the bitmap completely transparent.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern void Scale9Image(int xDst, int yDst, int widthDst, int heightDst, Bitmap bitmap, int leftBorder, int topBorder, int rightBorder, int bottomBorder, ushort opacity);
 
         /// <summary>
-        /// 
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public void Dispose()
         {
@@ -567,19 +563,22 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// 
+        /// Releases the unmanaged resources used by the Bitmap and optionally releases the managed resources.
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing">True to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern void Dispose(bool disposing);
 
         /// <summary>
-        /// 
+        /// Releases unmanaged resources and performs other cleanup operations before the Bitmap is reclaimed by garbage collection.
         /// </summary>
         ~Bitmap()
         {
             Dispose(false);
         }
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern void DrawChar(ushort c, int x, int y, uint color, Font font);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern void DrawEllipse(
@@ -634,5 +633,3 @@ namespace nanoFramework.UI
         private extern bool DrawTextInRect(ref string text, ref int xRelStart, ref int yRelStart, int x, int y, int width, int height, uint dtFlags, uint color, Font font);
     }
 }
-
-

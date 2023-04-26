@@ -36,5 +36,3 @@ namespace nanoFramework.UI
         public static extern void ResetInkRegion();
     }
 }
-
-

@@ -1445,6 +1445,12 @@ namespace System.Drawing
         public int ToArgb() => (int)_color;
 
         /// <summary>
+        /// Gets a BGR565 value of this color structure.
+        /// </summary>
+        /// <returns>A BGR565 encoded color.</returns>
+        public ushort ToBgr565() => (ushort)(((B & 0xF8) << 8) | ((G & 0xFC) << 3) | (R >> 3));
+
+        /// <summary>
         /// Converts a known Color name into a Color.
         /// </summary>
         /// <param name="colorName">The known color name.</param>
