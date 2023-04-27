@@ -14,6 +14,9 @@ namespace nanoFramework.UI
     // to be invoked upon the target object
     internal class RouteItem
     {
+        internal object _target;
+        internal RoutedEventHandlerInfo _routedEventHandlerInfo;
+
         #region Construction
 
         // Constructor for RouteItem
@@ -77,12 +80,5 @@ namespace nanoFramework.UI
         }
 
         #endregion Operations
-
-        #region Data
-
-        internal object _target;
-        internal RoutedEventHandlerInfo _routedEventHandlerInfo;
-
-        #endregion Data
     }
 }

@@ -31,6 +31,9 @@ namespace nanoFramework.UI
     /// </remarks>
     public class RoutedEventHandlerInfo
     {
+        internal RoutedEventHandler _handler;
+        internal bool _handledEventsToo;
+
         #region Construction
 
         /// <summary>
@@ -116,12 +119,5 @@ namespace nanoFramework.UI
         }
 
         #endregion Operations
-
-        #region Data
-
-        internal RoutedEventHandler _handler;
-        internal bool _handledEventsToo;
-
-        #endregion Data
     }
 }

@@ -24,6 +24,14 @@ namespace nanoFramework.UI
     /// <ExternalAPI/>
     public sealed class RoutedEvent
     {
+        private string _name;      // do we need this ? we will incur some dumb strings.
+        internal RoutingStrategy _routingStrategy;
+        private Type _handlerType;
+        private int _globalIndex;
+        static int _eventCount;
+
+        private class GlobalLock { }
+
         #region External API
 
         /// <summary>
@@ -112,17 +120,5 @@ namespace nanoFramework.UI
         }
 
         #endregion Construction
-
-        #region Data
-
-        private string _name;      // do we need this ? we will incur some dumb strings.
-        internal RoutingStrategy _routingStrategy;
-        private Type _handlerType;
-        private int _globalIndex;
-        static int _eventCount;
-
-        private class GlobalLock { }
-
-        #endregion Data
     }
 }

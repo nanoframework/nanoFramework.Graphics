@@ -4,22 +4,21 @@
 // See LICENSE file in the project root for full license information.
 //
 
-
-// need move this into mscorlib, also get the real implementation.
-using System;
-using nanoFramework.Runtime.Events;
-
 namespace nanoFramework.UI
 {
-
     /// <summary>
-    /// Cancel event arguments.
+    /// Enum for the reason why a user session is ending.
     /// </summary>
-    public class CancelEventArgs : EventArgs
+    public enum ReasonSessionEnding : byte
     {
         /// <summary>
-        /// Ture is cancelled.
+        /// The user is logging off.
         /// </summary>
-        public bool Cancel;
+        Logoff = 0,
+
+        /// <summary>
+        /// The system is shutting down.
+        /// </summary>
+        Shutdown
     }
 }
