@@ -247,11 +247,13 @@
     <Compile Include="System\Mathematics.cs" />
     <Compile Include="System\PropertyChangedEventArgs.cs" />
     <Compile Include="System\PropertyChangedEventHandler.cs" />
+    <Compile Include="System\ReasonSessionEnding.cs" />
     <Compile Include="System\RoutedEvent.cs" />
     <Compile Include="System\RoutedEventArgs.cs" />
     <Compile Include="System\RoutedEventHandlerInfo.cs" />
     <Compile Include="System\RouteItem.cs" />
     <Compile Include="System\RoutingStrategy.cs" />
+    <Compile Include="System\ShutdownMode.cs" />
     <Compile Include="System\WindowCollection.cs" />
     <Compile Include="Threading\Dispatcher.cs" />
     <Compile Include="Threading\DispatcherFrame.cs" />
