@@ -1456,7 +1456,6 @@ namespace System.Drawing
         /// <summary>
         /// Gets the 4-bits per pixel grayscale value of this color.
         /// </summary>
-        /// <param name="color">The <see cref="Color"/> to work with.</param>
         /// <returns>The 4-bit-per-pixel grayscale value of the specified <see cref="Color"/></returns>
         public byte To4bppGrayscale()
         {

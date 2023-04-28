@@ -9,6 +9,13 @@ using System;
 namespace nanoFramework.UI
 {
     /// <summary>
+    /// Represents the method that handles the TouchGesture event.
+    /// </summary>
+    /// <param name="sender">The object that raised the event.</param>
+    /// <param name="e">A TouchGestureEventArgs object that contains the event data.</param>
+    public delegate void TouchGestureEventHandler(object sender, TouchGestureEventArgs e);
+
+    /// <summary>
     /// Represents the event data for a touch gesture event.
     /// </summary>
     public class TouchGestureEventArgs : EventArgs
