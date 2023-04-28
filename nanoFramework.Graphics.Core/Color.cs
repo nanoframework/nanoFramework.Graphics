@@ -1445,10 +1445,107 @@ namespace System.Drawing
         public int ToArgb() => (int)_color;
 
         /// <summary>
+        /// Gets a value representing this color as On/Off.
+        /// </summary>
+        /// <returns>The 1-bit-per-pixel value of the specified <see cref="Color"/></returns>
+        public byte To1bpp()
+        {
+            return (byte)((R <= 0 && G <= 0 && B <= 0) ? 0x00 : 0xff);
+        }
+
+        /// <summary>
+        /// Gets the 4-bits per pixel grayscale value of this color.
+        /// </summary>
+        /// <param name="color">The <see cref="Color"/> to work with.</param>
+        /// <returns>The 4-bit-per-pixel grayscale value of the specified <see cref="Color"/></returns>
+        public byte To4bppGrayscale()
+        {
+            return (byte)((byte)((0.2989 * R) + (0.587 * G) + (0.114 * B)) >> 4);
+        }
+
+        /// <summary>
+        /// Gets the 8-bits per pixel grayscale value of this color.
+        /// </summary>
+        /// <returns>The 8-bit-per-pixel grayscale value of the specified <see cref="Color"/></returns>
+        public byte To8bppGrayscale()
+        {
+            return (byte)((0.2989 * R) + (0.587 * G) + (0.114 * B));
+        }
+
+        /// <summary>
+        /// Gets the 8-bits per pixel value of this color.
+        /// Colors are encoded in 3 bits for red, 3 bits for green and 2 bits for blue.
+        /// </summary>        
+        /// <returns>The 8-bit-per-pixel RGB332 value of the specified <see cref="Color"/></returns>
+        public byte To8bppRgb332()
+        {
+            return (byte)((R & 0xE0u) | (uint)((G & 0x70) >> 3) | (uint)((B & 0xC0) >> 6));
+        }
+
+        /// <summary>
+        /// Gets the 12-bits per pixel value of this color.
+        /// All color components are encoded with 4 bits.
+        /// </summary>
+        /// <returns>The 12-bit-per-pixel RGB444 value of the specified <see cref="Color"/></returns>
+        public ushort To12bppRgb444()
+        {
+            return (ushort)((uint)((R & 0xF0) << 4) | (G & 0xF0u) | (uint)((B & 0xF0) >> 4));
+        }
+
+        /// <summary>
         /// Gets a BGR565 value of this color structure.
         /// </summary>
         /// <returns>A BGR565 encoded color.</returns>
         public ushort ToBgr565() => (ushort)(((B & 0xF8) << 8) | ((G & 0xFC) << 3) | (R >> 3));
+
+        /// <summary>
+        /// Gets a RGB space color conversion in any order with any byte per color.
+        /// </summary>
+        /// <param name="order">The color order.</param>
+        /// <param name="numR">The number of bits for the R component.</param>
+        /// <param name="numG">The number of bits for the G component.</param>
+        /// <param name="numB">The number of bits for the B component.</param>
+        /// <returns>Thz space encoded color scheme with the requested number of bits per component.</returns>
+        /// <exception cref="ArgumentException">Not valid number of bits, it should be less or equal to 8.</exception>
+        /// <exception cref="ArgumentException">RGB Scheme not supported.</exception>
+        public uint ToRgbFormat(ColorOrder order, byte numR, byte numG, byte numB)
+        {
+            if(numR > 8 || numG > 8 || numB > 8)
+            {
+                throw new ArgumentException();
+            }
+
+            int r = R >> (8 - numR);
+            int g = G >> (8 - numG);
+            int b = B >> (8 - numB);
+            uint res = 0;
+
+            switch (order)
+            {
+                case ColorOrder.Rgb:
+                    res = (uint)((r << (numG + numB)) | (g << numB) | b);
+                    break;
+                case ColorOrder.Bgr:
+                    res = (uint)((b << (numG + numR)) | (g << numG) | r);
+                    break;
+                case ColorOrder.Brg:
+                    res = (uint)((b << (numG + numR)) | (r << numR) | g);
+                    break;
+                case ColorOrder.Gbr:
+                    res = (uint)((g << (numR + numB)) | (b << numR) | r);
+                    break;
+                case ColorOrder.Rbg:
+                    res = (uint)((r << (numG + numB)) | (b << numG) | g);
+                    break;
+                case ColorOrder.Grb:
+                    res = (uint)((g << (numR + numB)) | (r << numB) | b);
+                    break;
+                default:
+                    throw new ArgumentException();
+            }
+
+            return res;
+        }
 
         /// <summary>
         /// Converts a known Color name into a Color.

@@ -53,6 +53,9 @@ namespace Primitives
 
             while (true)
             {
+                WritePoint wrtPoint = new WritePoint();
+                Thread.Sleep(delayBetween);
+
                 RandomDrawLine rdlt = new RandomDrawLine(fullScreenBitmap, DisplayFont);
                 Thread.Sleep(delayBetween);
 

@@ -78,5 +78,22 @@ namespace nanoFramework.UI
             // Assert
             Assert.AreEqual(correctResult, result);
         }
+
+        [DataRow(new object[] { (byte)0b0000_0111, (byte)0b0000_0011, (byte)0b0000_0111, (byte)ColorOrder.Rgb, (byte)8, (byte)8, (byte)8, (uint)0b0000_0111_0000_0011_0000_0111 })]
+        [DataRow(new object[] { (byte)0b0000_0111, (byte)0b0000_0011, (byte)0b0000_0111, (byte)ColorOrder.Rgb, (byte)5, (byte)6, (byte)5, (uint)0b0000_0000_0000_0000_0000_0000 })]
+        [DataRow(new object[] { (byte)0b0000_1111, (byte)0b0000_0111, (byte)0b0000_1111, (byte)ColorOrder.Rgb, (byte)5, (byte)6, (byte)5, (uint)0b0000_0000_0000_1000_0010_0001 })]
+        [DataRow(new object[] { (byte)0b0000_1111, (byte)0b0000_0111, (byte)0b0000_1111, (byte)ColorOrder.Rgb, (byte)8, (byte)6, (byte)5, (uint)0b0000_0000_0111_1000_0010_0001 })]
+        [DataRow(new object[] { (byte)0b0000_1111, (byte)0b0000_0111, (byte)0b0000_1111, (byte)ColorOrder.Rbg, (byte)8, (byte)6, (byte)5, (uint)0b0000_0000_0111_1000_0100_0001 })]
+        public void TestRgbFormat(byte r, byte g, byte b, byte order, byte numR, byte numG, byte numB, uint correctResult)
+        {
+            // Arrange
+            var col = Color.FromArgb(0, r, g, b);
+
+            // Act
+            var result = col.ToRgbFormat((ColorOrder)order, numR, numG, numB);
+
+            // Assert
+            Assert.AreEqual(correctResult, result);
+        }
     }
 }

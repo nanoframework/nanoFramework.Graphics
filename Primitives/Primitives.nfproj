@@ -42,6 +42,7 @@
     <Compile Include="SimplePrimitives\SliceScaling9.cs" />
     <Compile Include="SimplePrimitives\StretchImage.cs" />
     <Compile Include="SimplePrimitives\TileImage.cs" />
+    <Compile Include="SimplePrimitives\WritePoint.cs" />
     <Compile Include="WaterFallJpg.cs" />
   </ItemGroup>
   <ItemGroup>

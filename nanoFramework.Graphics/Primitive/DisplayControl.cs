@@ -203,8 +203,17 @@ namespace nanoFramework.UI
         /// <param name="width">The width of the area to display.</param>
         /// <param name="height">The height of the area to display.</param>
         /// <param name="colors">A color array.</param>
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void Write(ushort x, ushort y, ushort width, ushort height, Color[] colors);
+        /// <remarks>The color array will be transformed in managed side to a ushort BGR565 array.</remarks>
+        public static void Write(ushort x, ushort y, ushort width, ushort height, Color[] colors)
+        {
+            ushort[] colorsToDraw = new ushort[colors.Length];
+            for(int i=0; i<colors.Length; i++)
+            {
+                colorsToDraw[i] = colors[i].ToBgr565();
+            }
+
+            Write(x, y, width, height, colorsToDraw);
+        }
 
         /// <summary>
         /// Directly write on the screen a text at coordinate x,y a width,height with a background and foreground color.
