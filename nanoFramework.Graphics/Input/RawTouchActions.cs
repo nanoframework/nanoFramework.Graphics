@@ -12,17 +12,17 @@ namespace nanoFramework.UI.Input
     public enum RawTouchActions
     {
         /// <summary>
-        ///  Touch Down
+        /// Touch Down.
         /// </summary>
         TouchDown = 0x01,
 
         /// <summary>
-        ///  Touch Up
+        /// Touch Up.
         /// </summary>
         TouchUp = 0x02,
 
         /// <summary>
-        ///  Activate
+        /// Activate.
         /// </summary>
         Activate = 0x04,
 
@@ -32,7 +32,7 @@ namespace nanoFramework.UI.Input
         Deactivate = 0x08,
 
         /// <summary>
-        ///  Touch Move
+        /// Touch Move.
         /// </summary>
         TouchMove = 0x10,
     }
