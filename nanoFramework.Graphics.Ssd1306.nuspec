@@ -15,7 +15,7 @@
     <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/nanoFramework.Graphics" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
-        <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects.
+    <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects.
 It does embed a managed driver Ssd1306. It is aimed to be used for images built with Generic Graphics driver.
 This package requires a target with nanoFramework.Graphics v$nativeVersion$ (checksum $checksum$).</description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics Ssd1306</tags>

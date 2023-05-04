@@ -15,7 +15,7 @@
     <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/nanoFramework.Graphics" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
-        <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects.
+    <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects.
 It does embed a managed driver Ili9342. It is aimed to be used for images built with Generic Graphics driver.
 This package requires a target with nanoFramework.Graphics v$nativeVersion$ (checksum $checksum$).</description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics Ili9342</tags>
@@ -38,7 +38,7 @@ This package requires a target with nanoFramework.Graphics v$nativeVersion$ (che
     <file src="ManagedDrivers\Ili9342\bin\Release\nanoFramework.Graphics.Ili9342.pdbx" target="lib\nanoFramework.Graphics.Ili9342.pdbx" />
     <file src="ManagedDrivers\Ili9342\bin\Release\nanoFramework.Graphics.Ili9342.pe" target="lib\nanoFramework.Graphics.Ili9342.pe" />
     <file src="ManagedDrivers\Ili9342\bin\Release\nanoFramework.Graphics.Ili9342.xml" target="lib\nanoFramework.Graphics.Ili9342.xml" />
-  <file src="assets\readme.txt" target="" />
+    <file src="assets\readme.txt" target="" />
     <file src="README.md" target="docs\" />
     <file src="assets\nf-logo.png" target="images" />
     <file src="LICENSE.md" target="" />
