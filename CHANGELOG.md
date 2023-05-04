@@ -2,7 +2,16 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.23...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.25...HEAD)
+
+**Documentation and other chores:**
+
+- Update 0 NuGet dependencies [\#123](https://github.com/nanoframework/nanoFramework.Graphics/pull/123)
+- Update 1 NuGet dependencies [\#122](https://github.com/nanoframework/nanoFramework.Graphics/pull/122)
+
+## [v1.1.25](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.25) (2023-04-18)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.23...v1.1.25)
 
 **Implemented enhancements:**
 
