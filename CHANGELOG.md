@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.1.32](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.32) (2023-05-05)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.30...v1.1.32)
+
 ## [v1.1.30](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.30) (2023-05-05)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.28...v1.1.30)
