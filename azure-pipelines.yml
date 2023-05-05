@@ -66,6 +66,10 @@ jobs:
 
   - template: azure-pipelines-templates/class-lib-package.yml@templates  
     parameters:
+      nugetPackageName: 'nanoFramework.Graphics.Core'
+
+  - template: azure-pipelines-templates/class-lib-package.yml@templates  
+    parameters:
       nugetPackageName: 'nanoFramework.Graphics.Gc9A01'
 
   - template: azure-pipelines-templates/class-lib-package.yml@templates  
