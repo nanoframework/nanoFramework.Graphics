@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.25...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.28...HEAD)
+
+**Implemented enhancements:**
+
+- Split graphics in 2 libraries a core and a full one [\#121](https://github.com/nanoframework/nanoFramework.Graphics/pull/121)
+
+## [v1.1.28](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.28) (2023-05-04)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.25...v1.1.28)
 
 **Documentation and other chores:**
 
