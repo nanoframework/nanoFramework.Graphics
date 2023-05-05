@@ -28,6 +28,11 @@ This package requires a target with nanoFramework.Graphics v$nativeVersion$ (che
     </dependencies>
   </metadata>
   <files>
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.dll" target="lib\nanoFramework.Graphics.Core.dll" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.pdb" target="lib\nanoFramework.Graphics.Core.pdb" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.pdbx" target="lib\nanoFramework.Graphics.Core.pdbx" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.pe" target="lib\nanoFramework.Graphics.Core.pe" />
+    <file src="nanoFramework.Graphics.Core\bin\Release\nanoFramework.Graphics.Core.xml" target="lib\nanoFramework.Graphics.Core.xml" />
     <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.dll" target="lib\nanoFramework.Graphics.dll" />
     <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pdb" target="lib\nanoFramework.Graphics.pdb" />
     <file src="nanoFramework.Graphics\bin\Release\nanoFramework.Graphics.pdbx" target="lib\nanoFramework.Graphics.pdbx" />
