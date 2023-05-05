@@ -27,19 +27,42 @@ namespace nanoFramework.UI
 
 */
 
-    #region Application Class
-
     /// <summary>
     /// Application base class
     /// </summary>
     public class Application : DispatcherObject, IEventListener
     {
+        private class GlobalLock { }
+        static private bool _isShuttingDown;
+        static private bool _appCreatedInThisAppDomain;
+        static private Application _appInstance;
 
-        //------------------------------------------------------
-        //
-        //  Constructors
-        //
-        //------------------------------------------------------
+        private WindowCollection _appWindowList;
+        private WindowCollection _nonAppWindowList;
+        private Window _mainWindow;
+
+        private bool _ownDispatcherStarted;
+        private bool _appIsShutdown;
+        private ShutdownMode _shutdownMode = ShutdownMode.OnLastWindowClose;
+
+        private EventHandler _startupEventHandler;
+        private EventHandler _exitEventHandler;
+
+        private static DispatcherOperationCallback _reportInputMethod;
+        private static InputManager _inputManager = null;
+        private InputProviderSite _inputProviderSite = null;
+
+        private static readonly int _stylusMaxX = DisplayControl.ScreenWidth;
+        private static readonly int _stylusMaxY = DisplayControl.ScreenHeight;
+
+        /*REFACTOR        private EventHandlerList            _events;
+
+                private static readonly object EVENT_STARTUP        = new object();
+                private static readonly object EVENT_EXIT           = new object();
+                private static readonly object EVENT_ACTIVATE       = new object();
+                private static readonly object EVENT_DEACTIVATE     = new object();
+                private static readonly object EVENT_SESSIONENDING  = new object();
+        */
 
         #region Constructors
 
@@ -99,12 +122,6 @@ namespace nanoFramework.UI
         }
 
         #endregion Constructors
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         #region Public Methods
 
@@ -228,7 +245,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// 
+        /// Initializes the InputProvider for the EventSource.
         /// </summary>
         [MethodImplAttribute(MethodImplOptions.Synchronized)]
         public void InitializeForEventSource()
@@ -250,10 +267,10 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// 
+        /// Provides input processing for BaseEvent objects from the EventSource.
         /// </summary>
-        /// <param name="ev"></param>
-        /// <returns></returns>
+        /// <param name="ev">The event to process.</param>
+        /// <returns>Returns true if the event was successfully processed, otherwise returns false.</returns>
         public bool OnEvent(BaseEvent ev)
         {
             InputReport ir = null;
@@ -360,12 +377,6 @@ namespace nanoFramework.UI
         }
 
         #endregion Public Methods
-
-        //------------------------------------------------------
-        //
-        //  Public Properties
-        //
-        //------------------------------------------------------
 
         #region Public Properties
 
@@ -477,12 +488,6 @@ namespace nanoFramework.UI
 
         #endregion Public Properties
 
-        //------------------------------------------------------
-        //
-        //  Public Events
-        //
-        //------------------------------------------------------
-
         #region Public Events
 
         /// <summary>
@@ -549,12 +554,6 @@ namespace nanoFramework.UI
 #endif
 
         #endregion Public Events
-
-        //------------------------------------------------------
-        //
-        //  Protected Methods
-        //
-        //------------------------------------------------------
 
         #region Protected Methods
 
@@ -685,12 +684,6 @@ namespace nanoFramework.UI
 
         #endregion Protected Methods
 
-        //------------------------------------------------------
-        //
-        //  Internal Methods
-        //
-        //------------------------------------------------------
-
         #region Internal Methods
 
         /// <summary>
@@ -744,12 +737,6 @@ namespace nanoFramework.UI
         }
 
         #endregion Internal methods
-
-        //------------------------------------------------------
-        //
-        //  Internal Properties
-        //
-        //------------------------------------------------------
 
         #region Internal Properties
 
@@ -810,11 +797,6 @@ namespace nanoFramework.UI
 
         #endregion Internal Properties
 
-        //------------------------------------------------------
-        //
-        //  Private Methods
-        //
-        //------------------------------------------------------
         #region Private Methods
 
         /*
@@ -964,95 +946,5 @@ namespace nanoFramework.UI
         }
 
         #endregion Private Methods
-
-        //------------------------------------------------------
-        //
-        //  Private Fields
-        //
-        //------------------------------------------------------
-
-        #region Private Fields
-        private class GlobalLock { }
-        static private bool _isShuttingDown;
-        static private bool _appCreatedInThisAppDomain;
-        static private Application _appInstance;
-
-        private WindowCollection _appWindowList;
-        private WindowCollection _nonAppWindowList;
-        private Window _mainWindow;
-
-        private bool _ownDispatcherStarted;
-        private bool _appIsShutdown;
-        private ShutdownMode _shutdownMode = ShutdownMode.OnLastWindowClose;
-
-        private EventHandler _startupEventHandler;
-        private EventHandler _exitEventHandler;
-
-        private static DispatcherOperationCallback _reportInputMethod;
-        private static InputManager _inputManager = null;
-        private InputProviderSite _inputProviderSite = null;
-
-        private static readonly int _stylusMaxX = DisplayControl.ScreenWidth;
-        private static readonly int _stylusMaxY = DisplayControl.ScreenHeight;
-
-        /*REFACTOR        private EventHandlerList            _events;
-
-                private static readonly object EVENT_STARTUP        = new object();
-                private static readonly object EVENT_EXIT           = new object();
-                private static readonly object EVENT_ACTIVATE       = new object();
-                private static readonly object EVENT_DEACTIVATE     = new object();
-                private static readonly object EVENT_SESSIONENDING  = new object();
-        */
-        #endregion Private Fields
     }
-
-    #endregion Application Class
-
-    #region enum ShutdownMode
-
-    /// <summary>
-    ///     Enum for ShutdownMode
-    /// </summary>
-    public enum ShutdownMode : byte
-    {
-        /// <summary>
-        ///
-        /// </summary>
-        OnLastWindowClose = 0,
-
-        /// <summary>
-        ///
-        /// </summary>
-        OnMainWindowClose = 1,
-
-        /// <summary>
-        ///
-        /// </summary>
-        OnExplicitShutdown
-
-        // NOTE: if you add or remove any values in this enum, be sure to update Application.IsValidShutdownMode()
-    }
-
-    #endregion enum ShutdownMode
-
-    #region enum ReasonSessionEnding
-
-    /// <summary>
-    ///     Enum for ReasonSessionEnding
-    /// </summary>
-    public enum ReasonSessionEnding : byte
-    {
-        /// <summary>
-        ///
-        /// </summary>
-        Logoff = 0,
-        /// <summary>
-        ///
-        /// </summary>
-        Shutdown
-    }
-
-    #endregion enum ReasonSessionEnding
 }
-
-

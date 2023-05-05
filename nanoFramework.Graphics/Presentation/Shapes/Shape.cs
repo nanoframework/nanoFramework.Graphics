@@ -6,16 +6,20 @@
 
 using nanoFramework.Presentation.Media;
 using nanoFramework.UI;
+using System.Drawing;
 
 namespace nanoFramework.Presentation.Shapes
 {
     /// <summary>
-    /// 
+    /// Abstract base class for shapes that can be drawn on a screen.
     /// </summary>
     public abstract class Shape : UIElement
     {
+        private Brush _fill;
+        private Pen _stroke;
+
         /// <summary>
-        /// 
+        /// Gets or sets the brush used to fill the shape.
         /// </summary>
         public Brush Fill
         {
@@ -58,10 +62,5 @@ namespace nanoFramework.Presentation.Shapes
                 Invalidate();
             }
         }
-
-        private Brush _fill;
-        private Pen _stroke;
     }
 }
-
-

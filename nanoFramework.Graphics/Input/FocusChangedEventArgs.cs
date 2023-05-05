@@ -47,5 +47,3 @@ namespace nanoFramework.UI.Input
         public readonly UIElement NewFocus;
     }
 }
-
-

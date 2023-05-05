@@ -14,13 +14,13 @@ namespace nanoFramework.Presentation.Controls
     /// </summary>
     public class ListBoxItemCollection : ICollection
     {
-        UIElementCollection _items;
+        private UIElementCollection _items;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the ListBoxItemCollection class.
         /// </summary>
-        /// <param name="listBox"></param>
-        /// <param name="items"></param>
+        /// <param name="listBox">The ListBox that owns the ListBoxItemCollection.</param>
+        /// <param name="items">The UIElementCollection to use as the basis for the ListBoxItemCollection.</param>
         public ListBoxItemCollection(ListBox listBox, UIElementCollection items)
         {
             _listBox = listBox;
@@ -28,10 +28,11 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Adds a ListBoxItem to the end of the ListBoxItemCollection.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <param name="item">The ListBoxItem to add to the ListBoxItemCollection.</param>
+        /// <returns>The zero-based index of the ListBoxItem that was added to the ListBoxItemCollection.</returns>
+
         public int Add(ListBoxItem item)
         {
             int pos = _items.Add(item);
@@ -40,10 +41,10 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Adds a UIElement to the end of the ListBoxItemCollection.
         /// </summary>
-        /// <param name="element"></param>
-        /// <returns></returns>
+        /// <param name="element">The UIElement to add to the ListBoxItemCollection.</param>
+        /// <returns>The zero-based index of the ListBoxItem that was added to the ListBoxItemCollection.</returns>
         public int Add(UIElement element)
         {
             ListBoxItem item = new ListBoxItem();
@@ -52,29 +53,28 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Removes all items from the ListBoxItemCollection.
         /// </summary>
         public void Clear()
         {
             _items.Clear();
         }
 
-        
         /// <summary>
-        /// 
+        /// Determines whether the ListBoxItemCollection contains a specific ListBoxItem.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <param name="item">The ListBoxItem to locate in the ListBoxItemCollection.</param>
+        /// <returns>true if the ListBoxItem is found in the ListBoxItemCollection; otherwise, false.</returns>
         public bool Contains(ListBoxItem item)
         {
             return _items.Contains(item);
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the ListBoxItem at the specified index.
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="index">The zero-based index of the ListBoxItem to get or set.</param>
+        /// <returns>The ListBoxItem at the specified index.</returns>
         public ListBoxItem this[int index]
         {
             get { return (ListBoxItem)_items[index]; }
@@ -82,20 +82,20 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Determines the index of a specific ListBoxItem in the ListBoxItemCollection.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <param name="item">The ListBoxItem to locate in the ListBoxItemCollection.</param>
+        /// <returns>The zero-based index of the ListBoxItem within the ListBoxItemCollection; otherwise, -1.</returns>
         public int IndexOf(ListBoxItem item)
         {
             return _items.IndexOf(item);
         }
 
         /// <summary>
-        /// 
+        /// Inserts a ListBoxItem into the ListBoxItemCollection at the specified index.
         /// </summary>
-        /// <param name="index"></param>
-        /// <param name="item"></param>
+        /// <param name="index">The zero-based index at which the ListBoxItem should be inserted.</param>
+        /// <param name="item">The ListBoxItem to insert into the ListBoxItemCollection.</param>
         public void Insert(int index, ListBoxItem item)
         {
             _items.Insert(index, item);
@@ -103,9 +103,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Removes the specified ListBoxItem from the collection.
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">The ListBoxItem to remove.</param>
         public void Remove(ListBoxItem item)
         {
             _items.Remove(item);
@@ -113,9 +113,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Removes the ListBoxItem at the specified index.
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">The zero-based index of the ListBoxItem to remove.</param>
         public void RemoveAt(int index)
         {
             if (index >= 0 && index < _items.Count)
@@ -129,17 +129,17 @@ namespace nanoFramework.Presentation.Controls
         #region ICollection Members
 
         /// <summary>
-        /// 
+        /// Copies the entire collection to a compatible one-dimensional array, starting at the specified index of the target array.
         /// </summary>
-        /// <param name="array"></param>
-        /// <param name="index"></param>
+        /// <param name="array">The one-dimensional array that is the destination of the elements copied from the collection.</param>
+        /// <param name="index">The zero-based index in the destination array at which copying begins.</param>
         public void CopyTo(Array array, int index)
         {
             _items.CopyTo(array, index);
         }
 
         /// <summary>
-        /// 
+        /// Gets the number of elements contained in the collection.
         /// </summary>
         public int Count
         {
@@ -147,7 +147,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets a value indicating whether access to the collection is synchronized (thread-safe).
         /// </summary>
         public bool IsSynchronized
         {
@@ -155,7 +155,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets an object that can be used to synchronize access to the collection.
         /// </summary>
         public object SyncRoot
         {
@@ -167,9 +167,9 @@ namespace nanoFramework.Presentation.Controls
         #region IEnumerable Members
 
         /// <summary>
-        /// 
+        /// Returns an enumerator that iterates through the collection.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>An enumerator that iterates through the collection.</returns>
         public IEnumerator GetEnumerator()
         {
             return ((IEnumerable)_items).GetEnumerator();

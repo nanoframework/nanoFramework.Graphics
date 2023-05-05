@@ -5,8 +5,6 @@
 //
 
 using System;
-using System.Runtime;
-using nanoFramework.Runtime.Events;
 
 namespace nanoFramework.UI
 {
@@ -34,6 +32,19 @@ namespace nanoFramework.UI
     /// </remarks>
     public class RoutedEventArgs : EventArgs
     {
+        internal RoutedEvent _routedEvent;
+        internal object _source;
+        private object _originalSource;
+
+        private Flags _flags;
+
+        [Flags]
+        private enum Flags : uint
+        {
+            Handled = 1,
+            InvokingHandler = 2,
+        }
+
         #region Construction
 
         /// <summary>
@@ -78,6 +89,7 @@ namespace nanoFramework.UI
         #endregion Construction
 
         #region External API
+
         /// <summary>
         ///     Returns the <see cref="RoutedEvent"/> associated
         ///     with this <see cref="RoutedEventArgs"/>
@@ -248,24 +260,5 @@ namespace nanoFramework.UI
         }
 
         #endregion Operations
-
-        #region Data
-
-        internal RoutedEvent _routedEvent;
-        internal object _source;
-        private object _originalSource;
-
-        private Flags _flags;
-
-        [Flags]
-        private enum Flags : uint
-        {
-            Handled = 1,
-            InvokingHandler = 2,
-        }
-
-        #endregion Data
     }
 }
-
-

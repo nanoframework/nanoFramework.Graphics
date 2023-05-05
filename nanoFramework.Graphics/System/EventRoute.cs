@@ -26,7 +26,10 @@ namespace nanoFramework.UI
     ///     to be invoked
     /// </remarks>
     public sealed class EventRoute
-    {
+    {        // Stores the routed event handlers to be
+        // invoked for the associated RoutedEvent
+        private ArrayList _routeItemList;
+
         #region Construction
 
         /// <summary>
@@ -183,15 +186,5 @@ namespace nanoFramework.UI
         internal RoutedEvent RoutedEvent;
 
         #endregion Operations
-
-        #region Data
-
-        // Stores the routed event handlers to be
-        // invoked for the associated RoutedEvent
-        private ArrayList _routeItemList;
-
-        #endregion Data
     }
 }
-
-

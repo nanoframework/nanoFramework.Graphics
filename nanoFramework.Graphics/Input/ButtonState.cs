@@ -32,5 +32,3 @@ namespace nanoFramework.UI.Input
         Held = 2
     }
 }
-
-

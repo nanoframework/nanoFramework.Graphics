@@ -30,17 +30,17 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// I2C bus.
+        /// Gets or sets the I2C bus.
         /// </summary>
         public byte I2cBus { get => _i2cBus; set => _i2cBus = value; }
 
         /// <summary>
-        /// Address.
+        /// Gets or sets the address.
         /// </summary>
         public byte Address { get => _address; set => _address = value; }
 
         /// <summary>
-        /// True for I2C fast mode.
+        /// Gets or sets whether the I2C fast mode is selected.
         /// </summary>
         public bool FastMode { get => _fastMode; set => _fastMode = value; }
 #pragma warning restore S4487

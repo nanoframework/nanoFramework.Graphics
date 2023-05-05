@@ -44,33 +44,4 @@ namespace nanoFramework.UI.Input
         /// </summary>
         public readonly RawButtonActions Actions;
     }
-
-    // REFACTOR -- this goes in a separate CS file.
-    /// <summary>
-    /// 
-    /// </summary>
-    public enum RawButtonActions
-    {
-        /// <summary>
-        /// Button Down
-        /// </summary>
-        ButtonDown = 1,
-
-        /// <summary>
-        /// Button Up
-        /// </summary>
-        ButtonUp = 2,
-
-        /// <summary>
-        /// Activate
-        /// </summary>
-        Activate = 4,
-
-        /// <summary>
-        /// Deactivate
-        /// </summary>
-        Deactivate = 8,
-    }
 }
-
-

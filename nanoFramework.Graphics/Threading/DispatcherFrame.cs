@@ -11,6 +11,10 @@ namespace nanoFramework.UI.Threading
     /// </summary>
     public class DispatcherFrame
     {
+        private bool _exitWhenRequested;
+        private bool _continue;
+        private Dispatcher _dispatcher;
+
         /// <summary>
         ///     Constructs a new instance of the DispatcherFrame class.
         /// </summary>
@@ -72,11 +76,5 @@ namespace nanoFramework.UI.Threading
                 _dispatcher.QueryContinueFrame();
             }
         }
-
-        private bool _exitWhenRequested;
-        private bool _continue;
-        private Dispatcher _dispatcher;
     }
 }
-
-

@@ -12,7 +12,7 @@ namespace nanoFramework.UI.GraphicDrivers
     /// <summary>
     /// ST7735 managed graphic driver.
     /// </summary>
-    public static class St7735
+    public static class St7789
     {
         private static GraphicDriver _driver;
 

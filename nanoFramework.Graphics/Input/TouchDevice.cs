@@ -99,5 +99,3 @@ namespace nanoFramework.UI.Input
         private UIElement _focus;
     }
 }
-
-

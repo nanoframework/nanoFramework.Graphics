@@ -13,13 +13,30 @@ using nanoFramework.UI.Threading;
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// The MediaContext class controls the rendering
+    /// The MediaContext class controls the rendering of graphics on the display device.
     /// </summary>
-    internal class MediaContext : DispatcherObject , IDisposable
+    internal class MediaContext : DispatcherObject, IDisposable
     {
         /// <summary>
-        /// The MediaContext lives in the Dispatcher and is the MediaSystem's class that keeps
-        /// per Dispatcher state.
+        /// Message delegate.
+        /// </summary>
+        private DispatcherOperation _currentRenderOp;
+        private DispatcherOperationCallback _renderMessage;
+
+        /// <summary>
+        /// Indicates that we are in the middle of processing a render message.
+        /// </summary>
+        private bool _isRendering;
+
+        private ArrayList _invokeOnRenderCallbacks;
+
+        private UIElement _target;
+        private Bitmap _screen;
+
+        private class GlobalLock { }
+
+        /// <summary>
+        /// Initializes a new instance of the MediaContext class.
         /// </summary>
         internal MediaContext()
         {
@@ -31,8 +48,10 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// Gets the MediaContext from the context passed in as argument.
+        /// Gets the MediaContext object from the specified Dispatcher object.
         /// </summary>
+        /// <param name="dispatcher">The Dispatcher object to get the MediaContext from.</param>
+        /// <returns>The MediaContext object from the specified Dispatcher object.</returns>
         internal static MediaContext From(Dispatcher dispatcher)
         {
             //Debug.Assert(dispatcher != null, "Dispatcher required");
@@ -75,6 +94,11 @@ namespace nanoFramework.Presentation.Media
             }
         }
 
+        /// <summary>
+        /// Adds a delegate to the Dispatcher queue to be processed when the rendering operation is next executed.
+        /// </summary>
+        /// <param name="callback">A delegate to be added to the Dispatcher queue.</param>
+        /// <param name="arg">An object to be passed as an argument to the delegate.</param>
         internal void BeginInvokeOnRender(DispatcherOperationCallback callback, object arg)
         {
             //Debug.Assert(callback != null);
@@ -128,6 +152,13 @@ namespace nanoFramework.Presentation.Media
             }
         }
 
+        /// <summary>
+        /// Adds a dirty region of the display to the dirty regions collection to be redrawn.
+        /// </summary>
+        /// <param name="x">The x-coordinate of the dirty region.</param>
+        /// <param name="y">The y-coordinate of the dirty region.</param>
+        /// <param name="w">The width of the dirty region.</param>
+        /// <param name="h">The height of the dirty region.</param>
         internal void AddDirtyArea(int x, int y, int w, int h)
         {
             if (x < 0) x = 0;
@@ -241,35 +272,21 @@ namespace nanoFramework.Presentation.Media
         }
 
         /// <summary>
-        /// Message delegate.
+        /// Disposes of the resources used by the MediaContext object.
         /// </summary>
-        private DispatcherOperation _currentRenderOp;
-        private DispatcherOperationCallback _renderMessage;
-
-        /// <summary>
-        /// Indicates that we are in the middle of processing a render message.
-        /// </summary>
-        private bool _isRendering;
-
-        private ArrayList _invokeOnRenderCallbacks;
-
-        private UIElement _target;
-        private Bitmap _screen;
-
-        private class GlobalLock { }
-
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Disposes of the resources used by the MediaContext object.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
-            _screen.Dispose();    
+            _screen.Dispose();
         }
-
     }
 }
-
-

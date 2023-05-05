@@ -22,15 +22,26 @@ namespace nanoFramework.Presentation
     /// </remarks>
     public class UIElementCollection : ICollection
     {
+        private const int c_defaultCapacity = 2;
+        private const int c_growFactor = 2;
 
-        /// <summary>  </summary>
+        internal UIElement[] _items;
+        internal int _size;
+        private int _version;
+        private UIElement _owner;
+
+        /// <summary>
+        /// Represents a collection of UIElement objects.
+        /// </summary>
         public UIElementCollection(UIElement owner)
         {
             //Debug.Assert(owner != null);
             _owner = owner;
         }
 
-        /// <summary>  </summary>
+        /// <summary>
+        /// Gets the number of elements in the collection.
+        /// </summary>
         public virtual int Count
         {
             get
@@ -39,7 +50,9 @@ namespace nanoFramework.Presentation
             }
         }
 
-        /// <summary>  </summary>
+        /// <summary>
+        /// Gets a value indicating whether access to the collection is synchronized (thread-safe).
+        /// </summary>
         public virtual bool IsSynchronized
         {
             get
@@ -48,7 +61,9 @@ namespace nanoFramework.Presentation
             }
         }
 
-        /// <summary>  </summary>
+        /// <summary>
+        /// Gets an object that can be used to synchronize access to the collection.
+        /// </summary>
         public virtual object SyncRoot
         {
             get
@@ -60,6 +75,8 @@ namespace nanoFramework.Presentation
         /// <summary>
         /// Copies the UIElement collection to the specified array starting at the specified index.
         /// </summary>
+        /// <param name="array">The one-dimensional Array that is the destination of the elements copied from UIElementCollection. The Array must have zero-based indexing.</param>
+        /// <param name="index">The zero-based index in array at which copying begins.</param>
         public void CopyTo(Array array, int index)
         {
             if (array == null)
@@ -80,6 +97,8 @@ namespace nanoFramework.Presentation
         /// Strongly typed version of CopyTo
         /// Copies the collection into the Array.
         /// </summary>
+        /// <param name="array">The array to copy the collection to.</param>
+        /// <param name="index">The index in the array at which to start copying.</param>
         public virtual void CopyTo(UIElement[] array, int index)
         {
             CopyTo((Array)array, index);
@@ -94,6 +113,7 @@ namespace nanoFramework.Presentation
         /// value. If the currect capacity of the list is less than min, the
         /// capacity is increased to min.
         /// </summary>
+        /// <param name="min">The minimum capacity to ensure.</param>
         private void EnsureCapacity(int min)
         {
             if (Capacity < min)
@@ -160,6 +180,7 @@ namespace nanoFramework.Presentation
         /// Indexer for the UIElementCollection. Gets or sets the UIElement stored at the
         /// zero-based index of the UIElementCollection.
         /// </summary>
+        /// <param name="index">The zero-based index of the element to get or set.</param>
         /// <remarks>This property provides the ability to access a specific UIElement in the
         /// UIElementCollection by using the following systax: <c>myUIElementCollection[index]</c>.</remarks>
         /// <exception cref="ArgumentOutOfRangeException"><c>index</c> is less than zero -or- <c>index</c> is equal to or greater than Count.</exception>
@@ -213,6 +234,8 @@ namespace nanoFramework.Presentation
         /// Note that the function requires that _item[index] == null and it
         /// also requires that the passed in child is not connected to another UIElement.
         /// </summary>
+        /// <param name="index">The index to insert the element into.</param>
+        /// <param name="value">The element to insert into the collection.</param>
         /// <exception cref="ArgumentException">If the new child has already a parent or if the slot a the specified index is not null.</exception>
         private void ConnectChild(int index, UIElement value)
         {
@@ -221,7 +244,6 @@ namespace nanoFramework.Presentation
             //
             // We also need to ensure that the tree is homogenous with respect
             // to the dispatchers that the elements belong to.
-            //
             value.VerifyAccess();
 
             //Debug.Assert(_items[index] == null);
@@ -245,6 +267,7 @@ namespace nanoFramework.Presentation
         /// <summary>
         /// Disconnects a child.
         /// </summary>
+        /// <param name="index">The index of the child to disconnect.</param>
         private void DisconnectChild(int index)
         {
             //Debug.Assert(_items[index] != null);
@@ -270,7 +293,7 @@ namespace nanoFramework.Presentation
         /// <summary>
         /// Appends a UIElement to the end of the UIElementCollection.
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="element">The UIElement to append.</param>
         /// <returns>The UIElementCollection index at which the UIElement has been added.</returns>
         /// <remarks>Adding a null is allowed.</remarks>
         /// <summary>
@@ -715,20 +738,12 @@ namespace nanoFramework.Presentation
             public void Reset()
             {
                 if (_version != _collection._version)
+                {
                     throw new InvalidOperationException("collection changed");
+                }
+
                 _index = -1; // not started.
             }
         }
-
-        internal UIElement[] _items;
-        internal int _size;
-        private int _version;
-        private UIElement _owner;
-
-        private const int c_defaultCapacity = 2;
-        private const int c_growFactor = 2;
-
     }
 }
-
-

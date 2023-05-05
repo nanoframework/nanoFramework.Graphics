@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) .NET Foundation and Contributors
 // Portions Copyright (c) Microsoft Corporation.  All rights reserved.
 // See LICENSE file in the project root for full license information.
@@ -10,78 +10,18 @@ using System.Runtime.CompilerServices;
 namespace nanoFramework.UI
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [Flags]
-    public enum CollectionMethod : int
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        Managed = 0,
-
-        /// <summary>
-        /// 
-        /// </summary>
-        Native = 1,
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [Flags]
-    public enum CollectionMode : int
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        InkOnly = 2,
-
-        /// <summary>
-        /// 
-        /// </summary>
-        GestureOnly = 4,
-
-        /// <summary>
-        /// 
-        /// </summary>
-        InkAndGesture = InkOnly | GestureOnly,
-    }
-
-    internal class TouchCollector
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public TouchCollector()
-        {
-        }
-
-        TimeSpan lastTime = TimeSpan.Zero;
-
-        internal void SetBuffer(uint bufferSize)
-        {
-            if (TouchCollectorConfiguration.CollectionMethod == CollectionMethod.Managed)
-            {
-            }
-            else if (TouchCollectorConfiguration.CollectionMethod == CollectionMethod.Native)
-            {
-                // Not needed at this moment, we are using static buffer.
-                // TouchCollectorConfiguration.SetNativeBufferSize(bufferSize, bufferSize);
-                _nativeBufferSize = bufferSize;
-            }
-        }
-
-        private uint _nativeBufferSize = 200;
-    }
-
-    /// <summary>
-    /// 
+    /// Provides configuration settings for the TouchCollector.
     /// </summary>
     public static class TouchCollectorConfiguration
     {
+        internal static CollectionMode _collectionMode = CollectionMode.GestureOnly;
+        internal static CollectionMethod _collectionMethod = CollectionMethod.Managed;
+
+        internal static TouchCollector _touchCollector = new TouchCollector();
+        internal static uint _collectionBufferSize = 200;
+
         /// <summary>
-        /// 
+        /// Gets or sets the collection mode for the TouchCollector.
         /// </summary>
         public static CollectionMode CollectionMode
         {
@@ -97,7 +37,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the collection method for the TouchCollector.
         /// </summary>
         public static CollectionMethod CollectionMethod
         {
@@ -117,8 +57,9 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// Sampling rate per second. Setting 50 will result 50 touch samples in a second.
+        /// Gets or sets the sampling frequency per second.
         /// </summary>
+        /// <remarks>Setting a frequency of 50 will result in 50 touch samples per second.</remarks>
         public static int SamplingFrequency
         {
             get
@@ -130,7 +71,9 @@ namespace nanoFramework.UI
                 GetTouchInput(TouchInput.SamplingDistance, ref param1, ref param2, ref param3);
 
                 if (param1 <= 0)
+                {
                     return 0;
+                }
 
                 return (1000000 / param1);
             }
@@ -143,24 +86,28 @@ namespace nanoFramework.UI
 
                 // Negative or zero is not acceptable frequency.
                 if (value <= 0)
+                {
                     throw new ArgumentException();
+                }
 
                 param1 = 1000000 / value;
 
                 // param1 == 0 means more than one sample is requested per microsecond,
                 // which is not attainable.
                 if (param1 <= 0)
+                {
                     throw new ArgumentException();
+                }
 
                 SetTouchInput(TouchInput.SamplingDistance, param1, param2, param3);
             }
         }
 
         /// <summary>
-        /// 
+        /// Gets the last touch point.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="x">The x-coordinate of the last touch point.</param>
+        /// <param name="y">The y-coordinate of the last touch point.</param>
         public static void GetLastTouchPoint(ref int x, ref int y)
         {
             int param3 = 0;
@@ -168,8 +115,9 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the touch move frequency.
         /// </summary>
+        /// <remarks>The touch move frequency determines how often touch move events are generated.</remarks>
         public static int TouchMoveFrequency
         {
             get
@@ -197,51 +145,43 @@ namespace nanoFramework.UI
         internal static extern void GetTouchPoints(ref int pointCount, short[] sx, short[] sy);
 
         /// <summary>
-        /// 
+        /// Flags used to identify touch input properties.
         /// </summary>
         [Flags]
         public enum TouchInput
         {
             /// <summary>
-            /// param1- X, param2-Y, param3-unused.
+            /// The last known touch point on the screen.
             /// </summary>
-            LastTouchPoint = 0x2, 
+            LastTouchPoint = 0x2,
             /// <summary>
-            /// param1- Distance in micro seconds.
+            /// The distance between touch samples in microseconds.
             /// </summary>
-            SamplingDistance = 0x4, 
+            SamplingDistance = 0x4,
             /// <summary>
-            /// param1- frequency per second.
+            /// The frequency of touch move events per second.
             /// </summary>
             TouchMoveFrequency = 0x8,
         }
 
         /// <summary>
-        /// 
+        /// Retrieves touch input data for a specified flag.
         /// </summary>
-        /// <param name="flag"></param>
-        /// <param name="param1"></param>
-        /// <param name="param2"></param>
-        /// <param name="param3"></param>
+        /// <param name="flag">The flag indicating the type of touch input data to retrieve.</param>
+        /// <param name="param1">The first parameter of the touch input data.</param>
+        /// <param name="param2">The second parameter of the touch input data.</param>
+        /// <param name="param3">The third parameter of the touch input data.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern void GetTouchInput(TouchInput flag, ref int param1, ref int param2, ref int param3);
 
         /// <summary>
-        /// 
+        /// Sets touch input data for a specified flag.
         /// </summary>
-        /// <param name="flag"></param>
-        /// <param name="param1"></param>
-        /// <param name="param2"></param>
-        /// <param name="param3"></param>
+        /// <param name="flag">The flag indicating the type of touch input data to set.</param>
+        /// <param name="param1">The first parameter of the touch input data.</param>
+        /// <param name="param2">The second parameter of the touch input data.</param>
+        /// <param name="param3">The third parameter of the touch input data.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public static extern void SetTouchInput(TouchInput flag, int param1, int param2, int param3);
-
-        internal static CollectionMode _collectionMode = CollectionMode.GestureOnly;
-        internal static CollectionMethod _collectionMethod = CollectionMethod.Managed;
-
-        internal static TouchCollector _touchCollector = new TouchCollector();
-        internal static uint _collectionBufferSize = 200;
     }
 }
-
-

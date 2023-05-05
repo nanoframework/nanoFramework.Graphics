@@ -46,5 +46,3 @@ namespace nanoFramework.UI
         public readonly object NewValue;
     }
 }
-
-

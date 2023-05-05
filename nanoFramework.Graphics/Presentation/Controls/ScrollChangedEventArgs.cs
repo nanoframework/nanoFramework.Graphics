@@ -10,35 +10,37 @@ using nanoFramework.Runtime.Events;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Provides data for the ScrollChanged event.
     /// </summary>
     public class ScrollChangedEventArgs : EventArgs
     {
         /// <summary>
-        /// 
+        /// Gets the amount of horizontal change in the scroll position.
         /// </summary>
         public readonly int HorizontalChange;
+
         /// <summary>
-        /// 
+        /// Gets the horizontal offset of the scroll position.
         /// </summary>
         public readonly int HorizontalOffset;
 
         /// <summary>
-        /// 
+        /// Gets the amount of vertical change in the scroll position.
         /// </summary>
         public readonly int VerticalChange;
+
         /// <summary>
-        /// 
+        /// Gets the vertical offset of the scroll position.
         /// </summary>
         public readonly int VerticalOffset;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the ScrollChangedEventArgs class.
         /// </summary>
-        /// <param name="offsetX"></param>
-        /// <param name="offsetY"></param>
-        /// <param name="offsetChangeX"></param>
-        /// <param name="offsetChangeY"></param>
+        /// <param name="offsetX">The horizontal offset of the scroll position.</param>
+        /// <param name="offsetY">The vertical offset of the scroll position.</param>
+        /// <param name="offsetChangeX">The amount of horizontal change in the scroll position.</param>
+        /// <param name="offsetChangeY">The amount of vertical change in the scroll position.</param>
         public ScrollChangedEventArgs(int offsetX, int offsetY, int offsetChangeX, int offsetChangeY)
         {
             HorizontalOffset = offsetX;
@@ -49,5 +51,3 @@ namespace nanoFramework.Presentation.Controls
         }
     }
 }
-
-

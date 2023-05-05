@@ -9,28 +9,14 @@ using System;
 namespace nanoFramework.Presentation.Shapes
 {
     /// <summary>
-    /// 
-    /// </summary>
-    public enum Direction
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        TopToBottom,
-
-        /// <summary>
-        /// 
-        /// </summary>
-        BottomToTop
-    }
-
-    /// <summary>
-    /// 
+    /// Represents a line shape that can be rendered on a display.
     /// </summary>
     public class Line : Shape
     {
+        private Direction _direction;
+
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Line class with default values.
         /// </summary>
         public Line()
             : this(0, 0)
@@ -38,10 +24,10 @@ namespace nanoFramework.Presentation.Shapes
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Line class with the specified dimensions.
         /// </summary>
-        /// <param name="dx"></param>
-        /// <param name="dy"></param>
+        /// <param name="dx">The width of the line.</param>
+        /// <param name="dy">The height of the line.</param>
         public Line(int dx, int dy)
         {
             if( dx < 0 || dy < 0)
@@ -54,7 +40,7 @@ namespace nanoFramework.Presentation.Shapes
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the direction of the line.
         /// </summary>
         public Direction Direction
         {
@@ -71,9 +57,9 @@ namespace nanoFramework.Presentation.Shapes
         }
 
         /// <summary>
-        /// 
+        /// Renders the line shape using the specified DrawingContext object.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The DrawingContext object to use for rendering.</param>
         public override void OnRender(Media.DrawingContext dc)
         {
             int width = this._renderWidth;
@@ -87,10 +73,6 @@ namespace nanoFramework.Presentation.Shapes
             {
                 dc.DrawLine(Stroke, 0, height - 1, width - 1, 0);
             }
-        }
-
-        private Direction _direction;
+        }        
     }
 }
-
-

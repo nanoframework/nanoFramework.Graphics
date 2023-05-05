@@ -47,7 +47,7 @@ namespace nanoFramework.Presentation.Controls
                 get { return (_orientation == Orientation.Horizontal ? V : U); }
                 set { if (_orientation == Orientation.Horizontal) V = value; else U = value; }
             }
-        } 
+        }
 
         /// <summary>
         /// <see cref="UIElement.ArrangeOverride"/> 
@@ -68,7 +68,10 @@ namespace nanoFramework.Presentation.Controls
             for (int i = 0; i < count; i++)
             {
                 UIElement child = Children[i];
-                if (child == null) continue;
+                if (child == null)
+                {
+                    continue;
+                }
 
                 int desiredWidth, desiredHeight;
                 child.GetDesiredSize(out desiredWidth, out desiredHeight);
@@ -108,8 +111,11 @@ namespace nanoFramework.Presentation.Controls
             }
 
             if (firstInLineIndex < count)
+            {
                 ArrangeLine(accumulatedV, currentLineSize.V, firstInLineIndex, count, useSetU, itemSetU);
+            }
         }
+
         private void ArrangeLine(int v, int lineV, int indexStart, int indexEnd, bool useSetU, int itemSetU)
         {
             int u = 0;
@@ -167,7 +173,7 @@ namespace nanoFramework.Presentation.Controls
                 {
                     desiredSize.U = Mathematics.Max(currentLineSize.U, desiredSize.U);
                     desiredSize.V += currentLineSize.V;
-                    
+
                     currentLineSize = childSize;
                     if (childSize.U > availableSize.U)
                     {
@@ -188,6 +194,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         private int _itemWidth = 0;
+
         /// <summary> 
         /// The ItemWidth and ItemHeight properties specify the size of all items in the WrapPanel.
         /// Note that children of WrapPanel may have their own Width/Height properties set - the ItemWidth/ItemHeight 
@@ -212,6 +219,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         private int _itemHeight = 0;
+
         /// <summary> 
         /// The ItemWidth and ItemHeight properties specify the size of all items in the WrapPanel.
         /// Note that children of WrapPanel may have their own Width/Height properties set - the ItemWidth/ItemHeight 
@@ -242,6 +250,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         private Orientation _orientation = Orientation.Horizontal;
+
         /// <summary>
         /// Specifies dimension of children positioning in absence of wrapping. 
         /// Wrapping occurs in orthogonal direction. For example, if Orientation is Horizontal,

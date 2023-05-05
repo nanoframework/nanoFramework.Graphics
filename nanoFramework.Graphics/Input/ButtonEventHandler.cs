@@ -11,5 +11,3 @@ namespace nanoFramework.UI.Input
     /// </summary>
     public delegate void ButtonEventHandler(object sender, ButtonEventArgs e);
 }
-
-

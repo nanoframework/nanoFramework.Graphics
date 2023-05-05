@@ -66,37 +66,4 @@ public class RawTouchInputReport : InputReport
         /// </summary>
         public readonly TouchInput[] Touches;
     }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public enum RawTouchActions
-    {
-        /// <summary>
-        ///  Touch Down
-        /// </summary>
-        TouchDown = 0x01,
-
-        /// <summary>
-        ///  Touch Up
-        /// </summary>
-        TouchUp = 0x02,
-
-        /// <summary>
-        ///  Activate
-        /// </summary>
-        Activate = 0x04,
-
-        /// <summary>
-        ///  Deactivate
-        /// </summary>
-        Deactivate = 0x08,
-
-        /// <summary>
-        ///  Touch Move
-        /// </summary>
-        TouchMove = 0x10,
-    }
 }
-
-

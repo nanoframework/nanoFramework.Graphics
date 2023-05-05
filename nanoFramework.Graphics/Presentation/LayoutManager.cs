@@ -17,9 +17,25 @@ namespace nanoFramework.Presentation
     //
     internal class LayoutManager : DispatcherObject
     {
-        TimeSpan ts = new TimeSpan(new DateTime().Ticks);
+        private TimeSpan ts = new TimeSpan(new DateTime().Ticks);
+        private bool _isUpdating;
+        private bool _gotException; //true if UpdateLayout exited with exception
+        private bool _layoutRequestPosted;
+
+        private UIElement _forceLayoutElement; //set in extreme situations, forces the update of the whole tree containing the element
+
+        // measure & arrange queues.
+        private LayoutQueue _arrangeQueue;
+        private LayoutQueue _measureQueue;
+
+        private DispatcherOperationCallback _updateLayoutBackground;
+        private DispatcherOperationCallback _updateCallback;
+
         public class LayoutQueue
         {
+            private LayoutManager _layoutManager;
+            private ArrayList _elements;
+
             public LayoutQueue(LayoutManager layoutManager)
             {
                 _layoutManager = layoutManager;
@@ -90,10 +106,6 @@ namespace nanoFramework.Presentation
                     }
                 }
             }
-
-            private LayoutManager _layoutManager;
-
-            private ArrayList _elements;
         }
 
         private class SingletonLock
@@ -431,22 +443,5 @@ namespace nanoFramework.Presentation
                 }
             }
         }
-
-        private bool _isUpdating;
-        private bool _gotException; //true if UpdateLayout exited with exception
-        private bool _layoutRequestPosted;
-
-        private UIElement _forceLayoutElement; //set in extreme situations, forces the update of the whole tree containing the element
-
-        // measure & arrange queues.
-        private LayoutQueue _arrangeQueue;
-        private LayoutQueue _measureQueue;
-
-        private DispatcherOperationCallback _updateLayoutBackground;
-        private DispatcherOperationCallback _updateCallback;
-
     }
-
 }
-
-

@@ -12,23 +12,23 @@ using static nanoFramework.UI.Temporary;
 namespace nanoFramework.UI
 {
     /// <summary>
-    /// 
+    /// Represents a touch screen that can listen for touch events.
     /// </summary>
     public class TouchScreen : IEventListener
     {
         /// <summary>
-        /// 
+        /// Represents a rectangular region of the touch screen that can receive touch events.
         /// </summary>
         public class ActiveRectangle
         {
             /// <summary>
-            /// 
+            /// Initializes a new instance of the <see cref="ActiveRectangle"/> class with the specified location, size, and target object.
             /// </summary>
-            /// <param name="x"></param>
-            /// <param name="y"></param>
-            /// <param name="width"></param>
-            /// <param name="height"></param>
-            /// <param name="target"></param>
+            /// <param name="x">The x-coordinate of the upper-left corner of the rectangle.</param>
+            /// <param name="y">The y-coordinate of the upper-left corner of the rectangle.</param>
+            /// <param name="width">The width of the rectangle.</param>
+            /// <param name="height">The height of the rectangle.</param>
+            /// <param name="target">The object that will receive touch events for this region.</param>
             public ActiveRectangle(int x, int y, int width, int height, object target)
             {
                 this.X = x;
@@ -39,10 +39,10 @@ namespace nanoFramework.UI
             }
 
             /// <summary>
-            /// 
+            /// Determines whether the specified touch input is within the bounds of this <see cref="ActiveRectangle"/> object.
             /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
+            /// <param name="input">The touch input to test.</param>
+            /// <returns>true if the touch input is within the bounds of this <see cref="ActiveRectangle"/> object; otherwise, false.</returns>
             public bool Contains(TouchInput input)
             {
                 if (
@@ -60,27 +60,27 @@ namespace nanoFramework.UI
             //--//
 
             /// <summary>
-            /// 
+            /// Gets the x-coordinate of the top-left corner of this active rectangle.
             /// </summary>
             public readonly int X;
 
             /// <summary>
-            /// 
+            /// Gets the y-coordinate of the top-left corner of this active rectangle.
             /// </summary>
             public readonly int Y;
 
             /// <summary>
-            /// 
+            /// Gets the width of this active rectangle.
             /// </summary>
             public readonly int Width;
 
             /// <summary>
-            /// 
+            /// Gets the height of this active rectangle.
             /// </summary>
             public readonly int Height;
 
             /// <summary>
-            /// 
+            /// Gets the target object associated with this active rectangle.
             /// </summary>
             public readonly object Target;
         }
@@ -94,9 +94,9 @@ namespace nanoFramework.UI
         //--//
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="TouchScreen"/> class with the specified active regions.
         /// </summary>
-        /// <param name="activeRectangles"></param>
+        /// <param name="activeRectangles">An array of active rectangles representing the regions of the screen that can be interacted with.</param>
         public TouchScreen(ActiveRectangle[] activeRectangles)
         {
             _maxWidth = DisplayControl.ScreenWidth;
@@ -113,39 +113,37 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// 
+        /// Event triggered when a touch down event occurs on the TouchScreen.
         /// </summary>
         public event TouchScreenEventHandler OnTouchDown;
 
         /// <summary>
-        /// 
+        /// Event triggered when a touch move event occurs on the TouchScreen.
         /// </summary>
         public event TouchScreenEventHandler OnTouchMove;
 
         /// <summary>
-        /// 
+        /// Event triggered when a touch up event occurs on the TouchScreen.
         /// </summary>
         public event TouchScreenEventHandler OnTouchUp;
 
         /// <summary>
-        /// 
+        /// Event triggered when a gesture starts on the TouchScreen.
         /// </summary>
         public event TouchGestureEventHandler OnGestureStarted;
 
         /// <summary>
-        /// 
+        /// Event triggered when a gesture changes on the TouchScreen.
         /// </summary>
         public event TouchGestureEventHandler OnGestureChanged;
 
-
         /// <summary>
-        /// 
+        /// Event triggered when a gesture ends on the TouchScreen.
         /// </summary>
         public event TouchGestureEventHandler OnGestureEnded;
-        //--//
 
         /// <summary>
-        /// 
+        /// Gets or sets the ActiveRectangles that define the touchable regions on the TouchScreen.
         /// </summary>
         public ActiveRectangle[] ActiveRegions
         {
@@ -163,6 +161,7 @@ namespace nanoFramework.UI
 
                 _activeRegions = value;
             }
+
             get
             {
                 return _activeRegions;
@@ -256,5 +255,3 @@ namespace nanoFramework.UI
         }
     }
 }
-
-

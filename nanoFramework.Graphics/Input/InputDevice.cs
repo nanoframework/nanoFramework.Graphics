@@ -33,5 +33,3 @@ namespace nanoFramework.UI.Input
         public abstract InputManager.InputDeviceType DeviceType { get; }
     }
 }
-
-

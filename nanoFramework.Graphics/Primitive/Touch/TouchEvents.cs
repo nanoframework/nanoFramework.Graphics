@@ -6,26 +6,26 @@
 
 namespace nanoFramework.UI
 {
+    // TODO: Need to merge these into this class update references and remove this file
     /// <summary>
-    /// Temporary class to extend the EventCatory enum found in the nanoFramework.Runtime.Events
-    ///  Need to merge these into this class update references and remove this file
+    /// Temporary class to extend the EventCatory enum found in the nanoFramework.Runtime.Events.
     /// </summary>
     public static class Temporary
     {
         /// <summary>
         ///  Temporary enum with unique values within the EventCategory enum range found in nanoFramework.Runtime.Events
         /// </summary>
-        public enum EventCategoryEx 
+        public enum EventCategoryEx
         {
-        /// <summary>
-        /// Specifies a Touch Event
-        /// </summary>
-        Touch = 80,
+            /// <summary>
+            /// Specifies a Touch Event
+            /// </summary>
+            Touch = 80,
 
-        /// <summary>
-        /// Specifies a Gesture Event
-        /// </summary>
-        Gesture = 90
+            /// <summary>
+            /// Specifies a Gesture Event
+            /// </summary>
+            Gesture = 90,
         }
     }
 }

@@ -67,5 +67,3 @@ namespace nanoFramework.UI.Input
         internal bool _isRepeat;
     }
 }
-
-

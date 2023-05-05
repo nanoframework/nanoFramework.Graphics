@@ -9,15 +9,16 @@ using System;
 namespace nanoFramework.Presentation.Shapes
 {
     /// <summary>
-    /// 
+    /// Defines an ellipse shape.
     /// </summary>
     public class Ellipse : Shape
     {
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Ellipse class with the specified radii.
         /// </summary>
-        /// <param name="xRadius"></param>
-        /// <param name="yRadius"></param>
+        /// <param name="xRadius">The x-radius of the ellipse.</param>
+        /// <param name="yRadius">The y-radius of the ellipse.</param>
+        /// <exception cref="ArgumentException">Thrown when either radius is less than zero.</exception>
         public Ellipse(int xRadius, int yRadius)
         {
             if( xRadius < 0 || yRadius < 0)                
@@ -30,9 +31,9 @@ namespace nanoFramework.Presentation.Shapes
         }
 
         /// <summary>
-        /// 
+        /// Draws the ellipse on a Media.DrawingContext.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The Media.DrawingContext on which to draw the ellipse.</param>
         public override void OnRender(Media.DrawingContext dc)
         {
             // Make room for cases when strokes are thick.

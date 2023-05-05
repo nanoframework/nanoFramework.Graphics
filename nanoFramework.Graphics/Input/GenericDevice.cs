@@ -128,5 +128,3 @@ namespace nanoFramework.UI.Input
         private InputManager _inputManager;
     }
 }
-
-

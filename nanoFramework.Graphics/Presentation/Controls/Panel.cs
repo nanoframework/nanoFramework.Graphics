@@ -9,12 +9,12 @@ using nanoFramework.UI;
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
-    /// 
+    /// Represents a container that can contain multiple child elements.
     /// </summary>
     public class Panel : UIElement
     {
         /// <summary>
-        /// 
+        /// Gets the collection of child elements of this panel.
         /// </summary>
         public UIElementCollection Children
         {
@@ -25,12 +25,13 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the size required for this panel and its child elements.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width for this panel.</param>
+        /// <param name="availableHeight">The available height for this panel.</param>
+        /// <param name="desiredWidth">The desired width of this panel.</param>
+        /// <param name="desiredHeight">The desired height of this panel.</param>
+
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             desiredWidth = desiredHeight = 0;
@@ -52,5 +53,3 @@ namespace nanoFramework.Presentation.Controls
         }
     }
 }
-
-

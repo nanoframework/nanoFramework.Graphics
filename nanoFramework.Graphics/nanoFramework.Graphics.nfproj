@@ -144,6 +144,7 @@
     <Compile Include="Input\ButtonEventHandler.cs" />
     <Compile Include="Input\Buttons.cs" />
     <Compile Include="Input\ButtonState.cs" />
+    <Compile Include="Input\CaptureMode.cs" />
     <Compile Include="Input\FocusChangedEventArgs.cs" />
     <Compile Include="Input\FocusChangedEventHandler.cs" />
     <Compile Include="Input\GenericDevice.cs" />
@@ -160,8 +161,10 @@
     <Compile Include="Input\PreProcessInputEventHandler.cs" />
     <Compile Include="Input\ProcessInputEventArgs.cs" />
     <Compile Include="Input\ProcessInputEventHandler.cs" />
+    <Compile Include="Input\RawButtonActions.cs" />
     <Compile Include="Input\RawButtonInputReport.cs" />
     <Compile Include="Input\RawGenericInputReport.cs" />
+    <Compile Include="Input\RawTouchActions.cs" />
     <Compile Include="Input\RawTouchInputReport.cs" />
     <Compile Include="Input\StagingAreaInputItem.cs" />
     <Compile Include="Input\Touch.cs" />
@@ -170,7 +173,9 @@
     <Compile Include="Presentation\Controls\Canvas.cs" />
     <Compile Include="Presentation\Controls\ContentControl.cs" />
     <Compile Include="Presentation\Controls\Control.cs" />
+    <Compile Include="Presentation\Controls\Dock.cs" />
     <Compile Include="Presentation\Controls\DockPanel.cs" />
+    <Compile Include="Presentation\Controls\DrawingAttributes.cs" />
     <Compile Include="Presentation\Controls\Image.cs" />
     <Compile Include="Presentation\Controls\InkCanvas.cs" />
     <Compile Include="Presentation\Controls\ListBox.cs" />
@@ -193,7 +198,7 @@
     <Compile Include="Presentation\HorizontalAlignment.cs" />
     <Compile Include="Presentation\LayoutManager.cs" />
     <Compile Include="Presentation\Media\Brush.cs" />
-    <Compile Include="Presentation\Media\Color.cs" />
+    <Compile Include="Presentation\Media\BrushMappingMode.cs" />
     <Compile Include="Presentation\Media\Constants.cs" />
     <Compile Include="Presentation\Media\DrawingContext.cs" />
     <Compile Include="Presentation\Media\ImageBrush.cs" />
@@ -205,6 +210,7 @@
     <Compile Include="Presentation\Media\TextAlignment.cs" />
     <Compile Include="Presentation\Media\TextTrimming.cs" />
     <Compile Include="Presentation\PresentationSource.cs" />
+    <Compile Include="Presentation\Shapes\Direction.cs" />
     <Compile Include="Presentation\Shapes\Ellipse.cs" />
     <Compile Include="Presentation\Shapes\Line.cs" />
     <Compile Include="Presentation\Shapes\Polygon.cs" />
@@ -219,7 +225,7 @@
     <Compile Include="Presentation\WindowManager.cs" />
     <Compile Include="Primitive\Bitmap.cs" />
     <Compile Include="Primitive\DisplayControl.cs" />
-    <Compile Include="Primitive\DisplayOrientation.cs" />
+    <Compile Include="Primitive\DrawTextOptions.cs" />
     <Compile Include="Primitive\GraphicDriver.cs" />
     <Compile Include="Primitive\GraphicDriverCommandType.cs" />
     <Compile Include="Primitive\ScreenConfiguration.cs" />
@@ -229,11 +235,22 @@
     <Compile Include="Primitive\Ink.cs" />
     <Compile Include="Primitive\SetWindowType.cs" />
     <Compile Include="Primitive\SpiConfiguration.cs" />
-    <Compile Include="Primitive\TouchCollector.cs" />
-    <Compile Include="Primitive\TouchEvents.cs" />
-    <Compile Include="Primitive\TouchInterface.cs" />
-    <Compile Include="Primitive\TouchPanel.cs" />
-    <Compile Include="Primitive\TouchScreen.cs" />
+    <Compile Include="Primitive\Touch\CollectionMethod.cs" />
+    <Compile Include="Primitive\Touch\CollectionMode.cs" />
+    <Compile Include="Primitive\Touch\Touch.cs" />
+    <Compile Include="Primitive\Touch\TouchCollector.cs" />
+    <Compile Include="Primitive\Touch\TouchCollectorConfiguration.cs" />
+    <Compile Include="Primitive\Touch\TouchEvent.cs" />
+    <Compile Include="Primitive\Touch\TouchEventProcessor.cs" />
+    <Compile Include="Primitive\Touch\TouchEvents.cs" />
+    <Compile Include="Primitive\Touch\TouchGesture.cs" />
+    <Compile Include="Primitive\Touch\TouchGestureEventArgs.cs" />
+    <Compile Include="Primitive\Touch\TouchInput.cs" />
+    <Compile Include="Primitive\Touch\TouchInputFlags.cs" />
+    <Compile Include="Primitive\Touch\TouchMessages.cs" />
+    <Compile Include="Primitive\Touch\TouchPanel.cs" />
+    <Compile Include="Primitive\Touch\TouchScreen.cs" />
+    <Compile Include="Primitive\Touch\TouchScreenEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Application.cs" />
     <Compile Include="System\EventHandler.cs" />
@@ -241,11 +258,13 @@
     <Compile Include="System\Mathematics.cs" />
     <Compile Include="System\PropertyChangedEventArgs.cs" />
     <Compile Include="System\PropertyChangedEventHandler.cs" />
+    <Compile Include="System\ReasonSessionEnding.cs" />
     <Compile Include="System\RoutedEvent.cs" />
     <Compile Include="System\RoutedEventArgs.cs" />
     <Compile Include="System\RoutedEventHandlerInfo.cs" />
     <Compile Include="System\RouteItem.cs" />
     <Compile Include="System\RoutingStrategy.cs" />
+    <Compile Include="System\ShutdownMode.cs" />
     <Compile Include="System\WindowCollection.cs" />
     <Compile Include="Threading\Dispatcher.cs" />
     <Compile Include="Threading\DispatcherFrame.cs" />
@@ -281,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.lock.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nanoFramework.Graphics.Core\nanoFramework.Graphics.Core.nfproj" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>

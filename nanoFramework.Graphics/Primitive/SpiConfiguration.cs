@@ -36,27 +36,27 @@ namespace nanoFramework.UI
         }
 
         /// <summary>Z
-        /// Spi bus.
+        /// Gets or sets the SPI bus.
         /// </summary>
         public byte SpiBus { get => _spiBus; set => _spiBus = value; }
 
         /// <summary>
-        /// Chip select.
+        /// Gets or sets the chip select GPIO.
         /// </summary>
         public int ChipSelect { get => _chipSelect; set => _chipSelect = value; }
 
         /// <summary>
-        /// Data command.
+        /// Gets or sets the data command GPIO.
         /// </summary>
         public int DataCommand { get => _dataCommand; set => _dataCommand = value; }
 
         /// <summary>
-        /// Reset.
+        /// Gets or sets the reset GPIO.
         /// </summary>
         public int Reset { get => _reset; set => _reset = value; }
 
         /// <summary>
-        /// Back light
+        /// Gets or sets the back light GPIO.
         /// </summary>
         public int BackLight { get => _backLight; set => _backLight = value; }
 #pragma warning restore S4487

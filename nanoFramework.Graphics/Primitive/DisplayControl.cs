@@ -6,6 +6,7 @@
 
 using nanoFramework.Presentation.Media;
 using System.Diagnostics;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 
 namespace nanoFramework.UI
@@ -21,7 +22,7 @@ namespace nanoFramework.UI
         private static readonly ushort[] _point = new ushort[1];
 
         /// <summary>
-        /// The maximum buffer size for Bitmap in bytes.
+        /// Gets the maximum buffer size for Bitmap in bytes.
         /// </summary>
         public static uint MaximumBufferSize { get => _maximumBufferSize; internal set => _maximumBufferSize = value; }
 
@@ -54,7 +55,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// Returns a bitmap the size of the current display. 
+        /// Gets a Bitmap object that is the size of the current display.
         /// </summary>
         /// <remarks>Please make sure you check if you have enough memory with IsFullScreenBufferAvailable.
         /// If you don't have enough, the BitMap won't get initialized and will be null.</remarks>
@@ -74,12 +75,12 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// True if a full size buffer is available
+        /// Determines if a full size buffer is available based on the current screen configuration.
         /// </summary>
         public static bool IsFullScreenBufferAvailable => ScreenWidth * ScreenHeight * 3 / 8 <= MaximumBufferSize; // Internal bit per pixel is 3 bytes
 
         /// <summary>
-        /// The screens number of pixels for the longer side.
+        /// Gets the number of pixels for the longer side of the screen.
         /// </summary>
         extern static public int LongerSide
         {
@@ -88,7 +89,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// The screens number of pixels for the shorter side.
+        /// Gets the number of pixels for the shorter side of the screen.
         /// </summary>
         extern static public int ShorterSide
         {
@@ -97,7 +98,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// The displays number of pixel for the width based on the orientation.
+        /// Gets the number of pixels for the width of the screen based on the orientation.
         /// </summary>
         extern static public int ScreenWidth
         {
@@ -106,7 +107,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// The displays number of pixel for the height based on the orientation.
+        /// Gets the number of pixels for the height of the screen based on the orientation.
         /// </summary>
         extern static public int ScreenHeight
         {
@@ -115,7 +116,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// Currently 16 bits in RBG565 format. ( There is some 1 bit code available but untested )
+        /// Gets the number of bits per pixel used to display the screen. Currently 16 bits in RGB565 format.
         /// </summary>
         extern static public int BitsPerPixel
         {
@@ -124,7 +125,7 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// Return the current display orientation landscape, portrait.
+        /// Gets the current display orientation, either landscape or portrait.
         /// </summary>
         extern static public DisplayOrientation Orientation
         {
@@ -133,17 +134,16 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// Change the orientation of the display.
+        /// Changes the orientation of the display and recreates the display canvas with new dimensions.
         /// </summary>
-        /// <remarks>
-        /// When the orientation is changed the display canvas is disposed and recreated with the new dimensions
-        /// when DisplayControl.FullScreen is next called.
-        /// </remarks>
-        /// <param name="Orientation">New Orientation</param>
+        /// <param name="orientation">The new orientation to set.</param>
         /// <returns>True if the orientation was supported and changed.</returns>
-        static public bool ChangeOrientation(DisplayOrientation Orientation)
+        /// <remarks>
+        /// When the orientation is changed, the display canvas is disposed and recreated with the new dimensions when FullScreen property is next called.
+        /// </remarks>
+        static public bool ChangeOrientation(DisplayOrientation orientation)
         {
-            bool result = NativeChangeOrientation(Orientation);
+            bool result = NativeChangeOrientation(orientation);
             // if change happened then destroy bitmap as it needs to be recreated with new dimensions.
             if (result && _fullScreen != null)
             {
@@ -155,14 +155,26 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// Write a point directly on the screen.
+        /// Writes a single point on the screen with the specified color.
         /// </summary>
-        /// <param name="x">The x coordinate.</param>
-        /// <param name="y">The y coordinate.</param>
-        /// <param name="color">The 16 bits color.</param>
+        /// <param name="x">The x coordinate of the point to be written.</param>
+        /// <param name="y">The y coordinate of the point to be written.</param>
+        /// <param name="color">The 16-bit color value of the point to be written BGR656 format.</param>
         public static void WritePoint(ushort x, ushort y, ushort color)
         {
             _point[0] = color;
+            Write(x, y, 1, 1, _point);
+        }
+
+        /// <summary>
+        /// Writes a single point on the screen with the specified color.
+        /// </summary>
+        /// <param name="x">The x coordinate of the point to be written.</param>
+        /// <param name="y">The y coordinate of the point to be written.</param>
+        /// <param name="color">The 16-bit color value of the point to be written BGR656 format.</param>
+        public static void WritePoint(ushort x, ushort y, Color color)
+        {
+            _point[0] = color.ToBgr565();
             Write(x, y, 1, 1, _point);
         }
 
@@ -179,9 +191,29 @@ namespace nanoFramework.UI
         /// <param name="y">The y coordinate.</param>
         /// <param name="width">The width of the area to display.</param>
         /// <param name="height">The height of the area to display.</param>
-        /// <param name="colors">A 16 bits color</param>
+        /// <param name="colors">A BGR565, 16 bits color array.</param>
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void Write(ushort x, ushort y, ushort width, ushort height, ushort[] colors);
+
+        /// <summary>
+        /// Directly write in the screen at coordinate x,y a width,height buffer of 16 bits colors.
+        /// </summary>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="width">The width of the area to display.</param>
+        /// <param name="height">The height of the area to display.</param>
+        /// <param name="colors">A color array.</param>
+        /// <remarks>The color array will be transformed in managed side to a ushort BGR565 array.</remarks>
+        public static void Write(ushort x, ushort y, ushort width, ushort height, Color[] colors)
+        {
+            ushort[] colorsToDraw = new ushort[colors.Length];
+            for(int i=0; i<colors.Length; i++)
+            {
+                colorsToDraw[i] = colors[i].ToBgr565();
+            }
+
+            Write(x, y, width, height, colorsToDraw);
+        }
 
         /// <summary>
         /// Directly write on the screen a text at coordinate x,y a width,height with a background and foreground color.
@@ -193,9 +225,12 @@ namespace nanoFramework.UI
         /// <param name="height">The height of the area to display.</param>
         /// <param name="font">The font to use.</param>
         /// <param name="foreground">Foreground color.</param>
-        /// <param name="background">Background color.</param>
+        /// <param name="background">Background color.</param>    
+        public static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, Color foreground, Color background)
+            => Write(text, x, y, width, height, font, (uint)foreground.ToArgb(), (uint)background.ToArgb());
+
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, Color foreground, Color background);
+        private extern static void Write(string text, ushort x, ushort y, ushort width, ushort height, Font font, uint foreground, uint background);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static bool NativeChangeOrientation(DisplayOrientation Orientation);
@@ -205,7 +240,5 @@ namespace nanoFramework.UI
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static uint NativeInitI2c(I2cConfiguration i2c, ScreenConfiguration screen, uint bufferSize);
-
     }
 }
-

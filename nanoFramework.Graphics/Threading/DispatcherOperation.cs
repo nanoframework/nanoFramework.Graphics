@@ -6,9 +6,6 @@
 
 using System;
 using System.Threading;
-using nanoFramework.Runtime;
-using nanoFramework.Runtime.Events;
-
 
 namespace nanoFramework.UI.Threading
 {
@@ -18,6 +15,11 @@ namespace nanoFramework.UI.Threading
     /// </summary>
     public sealed class DispatcherOperation
     {
+        private Dispatcher _dispatcher;
+        internal DispatcherOperationCallback _method;
+        internal object _args;
+        internal object _result;
+        internal DispatcherOperationStatus _status;
 
         internal DispatcherOperation(
             Dispatcher dispatcher,
@@ -173,8 +175,11 @@ namespace nanoFramework.UI.Threading
             }
         }
 
-        private class DispatcherOperationFrame : DispatcherFrame ,IDisposable 
+        private class DispatcherOperationFrame : DispatcherFrame, IDisposable
         {
+            private DispatcherOperation _operation;
+            private Timer _waitTimer;
+
             // Note: we pass "exitWhenRequested=false" to the base
             // DispatcherFrame construsctor because we do not want to exit
             // this frame if the dispatcher is shutting down. This is
@@ -230,9 +235,6 @@ namespace nanoFramework.UI.Threading
                 _operation.Completed -= new EventHandler(OnCompletedOrAborted);
             }
 
-            private DispatcherOperation _operation;
-            private Timer _waitTimer;
-
             public virtual void Close()
             {
                 Dispose();
@@ -253,6 +255,11 @@ namespace nanoFramework.UI.Threading
 
         private class DispatcherOperationEvent : IDisposable
         {
+            private DispatcherOperation _operation;
+            private TimeSpan _timeout;
+            private AutoResetEvent _event;
+            private Timer _waitTimer;
+
             public DispatcherOperationEvent(DispatcherOperation op, TimeSpan timeout)
             {
                 _operation = op;
@@ -294,11 +301,6 @@ namespace nanoFramework.UI.Threading
                 _event.Set();
             }
 
-            private DispatcherOperation _operation;
-            private TimeSpan _timeout;
-            private AutoResetEvent _event;
-            private Timer _waitTimer;
-
             public virtual void Close()
             {
                 Dispose();
@@ -315,13 +317,5 @@ namespace nanoFramework.UI.Threading
                 _waitTimer.Dispose();
             }
         }
-
-        private Dispatcher _dispatcher;
-        internal DispatcherOperationCallback _method;
-        internal object _args;
-        internal object _result;
-        internal DispatcherOperationStatus _status;     
     }
 }
-
-

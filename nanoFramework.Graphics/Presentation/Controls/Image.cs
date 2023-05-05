@@ -7,7 +7,6 @@
 using nanoFramework.Presentation.Media;
 using nanoFramework.UI;
 
-
 namespace nanoFramework.Presentation.Controls
 {
     /// <summary>
@@ -15,17 +14,17 @@ namespace nanoFramework.Presentation.Controls
     /// </summary>
     public class Image : UIElement
     {
-/// <summary>
-/// 
-/// </summary>
+        /// <summary>
+        /// Initializes a new instance of the Image class.
+        /// </summary>
         public Image()
         {
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the Image class with a specified Bitmap.
         /// </summary>
-        /// <param name="bmp"></param>
+        /// <param name="bmp">The Bitmap to display in the Image element.</param>
         public Image(Bitmap bmp)
             : this()
         {
@@ -33,7 +32,7 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Gets or sets the Bitmap displayed in the Image element.
         /// </summary>
         public Bitmap Bitmap
         {
@@ -54,12 +53,12 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Measures the size of the Image element based on its Bitmap.
         /// </summary>
-        /// <param name="availableWidth"></param>
-        /// <param name="availableHeight"></param>
-        /// <param name="desiredWidth"></param>
-        /// <param name="desiredHeight"></param>
+        /// <param name="availableWidth">The available width for the Image element to occupy.</param>
+        /// <param name="availableHeight">The available height for the Image element to occupy.</param>
+        /// <param name="desiredWidth">The desired width of the Image element based on its Bitmap.</param>
+        /// <param name="desiredHeight">The desired height of the Image element based on its Bitmap.</param>
         protected override void MeasureOverride(int availableWidth, int availableHeight, out int desiredWidth, out int desiredHeight)
         {
             desiredWidth = desiredHeight = 0;
@@ -71,9 +70,9 @@ namespace nanoFramework.Presentation.Controls
         }
 
         /// <summary>
-        /// 
+        /// Renders the Bitmap of the Image element on the screen.
         /// </summary>
-        /// <param name="dc"></param>
+        /// <param name="dc">The DrawingContext to use for rendering.</param>
         public override void OnRender(DrawingContext dc)
         {
             Bitmap bmp = _bitmap;

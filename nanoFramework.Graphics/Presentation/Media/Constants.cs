@@ -7,15 +7,13 @@
 namespace nanoFramework.Presentation.Media
 {
     /// <summary>
-    /// 
+    /// Constants used in the graphics subsystem.
     /// </summary>
     public static class Constants
     {
         /// <summary>
-        /// 
+        /// Maximun extent of a UIElement.
         /// </summary>
         public const int MaxExtent = 0x7ffff;
     }
 }
-
-

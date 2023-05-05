@@ -35,27 +35,27 @@ namespace nanoFramework.UI
         }
 
         /// <summary>
-        /// The x position the screen starts in the driver.
+        /// Gets or sets the x position the screen starts in the driver.
         /// </summary>
         public ushort X { get => _x; set => _x = value; }
 
         /// <summary>
-        /// The y position the screen starts in the driver.
+        /// Gets or sets the y position the screen starts in the driver.
         /// </summary>
         public ushort Y { get => _y; set => _y = value; }
 
         /// <summary>
-        /// The width of the screen starts in the driver.
+        /// Gets or sets the width of the screen starts in the driver.
         /// </summary>
         public ushort Width { get => _width; set => _width = value; }
 
         /// <summary>
-        /// The height of the screen starts in the driver.
+        /// Gets or sets the height of the screen starts in the driver.
         /// </summary>
         public ushort Height { get => _height; set => _height = value; }
 
         /// <summary>
-        /// The graphic driver.
+        /// Gets or sets the graphic driver.
         /// </summary>
         public GraphicDriver GraphicDriver { get => _graphicDriver; set => _graphicDriver = value; }
     }
