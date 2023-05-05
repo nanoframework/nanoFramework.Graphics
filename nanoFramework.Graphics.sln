@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		nanoFramework.Graphics.Ili9341.nuspec = nanoFramework.Graphics.Ili9341.nuspec
 		nanoFramework.Graphics.Ili9342.nuspec = nanoFramework.Graphics.Ili9342.nuspec
 		nanoFramework.Graphics.nuspec = nanoFramework.Graphics.nuspec
+		nanoFramework.Graphics.Core.nuspec = nanoFramework.Graphics.Core.nuspec
 		nanoFramework.Graphics.Otm8009A.nuspec = nanoFramework.Graphics.Otm8009A.nuspec
 		nanoFramework.Graphics.Ssd1306.nuspec = nanoFramework.Graphics.Ssd1306.nuspec
 		nanoFramework.Graphics.Ssd1331.nuspec = nanoFramework.Graphics.Ssd1331.nuspec
