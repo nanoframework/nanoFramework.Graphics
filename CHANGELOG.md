@@ -1,5 +1,18 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.34...HEAD)
+
+**Documentation and other chores:**
+
+- Add nbgv to UI Core library [\#127](https://github.com/nanoframework/nanoFramework.Graphics/pull/127)
+- Update 0 NuGet dependencies [\#126](https://github.com/nanoframework/nanoFramework.Graphics/pull/126)
+
+## [v1.1.34](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.34) (2023-05-05)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.32...v1.1.34)
+
 ## [v1.1.32](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.32) (2023-05-05)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.30...v1.1.32)
