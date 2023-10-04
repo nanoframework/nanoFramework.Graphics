@@ -85,7 +85,7 @@ namespace nanoFramework.UI.GraphicDrivers
         public static ushort Height { get; } = 320;
 
         /// <summary>
-        /// Gets the graphic driver for the Gc9A01 display.
+        /// Gets the graphic driver for the Ili9341 display.
         /// </summary>
         public static GraphicDriver GraphicDriver
         {
@@ -202,7 +202,7 @@ namespace nanoFramework.UI.GraphicDrivers
         }
 
         /// <summary>
-        /// Gets the graphic driver without adjusting the manufacturer default settings for the Gc9A01 display.
+        /// Gets the graphic driver without adjusting the manufacturer default settings for the Ili9341 display.
         /// Use this driver when you are unsure first.
         /// </summary>
         public static GraphicDriver GraphicDriverWithDefaultManufacturingSettings

@@ -7,7 +7,7 @@
 namespace nanoFramework.UI.GraphicDrivers
 {
     /// <summary>
-    /// Managed driver for GC9A01.
+    /// Managed driver for Ili9342.
     /// </summary>
     public static class Ili9342
     {
@@ -79,7 +79,7 @@ namespace nanoFramework.UI.GraphicDrivers
         public static uint Height { get; } = 240;
 
         /// <summary>
-        /// Gets the graphic driver for the Gc9A01 display.
+        /// Gets the graphic driver for the Ili9342 display.
         /// </summary>
         public static GraphicDriver GraphicDriver
         {

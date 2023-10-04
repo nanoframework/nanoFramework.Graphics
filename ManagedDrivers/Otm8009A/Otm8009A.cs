@@ -44,7 +44,7 @@ namespace nanoFramework.UI.GraphicDrivers
         public static ushort Height { get; } = 480;
 
         /// <summary>
-        /// Gets the graphic driver for the Gc9A01 display.
+        /// Gets the graphic driver for the Otm8009A display.
         /// </summary>
         public static GraphicDriver GraphicDriver
         {
