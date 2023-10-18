@@ -8,6 +8,7 @@ namespace nanoFramework.UI
     /// <summary>
     /// A point data structure to represent a position on a plane.
     /// </summary>
+    [Obsolete("Switch to System.Drawing.Point", false)]
     public struct Point
     {
         /// <summary>
