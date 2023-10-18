@@ -13,7 +13,7 @@ namespace System.Drawing
         /// <summary>
         /// Creates a new instance of the <see cref='Point'/> class with member data left uninitialized.
         /// </summary>
-        public static readonly Point Empty = new();
+        public static readonly Point Empty;
 
         private int x; // Do not rename (binary serialization)
         private int y; // Do not rename (binary serialization)

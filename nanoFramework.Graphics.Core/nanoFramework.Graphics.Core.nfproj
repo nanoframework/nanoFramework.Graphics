@@ -38,6 +38,7 @@
     <Compile Include="nanoFramework\UI\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Drawing\Point.cs" />
+    <Compile Include="System\Drawing\Rectangle.cs" />
     <Compile Include="System\Drawing\Size.cs" />
   </ItemGroup>
   <ItemGroup>
