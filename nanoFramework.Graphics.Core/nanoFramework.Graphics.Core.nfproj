@@ -13,7 +13,6 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <FileAlignment>512</FileAlignment>
-    <RootNamespace>nanoFramework.Graphics.Core</RootNamespace>
     <AssemblyName>nanoFramework.Graphics.Core</AssemblyName>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
     <DocumentationFile>bin\$(Configuration)\nanoFramework.Graphics.Core.xml</DocumentationFile>
@@ -31,12 +30,14 @@
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
-    <Compile Include="ColorOrder.cs" />
-    <Compile Include="DisplayOrientation.cs" />
-    <Compile Include="Color.cs" />
-    <Compile Include="IFont.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="System\Drawing\ColorOrder.cs" />
+    <Compile Include="nanoFramework\UI\DisplayOrientation.cs" />
+    <Compile Include="System\Drawing\Color.cs" />
+    <Compile Include="nanoFramework\UI\IFont.cs" />
+    <Compile Include="nanoFramework\UI\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Drawing\Point.cs" />
+    <Compile Include="System\Drawing\Size.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
