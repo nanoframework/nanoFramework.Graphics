@@ -4,6 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
+// TODO: The documentation says that System.Math is required for the graphics library buy is not referenced at this time. Should be reference it?
 namespace nanoFramework.UI
 {
     /// <summary>
@@ -17,7 +18,7 @@ namespace nanoFramework.UI
         /// <param name="a">First int.</param>
         /// <param name="b">Second int.</param>
         /// <returns>The maximum value between a and b.</returns>
-        static public int Max(int a, int b)
+        public static int Max(int a, int b)
         {
             return a > b ? a : b;
         }
@@ -28,7 +29,7 @@ namespace nanoFramework.UI
         /// <param name="a">First int.</param>
         /// <param name="b">Second int.</param>
         /// <returns>The minimum value between a and b.</returns>
-        static public int Min(int a, int b)
+        public static int Min(int a, int b)
         {
             return a < b ? a : b;
         }
@@ -38,7 +39,7 @@ namespace nanoFramework.UI
         /// </summary>
         /// <param name="a">The int.</param>
         /// <returns>The absolute value.</returns>
-        static public int Abs(int a)
+        public static int Abs(int a)
         {
             return a < 0 ? a*-1 : a;
         }

@@ -255,7 +255,6 @@
     <Compile Include="System\Application.cs" />
     <Compile Include="System\EventHandler.cs" />
     <Compile Include="System\EventRoute.cs" />
-    <Compile Include="System\Mathematics.cs" />
     <Compile Include="System\PropertyChangedEventArgs.cs" />
     <Compile Include="System\PropertyChangedEventHandler.cs" />
     <Compile Include="System\ReasonSessionEnding.cs" />
