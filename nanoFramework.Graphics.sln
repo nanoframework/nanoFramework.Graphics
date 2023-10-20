@@ -8,11 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		key.snk = key.snk
+		nanoFramework.Graphics.Core.nuspec = nanoFramework.Graphics.Core.nuspec
 		nanoFramework.Graphics.Gc9A01.nuspec = nanoFramework.Graphics.Gc9A01.nuspec
 		nanoFramework.Graphics.Ili9341.nuspec = nanoFramework.Graphics.Ili9341.nuspec
 		nanoFramework.Graphics.Ili9342.nuspec = nanoFramework.Graphics.Ili9342.nuspec
 		nanoFramework.Graphics.nuspec = nanoFramework.Graphics.nuspec
-		nanoFramework.Graphics.Core.nuspec = nanoFramework.Graphics.Core.nuspec
 		nanoFramework.Graphics.Otm8009A.nuspec = nanoFramework.Graphics.Otm8009A.nuspec
 		nanoFramework.Graphics.Ssd1306.nuspec = nanoFramework.Graphics.Ssd1306.nuspec
 		nanoFramework.Graphics.Ssd1331.nuspec = nanoFramework.Graphics.Ssd1331.nuspec
@@ -46,6 +46,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DEAF4062-7DF3-4DDC-B4A0-F37C87865951}"
 EndProject
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "ColorTests", "Tests\ColorTests\ColorTests.nfproj", "{CC585116-52D9-4FA0-BF8D-6F8E1C9894FF}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Graphics.Core.UnitTests", "nanoFramework.Graphics.Core.UnitTests\nanoFramework.Graphics.Core.UnitTests.nfproj", "{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,12 @@ Global
 		{CC585116-52D9-4FA0-BF8D-6F8E1C9894FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC585116-52D9-4FA0-BF8D-6F8E1C9894FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC585116-52D9-4FA0-BF8D-6F8E1C9894FF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +141,7 @@ Global
 		{EDE1D4FC-4F60-41E2-B3CC-A0671662A3C8} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
 		{6DC496E5-22D2-4138-A5A0-6FCE8BF3785D} = {B56DBFF9-1C54-4D42-8DC7-B6E35FE56268}
 		{CC585116-52D9-4FA0-BF8D-6F8E1C9894FF} = {DEAF4062-7DF3-4DDC-B4A0-F37C87865951}
+		{7B17788C-3B57-4EA4-A391-4FB7BBE0BE07} = {DEAF4062-7DF3-4DDC-B4A0-F37C87865951}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6ACFEF29-ADEB-4434-84DA-571510D5B119}
