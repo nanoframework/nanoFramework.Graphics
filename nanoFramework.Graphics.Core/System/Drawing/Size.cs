@@ -8,7 +8,7 @@ namespace System.Drawing
     /// Represents the size of a rectangular region with an ordered pair of width and height.
     /// </summary>
     [Serializable]
-    public struct Size
+    public struct Size // : IEquatable<Size>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref='Size'/> class.

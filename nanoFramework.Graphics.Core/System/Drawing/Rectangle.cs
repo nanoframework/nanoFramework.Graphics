@@ -10,7 +10,7 @@ namespace System.Drawing
     /// Stores the location and size of a rectangular region.
     /// </summary>
     [Serializable]
-    public struct Rectangle
+    public struct Rectangle // : IEquatable<Rectangle>
     {
         /// <summary>
         /// Creates a new instance of the <see cref='Rectangle'/> class with member data left uninitialized.

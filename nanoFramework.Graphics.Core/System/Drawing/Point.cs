@@ -8,7 +8,7 @@ namespace System.Drawing
     /// Represents an ordered pair of x and y coordinates that define a point in a two-dimensional plane.
     /// </summary>
     [Serializable]
-    public struct Point
+    public struct Point // : IEquatable<Point>
     {
         /// <summary>
         /// Creates a new instance of the <see cref='Point'/> class with member data left uninitialized.
