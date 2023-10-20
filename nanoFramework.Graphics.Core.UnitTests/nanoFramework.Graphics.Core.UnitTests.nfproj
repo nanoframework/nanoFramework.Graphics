@@ -27,6 +27,7 @@
     <RunSettingsFilePath>$(MSBuildProjectDirectory)\nano.runsettings</RunSettingsFilePath>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="System\Drawing\Color_UnitTests.cs" />
     <Compile Include="System\Drawing\Point_UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Drawing\Rectangle_UnitTests.cs" />
