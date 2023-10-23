@@ -777,7 +777,7 @@ namespace nanoFramework.UI
         /// <param name="bitmap">The source bitmap to tile onto the display device.</param>
         /// <param name="size">The size of the tile.</param>
         /// <param name="opacity">The bitmap's degree of opacity. A value of 0 makes the bitmap completely opaque; a value of 255 makes the bitmap completely transparent.</param>
-        public void TileImage(Point point, Bitmap bitmap, Size size, ushort opacity = OpacityOpaque) =>
+        public void TileImage(System.Drawing.Point point, Bitmap bitmap, Size size, ushort opacity = OpacityOpaque) =>
             TileImage(point.X, point.Y, bitmap, size.Width, size.Height, opacity);
 
         /// <summary>
@@ -799,10 +799,7 @@ namespace nanoFramework.UI
         /// <summary>
         /// Scales a bitmap to fill a rectangular area on the display device using the Scale9Grid technique.
         /// </summary>
-        /// <param name="xDst">The x-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name="yDst">The y-coordinate of the upper-left corner of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name="widthDst">The width of the rectangular area to which the pixels are to be copied.</param>
-        /// <param name="heightDst">The height of the rectangular area to which the pixels are to be copied.</param>
+        /// <param name="destination">The rectangular area to which the pixels are to be copied.</param>
         /// <param name="bitmap">The source bitmap.</param>
         /// <param name="leftBorder">The number of pixels to be left unscaled at the left edge of the source bitmap.</param>
         /// <param name="topBorder">The number of pixels to be left unscaled at the top edge of the source bitmap.</param>
