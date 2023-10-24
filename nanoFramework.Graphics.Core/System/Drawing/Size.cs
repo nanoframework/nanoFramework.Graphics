@@ -182,6 +182,10 @@ namespace System.Drawing
         /// </summary>
         public readonly override bool Equals(object? obj) => obj is Size && Equals((Size)obj);
 
+        /// <summary>
+        /// Tests to see whether the specified object is a <see cref='Size'/>  with the same dimensions
+        /// as this <see cref='Size'/>.
+        /// </summary>
         public readonly bool Equals(Size other) => this == other;
 
         /// <summary>

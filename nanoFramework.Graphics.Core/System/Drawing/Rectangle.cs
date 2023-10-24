@@ -235,6 +235,7 @@ namespace System.Drawing
             (X <= rect.X) && (rect.X + rect.Width <= X + Width) &&
             (Y <= rect.Y) && (rect.Y + rect.Height <= Y + Height);
 
+        /// <inheritdoc/>
         public readonly override int GetHashCode()
         {
             // Original: HashCode.Combine(X, Y, Width, Height);
