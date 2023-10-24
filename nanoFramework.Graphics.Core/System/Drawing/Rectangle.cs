@@ -150,7 +150,7 @@ namespace System.Drawing
         /// Tests whether <paramref name="obj"/> is a <see cref='Rectangle'/> with the same location
         /// and size of this Rectangle.
         /// </summary>
-        public readonly override bool Equals(object? obj) => obj is Rectangle && Equals((Rectangle)obj);
+        public readonly override bool Equals(object? obj) => obj is Rectangle rectangle && Equals(rectangle);
 
         /// <summary>
         /// Tests whether <paramref name="other"/> has the same location and size of this Rectangle.
