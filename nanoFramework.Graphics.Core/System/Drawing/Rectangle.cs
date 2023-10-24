@@ -147,10 +147,10 @@ namespace System.Drawing
         public readonly bool IsEmpty => height == 0 && width == 0 && x == 0 && y == 0;
 
         /// <summary>
-        /// Tests whether <paramref name="obj"/> is a <see cref='Rectangle'/> with the same location
+        /// Tests whether <paramref name="other"/> is a <see cref='Rectangle'/> with the same location
         /// and size of this Rectangle.
         /// </summary>
-        public readonly override bool Equals(object? obj) => obj is Rectangle rectangle && Equals(rectangle);
+        public readonly override bool Equals(object? other) => other is Rectangle rectangle && Equals(rectangle);
 
         /// <summary>
         /// Tests whether <paramref name="other"/> has the same location and size of this Rectangle.

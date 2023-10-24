@@ -180,7 +180,7 @@ namespace System.Drawing
         /// Tests to see whether the specified object is a <see cref='Size'/>  with the same dimensions
         /// as this <see cref='Size'/>.
         /// </summary>
-        public readonly override bool Equals(object? obj) => obj is Size size && Equals(size);
+        public readonly override bool Equals(object? other) => other is Size size && Equals(size);
 
         /// <summary>
         /// Tests to see whether the specified object is a <see cref='Size'/>  with the same dimensions
