@@ -17,8 +17,10 @@ namespace System.Drawing
         /// </summary>
         public static readonly Point Empty;
 
-        private int x; // Do not rename (binary serialization)
-        private int y; // Do not rename (binary serialization)
+        // Do not rename (binary serialization)
+        private int x;
+        // Do not rename (binary serialization)
+        private int y; 
 
         /// <summary>
         /// Initializes a new instance of the <see cref='Point'/> class with the specified coordinates.

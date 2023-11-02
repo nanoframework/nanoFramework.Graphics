@@ -19,10 +19,14 @@ namespace System.Drawing
         /// </summary>
         public static readonly Rectangle Empty = new();
 
-        private int x; // Do not rename (binary serialization)
-        private int y; // Do not rename (binary serialization)
-        private int width; // Do not rename (binary serialization)
-        private int height; // Do not rename (binary serialization)
+        // Do not rename (binary serialization)
+        private int x;
+        // Do not rename (binary serialization)
+        private int y;
+        // Do not rename (binary serialization)
+        private int width;
+        // Do not rename (binary serialization)
+        private int height; 
 
         /// <summary>
         /// Initializes a new instance of the <see cref='Rectangle'/> class with the specified location

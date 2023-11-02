@@ -17,8 +17,10 @@ namespace System.Drawing
         /// </summary>
         public static readonly Size Empty;
 
-        private int width; // Do not rename (binary serialization)
-        private int height; // Do not rename (binary serialization)
+        // Do not rename (binary serialization)
+        private int width;
+        // Do not rename (binary serialization)
+        private int height; 
 
         /// <summary>
         /// Initializes a new instance of the <see cref='Size'/> class from the specified
