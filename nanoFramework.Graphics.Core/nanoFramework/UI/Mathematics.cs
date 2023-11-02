@@ -4,7 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
-// TODO: The documentation says that System.Math is required for the graphics library buy is not referenced at this time. Should be reference it?
+// TODO: Remove this once https://github.com/nanoframework/CoreLibrary/pull/207 is merged and we can access MathInternal
 namespace nanoFramework.UI
 {
     /// <summary>
