@@ -4,11 +4,13 @@
 #nullable enable
 namespace System.Drawing
 {
+    // TODO: Add IEquatable<Point> once generics are supported as the class already implements the contract
+
     /// <summary>
     /// Represents an ordered pair of x and y coordinates that define a point in a two-dimensional plane.
     /// </summary>
     [Serializable]
-    public struct Point // : IEquatable<Point>
+    public struct Point 
     {
         /// <summary>
         /// Creates a new instance of the <see cref='Point'/> class with member data left uninitialized.

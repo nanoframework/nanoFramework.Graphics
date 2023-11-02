@@ -4,11 +4,13 @@
 #nullable enable
 namespace System.Drawing
 {
+    // TODO: Add IEquatable<Size> once generics are supported as the class already implements the contract
+
     /// <summary>
     /// Represents the size of a rectangular region with an ordered pair of width and height.
     /// </summary>
     [Serializable]
-    public struct Size // : IEquatable<Size>
+    public struct Size
     {
         /// <summary>
         /// Initializes a new instance of the <see cref='Size'/> class.

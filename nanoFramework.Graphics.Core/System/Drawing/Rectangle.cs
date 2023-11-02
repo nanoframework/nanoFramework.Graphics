@@ -6,11 +6,13 @@ using nanoFramework.UI;
 
 namespace System.Drawing
 {
+    // TODO: Add IEquatable<Rectangle> once generics are supported as the class already implements the contract
+
     /// <summary>
     /// Stores the location and size of a rectangular region.
     /// </summary>
     [Serializable]
-    public struct Rectangle // : IEquatable<Rectangle>
+    public struct Rectangle
     {
         /// <summary>
         /// Creates a new instance of the <see cref='Rectangle'/> class with member data left uninitialized.
