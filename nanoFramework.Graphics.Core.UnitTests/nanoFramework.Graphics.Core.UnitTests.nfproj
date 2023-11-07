@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.2\lib\mscorlib.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.20\lib\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="nanoFramework.TestFramework">
       <HintPath>..\packages\nanoFramework.TestFramework.2.1.85\lib\nanoFramework.TestFramework.dll</HintPath>
