@@ -4,6 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
+using System;
 using nanoFramework.UI;
 
 namespace nanoFramework.Presentation.Controls
@@ -44,10 +45,10 @@ namespace nanoFramework.Presentation.Controls
                     child.Measure(availableWidth, availableHeight);
                     int childDesiredWidth, childDesiredHeight;
                     child.GetDesiredSize(out childDesiredWidth, out childDesiredHeight);
-                    desiredWidth = Mathematics.Max(desiredWidth, childDesiredWidth);
-                    desiredHeight = Mathematics.Max(desiredHeight, childDesiredHeight);
-                    desiredWidth = Mathematics.Max(desiredWidth, childDesiredWidth);
-                    desiredHeight = Mathematics.Max(desiredHeight, childDesiredHeight);
+                    desiredWidth = MathInternal.Max(desiredWidth, childDesiredWidth);
+                    desiredHeight = MathInternal.Max(desiredHeight, childDesiredHeight);
+                    desiredWidth = MathInternal.Max(desiredWidth, childDesiredWidth);
+                    desiredHeight = MathInternal.Max(desiredHeight, childDesiredHeight);
                 }
             }
         }

@@ -106,7 +106,7 @@ namespace nanoFramework.Presentation.Controls
                 else
                 {
                     currentLineSize.U += childSize.U;
-                    currentLineSize.V = Mathematics.Max(childSize.V, currentLineSize.V);
+                    currentLineSize.V = MathInternal.Max(childSize.V, currentLineSize.V);
                 }
             }
 
@@ -171,13 +171,13 @@ namespace nanoFramework.Presentation.Controls
 
                 if (currentLineSize.U + childSize.U > availableSize.U)
                 {
-                    desiredSize.U = Mathematics.Max(currentLineSize.U, desiredSize.U);
+                    desiredSize.U = MathInternal.Max(currentLineSize.U, desiredSize.U);
                     desiredSize.V += currentLineSize.V;
 
                     currentLineSize = childSize;
                     if (childSize.U > availableSize.U)
                     {
-                        desiredSize.U = Mathematics.Max(childSize.U, desiredSize.U);
+                        desiredSize.U = MathInternal.Max(childSize.U, desiredSize.U);
                         desiredSize.V = childSize.V;
                         currentLineSize = new UVSize(_orientation);
                     }
@@ -185,11 +185,11 @@ namespace nanoFramework.Presentation.Controls
                 else
                 {
                     currentLineSize.U += childSize.U;
-                    currentLineSize.V = Mathematics.Max(childSize.V, currentLineSize.V);
+                    currentLineSize.V = MathInternal.Max(childSize.V, currentLineSize.V);
                 }
             }
 
-            desiredWidth = Mathematics.Max(currentLineSize.U, desiredSize.U);
+            desiredWidth = MathInternal.Max(currentLineSize.U, desiredSize.U);
             desiredHeight = desiredSize.V + currentLineSize.V;
         }
 

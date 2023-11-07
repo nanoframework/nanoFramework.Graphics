@@ -47,8 +47,8 @@ namespace nanoFramework.Presentation.Controls
                 child.GetDesiredSize(out desiredWidth, out desiredHeight);
 
                 int finalX = accumulatedLeft, finalY = accumulatedTop;
-                int finalWidth = Mathematics.Max(0, arrangeWidth - accumulatedLeft - accumulatedRight);
-                int finalHeight = Mathematics.Max(0, arrangeHeight - accumulatedTop - accumulatedBottom);
+                int finalWidth = MathInternal.Max(0, arrangeWidth - accumulatedLeft - accumulatedRight);
+                int finalHeight = MathInternal.Max(0, arrangeHeight - accumulatedTop - accumulatedBottom);
 
                 if (i < nonFillChildrenCount)
                     switch (DockPanel.GetDock(child))
@@ -65,13 +65,13 @@ namespace nanoFramework.Presentation.Controls
 
                         case Dock.Right:
                             accumulatedRight += desiredWidth;
-                            finalX = Mathematics.Max(0, arrangeWidth - accumulatedRight);
+                            finalX = MathInternal.Max(0, arrangeWidth - accumulatedRight);
                             finalWidth = desiredWidth;
                             break;
 
                         case Dock.Bottom:
                             accumulatedBottom += desiredHeight;
-                            finalY = Mathematics.Max(0, arrangeHeight - accumulatedBottom);
+                            finalY = MathInternal.Max(0, arrangeHeight - accumulatedBottom);
                             finalHeight = desiredHeight;
                             break;
                     }
@@ -104,8 +104,8 @@ namespace nanoFramework.Presentation.Controls
 
                 if (child == null) continue;
 
-                int childAvailableWidth = Mathematics.Max(0, availableWidth - accumulatedWidth);
-                int childAvailableHeight = Mathematics.Max(0, availableHeight - accumulatedHeight);
+                int childAvailableWidth = MathInternal.Max(0, availableWidth - accumulatedWidth);
+                int childAvailableHeight = MathInternal.Max(0, availableHeight - accumulatedHeight);
                 child.Measure(childAvailableWidth, childAvailableHeight);
 
                 int childDesiredWidth;
@@ -116,19 +116,19 @@ namespace nanoFramework.Presentation.Controls
                 {
                     case Dock.Left:
                     case Dock.Right:
-                        desiredHeight = Mathematics.Max(desiredHeight, accumulatedHeight + childDesiredHeight);
+                        desiredHeight = MathInternal.Max(desiredHeight, accumulatedHeight + childDesiredHeight);
                         accumulatedWidth += childDesiredWidth;
                         break;
                     case Dock.Top:
                     case Dock.Bottom:
-                        desiredWidth = Mathematics.Max(desiredWidth, accumulatedWidth + childDesiredWidth);
+                        desiredWidth = MathInternal.Max(desiredWidth, accumulatedWidth + childDesiredWidth);
                         accumulatedHeight += childDesiredHeight;
                         break;
                 }
             }
 
-            desiredWidth = Mathematics.Max(desiredWidth, accumulatedWidth);
-            desiredHeight = Mathematics.Max(desiredHeight, accumulatedHeight);
+            desiredWidth = MathInternal.Max(desiredWidth, accumulatedWidth);
+            desiredHeight = MathInternal.Max(desiredHeight, accumulatedHeight);
         }
 
         /// <summary> 

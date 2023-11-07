@@ -118,7 +118,7 @@ namespace nanoFramework.Presentation
         {
             if (Capacity < min)
             {
-                Capacity = Mathematics.Max(min, (int)(Capacity * c_growFactor));
+                Capacity = MathInternal.Max(min, (int)(Capacity * c_growFactor));
             }
         }
 

@@ -4,6 +4,7 @@
 // See LICENSE file in the project root for full license information.
 //
 
+using System;
 using nanoFramework.UI;
 
 namespace nanoFramework.Presentation.Controls
@@ -90,11 +91,11 @@ namespace nanoFramework.Presentation.Controls
                     if (fHorizontal)
                     {
                         desiredWidth += childDesiredWidth;
-                        desiredHeight = Mathematics.Max(desiredHeight, childDesiredHeight);
+                        desiredHeight = MathInternal.Max(desiredHeight, childDesiredHeight);
                     }
                     else
                     {
-                        desiredWidth = Mathematics.Max(desiredWidth, childDesiredWidth);
+                        desiredWidth = MathInternal.Max(desiredWidth, childDesiredWidth);
                         desiredHeight += childDesiredHeight;
                     }
                 }
@@ -127,12 +128,12 @@ namespace nanoFramework.Presentation.Controls
                     if (fHorizontal)
                     {
                         previousChildSize = childDesiredWidth;
-                        child.Arrange(childPosition, 0, previousChildSize, Mathematics.Max(arrangeHeight, childDesiredHeight));
+                        child.Arrange(childPosition, 0, previousChildSize, MathInternal.Max(arrangeHeight, childDesiredHeight));
                     }
                     else
                     {
                         previousChildSize = childDesiredHeight;
-                        child.Arrange(0, childPosition, Mathematics.Max(arrangeWidth, childDesiredWidth), previousChildSize);
+                        child.Arrange(0, childPosition, MathInternal.Max(arrangeWidth, childDesiredWidth), previousChildSize);
                     }
                 }
             }

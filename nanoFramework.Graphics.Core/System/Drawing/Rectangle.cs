@@ -300,11 +300,10 @@ namespace System.Drawing
         /// </summary>
         public static Rectangle Intersect(Rectangle a, Rectangle b)
         {
-            // TODO: The documentation for Graphics says the Math library is required but it's not referenced at this time
-            int x1 = Mathematics.Max(a.X, b.X);// Math.Max(a.X, b.X);
-            int x2 = Mathematics.Min(a.X + a.Width, b.X + b.Width);// Math.Min(a.X + a.Width, b.X + b.Width);
-            int y1 = Mathematics.Max(a.Y, b.Y);// Math.Max(a.Y, b.Y);
-            int y2 = Mathematics.Min(a.Y + a.Height, b.Y + b.Height);// Math.Min(a.Y + a.Height, b.Y + b.Height);
+            int x1 = MathInternal.Max(a.X, b.X);
+            int x2 = MathInternal.Min(a.X + a.Width, b.X + b.Width);
+            int y1 = MathInternal.Max(a.Y, b.Y);
+            int y2 = MathInternal.Min(a.Y + a.Height, b.Y + b.Height);
 
             if (x2 >= x1 && y2 >= y1)
             {
@@ -327,10 +326,10 @@ namespace System.Drawing
         public static Rectangle Union(Rectangle a, Rectangle b)
         {
             // TODO: The documentation for Graphics says the Math library is required but it's not referenced at this time
-            int x1 = Mathematics.Max(a.X, b.X);// Math.Max(a.X, b.X);
-            int x2 = Mathematics.Min(a.X + a.Width, b.X + b.Width);// Math.Min(a.X + a.Width, b.X + b.Width);
-            int y1 = Mathematics.Max(a.Y, b.Y);// Math.Max(a.Y, b.Y);
-            int y2 = Mathematics.Min(a.Y + a.Height, b.Y + b.Height);// Math.Min(a.Y + a.Height, b.Y + b.Height);
+            int x1 = MathInternal.Max(a.X, b.X);// Math.Max(a.X, b.X);
+            int x2 = MathInternal.Min(a.X + a.Width, b.X + b.Width);// Math.Min(a.X + a.Width, b.X + b.Width);
+            int y1 = MathInternal.Max(a.Y, b.Y);// Math.Max(a.Y, b.Y);
+            int y2 = MathInternal.Min(a.Y + a.Height, b.Y + b.Height);// Math.Min(a.Y + a.Height, b.Y + b.Height);
 
             return new Rectangle(x1, y1, x2 - x1, y2 - y1);
         }

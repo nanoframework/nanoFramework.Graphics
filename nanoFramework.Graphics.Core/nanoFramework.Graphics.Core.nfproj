@@ -30,7 +30,6 @@
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
-    <Compile Include="nanoFramework\UI\Mathematics.cs" />
     <Compile Include="System\Drawing\ColorOrder.cs" />
     <Compile Include="nanoFramework\UI\DisplayOrientation.cs" />
     <Compile Include="System\Drawing\Color.cs" />

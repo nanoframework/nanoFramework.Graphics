@@ -421,10 +421,10 @@ namespace nanoFramework.Presentation.Media
                 // Intersect with the existing clip bounds
                 ClipRectangle previousRect = (ClipRectangle)_clippingRectangles.Peek();
                 //need to evaluate performance differences of inlining Min & Max(
-                int x1 = Mathematics.Max(rect.X, previousRect.X);
-                int x2 = Mathematics.Min(rect.X + rect.Width, previousRect.X + previousRect.Width);
-                int y1 = Mathematics.Max(rect.Y, previousRect.Y);
-                int y2 = Mathematics.Min(rect.Y + rect.Height, previousRect.Y + previousRect.Height);
+                int x1 = MathInternal.Max(rect.X, previousRect.X);
+                int x2 = MathInternal.Min(rect.X + rect.Width, previousRect.X + previousRect.Width);
+                int y1 = MathInternal.Max(rect.Y, previousRect.Y);
+                int y2 = MathInternal.Min(rect.Y + rect.Height, previousRect.Y + previousRect.Height);
 
                 rect.X = x1;
                 rect.Y = y1;
