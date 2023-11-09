@@ -2,7 +2,23 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.34...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.37...HEAD)
+
+**Implemented enhancements:**
+
+- Adding primitive types to improve drawing [\#133](https://github.com/nanoframework/nanoFramework.Graphics/pull/133)
+
+**Documentation and other chores:**
+
+- Update 5 NuGet dependencies [\#134](https://github.com/nanoframework/nanoFramework.Graphics/pull/134)
+- Fixing incorrect Gc9A01 references in Intellisense comments [\#132](https://github.com/nanoframework/nanoFramework.Graphics/pull/132)
+- Update 2 NuGet dependencies [\#131](https://github.com/nanoframework/nanoFramework.Graphics/pull/131)
+- Update 2 NuGet dependencies [\#129](https://github.com/nanoframework/nanoFramework.Graphics/pull/129)
+- Update 1 NuGet dependencies [\#128](https://github.com/nanoframework/nanoFramework.Graphics/pull/128)
+
+## [v1.1.37](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.1.37) (2023-05-10)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.1.34...v1.1.37)
 
 **Documentation and other chores:**
 
