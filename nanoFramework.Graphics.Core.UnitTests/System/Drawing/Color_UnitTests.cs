@@ -2,13 +2,13 @@
 // Portions Copyright (c) Microsoft Corporation.  All rights reserved.
 // See LICENSE file in the project root for full license information.
 
-using nanoFramework.TestFramework;
 using System.Drawing;
+using nanoFramework.TestFramework;
 
-namespace nanoFramework.UI
+namespace nanoFramework.Graphics.Core.UnitTests.System.Drawing
 {
     [TestClass]
-    public class ColorTests
+    public class Color_UnitTests
     {
         [TestMethod]
         public void ColorTestBasicSerialization()

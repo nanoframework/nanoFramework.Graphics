@@ -941,12 +941,12 @@ namespace nanoFramework.Presentation
                     bool haveRequestedHeight = (_requestedSize._status & Pair.Flags_Second) != 0;
                     if (haveRequestedWidth)
                     {
-                        frameworkAvailableWidth = Mathematics.Min(_requestedSize._first, frameworkAvailableWidth);
+                        frameworkAvailableWidth = MathInternal.Min(_requestedSize._first, frameworkAvailableWidth);
                     }
 
                     if (haveRequestedHeight)
                     {
-                        frameworkAvailableHeight = Mathematics.Min(_requestedSize._second, frameworkAvailableHeight);
+                        frameworkAvailableHeight = MathInternal.Min(_requestedSize._second, frameworkAvailableHeight);
                     }
 
                     MeasureOverride(frameworkAvailableWidth, frameworkAvailableHeight, out desiredWidth, out desiredHeight);
@@ -970,8 +970,8 @@ namespace nanoFramework.Presentation
                 // Restrict the desired size to the available size
                 _unclippedWidth = desiredWidth;
                 _unclippedHeight = desiredHeight;
-                desiredWidth = Mathematics.Min(desiredWidth, frameworkAvailableWidth);
-                desiredHeight = Mathematics.Min(desiredHeight, frameworkAvailableHeight);
+                desiredWidth = MathInternal.Min(desiredWidth, frameworkAvailableWidth);
+                desiredHeight = MathInternal.Min(desiredHeight, frameworkAvailableHeight);
 
                 // Add margins
                 desiredWidth += marginWidth;
@@ -1139,8 +1139,8 @@ namespace nanoFramework.Presentation
 
             // Account for alignment
             int offsetX, offsetY;
-            int clientWidth = Mathematics.Max(0, finalRectWidth - marginWidth);
-            int clientHeight = Mathematics.Max(0, finalRectHeight - marginHeight);
+            int clientWidth = MathInternal.Max(0, finalRectWidth - marginWidth);
+            int clientHeight = MathInternal.Max(0, finalRectHeight - marginHeight);
 
             if (clientWidth != arrangeWidth || clientHeight != arrangeHeight)
             {

@@ -1,11 +1,14 @@
 ﻿// Copyright (c) 2022 The nanoFramework project contributors
 // See LICENSE file in the project root for full license information.
 
+using System;
+
 namespace nanoFramework.UI
 {
     /// <summary>
     /// A point data structure to represent a position on a plane.
     /// </summary>
+    [Obsolete("Switch to System.Drawing.Point", false)]
     public struct Point
     {
         /// <summary>

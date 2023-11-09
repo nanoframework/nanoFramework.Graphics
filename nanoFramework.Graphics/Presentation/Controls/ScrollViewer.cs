@@ -235,18 +235,18 @@ namespace nanoFramework.Presentation.Controls
             {
                 // Clip scroll-offset if necessary
                 //
-                _scrollableWidth = Mathematics.Max(0, ExtentWidth - arrangeWidth);
-                _scrollableHeight = Mathematics.Max(0, ExtentHeight - arrangeHeight);
-                _horizontalOffset = Mathematics.Min(_horizontalOffset, _scrollableWidth);
-                _verticalOffset = Mathematics.Min(_verticalOffset, _scrollableHeight);
+                _scrollableWidth = MathInternal.Max(0, ExtentWidth - arrangeWidth);
+                _scrollableHeight = MathInternal.Max(0, ExtentHeight - arrangeHeight);
+                _horizontalOffset = MathInternal.Min(_horizontalOffset, _scrollableWidth);
+                _verticalOffset = MathInternal.Min(_verticalOffset, _scrollableHeight);
 
                 //Debug.Assert(_horizontalOffset >= 0);
                 //Debug.Assert(_verticalOffset >= 0);
 
                 child.Arrange(-_horizontalOffset,
                                -_verticalOffset,
-                               Mathematics.Max(arrangeWidth, ExtentWidth),
-                               Mathematics.Max(arrangeHeight, ExtentHeight));
+                               MathInternal.Max(arrangeWidth, ExtentWidth),
+                               MathInternal.Max(arrangeHeight, ExtentHeight));
             }
             else
             {

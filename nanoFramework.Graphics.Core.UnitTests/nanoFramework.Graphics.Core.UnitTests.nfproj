@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <NanoFrameworkProjectSystemPath>$(MSBuildExtensionsPath)\nanoFramework\v1.0\</NanoFrameworkProjectSystemPath>
@@ -11,15 +11,16 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{11A8DD76-328B-46DF-9F39-F559912D0360};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>cc585116-52d9-4fa0-bf8d-6f8e1c9894ff</ProjectGuid>
+    <ProjectGuid>7b17788c-3b57-4ea4-a391-4fb7bbe0be07</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <FileAlignment>512</FileAlignment>
-    <RootNamespace>ColorTests</RootNamespace>
+    <RootNameSpace>nanoFramework.Graphics.Core.UnitTests</RootNameSpace>
     <AssemblyName>NFUnitTest</AssemblyName>
     <IsCodedUITest>False</IsCodedUITest>
     <IsTestProject>true</IsTestProject>
     <TestProjectType>UnitTest</TestProjectType>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
@@ -27,20 +28,22 @@
     <RunSettingsFilePath>$(MSBuildProjectDirectory)\nano.runsettings</RunSettingsFilePath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ColorTests.cs" />
+    <Compile Include="System\Drawing\Color_UnitTests.cs" />
+    <Compile Include="System\Drawing\Point_UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Drawing\Rectangle_UnitTests.cs" />
+    <Compile Include="System\Drawing\Size_UnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="mscorlib">
-      <HintPath>..\..\packages\nanoFramework.CoreLibrary.1.14.2\lib\mscorlib.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.TestFramework, Version=2.1.85.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\..\packages\nanoFramework.TestFramework.2.1.85\lib\nanoFramework.TestFramework.dll</HintPath>
+    <Reference Include="mscorlib, Version=1.14.20.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.20\lib\mscorlib.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nanoFramework.UnitTestLauncher, Version=0.0.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\..\packages\nanoFramework.TestFramework.2.1.85\lib\nanoFramework.UnitTestLauncher.exe</HintPath>
-      <Private>True</Private>
+    <Reference Include="nanoFramework.TestFramework">
+      <HintPath>..\packages\nanoFramework.TestFramework.2.1.85\lib\nanoFramework.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="nanoFramework.UnitTestLauncher">
+      <HintPath>..\packages\nanoFramework.TestFramework.2.1.85\lib\nanoFramework.UnitTestLauncher.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -48,7 +51,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\nanoFramework.Graphics.Core\nanoFramework.Graphics.Core.nfproj" />
+    <ProjectReference Include="..\nanoFramework.Graphics.Core\nanoFramework.Graphics.Core.nfproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.lock.json" />
