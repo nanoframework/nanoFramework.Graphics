@@ -18,7 +18,7 @@
     <description>This package includes the nanoFramework.Graphics.Core assembly for .NET nanoFramework C# projects.</description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics.Core</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.14.2" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.15.5" />
     </dependencies>
   </metadata>
   <files>
