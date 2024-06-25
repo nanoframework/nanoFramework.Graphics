@@ -95,5 +95,32 @@ namespace nanoFramework.Graphics.Core.UnitTests.System.Drawing
             // Assert
             Assert.AreEqual(correctResult, result);
         }
+
+        [TestMethod]
+        public void GetBrightness_returns_correct_value()
+        {
+            var color = Color.FromArgb(38, 196, 103);
+            var result = color.GetBrightness();
+
+            Assert.AreEqual(45, (int)(result * 100));
+        }
+
+        [TestMethod]
+        public void GetHue_returns_correct_value()
+        {
+            var color = Color.FromArgb(38, 196, 103);
+            var result = color.GetHue();
+
+            Assert.AreEqual(144, (int)result);
+        }
+
+        [TestMethod]
+        public void GetSaturation_returns_correct_value()
+        {
+            var color = Color.FromArgb(38, 196, 103);
+            var result = color.GetSaturation();
+
+            Assert.AreEqual(67, (int)(result * 100));
+        }
     }
 }
