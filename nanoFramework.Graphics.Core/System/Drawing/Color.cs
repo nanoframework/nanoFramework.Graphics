@@ -4,7 +4,6 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using System.Reflection;
 
 namespace System.Drawing
@@ -12,7 +11,7 @@ namespace System.Drawing
     /// <summary>
     /// Represents an ARGB (alpha, red, green, blue) color.
     /// </summary>
-    public struct Color
+    public readonly struct Color
     {
         private readonly uint _color;
 
@@ -1154,24 +1153,24 @@ namespace System.Drawing
         #endregion Known colors
 
         /// <summary>
-        /// Gets the alpha component value of this System.Drawing.Color structure.
+        /// Gets the alpha component value of this <see cref="Color"/> structure.
         /// </summary>
-        public byte A { get => (byte)(_color >> 24); }
+        public byte A => (byte)(_color >> 24);
 
         /// <summary>
-        /// Gets the blue component value of this System.Drawing.Color structure.
+        /// Gets the blue component value of this <see cref="Color"/> structure.
         /// </summary>
-        public byte B { get => (byte)_color; }
+        public byte B => (byte)_color;
 
         /// <summary>
-        /// Gets the red component value of this System.Drawing.Color structure.
+        /// Gets the red component value of this <see cref="Color"/> structure.
         /// </summary>
-        public byte R { get => (byte)(_color >> 16); }
+        public byte R => (byte)(_color >> 16);
 
         /// <summary>
-        /// Gets the green component value of this System.Drawing.Color structure.
+        /// Gets the green component value of this <see cref="Color"/> structure.
         /// </summary>
-        public byte G { get => (byte)(_color >> 8); }
+        public byte G => (byte)(_color >> 8);
 
         /// <summary>
         /// Creates a System.Drawing.Color structure from the specified 8-bit color values
@@ -1365,18 +1364,39 @@ namespace System.Drawing
         /// <returns>true if the current object is equal to other; otherwise, false.</returns>
         public override bool Equals(object other) => _color == ((Color)other)._color;
 
+        private static void MinMaxRgb(out int min, out int max, int r, int g, int b)
+        {
+            if (r > g)
+            {
+                max = r;
+                min = g;
+            }
+            else
+            {
+                max = g;
+                min = r;
+            }
+            if (b > max)
+            {
+                max = b;
+            }
+            else if (b < min)
+            {
+                min = b;
+            }
+        }
+
         /// <summary>
-        /// Gets the hue-saturation-lightness (HSL) lightness value for this System.Drawing.Color structure.
+        /// Gets the hue-saturation-lightness (HSL) lightness value for this <see cref="Color"/> structure.
         /// </summary>
-        /// <returns>The lightness of this System.Drawing.Color. The lightness ranges from 0.0 through 1.0, where 0.0 represents black and 1.0 represents white.</returns>
+        /// <returns>
+        /// The lightness of this <see cref="Color"/>. The lightness ranges from 0.0 through 1.0, where 0.0 represents black and 1.0 represents white.
+        /// </returns>
         public float GetBrightness()
         {
-            float r = R / 255.0f;
-            float g = G / 255.0f;
-            float b = B / 255.0f;
-            float max = r > b ? r : b;
-            max = max > g ? max : g;
-            return max;
+            MinMaxRgb(out var min, out var max, R, G, B);
+
+            return (max + min) / (byte.MaxValue * 2f);
         }
 
         /// <summary>
@@ -1386,56 +1406,67 @@ namespace System.Drawing
         public override int GetHashCode() => (int)_color;
 
         /// <summary>
-        /// Gets the hue-saturation-lightness (HSL) hue value, in degrees, for this System.Drawing.Color structure.
+        /// Gets the hue-saturation-lightness (HSL) hue value, in degrees, for this <see cref="Color"/> structure.
         /// </summary>
-        /// <returns>The hue, in degrees, of this System.Drawing.Color. The hue is measured in degrees,
-        /// ranging from 0.0 through 360.0, in HSL color space.</returns>
+        /// <returns>
+        /// The hue, in degrees, of this <see cref="Color"/>. The hue is measured in degrees, ranging from 0.0 through 360.0, in HSL color space.
+        /// </returns>
         public float GetHue()
         {
-            float r = R / 255.0f;
-            float g = G / 255.0f;
-            float b = B / 255.0f;
-            float max = r > b ? r : b;
-            max = max > g ? max : g;
-            float min = r > b ? b : r;
-            min = min > g ? g : min;
-
-            float h = 0.0f;
-            if (max == r && g >= b)
+            if (R == G && G == B)
             {
-                h = (60 * (g - b)) / (max - min);
-            }
-            else if (max == r && g < b)
-            {
-                h = ((60 * (g - b)) / (max - min)) + 360;
-            }
-            else if (max == g)
-            {
-                h = ((60 * (b - r)) / (max - min)) + 120;
-            }
-            else if (max == b)
-            {
-                h = ((60 * (r - g)) / (max - min)) + 240;
+                return 0f;
             }
 
-            return h;
+            MinMaxRgb(out var min, out var max, R, G, B);
+
+            float delta = max - min;
+            float hue;
+
+            if (R == max)
+            {
+                hue = (G - B) / delta;
+            }
+            else if (G == max)
+            {
+                hue = (B - R) / delta + 2f;
+            }
+            else
+            {
+                hue = (R - G) / delta + 4f;
+            }
+
+            hue *= 60f;
+            if (hue < 0f)
+            {
+                hue += 360f;
+            }
+
+            return hue;
         }
 
         /// <summary>
-        /// Gets the hue-saturation-lightness (HSL) saturation value for this System.Drawing.Color structure.
+        /// Gets the hue-saturation-lightness (HSL) saturation value for this <see cref="Color"/> structure.
         /// </summary>
-        /// <returns>The saturation of this System.Drawing.Color. The saturation ranges from 0.0 through
-        /// 1.0, where 0.0 is grayscale and 1.0 is the most saturated.</returns>
+        /// <returns>
+        /// The saturation of this <see cref="Color"/>. The saturation ranges from 0.0 through 1.0, where 0.0 is grayscale and 1.0 is the most saturated.
+        /// </returns>
         public float GetSaturation()
         {
-            float r = R / 255.0f;
-            float g = G / 255.0f;
-            float b = B / 255.0f;
-            float max = r > b ? r : b;
-            max = max > g ? max : g;
-            float min = r > b ? b : r;
-            min = min > g ? g : min;
-            return (max == 0) ? 0.0f : (1.0f - (min / max));
+            if (R == G && G == B)
+            {
+                return 0f;
+            }
+
+            MinMaxRgb(out var min, out var max, R, G, B);
+
+            var div = max + min;
+            if (div > byte.MaxValue)
+            {
+                div = byte.MaxValue * 2 - max - min;
+            }
+
+            return (max - min) / (float)div;
         }
 
         /// <summary>
