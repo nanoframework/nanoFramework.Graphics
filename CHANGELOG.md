@@ -2,7 +2,18 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Graphics/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.2.4...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.2.10...HEAD)
+
+**Documentation and other chores:**
+
+- Fixing HSL methods that were incorrectly using HSB [\#143](https://github.com/nanoframework/nanoFramework.Graphics/pull/143)
+- Update 1 NuGet dependencies [\#142](https://github.com/nanoframework/nanoFramework.Graphics/pull/142)
+- Update 2 NuGet dependencies [\#141](https://github.com/nanoframework/nanoFramework.Graphics/pull/141)
+- Update 1 NuGet dependencies [\#139](https://github.com/nanoframework/nanoFramework.Graphics/pull/139)
+
+## [v1.2.10](https://github.com/nanoframework/nanoFramework.Graphics/tree/v1.2.10) (2024-05-13)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Graphics/compare/v1.2.4...v1.2.10)
 
 **Documentation and other chores:**
 
