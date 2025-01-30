@@ -1,0 +1,45 @@
+{
+    "categories": [
+        {
+            "title": "## New Features and enhancements",
+            "labels": [
+                "Type: enhancement"
+            ],
+            "exhaustive": true
+        },
+        {
+            "title": "## Bug Fixes",
+            "labels": [
+                "Type: bug"
+            ],
+            "exhaustive": true
+        },
+        {
+            "title": "## Documentation",
+            "labels": [
+                "Type: documentation"
+            ],
+            "exhaustive": true
+        },
+        {
+            "title": "## ⚠️ Breaking Changes",
+            "labels": [
+                "Breaking-Change"
+            ],
+            "exhaustive": true
+        },
+        {
+            "title": "## Updated dependencies",
+            "labels": [
+                "Type: dependencies"
+            ],
+            "exhaustive": true
+        }
+    ],
+    "sort": "ASC",
+    "template": "${{CHANGELOG}}\n\n**Full Changelog:** ${{RELEASE_DIFF}}\n\nThe following NuGet packages are available from this release:\n\n:package: [nanoFramework.Graphics](https://www.nuget.org/packages/nanoFramework.Graphics/)\n:package: [nanoFramework.Graphics.Core](https://www.nuget.org/packages/nanoFramework.Graphics.Core/)\n:package: [nanoFramework.Graphics.Gc9A01](https://www.nuget.org/packages/nanoFramework.Graphics.Gc9A01/)\n:package: [nanoFramework.Graphics.Ili9341](https://www.nuget.org/packages/nanoFramework.Graphics.Ili9341/)\n:package: [nanoFramework.Graphics.Ili9342](https://www.nuget.org/packages/nanoFramework.Graphics.Ili9342/)\n:package: [nanoFramework.Graphics.Otm8009A](https://www.nuget.org/packages/nanoFramework.Graphics.Otm8009A/)\n:package: [nanoFramework.Graphics.Ssd1306](https://www.nuget.org/packages/nanoFramework.Graphics.Ssd1306/)\n:package: [nanoFramework.Graphics.Ssd1331](https://www.nuget.org/packages/nanoFramework.Graphics.Ssd1331/)\n:package: [nanoFramework.Graphics.St7735](https://www.nuget.org/packages/nanoFramework.Graphics.St7735/)\n:package: [nanoFramework.Graphics.St7789](https://www.nuget.org/packages/nanoFramework.Graphics.St7789/)",
+    "pr_template": "* ${{TITLE}} by @${{AUTHOR}} in #${{NUMBER}}",
+    "empty_template": "- no changes",
+    "max_tags_to_fetch": 200,
+    "max_pull_requests": 200
+}
