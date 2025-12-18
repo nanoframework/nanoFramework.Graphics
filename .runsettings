@@ -12,6 +12,6 @@
        <Logging>None</Logging> <!--Set to the desired level of logging for Unit Test execution. Possible values are: None, Detailed, Verbose, Error. -->
        <IsRealHardware>False</IsRealHardware><!--Set to true to run tests on real hardware. -->
        <RealHardwarePort>COM3</RealHardwarePort><!--Specify the COM port to use to connect to a nanoDevice. If none is specified, a device detection is performed and the 1st available one will be used. -->
-       <UsePreviewClr>True</UsePreviewClr>default one installed with nanoclr CLR 
+       <UsePreviewClr>True</UsePreviewClr>
    </nanoFrameworkAdapter>
 </RunSettings>
