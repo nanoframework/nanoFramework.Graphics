@@ -61,6 +61,7 @@ jobs:
   - template: azure-pipelines-templates/class-lib-build-only.yml@templates
     parameters:
       sonarCloudProject: 'nanoframework_lib-nanoFramework.Graphics'
+      usePreviewBuild: true
 
   # package steps
   - template: azure-pipelines-templates/class-lib-package.yml@templates  
