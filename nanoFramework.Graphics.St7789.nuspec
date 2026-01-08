@@ -20,7 +20,7 @@ It does embed a managed driver St7789. It is aimed to be used for images built w
 This package requires a target with nanoFramework.Graphics v$nativeVersion$ (checksum $checksum$).</description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics St7789</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.30" />
+      <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.33" />
       <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.1" />
       <dependency id="nanoFramework.Runtime.Events" version="2.0.0-preview.5" />
       <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.17" />

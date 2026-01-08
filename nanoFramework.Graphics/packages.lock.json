@@ -4,9 +4,9 @@
     ".NETnanoFramework,Version=v1.0": {
       "nanoFramework.CoreLibrary": {
         "type": "Direct",
-        "requested": "[2.0.0-preview.30, 2.0.0-preview.30]",
-        "resolved": "2.0.0-preview.30",
-        "contentHash": "Fz+5L0yOpe0ZoBpVRqH8G8Dr18OoXVE6sKertR/bPuWyOJiO42enlarudfv91/gpJXFkQGNCCdXpHWpoc77jyg=="
+        "requested": "[2.0.0-preview.33, 2.0.0-preview.33]",
+        "resolved": "2.0.0-preview.33",
+        "contentHash": "VVr+TmThdBt9zzXFzFewB5GUsNm2BE8+/3OtaCiJVg76v0Wr87A0Mi6R74hm78otfIhPJ66aPaRd+fA23dmJjQ=="
       },
       "nanoFramework.ResourceManager": {
         "type": "Direct",
@@ -16,21 +16,21 @@
       },
       "nanoFramework.Runtime.Events": {
         "type": "Direct",
-        "requested": "[2.0.0-preview.5, 2.0.0-preview.5]",
-        "resolved": "2.0.0-preview.5",
-        "contentHash": "NmmnwN/vEYEC94nL9nNqh0C5/BrLF60DzIzRsnGNACkpSJ+JSQYPsz3wgti1r7OhvgEprTjPeO3Fc7XGw/2Y8w=="
+        "requested": "[2.0.0-preview.6, 2.0.0-preview.6]",
+        "resolved": "2.0.0-preview.6",
+        "contentHash": "l7ZISc/+3eRSJ1caPDLZecGTrYgair8dzmXlgdNuy28YOhfHnNar6AK6ACpUM5pmH5ewCaQUgpNmIiiKp2XwBg=="
       },
       "nanoFramework.Runtime.Native": {
         "type": "Direct",
-        "requested": "[2.0.0-preview.17, 2.0.0-preview.17]",
-        "resolved": "2.0.0-preview.17",
-        "contentHash": "XkGNYxteY3hXDrKrMuWWejSgWUS4qgkKz+Gc6a8IFgInNuVdaPsdl2cHyCwnHQzzUp454GBZKzvq+YayUGws4A=="
+        "requested": "[2.0.0-preview.18, 2.0.0-preview.18]",
+        "resolved": "2.0.0-preview.18",
+        "contentHash": "+xpG8ru6dGxC9UL/97sAa6uJF0O3Ivgh1UPixMREQxgzLLZFaqpOnij7ZzGuWO7ags2TwEm5pTmlk9AOBpfBkg=="
       },
       "nanoFramework.System.Collections": {
         "type": "Direct",
-        "requested": "[2.0.0-preview.5, 2.0.0-preview.5]",
-        "resolved": "2.0.0-preview.5",
-        "contentHash": "Ll+n1CU45UYpIkbEppTRRke4VGmNbq0qBmPwtRGsJbqXNi/jYG+t2huTIinpHQXF2r0nhKUY3BLrEX9ZYNK7Sw=="
+        "requested": "[2.0.0-preview.6, 2.0.0-preview.6]",
+        "resolved": "2.0.0-preview.6",
+        "contentHash": "3A1BTu/8db8vlmu/TflJ/TtToyyL0M3fiAHxFNYX02lmOr9XQ3YkYESa9m7yRb9nIBoUZbOhtgf5ufbvdPt5ug=="
       },
       "Nerdbank.GitVersioning": {
         "type": "Direct",
