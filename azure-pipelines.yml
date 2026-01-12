@@ -112,9 +112,13 @@ jobs:
       and(
         succeeded(),
         eq(variables['System.PullRequest.PullRequestId'], ''),
-        startsWith(variables['Build.SourceBranch'], 'refs/heads/main'),
+        not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')),
         not(contains(variables['Build.SourceBranch'], 'preview')),
-        eq(variables['StartReleaseCandidate'], false)
+        eq(variables['StartReleaseCandidate'], false),
+        or(
+          eq(variables['Build.SourceBranchName'], 'main'),
+          eq(variables['Build.SourceBranchName'], 'develop')
+        )
       )
     displayName: Create/Update GitHub release
     inputs:
