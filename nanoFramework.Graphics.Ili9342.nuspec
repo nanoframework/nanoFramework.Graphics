@@ -20,7 +20,7 @@ It does embed a managed driver Ili9342. It is aimed to be used for images built 
 This package requires a target with nanoFramework.Graphics v$nativeVersion$ (checksum $checksum$).</description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics Ili9342</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.33" />
+      <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.35" />
       <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.1" />
       <dependency id="nanoFramework.Runtime.Events" version="2.0.0-preview.5" />
       <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.17" />
