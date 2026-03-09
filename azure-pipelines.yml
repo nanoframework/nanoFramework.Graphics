@@ -104,7 +104,9 @@ jobs:
     parameters:
       nugetPackageName: 'nanoFramework.Graphics.St7789'
 
-  - template: azure-pipelines-templates/class-lib-publish.yml@templates  
+  - template: azure-pipelines-templates/class-lib-publish.yml@templates
+    parameters:
+      baseBranchName: 'develop'
 
   # create GitHub release build from main branch
   - task: GithubRelease@1
