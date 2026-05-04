@@ -23,7 +23,7 @@ This package requires a target with System.Graphics v$nativeVersion$ (checksum $
         <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.43" />
         <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.8" />
         <dependency id="nanoFramework.Runtime.Events" version="2.0.0-preview.11" />
-        <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.22" />
+        <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.23" />
         <dependency id="nanoFramework.System.Collections" version="2.0.0-preview.13" />
       </group>
     </dependencies>
