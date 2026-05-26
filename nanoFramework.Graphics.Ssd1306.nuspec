@@ -21,7 +21,7 @@ This package requires a target with nanoFramework.Graphics v$nativeVersion$ (che
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics Ssd1306</tags>
     <dependencies>
       <group targetFramework=".NETnanoFramework1.0">
-        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.49" />
+        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.52" />
         <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.1" />
         <dependency id="nanoFramework.Runtime.Events" version="2.0.0-preview.5" />
         <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.17" />
