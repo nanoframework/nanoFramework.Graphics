@@ -21,10 +21,10 @@ This package requires a target with System.Graphics v$nativeVersion$ (checksum $
     <dependencies>
       <group targetFramework=".NETnanoFramework1.0">
         <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.52" />
-        <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.9" />
+        <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.10" />
         <dependency id="nanoFramework.Runtime.Events" version="2.0.0-preview.13" />
-        <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.24" />
-        <dependency id="nanoFramework.System.Collections" version="2.0.0-preview.14" />
+        <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.25" />
+        <dependency id="nanoFramework.System.Collections" version="2.0.0-preview.15" />
       </group>
     </dependencies>
   </metadata>
