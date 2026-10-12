@@ -17,11 +17,11 @@
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
     <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects.
 It does embed a managed driver Ssd1331. It is aimed to be used for images built with Generic Graphics driver.
-This package requires a target with nanoFramework.Graphics v$nativeVersion$ (checksum $checksum$).</description>
-    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics Ssd1331</tags>
+This package requires a target with nanoFramework.Graphics native contract hash $nativeContractHash$.</description>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics Ssd1331 nfnc-$nativeContractHash$</tags>
     <dependencies>
       <group targetFramework=".NETnanoFramework1.0">
-        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.52" />
+        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.63" />
         <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.1" />
         <dependency id="nanoFramework.Runtime.Events" version="2.0.0-preview.5" />
         <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.17" />
