@@ -16,11 +16,11 @@
     <repository type="git" url="https://github.com/nanoframework/nanoFramework.Graphics" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
     <description>This package includes the nanoFramework.Graphics assembly for .NET nanoFramework C# projects..
-This package requires a target with System.Graphics v$nativeVersion$ (checksum $checksum$).</description>
-    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics</tags>
+This package requires a target with System.Graphics native contract hash $nativeContractHash$.</description>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Graphics nfnc-$nativeContractHash$</tags>
     <dependencies>
       <group targetFramework=".NETnanoFramework1.0">
-        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.52" />
+        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.63" />
         <dependency id="nanoFramework.ResourceManager" version="2.0.0-preview.10" />
         <dependency id="nanoFramework.Runtime.Events" version="2.0.0-preview.13" />
         <dependency id="nanoFramework.Runtime.Native" version="2.0.0-preview.25" />
