@@ -82,6 +82,10 @@ jobs:
   - template: azure-pipelines-templates/class-lib-package.yml@templates  
     parameters:
       nugetPackageName: 'nanoFramework.Graphics.Ili9342'
+      
+  - template: azure-pipelines-templates/class-lib-package.yml@templates  
+    parameters:
+      nugetPackageName: 'nanoFramework.Graphics.Ili9488'
 
   - template: azure-pipelines-templates/class-lib-package.yml@templates  
     parameters:
