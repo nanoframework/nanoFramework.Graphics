@@ -292,7 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.2.0.0-preview.63\lib\netnano1.0\mscorlib.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.CoreLibrary.2.0.0-preview.125\lib\netnano1.0\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="nanoFramework.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
       <HintPath>..\packages\nanoFramework.ResourceManager.2.0.0-preview.14\lib\netnano1.0\nanoFramework.ResourceManager.dll</HintPath>
@@ -304,7 +304,7 @@
       <HintPath>..\packages\nanoFramework.Runtime.Native.2.0.0-preview.29\lib\netnano1.0\nanoFramework.Runtime.Native.dll</HintPath>
     </Reference>
     <Reference Include="nanoFramework.System.Collections, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.System.Collections.2.0.0-preview.24\lib\netnano1.0\nanoFramework.System.Collections.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.Collections.2.0.0-preview.36\lib\netnano1.0\nanoFramework.System.Collections.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
